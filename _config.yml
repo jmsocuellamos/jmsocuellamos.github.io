@@ -2,5 +2,5 @@ title: Modelos estadísticos con R y RStudio
 description: Una visión práctica de la construcción y análisis de modelos estadísticos con R y RStudio.
 show_downloads: true
 google_analytics:
-theme: jekyll-theme-architect
+theme: jekyll-theme-slate
 markdown: kramdown
