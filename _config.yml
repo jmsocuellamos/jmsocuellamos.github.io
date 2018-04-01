@@ -3,3 +3,4 @@ description: Una visión práctica de la construcción y análisis de modelos es
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-cayman
+markdown: kramdown
