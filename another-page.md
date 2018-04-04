@@ -98,7 +98,9 @@ ggplot(fitinf, aes(sample=.stdresid)) +
   theme_bw()
 ```
  
-Veamos ahora los tests diagnósticos. ¿Qué podemos decir sobre las hipótesis del modelo? ¿El modelo obtenedo es adecuado para predecir el comportamiento de la pérdida de calor?
+Veamos ahora los tests diagnósticos. 
+
+> ¿Qué podemos decir sobre las hipótesis del modelo? ¿El modelo obtenedo es adecuado para predecir el comportamiento de la pérdida de calor?
 
 ```
 # Varianza constante
@@ -156,18 +158,20 @@ ggplot(datacomp) +
 
 ## Estimación del modelo 
 
-En primer lugar procedemos con la selección del modelo. Posteriormente haremos el análisis inferencial de dicho modelo. Partimos del modelo completo con todas las predictoras y utlizamos el procedmiento por pasos para la selección de efectos en el modelo final
+En primer lugar procedemos con la selección del modelo. Posteriormente haremos el análisis inferencial de dicho modelo. Partimos del modelo completo con todas las predictoras y utlizamos el procedimiento por pasos para la selección de efectos en el modelo final.
 
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+> ¿Qué varaibles predictoras aparecen el modelo final? Justifica la posible elimianción de alguna o algunas de las varaibles predictoras?
+
+```
 # Ajuste del modelo
 ajuste <- lm(carbohydrate ~ age + weight + protein, data = ejer03)
 # Selección del modelo
 ajuste <- step(ajuste)
 ```
 
-¿Qué varaibles predictoras aparecen el modelo final? Justifica la posible elimianción de alguna o algunas de las varaibles predictoras?
+> ¿Consideras que el modelo obtenido es adecuado para explicar el porcentaje de calorías totales obtenidas de carbohidratos complejos? Justifica tu respuesta. ¿Los efectos presentes en el odelo se pueden considerar como relevantes? ¿Cuál es el modelo ajustado? Interpreta los coeficientes de dicho modelo.
 
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+```
 # Ajuste del modelo final
 ajuste <- lm(carbohydrate ~ weight + protein, data = ejer03)
 # Inferencia
@@ -178,13 +182,13 @@ glance(ajuste)
 anova(ajuste)
 ```
 
- ¿Consideras que el modelo obtenido es adecuado para explicar el porcentaje de calorías totales obtenidas de carbohidratos complejos? Justifica tu respuesta. ¿Los efectos presentes en el odelo se pueden considerar como relevantes? ¿Cuál es el modelo ajustado? Interpreta los coeficientes de dicho modelo.
-
 ## Diagnóstico del modelo
 
-En este caso nos centramos únicamente en los procedimientos numéricos y tests
+En este caso nos centramos únicamente en los procedimientos numéricos y tests. 
 
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+> ¿Se detecta alguna observación influyente? ¿Que indican los tests de diagnóstico? ¿Podemos utilizar el modelo ajustado para la predcción del porcentaje de de calorías totales obtenidas de carbohidratos complejos?
+
+```
 # Diagnóstico del modelo
 fitinf <- fortify(ajuste)
 fitinf
@@ -200,13 +204,13 @@ shapiro.test(fitinf$.stdresid)
 dwtest(ajuste)
 ```
 
-¿Se detecta alguna observación influyente? ¿Que indican los tests de diagnóstico? ¿Podemos utilizar el modelo ajustado para la predcción del porcentaje de de calorías totales obtenidas de carbohidratos complejos?
-
 ## Predicción
 
-Construimos un rango de predicción para las proteinas y trabajamos con un peso medio para obtener la gra´fica de predicción. 
+Construimos un rango de predicción para las proteinas y trabajamos con un peso medio para obtener la gráfica de predicción. 
 
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+> ¿Cómo interpretamos este gráfico de predicción? ¿Tendría sentido reconvertir la variable peso en un factor ordinal y ajsutar el modelo correspoendiente? Justifica tu respuesta. ¿Qué tipo de modelo tendríamos entonces? ¿Sería más o menos informativo que el modelo con todas las predcitroas numéricas? ¿Qué diferencias en el estudio del modelo deberíamos tener en cuenta? Ajusta un nuevo modelo considerando tres grupos en la variable peso identificados como menos de 100, entre 100 y 120, y más de 120.
+
+```
 newdata <-expand.grid(protein = round(seq(min(ejer03$protein), max(ejer03$protein), length = 10),0), 
                       weight = round(mean(ejer03$weight),0))
 # Obtenemos la predicción para el modelo ajusatdo
@@ -220,16 +224,16 @@ ggplot(newdata, aes(x = protein, y = fit)) +
   theme_bw()
 ```
 
-¿Cómo interpretamos este gráfico de predicción? ¿Tendría sentido reconvertir la variable peso en un factor ordinal y ajsutar el modelo correspoendiente? Justifica tu respuesta. ¿Qué tipo de modelo tendríamos entonces? ¿Sería más o menos informativo que el modelo con todas las predcitroas numéricas? ¿Qué diferencias en el estudio del modelo deberíamos tener en cuenta? Ajusta un nuevo modelo considerando tres grupos en la variable peso identificados como menos de 100, entre 100 y 120, y más de 120.
+Creación de la nueva variable
 
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+```
 # Creación de la nueva varaible
 ejer03$weight.fac <- cut(ejer03$weight,breaks=c(50,100,120,150))
 ```
 
 ***
-# Ejercicio 4 
-***
+# Caso 3
+
 
 Los datos recogen la respuesta de un pasto de gramíneas y leguminosas a varias cantidades de fertilizante de fósforo (datos de D. F. Sinclair). En concreto se mide el rendimiento total (en kilogramos por hectárea), de pasto y leguminosa juntos, y la cantidad de potasio ($K$) utilizada (en kilogramos por hectárea). Los datos corresponden con la tabla 6.16 de @Dobson02.
 
