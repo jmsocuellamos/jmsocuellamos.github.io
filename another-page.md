@@ -12,9 +12,10 @@ _yay_
 
 ***
 # Librerías y funciones
-***
 
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+Cargamos las librerías necesarias para el análisis estadstico
+
+```
 # Cargamos las librerías
 library(tidyverse)
 library(forcats)
@@ -27,28 +28,28 @@ library(modelr)
 ```
 
 ***
-# Ejercicio 2
-***
+# Caso 1
+
 
 ## Análisis preliminar 
 
 Se trata de determinar la pérdida de calor sufrida por cierto compuesto cuando es sometido a altas temperaturas. Los datos recogidos son los siguientes:
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+
+```
 temperatura <- c(460, 450, 440, 430, 420, 410, 450, 440, 430, 420, 410, 400, 420, 410, 400)
 perdida <- c(0.3, 0.3, 0.4, 0.4, 0.6, 0.5, 0.5, 0.6, 0.6, 0.6, 0.7, 0.6, 0.6, 0.6, 0.6)
 ejer02 <- data.frame(temperatura,perdida)
 ```
 
-En este caso ambas variables son de tipo numérico y debemos plantear un modelo de regresión lineal simple. Comenzamos con la representación gráfica de los datos.
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+En este caso ambas variables son de tipo numérico y debemos plantear un modelo de regresión lineal simple. Comenzamos con la representación gráfica de los datos. ¿Qué tipo de tendencia se aprecia en el gráfico? ¿Podemos decir que la pérdida de calor disminuye cuado aumenta la temperatura? ¿La tendencia lineal parece apropiada para este tipo de datos?
+
+```
 ggplot(ejer02,aes(temperatura,perdida)) + 
   geom_point() + 
   labs(x = "Temperatura", y = "Pérdida de calor") + 
   theme_bw() + 
   geom_smooth(method = "lm", se = FALSE)
 ```
-
-¿Qué tipo de tendencia se aprecia en el gráfico? ¿Podemos decir que la pérdida de calor disminuye cuado aumenta la temperatura? ¿La tendencia lineal parece apropiada para este tipo de datos?
 
 ## Estimación del modelo 
 
