@@ -7,9 +7,9 @@ layout: default
 En este documento se puede acceder a los códigos necesarios para la resolución de diferentes casos experimentales relacionados con la modelización mediante modelos lineales. Se pkantea un guión de preguntas para ir analizando los diferentes resultados que iremos obteniendo.
 
 ***
-# Librerías y funciones
+# Librerías de R y bibliografía
 
-Cargamos las librerías necesarias para la realización de los análisis estadísticos.
+Cargamos las librerías necesarias para la realización de los análisis estadísticos y presentamos el material bibliográfico necesario.
 
 ```
 # Cargamos las librerías
@@ -22,6 +22,16 @@ library(mgcv)
 library(MASS)
 library(modelr)
 ```
+## Bibliografía
+
+- Daniel, Wayne W. 2005. Biostatistics. Eighth Edition. Wiley.
+- Dobson, A. 2002. An Introduction to Generalized Linear Models. CRC Press.
+- Faraway, JJ. 2006. Extending the Linear Model with R. Chapman & Hall.
+- Krzanowski, Wojtek J. 1998. An Introduction to Statistical Modelling. Arnold.
+- Mayoral, A.M., and Morales J. 2001. Modelos Lineales Generalizados. Servicio de publicaciones de la UMH.
+- Ugarte, MD, AF Militino, and A Arnholt. 2008. Probability and Statistics with R. CRC Press.
+- Wickham, Hadley, and Garrett Grolemund. 2016. R for Data Science. O’Reilly.
+- Wood, SN. 2006. Generalized Additive Models. Chapman & Hall.
 
 ***
 # Caso 1
@@ -34,7 +44,9 @@ perdida <- c(0.3, 0.3, 0.4, 0.4, 0.6, 0.5, 0.5, 0.6, 0.6, 0.6, 0.7, 0.6, 0.6, 0.
 ejer02 <- data.frame(temperatura,perdida)
 ```
 
-En este caso ambas variables son de tipo numérico y debemos plantear un modelo de regresión lineal simple. Comenzamos con la representación gráfica de los datos. ¿Qué tipo de tendencia se aprecia en el gráfico? ¿Podemos decir que la pérdida de calor disminuye cuado aumenta la temperatura? ¿La tendencia lineal parece apropiada para este tipo de datos?
+En este caso ambas variables son de tipo numérico y debemos plantear un modelo de regresión lineal simple. Comenzamos con la representación gráfica de los datos. 
+
+> ¿Qué tipo de tendencia se aprecia en el gráfico? ¿Podemos decir que la pérdida de calor disminuye cuado aumenta la temperatura? ¿La tendencia lineal parece apropiada para este tipo de datos?
 
 ```
 ggplot(ejer02,aes(temperatura,perdida)) + 
@@ -46,7 +58,9 @@ ggplot(ejer02,aes(temperatura,perdida)) +
 
 ## Estimación del modelo 
 
-Dado que sólo tenemos una predictora, la selección del modelo consiste unicamente en la valoración de la bondad del ajuste proporcionado por la variable predictora. ¿El modelo obtendio es adecuado para explicar el comportamiento de la pérdida de calor a través de la temperatura? ¿Cuál es la ecuación del modelo ajustado? ¿Cómo interpretamos la interceptiación del modelo? ¿Y la pendiente? Si aumentamos 100 grados ¿qué ocurre con la pérdida de calor?
+Dado que sólo tenemos una predictora, la selección del modelo consiste unicamente en la valoración de la bondad del ajuste proporcionado por la variable predictora. 
+
+> ¿El modelo obtendio es adecuado para explicar el comportamiento de la pérdida de calor a través de la temperatura? ¿Cuál es la ecuación del modelo ajustado? ¿Cómo interpretamos la interceptiación del modelo? ¿Y la pendiente? Si aumentamos 100 grados ¿qué ocurre con la pérdida de calor?
 
 ```
 # Ajuste del modelo
@@ -60,7 +74,9 @@ glance(ajuste)
 
 ## Diagnóstico del modelo
 
-Realizamos el diagnóstico del modelo para verificar si se cumplen las hipótesis del mdoelo de regresión lineal simple. Comenzamos con el análisis gráfico. ¿Qué podemos decir de los gráficos obtenidos? 
+Realizamos el diagnóstico del modelo para verificar si se cumplen las hipótesis del mdoelo de regresión lineal simple. Comenzamos con el análisis gráfico. 
+
+> ¿Qué podemos decir de los gráficos obtenidos? 
 
 ```
 # Valores de diagnóstico
@@ -95,7 +111,9 @@ dwtest(ajuste)
 
 ## Predicción del modelo
 
-Pasamos a la predicción del modelo. Planteamos la predicción de la respuesta media para una combinación de valores de la predictora. ¿Cuál es estimación de la pérdida de calor para las temperaturas de 400, 420, 440, y 460? ¿Cuál es el rango de confianza para la predicción en cada una de las temperaturas anteriores? ¿Resulta posible calcular la pérdida de calor para una temperatura de 480? ¿Cuál sería el intervalo de confianza para dicha predicción?
+Pasamos a la predicción del modelo. Planteamos la predicción de la respuesta media para una combinación de valores de la predictora. 
+
+> ¿Cuál es estimación de la pérdida de calor para las temperaturas de 400, 420, 440, y 460? ¿Cuál es el rango de confianza para la predicción en cada una de las temperaturas anteriores? ¿Resulta posible calcular la pérdida de calor para una temperatura de 480? ¿Cuál sería el intervalo de confianza para dicha predicción?
 
 ```
 # Predicción
@@ -122,7 +140,7 @@ ejer03 <- read_csv("https://goo.gl/Grm8xM", col_types = "dddd")
 
 En este caso todas las variables son de tipo numérico, y debemos plantear un modelo de regresión lineal múltiple donde tratamos de explicar el comportamiento de `carbohydrate` en función del conjunto de posibles predictoras. Comenzamos con la representación gráfica de los datos a través de gráficos de dispersión individualizados de la respuesta con cada posible predictora. 
 
-> ¿Qué varaible o variables parecen influir más, de forma individual, en el porcentaje de calorías totales obtenidas de carbohidratos complejos? ¿Qué tipo de tendencia se observa para cada una de las predictoras? ¿Son tendencia lineales o podríasmos sospechar la presencia de tendencias no lienales?
+> ¿Qué variable o variables parecen influir más, de forma individual, en el porcentaje de calorías totales obtenidas de carbohidratos complejos? ¿Qué tipo de tendencia se observa para cada una de las predictoras? ¿Son tendencia lineales o podríasmos sospechar la presencia de tendencias no lienales?
 
 ```
 # Gráfico inicial
