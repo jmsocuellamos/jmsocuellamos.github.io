@@ -53,9 +53,9 @@ ggplot(ejer02,aes(temperatura,perdida)) +
 
 ## Estimación del modelo 
 
-Dado que sólo tenemos una predictora, la selección del modelo consiste unicamente en la valoración de la bondad del ajuste proporcionado por la variable predictora
+Dado que sólo tenemos una predictora, la selección del modelo consiste unicamente en la valoración de la bondad del ajuste proporcionado por la variable predictora. ¿El modelo obtendio es adecuado para explicar el comportamiento de la pérdida de calor a través de la temperatura? ¿Cuál es la ecuación del modelo ajustado? ¿Cómo interpretamos la interceptiación del modelo? ¿Y la pendiente? Si aumentamos 100 grados ¿qué ocurre con la pérdida de calor?
 
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+```
 # Ajuste del modelo
 ajuste <- lm(perdida ~ temperatura,data = ejer02)
 # Inferencia sobre los coeficientes del modelo
@@ -65,16 +65,11 @@ glance(ajuste)
 # Alternativamente podríamos utilizar summary(ajuste)
 ```
 
-¿El modelo obtendio es adecuado para explicar el comportamiento de la pérdida de calor a través de la temperatura? ¿Cuál es la ecuación del modelo ajustado? ¿Cómo interpretamos la interceptiación del modelo? ¿Y la pendiente? Si aumentamos 100 grados ¿qué ocurre con la pérdida de calor?
-
 ## Diagnóstico del modelo
 
-Realizamos el diagnóstico del modelo para verificar si se cumplen las hipótesis del mdoelo de regresión lineal simple.
+Realizamos el diagnóstico del modelo para verificar si se cumplen las hipótesis del mdoelo de regresión lineal simple. Comenzamos con el análisis gráfico. ¿Qué podemos decir de los gráficos obtenidos? 
 
-### Análisis gráfico
-
-Comenzamos con el análisis gráfico
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+```
 # Valores de diagnóstico
 fitinf <- fortify(ajuste)
 # Análisis gráfico
@@ -93,12 +88,10 @@ ggplot(fitinf, aes(sample=.stdresid)) +
   geom_abline() +
   theme_bw()
 ```
+ 
+Veamos ahora los tests diagnósticos. ¿Qué podemos decir sobre las hipótesis del modelo? ¿El modelo obtenedo es adecuado para predecir el comportamiento de la pérdida de calor?
 
-¿Qué podemos decir de los gráficos obtenidos? 
-
-### Tests estadísticos
-
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+```
 # Varianza constante
 bptest(ajuste)
 # Normalidad
@@ -107,7 +100,7 @@ shapiro.test(fitinf$.stdresid)
 dwtest(ajuste)
 ```
 
-¿Qué podemos decir sobre las hipótesis del modelo? ¿El modelo obtenedo es adecuado para predecir el comportamiento de la pérdida de calor?
+
 
 ## Predicción del modelo
 
