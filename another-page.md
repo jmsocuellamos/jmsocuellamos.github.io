@@ -2,18 +2,14 @@
 layout: default
 ---
 
-## Welcome to another page
+# Análisis de diseños experimentales de ML
 
-_yay_
-
-[back](./)
-
-
+En este documento se puede acceder a los códigos necesarios para la resolución de diferentes casos experimentales relacionados con la modelización mediante modelos lineales. Se pkantea un guión de preguntas para ir analizando los diferentes resultados que iremos obteniendo.
 
 ***
 # Librerías y funciones
 
-Cargamos las librerías necesarias para el análisis estadstico
+Cargamos las librerías necesarias para la realización de los análisis estadísticos.
 
 ```
 # Cargamos las librerías
