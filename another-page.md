@@ -26,9 +26,6 @@ library(modelr)
 ***
 # Caso 1
 
-
-## Análisis preliminar 
-
 Se trata de determinar la pérdida de calor sufrida por cierto compuesto cuando es sometido a altas temperaturas. Los datos recogidos son los siguientes:
 
 ```
@@ -96,12 +93,11 @@ shapiro.test(fitinf$.stdresid)
 dwtest(ajuste)
 ```
 
-
-
 ## Predicción del modelo
 
-Pasamos a la predicción del modelo
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+Pasamos a la predicción del modelo. Planteamos la predicción de la respuesta media para una combinación de valores de la predictora. ¿Cuál es estimación de la pérdida de calor para las temperaturas de 400, 420, 440, y 460? ¿Cuál es el rango de confianza para la predicción en cada una de las temperaturas anteriores? ¿Resulta posible calcular la pérdida de calor para una temperatura de 480? ¿Cuál sería el intervalo de confianza para dicha predicción?
+
+```
 # Predicción
 newdata <- data.frame(temperatura = seq(min(ejer02$temperatura), max(ejer02$temperatura), .01))
 # Obtenemos la predicción para el modelo ajusatdo
@@ -114,25 +110,21 @@ ggplot(newdata, aes(x = temperatura, y = fit)) +
   theme_bw()
 ```
 
-
-¿Cuál es estimación de la pérdida de calor para las temperaturas de 400, 420, 440, y 460? ¿Cuál es el rango de confianza para la predicción en cada una de las temperaturas anteriores? ¿Resulta posible calcular la pérdida de calor para una temperatura de 480? ¿Cuál sería el intervalo de confianza para dicha predicción?
-
 ***
-# Ejercicio 3
-***
+# Caso 2
 
 Los datos muestran el porcentaje de calorías totales obtenidas de carbohidratos complejos, para veinte diabéticos dependientes de insulina que habían seguido una dieta alta en carbohidratos durante seis meses. Se consideró que el cumplimiento del régimen estaba relacionado con la edad (en años), *age*, el peso corporal (relativo al peso "ideal" para la altura), *weight*, y otros componentes de la dieta como el porcentaje de proteínas ingeridas. Los datos corresponden con la tabla 6.3 de @Dobson02.
 
-## Análisis preliminar 
-
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+```
 # Lectura de datos
 ejer03 <- read_csv("https://goo.gl/Grm8xM", col_types = "dddd")
 ```
 
-En este caso todas las variables son de tipo numérico, y debemos plantear un modelo de regresión lineal múltiple donde tratamos de explicar el comportamiento de `carbohydrate` en función del conjunto de posibles predictoras. Comenzamos con la representación gráfica de los datos a través de gráficos de dispersión individualizados de la respuesta con cada posible predictora.
+En este caso todas las variables son de tipo numérico, y debemos plantear un modelo de regresión lineal múltiple donde tratamos de explicar el comportamiento de `carbohydrate` en función del conjunto de posibles predictoras. Comenzamos con la representación gráfica de los datos a través de gráficos de dispersión individualizados de la respuesta con cada posible predictora. 
 
-```{r ,error=FALSE,warning=FALSE,message=FALSE}
+> ¿Qué varaible o variables parecen influir más, de forma individual, en el porcentaje de calorías totales obtenidas de carbohidratos complejos? ¿Qué tipo de tendencia se observa para cada una de las predictoras? ¿Son tendencia lineales o podríasmos sospechar la presencia de tendencias no lienales?
+
+```
 # Gráfico inicial
 datacomp = melt(ejer03, id.vars='carbohydrate')
 # Gráfico respecto de cada predictora
@@ -143,8 +135,6 @@ ggplot(datacomp) +
   labs(x = "", y = "carbohydrate") +
   theme_bw()
 ```
-
-¿Qué varaible o variables parecen influir más, de forma individual, en el porcentaje de calorías totales obtenidas de carbohidratos complejos? ¿Qué tipo de tendencia se observa para cada una de las predictoras? ¿Son tendencia lineales o podríasmos sospechar la presencia de tendencias no lienales?
 
 ## Estimación del modelo 
 
