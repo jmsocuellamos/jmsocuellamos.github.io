@@ -33,3 +33,5 @@ library(modelr)
 - Wood, SN. 2006. Generalized Additive Models. Chapman & Hall.
 
 # Listado de casos
+
+- [Caso 1](jmsocuellamos.github.io/caso1-ml.md)
