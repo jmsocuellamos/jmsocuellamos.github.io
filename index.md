@@ -4,7 +4,7 @@ layout: default
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
-[Casos prácticos de modelos lineales](jmsocuellamos.github.io/modelos-lineales.md).
+[Casos prácticos de modelos lineales](https://jmsocuellamos.github.io/modelos-lineales.md).
 
 There should be whitespace between paragraphs.
 
