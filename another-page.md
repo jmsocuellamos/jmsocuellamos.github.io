@@ -128,3 +128,5 @@ ggplot(newdata, aes(x = temperatura, y = fit)) +
        title = "Bandas de predicción") +
   theme_bw()
 ```
+
+[https://github.com/jmsocuellamos/jmsocuellamos.github.io/blob/master/index.md](Volver a la página principal)
