@@ -129,4 +129,4 @@ ggplot(newdata, aes(x = temperatura, y = fit)) +
   theme_bw()
 ```
 
-[https://github.com/jmsocuellamos/jmsocuellamos.github.io/blob/master/index.md](Volver a la página principal)
+[Volver a la página principal](https://github.com/jmsocuellamos/jmsocuellamos.github.io/blob/master/index.md)
