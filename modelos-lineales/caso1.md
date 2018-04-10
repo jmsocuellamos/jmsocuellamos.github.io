@@ -100,5 +100,4 @@ ggplot(newdata, aes(x = temperatura, y = fit)) +
 
 [Volver a la página principal](https://jmsocuellamos.github.io/)
 
-[Listado de casos de modelos lineales](https://jmsocuellamos.github.io/modelos-lineales)
 
