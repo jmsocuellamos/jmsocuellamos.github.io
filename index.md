@@ -26,6 +26,8 @@ library(lmtest)
 library(mgcv)
 library(MASS)
 library(modelr)
+library(survival)
+library(survminer)
 ```
 
 ## Bibliografía
