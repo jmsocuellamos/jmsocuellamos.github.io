@@ -9,7 +9,7 @@ A continuación se presentan todos los caso de modelos lineales
 # Listado de casos
 
 * [Caso 1](modelos-lineales/caso1)
-* [Caso 2](caso1-ml)
+* [Caso 2](modelos-lineales/caso2)
 * [Caso 3](caso1-ml)
 * [Caso 4](caso1-ml)
 * [Caso 5](caso1-ml)
