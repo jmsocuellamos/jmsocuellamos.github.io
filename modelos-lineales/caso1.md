@@ -100,5 +100,4 @@ ggplot(newdata, aes(x = temperatura, y = fit)) +
 
 [Volver a la página principal](https://jmsocuellamos.github.io/)
 
-[Volver al listado de casos](listado-ml)
 
