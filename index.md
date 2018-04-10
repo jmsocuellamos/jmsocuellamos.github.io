@@ -8,7 +8,7 @@ Esta web presenta una colección de análisis de casos de diferentes tipos de mo
 
 # Tipos de modelos
 
-* Modelos Lineales
+* [Modelos Lineales](modelos-lineales) 
 * Modelos Lineales Generalizados (Binomial)
 * Modelos Lineales Generalizados (Poisson)
 * Modelos Lineales Generalizados (Tablas de contingencia)
