@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# ¿Qué es esta web?
+# Aplicaciones de modelos estadísticos
 
 Esta web presenta una colección de análisis de casos de diferentes tipos de modelos estadísticos utilizando R y R Studio. Para cada caso se presenta el conjunto de datos a utilizar así como el código necesario para llevar a cabo cada uno de los análisis.  Se presenta también un guión de preguntas para ir analizando cada uno de los casos presentados. Al final de está página se presentan las librerias de R necesarias para el análisis de cada caso, así  como la bibliografía utilizada.
 
