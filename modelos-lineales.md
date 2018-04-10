@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Modeolos Lineales
+# Modelos Lineales
 
 A continuación se presentan todos los caso de modelos lineales
 
