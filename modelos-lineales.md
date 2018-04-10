@@ -23,3 +23,4 @@ A continuación se presentan todos los caso de modelos lineales
 * [Caso 13](caso1-ml)
 * [Caso 14](caso1-ml)
 
+[Volver a la página principal](https://jmsocuellamos.github.io/)
