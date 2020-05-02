@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Unidad 1 Modelos de Análisis de la varianza (ANOVA) | Modelos Estadísticos</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Unidad 1 Modelos de Análisis de la varianza (ANOVA) | Modelos Estadísticos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unidad 1 Modelos de Análisis de la varianza (ANOVA) | Modelos Estadísticos" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Javier Morales (Universidad Miguel Hernández de Elche)" />
+<meta name="author" content="Mª Asunción Martínez (Universidad Miguel Hernández de Elche)" />
+
+
+<meta name="date" content="2020-05-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelos Estadísticos</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html"><i class="fa fa-check"></i><b>1</b> Modelos de Análisis de la varianza (ANOVA)</a><ul>
+<li class="chapter" data-level="1.1" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#bancos-de-datos"><i class="fa fa-check"></i><b>1.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="1.2" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#modelos-anova-1-vía"><i class="fa fa-check"></i><b>1.2</b> Modelos ANOVA 1 vía</a></li>
+<li class="chapter" data-level="1.3" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#modelos-anova-dos-vías"><i class="fa fa-check"></i><b>1.3</b> Modelos ANOVA dos vías</a></li>
+<li class="chapter" data-level="1.4" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#especificación-en-r"><i class="fa fa-check"></i><b>1.4</b> Especificación en <code>R</code></a><ul>
+<li class="chapter" data-level="1.4.1" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#anova-de-una-vía"><i class="fa fa-check"></i><b>1.4.1</b> ANOVA de una vía</a></li>
+<li class="chapter" data-level="1.4.2" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#anova-de-dos-vías"><i class="fa fa-check"></i><b>1.4.2</b> ANOVA de dos vías</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#estimación-y-bondad-de-ajuste-del-modelo"><i class="fa fa-check"></i><b>1.5</b> Estimación y bondad de ajuste del modelo</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#ejemplos"><i class="fa fa-check"></i><b>1.5.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#comparación-y-selección-de-modelos"><i class="fa fa-check"></i><b>1.6</b> Comparación y selección de modelos</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#ejemplos-1"><i class="fa fa-check"></i><b>1.6.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#diagnóstico"><i class="fa fa-check"></i><b>1.7</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#ejemplos-2"><i class="fa fa-check"></i><b>1.7.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#predicción"><i class="fa fa-check"></i><b>1.8</b> Predicción</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#ejemplos-3"><i class="fa fa-check"></i><b>1.8.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="modelos-de-análisis-de-la-varianza-anova.html"><a href="modelos-de-análisis-de-la-varianza-anova.html#ejercicios"><i class="fa fa-check"></i><b>1.9</b> Ejercicios</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Creado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Estadísticos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modelos-de-análisis-de-la-varianza-anova" class="section level1">
+<h1><span class="header-section-number">Unidad 1</span> Modelos de Análisis de la varianza (ANOVA)</h1>
+<p>Los modelos ANOVA surgen cuando la variable o variables predictoras son de tipo categórico, es decir, factores con diferentes niveles de clasificación, de forma que cada sujeto es medido (respecto de la respuesta) para una combinación específica de los factores considerados. La variable respuesta sigue siendo de tipo numérico y el objetivo principal es el estudio de la media para los diferentes niveles del factor o combinaciones de los factores. No solo se está interesado en comparar los diferentes grupos, sino además en cuantificar numéricamente esas diferencias.</p>
+<p>La principal diferencia con los modelos de regresión es que en este caso no modelizamos toda la respuesta observada sino la media observada del conjunto de observaciones para cada nivel del factor. Además, veremos como estos modelos pueden ser descritos en términos de un modelo lineal de regresión lo que nos permite utilizar parte de los procesos de descripción, análisis y diagnóstico utilizamos en los capítulos anteriores. En cada punto de este capítulo estudiaremos las similitudes y diferencias con los modelos de regresión.</p>
+<div id="bancos-de-datos" class="section level2">
+<h2><span class="header-section-number">1.1</span> Bancos de datos</h2>
+<p>Veamos los diferentes bancos de datos que iremos analizando a lo largo de la unidad.</p>
+<p><strong>Ejemplo 1. Datos de Insecticidas.</strong> Este ejemplo contiene los datos de un experimento agronómico para conocer el efecto de diferentes insecticidas (<code>spray</code>) sobre el número de insectos vivos (<code>count</code>) tras un periodo de tratamiento.</p>
+<p>Cargamos los datos y realizamos el gráfico descriptivo:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">data</span>(InsectSprays)</a>
+<a class="sourceLine" id="cb3-2" title="2">insecticidas &lt;-<span class="st"> </span>InsectSprays</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">ggplot</span>(insecticidas,<span class="kw">aes</span>(<span class="dt">x =</span> spray, <span class="dt">y =</span> count)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Se aprecia como el número de insectos vivos es superior cuando usamos los sprays A, B, y F (con medias muy similares). El resto de sprays muestran (medias) una supervivencia inferior. Se observan como dos grupos de sprays, uno con medias altas y otro con medias bajas.</p>
+<p><strong>Ejemplo 2. Datos de Envasado.</strong> Se desea estudiar la fabricación de cuatro tipos de máquinas automáticas (<code>maquina</code>) en el cortado de piezas de embutido para envasado. Para ello se toman datos del número de envases sin defecto (<code>produccion</code>) que produce cada máquina durante periodos de una hora.</p>
+<p>Cargamos los datos y realizamos el gráfico descriptivo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">maquina &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;M1&quot;</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="st">&quot;M2&quot;</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="st">&quot;M3&quot;</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="st">&quot;M4&quot;</span>,<span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb4-2" title="2">produccion &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">103</span>,<span class="dv">115</span>,<span class="dv">101</span>,<span class="dv">105</span>,<span class="dv">109</span>,<span class="dv">106</span>,<span class="dv">116</span>,<span class="dv">124</span>,<span class="dv">104</span>,<span class="dv">98</span>,</a>
+<a class="sourceLine" id="cb4-3" title="3">                <span class="dv">117</span>,<span class="dv">99</span>,<span class="dv">128</span>,<span class="dv">117</span>,<span class="dv">121</span>,<span class="dv">130</span>)</a>
+<a class="sourceLine" id="cb4-4" title="4">envasado &lt;-<span class="st"> </span><span class="kw">data.frame</span>(maquina,produccion)</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">ggplot</span>(envasado,<span class="kw">aes</span>(<span class="dt">x =</span> maquina, <span class="dt">y =</span> produccion)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Cada máquina muestra un nivel de envases sin defecto diferente. La máquina M4 es la que muestra mejores resultados y la M3 los peores.</p>
+<p><strong>Ejemplo 3. Datos de venenos.</strong> Se ha realizado un experimento para comprobar la efectividad de diferentes antídotos (AA, AB, AC y AD) frente a diferentes venenos (VA, VB y VC). Para ello se recoge el tiempo de reacción (tiempo) que cada antídoto tarda en hacer efecto para cada veneno.</p>
+<p>Cargamos los datos y realizamos el gráfico descriptivo:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">tiempo &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.31</span>,<span class="fl">0.45</span>,<span class="fl">0.46</span>,<span class="fl">0.43</span>,<span class="fl">0.36</span>,<span class="fl">0.29</span>,<span class="fl">0.4</span>,<span class="fl">0.23</span>,</a>
+<a class="sourceLine" id="cb5-2" title="2">          <span class="fl">0.22</span>,<span class="fl">0.21</span>,<span class="fl">0.18</span>,<span class="fl">0.23</span>,<span class="fl">0.82</span>,<span class="fl">1.1</span>,<span class="fl">0.88</span>,<span class="fl">0.72</span>,<span class="fl">0.92</span>,<span class="fl">0.61</span>,<span class="fl">0.49</span>,</a>
+<a class="sourceLine" id="cb5-3" title="3">          <span class="fl">1.24</span>,<span class="fl">0.3</span>,<span class="fl">0.37</span>,<span class="fl">0.38</span>,<span class="fl">0.29</span>,<span class="fl">0.43</span>,<span class="fl">0.45</span>,<span class="fl">0.63</span>,<span class="fl">0.76</span>,<span class="fl">0.44</span>,<span class="fl">0.35</span>,</a>
+<a class="sourceLine" id="cb5-4" title="4">          <span class="fl">0.31</span>,<span class="fl">0.4</span>,<span class="fl">0.23</span>,<span class="fl">0.25</span>,<span class="fl">0.24</span>,<span class="fl">0.22</span>,<span class="fl">0.45</span>,<span class="fl">0.71</span>,<span class="fl">0.66</span>,<span class="fl">0.62</span>,<span class="fl">0.56</span>,</a>
+<a class="sourceLine" id="cb5-5" title="5">          <span class="fl">1.02</span>,<span class="fl">0.71</span>,<span class="fl">0.38</span>,<span class="fl">0.3</span>,<span class="fl">0.35</span>,<span class="fl">0.31</span>,<span class="fl">0.33</span>)</a>
+<a class="sourceLine" id="cb5-6" title="6">antidoto &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb5-7" title="7">                     <span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb5-8" title="8">                     <span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb5-9" title="9">                   <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;AA&quot;</span>,<span class="st">&quot;AB&quot;</span>,<span class="st">&quot;AC&quot;</span>,<span class="st">&quot;AD&quot;</span>))</a>
+<a class="sourceLine" id="cb5-10" title="10">veneno &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb5-11" title="11">                   <span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb5-12" title="12">                   <span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb5-13" title="13">                 <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;VA&quot;</span>,<span class="st">&quot;VB&quot;</span>,<span class="st">&quot;VC&quot;</span>))</a>
+<a class="sourceLine" id="cb5-14" title="14">venenos &lt;-<span class="st"> </span><span class="kw">data.frame</span>(tiempo,antidoto,veneno)</a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co"># Diagrama de cajas</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="kw">ggplot</span>(venenos,<span class="kw">aes</span>(<span class="dt">x =</span> antidoto, <span class="dt">y =</span> tiempo, <span class="dt">color =</span> veneno)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="st">  </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># Gráfico de interacción de medias</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">ggplot</span>(venenos, </a>
+<a class="sourceLine" id="cb6-3" title="3">  <span class="kw">aes</span>(<span class="dt">x =</span> antidoto, <span class="dt">y =</span> tiempo, <span class="dt">group =</span> veneno, <span class="dt">color =</span> veneno)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>) </a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>En el gráfico se puede apreciar que antídoto es más efectivo para cada tipo de veneno. demás se puede ver que las curvas del tiempo de reacción (líneas de colores) no tiene el mismo comportamiento lo que indica habitualmente que hay cierto efecto de interacción entre los factores considerados, es decir, existe dos combinaciones antídoto - veneno que presentan resultados significativos (medias distintas).</p>
+</div>
+<div id="modelos-anova-1-vía" class="section level2">
+<h2><span class="header-section-number">1.2</span> Modelos ANOVA 1 vía</h2>
+<p>El modelo ANOVA de una vía se plantea cuando tenemos una única variable predictora de tipo categórico y una respuesta de tipo numérico. Dicho modelo se puede describir de forma general, para una muestra de tamaño <span class="math inline">\(n\)</span>, como:</p>
+<ul>
+<li>Una variable respuesta, <span class="math inline">\(Y\)</span>, de tipo numérico con observaciones <span class="math inline">\(y_1, \ldots ,y_n\)</span>.</li>
+<li>Una variable predictora, <span class="math inline">\(F\)</span>, de tipo categórico con <span class="math inline">\(I\)</span> grupos o niveles distintos de tamaños muestrales <span class="math inline">\(n_1, n_2, \ldots , n_I\)</span>, de forma que <span class="math inline">\(n = n_1 + n_2 + \ldots + n_I\)</span>, y el vector de observaciones de la respuesta se puede escribir como:</li>
+</ul>
+<p><span class="math display">\[
+y_{11},\ldots,y_{1n_1},y_{21},\ldots,y_{2n_2},\ldots,y_{I1},\ldots,y_{In_I}
+\]</span>
+donde el primer subíndice indica el nivel del factor y el segundo la posición dentro del conjunto de datos de dicho nivel del factor.</p>
+<ul>
+<li>Conjunto <span class="math inline">\(\mu_i\)</span> de medias de todas las observaciones de la respuesta asociadas con el nivel <span class="math inline">\(i\)</span> del factor, es decir:</li>
+</ul>
+<p><span class="math display">\[
+\mu_i = \frac{\sum_{j = 1}^{n_j} y_{ij}}{n_i}; \text{ i = 1, 2,..., I}
+\]</span></p>
+<ul>
+<li>Media global de la respuesta, <span class="math inline">\(\mu\)</span>, que se puede obtener como:</li>
+</ul>
+<p><span class="math display">\[
+\mu = \frac{\sum_{j = 1}^{I} \mu_{j}}{I}
+\]</span></p>
+<ul>
+<li>Incrementos, <span class="math inline">\(\alpha_i\)</span>, de cada una de las medias de cada grupo con respecto a la media global, es decir:</li>
+</ul>
+<p><span class="math display">\[
+\alpha_i= \mu - \mu_i; \text{ i = 1, 2,..., I}
+\]</span></p>
+<p>El objetivo básico en este tipo de modelos es la comparación de las medias <span class="math inline">\(\mu_i\)</span> para detectar posibles diferencias entre os niveles del factor, es decir, plateamos el contraste de comparación de medias:
+<span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 = \ldots = \mu_I\\
+H_a: &amp; \mbox{Existen dos grupos al menos con medias distintas}
+\end{array}
+\right.
+\]</span></p>
+<p>Este contraste es equivalente al que se puede escribir en términos de los incrementos de las medias:
+<span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \alpha_1 = \alpha_2 = \ldots = \alpha_I = 0\\
+H_a: &amp; \mbox{Al menos hay un incremento distinto de cero}
+\end{array}
+\right.
+\]</span></p>
+<p>que tiene una estructura similar al test <span class="math inline">\(F\)</span> de la regresión, donde queremos contrastar si existe algún coeficiente distinto de cero. Esto implica que el modelo ANOVA se puede escribir en términos de un modelo lineal sin más que considerar un conjunto de variables ficticias <span class="math inline">\(X_1,...,X_{I}\)</span> que toman los valores siguientes:</p>
+<p><span class="math display">\[
+X_i= 
+\left\{ 
+\begin{array}{ll}
+1 &amp; \mbox{si la respuesta pertenece al grupo i}\\
+0 &amp; \mbox{en otro caso}
+\end{array}
+\right.
+\]</span></p>
+<p>y un efecto común para todos los niveles del factor que viene dado por <span class="math inline">\(\mu\)</span> que denotamos por <span class="math inline">\(\alpha_0\)</span>. La única diferencia entre ambas estructuras de comparación es que la referida a las medias <span class="math inline">\(\mu_i\)</span> tiene <span class="math inline">\(I\)</span> parámetros, mientras que la de los incrementos tiene <span class="math inline">\(I+1\)</span> parámetros. Para hacer equivalentes ambas estructuras añadimos la conocida como restricción de identificabilidad que establece de partida que uno de los incrementos debe ser igual a cero, es decir, que una media de un grupo coincide con la media global. Este es el nivel de referencia que utilizamos como base de comparación con el resto de niveles o grupos del factor.</p>
+<p>En esta situación si consideramos <span class="math inline">\(Y_i = \{y_{i1},...,y_{in_i}\}\)</span>, <span class="math inline">\(1_{n_i} = \{1,...,1\}\)</span> un vector de <span class="math inline">\(n_i\)</span> unos, <span class="math inline">\(0_{n_i} = \{0,...,0\}\)</span> un vector de <span class="math inline">\(n_i\)</span> ceros, para cada uno de los niveles <span class="math inline">\(i\)</span> del factor, <span class="math inline">\(\mu = \alpha_0\)</span>, y la restricción de identificabilidad <span class="math inline">\(\alpha_I = 0\)</span> (podríamos elegir cualquier otro <span class="math inline">\(\alpha_j =0\)</span> y obtendríamos el mismo modelo), podemos escribir el modelo ANOVA como:</p>
+<p><span class="math display">\[
+Y = \left( 
+\begin{array}{c}
+   Y_1 \\
+   Y_2 \\
+   \ldots \\
+   Y_I \\
+\end{array}
+\right)
+=
+\left( 
+\begin{array}{ccccc}
+   1_{n_1} &amp; 1_{n_1} &amp; 0_{n_1} &amp; \ldots &amp; 0_{n_1} \\
+   1_{n_2} &amp; 0_{n_2} &amp; 1_{n_2} &amp; \ldots &amp; 0_{n_2} \\
+   \ldots &amp; \ldots &amp; \ldots &amp; \ldots &amp; \ldots \\
+   1_{n_I} &amp; 0_{n_I} &amp; 0_{n_I} &amp;\ldots &amp; 1_{n_I} \\
+\end{array}
+\right)
+\left( 
+\begin{array}{c}
+   \alpha_0 \\
+   \alpha_1 \\
+  \alpha_2 \\
+ \ldots \\
+   \alpha_{I_1} \\
+\end{array}
+\right)
++
+\left( 
+\begin{array}{c}
+   e_1 \\
+   e_2 \\
+   \ldots \\
+   e_n \\
+\end{array}
+\right) = X\beta + \epsilon
+\]</span>
+o equivalentemente en términos de las medias como:</p>
+<p><span class="math display" id="eq:aovonefac">\[\begin{equation}
+\mu_i = \alpha_0 + \alpha_i + \epsilon_i, \text{ para } i = 1, 2,...,k, \text{ con } \alpha_k = 0
+\tag{1.1}
+\end{equation}\]</span></p>
+<p>Las hipótesis de este modelo es que los errores se distribuyen de forma independiente mediante una distribución Normal de media cero y varianza constante <span class="math inline">\(\sigma^2\)</span> para cada uno de los grupos que determina la variable predictora. En esta situación el contraste sobre los incrementos es equivalente al test <span class="math inline">\(F\)</span> de regresión de los modelos RLM.</p>
+</div>
+<div id="modelos-anova-dos-vías" class="section level2">
+<h2><span class="header-section-number">1.3</span> Modelos ANOVA dos vías</h2>
+<p>El modelo ANOVA de dos vías se presenta cuando consideramos dos variables predictoras de tipo categórico. Si tenemos dos factores <span class="math inline">\(F_1\)</span> y <span class="math inline">\(F_2\)</span> con <span class="math inline">\(I\)</span> y <span class="math inline">\(J\)</span> niveles respectivamente (y utilizando lo visto en el punto anterior), el modelo expresado en términos de las medias de las combinaciones de los diferentes niveles de los factores considerados viene dado por:</p>
+<p><span class="math display" id="eq:aovtwofac">\[\begin{equation}
+\mu_{ij} = \alpha_0 + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ij}, \ \mbox{para} \ i = 1,\ldots,I; \ j = 1,\ldots,J \ \mbox{con} \ \alpha_1 = \beta_1 = \alpha\beta_{11} = 0
+\tag{1.2}
+\end{equation}\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\mu_{ij}\)</span> es la media de la respuesta para el nivel <span class="math inline">\(i\)</span> de <span class="math inline">\(F_1\)</span> y el nivel <span class="math inline">\(j\)</span> de <span class="math inline">\(F_2\)</span>.</li>
+<li><span class="math inline">\(\alpha_0\)</span> es el efecto común a todas las combinaciones de niveles para ambos factores.</li>
+<li><span class="math inline">\(\alpha_i\)</span> son los incrementos asociados a cada uno de los niveles del factor <span class="math inline">\(F_1\)</span>.</li>
+<li><span class="math inline">\(\beta_j\)</span> son los incrementos asociados a cada uno de los niveles del factor <span class="math inline">\(F_2\)</span>.</li>
+<li><span class="math inline">\(\alpha\beta_{ij}\)</span> son los incrementos asociados a la combinación de los niveles <span class="math inline">\(i\)</span> de <span class="math inline">\(F_1\)</span> y <span class="math inline">\(j\)</span> de <span class="math inline">\(F_2\)</span>. Es lo que se denomina efecto de interacción que valora los cambios en las combinaciones de las medias para ambos factores. Si este efecto no es significativo, la media para una combinación de niveles de los factores se construye sumando los incrementos de cada nivel de forma independiente.</li>
+</ul>
+<p>Dado que tenemos dos factores se hace necesario añadir más restricciones de identificabildiad. Añadimos una por cada factor y la que aparece de forma inmediata en la interacción de los dos efectos que estamos tomando como cero.</p>
+<p>En este caso no escribimos la matriz de diseño del modelo pero se puede escribir considerado la matriz de coeficientes de dimensiones <span class="math inline">\(IJ \times IJ\)</span> que surge para el modelo <a href="modelos-de-análisis-de-la-varianza-anova.html#eq:aovtwofac">(1.2)</a>. Bastará con sustituir los unos y ceros por vectores de unos y ceros de dimensiones adecuadas en función de los tamaños de cada uno de los niveles de los dos factores considerados. Dicha matriz de coeficientes se puede extraer a partir de las ecuaciones completas del modelo <a href="modelos-de-análisis-de-la-varianza-anova.html#eq:aovtwofac">(1.2)</a> (teniendo en cuenta las restricciones de identificabilidad) dadas por:</p>
+<p><span class="math display">\[\begin{array}{lll} 
+\mu_{11} &amp; = \alpha_0 + \alpha_{1} + \beta_{1} + \alpha\beta_{11} + \epsilon_{11}&amp; = \alpha_0 + \epsilon_{11}\\
+\mu_{12} &amp; = \alpha_0 + \alpha_{1} + \beta_{2} + \alpha\beta_{12} + \epsilon_{12}&amp; = \alpha_0 + \beta_{2} + \alpha\beta_{12} + \epsilon_{12}\\
+\ldots &amp; \ldots &amp;\ldots\\
+\mu_{1J} &amp; = \alpha_0 + \alpha_{1} + \beta_{J} + \alpha\beta_{1J} + \epsilon_{1J}&amp; = \alpha_0 + \beta_{J} + \alpha\beta_{1J} + \epsilon_{1J}\\
+\mu_{21} &amp; = \alpha_0 + \alpha_{2} + \beta_{1} + \alpha\beta_{21} + \epsilon_{21}&amp; = \alpha_0 + \alpha_{2} + \alpha\beta_{21} +\epsilon_{11}\\
+\mu_{22} &amp; = \alpha_0 + \alpha_{2} + \beta_{2} + \alpha\beta_{22} + \epsilon_{22}&amp; = \alpha_0 +  \alpha_{2} + \beta_{2} + \alpha\beta_{22} + \epsilon_{22}\\
+\ldots &amp; \ldots &amp;\ldots\\
+\mu_{2J} &amp; = \alpha_0 + \alpha_{2} + \beta_{J} + \alpha\beta_{2J} + \epsilon_{2J}&amp; = \alpha_0 +  \alpha_{2} + \beta_{J} + \alpha\beta_{2J} + \epsilon_{2J}\\
+\ldots &amp; \ldots &amp;\ldots\\
+\ldots &amp; \ldots &amp;\ldots\\
+\ldots &amp; \ldots &amp;\ldots\\
+\mu_{I1} &amp; = \alpha_0 + \alpha_{I} + \beta_{1} + \alpha\beta_{I1} + \epsilon_{I1}&amp; = \alpha_0 +  \alpha_{I} +  \alpha\beta_{I1} + \epsilon_{I1}\\
+\mu_{I2} &amp; = \alpha_0 + \alpha_{I} + \beta_{2} + \alpha\beta_{I2} + \epsilon_{I2}&amp; = \alpha_0 +  \alpha_{I} + \beta_{2} + \alpha\beta_{I2} + \epsilon_{I2}\\
+\ldots &amp; \ldots &amp;\ldots\\
+\mu_{IJ} &amp; = \alpha_0 + \alpha_{I} + \beta_{J} + \alpha\beta_{IJ} + \epsilon_{IJ}&amp; = \alpha_0 +  \alpha_{I} + \beta_{J} + \alpha\beta_{IJ} + \epsilon_{IJ}\\
+\end{array}\]</span></p>
+<p>En este caso el objetivo vuelve a ser la comparación de medias pero el contraste a resolver depende de la especificación del modelo considerado. Hay que tener en cuenta que en este caso no tenemos una única variable predictora, y además hay que valorar la posibilidad de la interacción entre ambos factores.</p>
+</div>
+<div id="especificación-en-r" class="section level2">
+<h2><span class="header-section-number">1.4</span> Especificación en <code>R</code></h2>
+<p>A continuación se presenta la especificación en <code>R</code> de los modelos anteriores y de todos los anidados que pueden surgir a partir de ellos, así como su interpretación en términos de contraste de hipótesis o coeficientes asociados a cada efecto presente en el modelo.</p>
+<div id="anova-de-una-vía" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> ANOVA de una vía</h3>
+<p>La especificación en <code>R</code> del modelo dado en la ecuación @ref{eq:aovonefac} para su estimación se realiza a través de la expresión reducida del modelo dada por:
+<span class="math display">\[
+Y \sim F
+\]</span></p>
+<p>En este tipo de modelos se plantean varias situaciones de modelos anidados que deberemos estudiar:</p>
+<ul>
+<li>Modelo con efecto de <span class="math inline">\(F\)</span>:</li>
+</ul>
+<p><span class="math display" id="eq:modesatoneway">\[\begin{equation}
+Y \sim F,
+\tag{1.3}
+\end{equation}\]</span></p>
+<p>Si <span class="math inline">\(F\)</span> resulta significativo, tenemos que se detectan diferencias entre al menos dos medias para los niveles del factor <span class="math inline">\(F\)</span>.</p>
+<ul>
+<li>Modelo sin efectos:</li>
+</ul>
+<p><span class="math display" id="eq:modelredoneway">\[\begin{equation}
+Y \sim 1
+\tag{1.4}
+\end{equation}\]</span></p>
+<p>En este caso <span class="math inline">\(F\)</span> no resulta significativo y podmeos conluir que las medias de todos los niveles del factor se pueden considerar iguales.</p>
+<p>En la práctica el ajuste de este tipo de modelos se puede plantear como una comparación entre los modelos <a href="modelos-de-análisis-de-la-varianza-anova.html#eq:modesatoneway">(1.3)</a> y <a href="modelos-de-análisis-de-la-varianza-anova.html#eq:modelredoneway">(1.4)</a>, dado que están anidados, de forma similar al proceso de comparación de modelos planteado en los modelos RLM y MP.</p>
+</div>
+<div id="anova-de-dos-vías" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> ANOVA de dos vías</h3>
+<p>La especificación en <code>R</code> del modelo dado en la ecuación @ref{eq:aovtwofac} para su estimación se realiza a través de la expresión reducida del modelo dada por:</p>
+<p><span class="math display" id="eq:modesattwoway">\[\begin{equation}
+Y \sim F_1 + F_2 + F_1 : F_2,
+\tag{1.5}
+\end{equation}\]</span></p>
+<p>donde <span class="math inline">\(F_1 : F_2\)</span> representa el efecto de interacción, y <span class="math inline">\(F_1\)</span> y <span class="math inline">\(F_2\)</span> son los denominados efectos principales asociados con los factores considerados. En este tipo de modelos se plantean varias situaciones de modelos anidados que deberemos estudiar para establecer cual es el tipo de contraste sobre las medias que estamos resolviendo. Alternativamente ese modelo se puede escribir de forma más reducida como <span class="math inline">\(Y \sim F_1*F_2\)</span>, que es un modelo con los efectos principales de cada factor y con la interacción.</p>
+<ul>
+<li>Modelo saturado o modelo con todos los factores y la interacción dado por:</li>
+</ul>
+<p><span class="math display" id="eq:modeltwoway">\[\begin{equation}
+Y \sim F_1 + F_2 + F_1 : F_2
+\tag{1.6}
+\end{equation}\]</span></p>
+<p>Si la interacción está presente en el modelo el contraste planteado es:
+<span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \mbox{No hay diferencias entre las medias conjuntas de ambos niveles del factor}\\
+H_a: &amp; \mbox{Al menos hay dos combinaciones de ambos factores con medias distintas}
+\end{array}
+\right.
+\]</span></p>
+<p>que nos permite concluir sobre si el efecto de interacción es necesario para explicar el comportamiento de la respuesta. En caso de que dicho contraste resulte no significativo podemos plantear el modelo con ambos efectos principales.</p>
+<ul>
+<li>Modelo con ambos efectos principales:</li>
+</ul>
+<p><span class="math display">\[
+Y \sim F_1 + F_2
+\]</span></p>
+<p>donde se parte de que la interacción es no significativa y se plantean dos contrastes (uno por cada factor)</p>
+<p><span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \mbox{No hay diferencias entre las medias de } F_1\\
+H_a: &amp; \mbox{Al menos hay dos medias  de } F_1 \mbox{ distintas}
+\end{array}
+\right.
+\]</span>
+Si no rechazamos este contraste deberemos considerar que no hay diferencias en las medias de los niveles establecidos en <span class="math inline">\(F_1\)</span> y debemos considerar un modelo con efecto principal de <span class="math inline">\(F_2\)</span>.</p>
+<p><span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \mbox{No hay diferencias entre las medias de } F_2\\
+H_a: &amp; \mbox{Al menos hay dos medias  de } F_2 \mbox{ distintas}
+\end{array}
+\right.
+\]</span>
+Si no rechazamos este contraste deberemos considerar que no hay diferencias en las medias de los niveles establecidos en <span class="math inline">\(F_2\)</span> y debemos considerar un modelo con efecto principal de <span class="math inline">\(F_1\)</span>.</p>
+<p>Estos contrastes nos permiten concluir sobre cada factor de forma independiente (no hay interacción entre ellos).</p>
+<ul>
+<li>Modelo con efecto principal de <span class="math inline">\(F_1\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+Y \sim F_1
+\]</span></p>
+<p>donde se parte de que la interacción y el efecto principal de <span class="math inline">\(F_2\)</span> son no significativos y se plantea el contraste</p>
+<p><span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \mbox{No hay diferencias entre las medias de } F_1\\
+H_a: &amp; \mbox{Al menos hay dos medias  de } F_1 \mbox{ distintas}
+\end{array}
+\right.
+\]</span></p>
+<p>Si no rechazamos este contraste deberemos considerar que no hay diferencias en las medias de los niveles establecidos en <span class="math inline">\(F_1\)</span> y nuestro modelo final no contiene ningún tipo de efecto predictivo.</p>
+<ul>
+<li>Modelo con efecto principal de <span class="math inline">\(F_2\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+Y \sim F_2
+\]</span></p>
+<p>donde se parte de que la interacción y el efecto principal de <span class="math inline">\(F_1\)</span> son no significativos y se plantea el contraste</p>
+<p><span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \mbox{No hay diferencias entre las medias de } F_2\\
+H_a: &amp; \mbox{Al menos hay dos medias  de } F_2 \mbox{ distintas}
+\end{array}
+\right.
+\]</span>
+Si no rechazamos este contraste deberemos considerar que no hay diferencias en las medias de los niveles establecidos en <span class="math inline">\(F_2\)</span> y nuestro modelo final no contiene ningún tipo de efecto predictivo.</p>
+<ul>
+<li>Modelo sin efectos:</li>
+</ul>
+<p><span class="math display">\[
+Y \sim 1
+\]</span></p>
+<p>donde concluimos que todas las medias consideradas son iguales, es decir, los niveles de los factores considerados no tienen efecto sobre la respuesta.</p>
+<p>Esta combinación de modelos nos da una estructura secuencial de modelización (modelos alternativos) que deberemos estudiar para elegir el modelo con una mayor capacidad predictiva. Dicha estructura viene dada por:</p>
+<p><span class="math display">\[\begin{array}{lll} 
+M1: &amp; Y \sim F_1 + F_2 + F_1:F_2\\
+M2: &amp; Y \sim F_1 + F_2 \\
+M3.1: &amp; Y \sim F_1 \\
+M3.2: &amp; Y \sim F_2 \\
+M4: &amp; Y \sim 1\\
+\end{array}\]</span></p>
+<p>Más adelante veremos como llevar a cabo esta comparación secuencial y como interpretarla para determinar los efectos que finalmente están presentes en el modelo y los que no.</p>
+</div>
+</div>
+<div id="estimación-y-bondad-de-ajuste-del-modelo" class="section level2">
+<h2><span class="header-section-number">1.5</span> Estimación y bondad de ajuste del modelo</h2>
+<p>Dado que los modelos ANOVA se pueden escribir como modelos lineales de regresión con una matriz de diseño que solo contiene unos y ceros, se pueden utilizar los procedimientos de estimación vistos en el capitulo anterior para estimar los par??metros del modelo. Podemos utilizar las ecuaciones normales para obtener los coeficientes del modelo que en este caso representarán los incrementos de cada nivel con respecto al de referencia (que hemos tomado como cero en la restricción de identificabilidad), que nos permiten obtener las estimaciones de las medias asociadas a cada nivel o niveles del factor o factores. Además, podemos obtener los intervalos de confianza de dichos coeficientes.</p>
+<p>Sin embargo, en este caso no se pueden interpretar de forma directa las significatividades de cada coeficiente en el modelo, ya que al contrario de los que ocurría en los modelos de regresión, donde cada coeficiente representaba el efecto de una predictora, en los modelos ANOVA el efecto de la predictora va asociado con todos los coeficientes estimados con el factor o interacción de factores. Por eso es necesario proporcionar una medida de bondad de ajuste con dichas estimaciones que en este caso es el test F ANOVA que se obtiene como el test F de la regresión de los modelos de unidades anteriores. Este test nos permite extraer conclusiones directas sobre los efectos presentes en el modelo y no sobre los coeficientes estimados. En el punto siguiente veremos como utilizar el test F ANOVA para obtener el mejor modelo. En este caso no utilizaremos el <span class="math inline">\(R^2\)</span> como medida de bondad de ajusta ya que se encuentra diseñada para modelos de regresión donde las predictoras son de tipo numérico.</p>
+<p>Para resolver la estimación y la bondad de ajuste en este tipo de modelos utilizaremos las funciones utilizadas en la unidad anterior. En algunos casos modificaremos la sintaxis para adaptarnos a las variables predictoras de tipo factor.</p>
+<div id="ejemplos" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Ejemplos</h3>
+<p>Pasamos a estudiar cada uno de los ejemplos ajustando el modelo saturado, es decir, aquel que contiene todos los efectos posibles en el modelo. Por defecto el programa <code>R</code> utiliza como restricción de identificabilidad que el incremento asociado con la primera categoría (por orden numérico o texto de los niveles del factor) es igual a cero, es decir, que la estimación de dicho incremento corresponde con la interceptación o efecto común del modelo.</p>
+<p>En las tablas de estimaciones eliminamos el p-valor individual asociado a cada incremento, dado que en este caso esos efectos no deben interpretarse de forma individual.</p>
+<div id="datos-de-insecticidas" class="section level4">
+<h4><span class="header-section-number">1.5.1.1</span> Datos de Insecticidas</h4>
+<p>Ajustamos un modelo ANOVA de una vía para el conjunto de datos de insecticida. En este caso la restricción de identificabilidad es fijar el incremento del spray A igual a cero, es decir, <span class="math inline">\(\alpha_{spray,A} = 0\)</span>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Ajuste del modelo</span></a>
+<a class="sourceLine" id="cb7-2" title="2">fit.insecticidas &lt;-<span class="st"> </span><span class="kw">lm</span>(count <span class="op">~</span><span class="st"> </span>spray, <span class="dt">data =</span> insecticidas)</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co"># Inferencia sobre los parámetros del modelo</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="kw">tab_model</span>(fit.insecticidas, </a>
+<a class="sourceLine" id="cb7-5" title="5">          <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb7-6" title="6">          <span class="dt">show.p =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+count
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+14.50
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+12.24 – 16.76
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [B]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.83
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-2.36 – 4.03
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [C]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-12.42
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-15.61 – -9.22
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [D]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-9.58
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-12.78 – -6.39
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [E]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-11.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-14.20 – -7.80
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [F]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+2.17
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.03 – 5.36
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+72
+</td>
+</tr>
+</table>
+<p>Las ecuaciones de estimación de las medias del número de insectos vivos se pueden extraer a partir de la tabla de coeficientes estimados. Sin embargo, podemos obtener las estimaciones y representar las medias de todos los sprays haciendo uso de la función <code>update()</code> quitando el término de interceptación del modelo. De esta forma se prescinde de la restricción de identificabilidad y se obtienen las medias directamente.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Modelo sin interceptación</span></a>
+<a class="sourceLine" id="cb8-2" title="2">m1 &lt;-<span class="st"> </span><span class="kw">update</span>(fit.insecticidas, . <span class="op">~</span><span class="st"> </span>spray <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="co"># Inferencia sin identificabilidad</span></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="kw">tab_model</span>(m1, <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>, <span class="dt">show.p =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+count
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [A]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+14.50
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+12.24 – 16.76
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [B]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+15.33
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+13.07 – 17.59
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [C]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+2.08
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.18 – 4.34
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [D]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+4.92
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+2.66 – 7.18
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [E]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+3.50
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+1.24 – 5.76
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+spray [F]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+16.67
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+14.41 – 18.93
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+72
+</td>
+</tr>
+</table>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Gráfico de medias estimadas</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">plot_model</span>(m1, <span class="dt">show.values =</span> <span class="ot">TRUE</span>, <span class="dt">vline.color =</span> <span class="st">&quot;yellow&quot;</span>)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov002-1.png" width="672" /></p>
+<p>Podemos ver que los sprays A, B, y F son los menos efectivos (medias de insectos vivos más altas), mientras que los otros tres tienen medias significativamente más bajas. El spray C es el que se muestra más efectivo con una media de insectos vivos de 2 (redondeando a entero).</p>
+<p>Con respecto a la bondad del ajuste podemos ver que el test <span class="math inline">\(F\)</span> resulta significativo indicando que al menos alguna de las medias es distinta del resto (algún incremento distinto de cero). Por tanto, existe un efecto del tipo de spray en el número de insectos que sobreviven.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">glance</span>(fit.insecticidas)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 11
+##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.724         0.704  3.92      34.7 3.18e-17     6  -197.  409.  425.
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
+</div>
+<div id="datos-de-envasado" class="section level4">
+<h4><span class="header-section-number">1.5.1.2</span> Datos de Envasado</h4>
+<p>Ajustamos un modelo ANOVA de una vía para el conjunto de datos de envasado. En este caso la restricción de identificabilidad es fijar el incremento de Máquina M1 igual a cero, es decir, <span class="math inline">\(\alpha_{maquina,M1} = 0\)</span>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># Ajuste del modelo</span></a>
+<a class="sourceLine" id="cb12-2" title="2">fit.envasado &lt;-<span class="st"> </span><span class="kw">lm</span>( produccion <span class="op">~</span><span class="st"> </span>maquina, <span class="dt">data =</span> envasado)</a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="co"># Inferencia sobre los parámetros del modelo</span></a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="kw">tab_model</span>(fit.envasado, </a>
+<a class="sourceLine" id="cb12-5" title="5">          <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb12-6" title="6">          <span class="dt">show.p =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+produccion
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+106.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+98.00 – 114.00
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+maquina [M2]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+7.75
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-3.57 – 19.07
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+maquina [M3]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.50
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-12.82 – 9.82
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+maquina [M4]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+18.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+6.68 – 29.32
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+16
+</td>
+</tr>
+</table>
+<p>A la vista de los coeficientes la máquina el orden de las máquinas (de mejor a peor, es decir, de mayor número de envases sin defecto a menor) es <span class="math inline">\(M4 &gt; M2 &gt; M1 &gt; M3\)</span>, con media estimadas dadas por:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># Modelo sin interceptación</span></a>
+<a class="sourceLine" id="cb13-2" title="2">m1 &lt;-<span class="st"> </span><span class="kw">update</span>(fit.envasado, . <span class="op">~</span><span class="st"> </span>maquina <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="co"># Inferencia sin identificabilidad</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="kw">tab_model</span>(m1, <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>, <span class="dt">show.p =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+produccion
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+maquina [M1]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+106.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+98.00 – 114.00
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+maquina [M2]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+113.75
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+105.75 – 121.75
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+maquina [M3]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+104.50
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+96.50 – 112.50
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+maquina [M4]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+124.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+116.00 – 132.00
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+16
+</td>
+</tr>
+</table>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># Gráfico de medias estimadas</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">plot_model</span>(m1, <span class="dt">show.values =</span> <span class="ot">TRUE</span>, <span class="dt">vline.color =</span> <span class="st">&quot;yellow&quot;</span>)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov005-1.png" width="672" /></p>
+<p>A la vista del gráfico de estimación no se aprecian comportamientos muy diferenciados entre las diferentes máquinas.</p>
+<p>Con respecto a la bondad del ajuste podemos ver que el test <span class="math inline">\(F\)</span> resulta significativo indicando que al menos alguna de las medias es distinta del resto (algún incremento distinto de cero). Por tanto, existe un efecto del tipo de máquina en el número de envases sin defecto.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">glance</span>(fit.envasado)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 11
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.596         0.496  7.35      5.91  0.0102     4  -52.3  115.  118.
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
+</div>
+<div id="datos-de-venenos" class="section level4">
+<h4><span class="header-section-number">1.5.1.3</span> Datos de Venenos</h4>
+<p>Ajustamos un modelo ANOVA de dos vías con interacción entre <code>veneno</code> y <code>antidoto</code> para el conjunto de datos de venenos. En este caso las restricciones de identificabilidad son:</p>
+<ul>
+<li><span class="math inline">\(\alpha_{antidoto,AA} = 0\)</span>,</li>
+<li><span class="math inline">\(\beta_{veneno,VA} = 0\)</span>,</li>
+<li><span class="math inline">\(\alpha\beta_{Antidoto,AA; Veneno,VA} = 0\)</span>,</li>
+</ul>
+<p>de forma que el ajuste para este modelo es</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># Ajuste del modelo</span></a>
+<a class="sourceLine" id="cb17-2" title="2">fit.venenos &lt;-<span class="st"> </span><span class="kw">lm</span>( tiempo <span class="op">~</span><span class="st"> </span>antidoto<span class="op">*</span>veneno, <span class="dt">data =</span> venenos)</a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="co"># Inferencia sobre los parámetros del modelo</span></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="kw">tab_model</span>(fit.venenos,</a>
+<a class="sourceLine" id="cb17-5" title="5">          <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb17-6" title="6">          <span class="dt">show.p =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+tiempo
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.41
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.26 – 0.56
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.47
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.25 – 0.68
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.06 – 0.37
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AD]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.20
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.02 – 0.41
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+veneno [VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.09
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.31 – 0.12
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+veneno [VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.20
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.42 – 0.01
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AB] * veneno<br>[VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.03
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.27 – 0.33
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AC] * veneno<br>[VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.10
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.40 – 0.20
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AD] * veneno<br>[VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.15 – 0.45
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AB] * veneno<br>[VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.64 – -0.04
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AC] * veneno<br>[VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.13
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.43 – 0.17
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AD] * veneno<br>[VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.08
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.39 – 0.22
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+48
+</td>
+</tr>
+</table>
+<p>Desde luego interpretar la tabla de coeficientes en este caso es más complicado, dada la gran cantidad de parámetros involucrados, por lo que resulta más fácil obtener las medias y el gráfico asociado. En este caso no podemos actualizar el modelo eliminando la interceptación dado que tenemos tres restricciones y no una. Modificamos la tabla de estimaciones y el gráfico para obtener todo el conjunto de medias. Además, como no hemos descartado el efecto de interacción, en el gráfico sólo representaremos las medias asociadas con dicho efecto. Para representar el efecto de interacción añadimos el parámetro <code>"int"</code> a la función <code>plot_model</code>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># Objeto gráfico</span></a>
+<a class="sourceLine" id="cb18-2" title="2">p &lt;-<span class="st"> </span><span class="kw">plot_model</span>(fit.venenos, <span class="st">&quot;int&quot;</span>, </a>
+<a class="sourceLine" id="cb18-3" title="3">           <span class="dt">show.stat =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb18-4" title="4">           <span class="dt">title =</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="co"># Tabla de estimaciones</span></a>
+<a class="sourceLine" id="cb18-6" title="6">p<span class="op">$</span>data</a></code></pre></div>
+<pre><code>## 
+## # Predicted values of tiempo
+## # x = antidoto
+## 
+## # veneno = VA
+## 
+## x | Predicted |   SE | group_col |       95% CI
+## -----------------------------------------------
+## 1 |      0.41 | 0.07 |        VA | [0.27, 0.56]
+## 2 |      0.88 | 0.07 |        VA | [0.73, 1.03]
+## 3 |      0.57 | 0.07 |        VA | [0.42, 0.71]
+## 4 |      0.61 | 0.07 |        VA | [0.46, 0.76]
+## 
+## # veneno = VB
+## 
+## x | Predicted |   SE | group_col |       95% CI
+## -----------------------------------------------
+## 1 |      0.32 | 0.07 |        VB | [0.17, 0.47]
+## 2 |      0.82 | 0.07 |        VB | [0.67, 0.96]
+## 3 |      0.38 | 0.07 |        VB | [0.23, 0.52]
+## 4 |      0.67 | 0.07 |        VB | [0.52, 0.81]
+## 
+## # veneno = VC
+## 
+## x | Predicted |   SE | group_col |       95% CI
+## -----------------------------------------------
+## 1 |      0.21 | 0.07 |        VC | [0.06, 0.36]
+## 2 |      0.33 | 0.07 |        VC | [0.19, 0.48]
+## 3 |      0.24 | 0.07 |        VC | [0.09, 0.38]
+## 4 |      0.32 | 0.07 |        VC | [0.18, 0.47]</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># Gráfico de interacción estimado</span></a>
+<a class="sourceLine" id="cb20-2" title="2">p</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov008-1.png" width="672" /></p>
+<p>Con respecto a la bondad del ajuste podemos ver que el test <span class="math inline">\(F\)</span> resulta significativo indicando que al menos alguna de las medias es distinta del resto (algún incremento distinto de cero). Por tanto, existe un efecto de interacción entre venenos y antídoto que proporciona un tiempo de reacción distinto.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">glance</span>(fit.venenos)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 11
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.734         0.653 0.149      9.03 1.93e-7    12   30.2 -34.3 -9.98
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="comparación-y-selección-de-modelos" class="section level2">
+<h2><span class="header-section-number">1.6</span> Comparación y selección de modelos</h2>
+<p>La comparación de modelos se basa en determinar la capacidad explicativa de cada uno de los efectos presentes en el modelo. Mientras que en los modelos de regresión esos efectos van asociados con un único coeficiente del modelo (pendiente asociada a la predictora), en los modelos ANOVA el efecto de un factor va asociado con todos los incrementos establecidos. En realidad, tendremos un efecto significativo cuando detectemos diferencias entre al menos dos medias de la respuesta para los diferentes niveles del factor. Dado que el número de modelos que podemos construir en estas situaciones es limitado, podríamos construirlos todos ellos y compararlos todos de golpe para decidir el mejor modelo. Esto se puede hacer con el test F de comparación de modelos que es una versión del test F para un contraste especifico o bien utilizar el criterio del AIC o BIC y quedarnos con aquel modelo que de un valor más pequeño. En modelos más complejos optaremos por un procedimiento automático por pasos empezando por el modelo saturado. A continuación, presentamos las diferentes opciones con los bancos de datos que venimos trabajando en esta unidad.</p>
+<p>Se recomienda leer el apartado de Selección de variables de la unidad anterior para completar los aspectos teóricos de este apartado.</p>
+<div id="ejemplos-1" class="section level3">
+<h3><span class="header-section-number">1.6.1</span> Ejemplos</h3>
+<p>Para el desarrollo de los ejemplos utilizamos las funciones presentadas en la unidad anterior.</p>
+<div id="datos-de-insecticidas-1" class="section level4">
+<h4><span class="header-section-number">1.6.1.1</span> Datos de insecticidas</h4>
+<p>Dado que en el modelo asociado a este banco de datos es un ANOVA de una vía sólo existen dos posibles modelos:</p>
+<ul>
+<li><span class="math inline">\(count \sim spray\)</span>: Existe al memnos un spray que se proporciona un nivel medio de supervivientes diferente.</li>
+<li><span class="math inline">\(count \sim 1\)</span>: Todos los sprays se comportan de la misma forma.</li>
+</ul>
+<p>Para comparar ambos modelos utilizamos el test <span class="math inline">\(F\)</span> parcial.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># Ajustamos el modelo sin efecto</span></a>
+<a class="sourceLine" id="cb23-2" title="2">m0 &lt;-<span class="st"> </span><span class="kw">lm</span>(count <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data =</span> insecticidas)</a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="co"># Comparamos ambos modelos</span></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="kw">anova</span>(m0, fit.insecticidas)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: count ~ 1
+## Model 2: count ~ spray
+##   Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+## 1     71 3684.0                                  
+## 2     66 1015.2  5    2668.8 34.702 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>El test <span class="math inline">\(F\)</span> parcial resulta significativo (p-valor &lt; 0.05) indicando que el modelo con el factor <code>spray</code> es preferible al modelo sin spray. Dado que el factor considerado es significativo resulta necesario conocer que medias son realmente distintas y cuales podemos considerar iguales. Para realizar esta tarea utilizaremos los denominados <strong>tests de comparaciones múltiples</strong> que nos permiten comparar dos a dos todas las combinaciones del factor para determinar las que son significativamente distintas o no.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># Tests de comparaciones</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">TukeyHSD</span>(fit.insecticidas)</a></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = x)
+## 
+## $spray
+##            diff        lwr       upr     p adj
+## B-A   0.8333333  -3.866075  5.532742 0.9951810
+## C-A -12.4166667 -17.116075 -7.717258 0.0000000
+## D-A  -9.5833333 -14.282742 -4.883925 0.0000014
+## E-A -11.0000000 -15.699409 -6.300591 0.0000000
+## F-A   2.1666667  -2.532742  6.866075 0.7542147
+## C-B -13.2500000 -17.949409 -8.550591 0.0000000
+## D-B -10.4166667 -15.116075 -5.717258 0.0000002
+## E-B -11.8333333 -16.532742 -7.133925 0.0000000
+## F-B   1.3333333  -3.366075  6.032742 0.9603075
+## D-C   2.8333333  -1.866075  7.532742 0.4920707
+## E-C   1.4166667  -3.282742  6.116075 0.9488669
+## F-C  14.5833333   9.883925 19.282742 0.0000000
+## E-D  -1.4166667  -6.116075  3.282742 0.9488669
+## F-D  11.7500000   7.050591 16.449409 0.0000000
+## F-E  13.1666667   8.467258 17.866075 0.0000000</code></pre>
+<p>Para interpretar la tabla resultante nos debemos fijar en la columna <code>p adj</code>. Todos aquellos inferiores a 0.05 indican que las medias son distintas. Analizando todos los p-valores podemos establecer dos grupos de sprays, el formado por los tipos A, B y F y el formado por los tipos C, D, y E. Dentro de cada grupo no hay diferencias pero sin entres los sprays de grupos distintos.</p>
+<p>También podemos representar gráficamente las comparaciones realizadas:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># Tests de comparaciones</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(fit.insecticidas),<span class="dt">las=</span><span class="dv">1</span>,<span class="dt">tcl =</span> <span class="fl">-.3</span>)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov012-1.png" width="672" /></p>
+<p>Los intervalos de confianza que contienen al cero muestran aquellos pares de sprays que pueden considerarse iguales. Los intervalos de confianza a la izquierda de cero muestran las combinaciones de sprays donde el primer spray tiene un efecto menor que el segundo (media negativa), mientras que en la parte derecha tenemos las combinaciones donde el primer spray es superior al segundo. Por ejemplo, podemos concluir:</p>
+<ul>
+<li>los sprays A y B tienen comportamiento similar,</li>
+<li>los sprays A y C tiene comportamientos distintos con la media del número de supervivientes en A superior que en con el spray C.</li>
+<li>los sprays F y E tiene comportamientos distintos con la media del número de supervivientes en F superior que en con el spray E.</li>
+</ul>
+</div>
+<div id="datos-de-envasado-1" class="section level4">
+<h4><span class="header-section-number">1.6.1.2</span> Datos de envasado</h4>
+<p>Consideramos los modelos:</p>
+<ul>
+<li><span class="math inline">\(produccion \sim maquina\)</span>: Existe al menos un spray que se proporciona un nivel medio de supervivientes diferente.</li>
+<li><span class="math inline">\(produccion \sim 1\)</span>: Todos los sprays se comportan de la misma forma.</li>
+</ul>
+<p>Para comparar ambos modelos utilizamos el test <span class="math inline">\(F\)</span> parcial.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># Ajustamos el modelo sin efecto</span></a>
+<a class="sourceLine" id="cb28-2" title="2">m0 &lt;-<span class="st"> </span><span class="kw">lm</span>(produccion <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data =</span> envasado)</a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="co"># Comparamos ambos modelos</span></a>
+<a class="sourceLine" id="cb28-4" title="4"><span class="kw">anova</span>(m0, fit.envasado)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: produccion ~ 1
+## Model 2: produccion ~ maquina
+##   Res.Df     RSS Df Sum of Sq      F  Pr(&gt;F)  
+## 1     15 1604.94                              
+## 2     12  647.75  3    957.19 5.9108 0.01024 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>El test resulta significativo indicando que ambos son distintos. Esto implica directamente que hay al menos una máquina con un comportamiento diferente del resto. Realizamos las comparaciones múltiples para comparar todas las máquinas dos a dos.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># Tests de comparaciones</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="kw">TukeyHSD</span>(fit.envasado)</a></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = x)
+## 
+## $maquina
+##        diff        lwr       upr     p adj
+## M2-M1  7.75  -7.673887 23.173887 0.4716327
+## M3-M1 -1.50 -16.923887 13.923887 0.9911761
+## M4-M1 18.00   2.576113 33.423887 0.0210561
+## M3-M2 -9.25 -24.673887  6.173887 0.3283778
+## M4-M2 10.25  -5.173887 25.673887 0.2508228
+## M4-M3 19.50   4.076113 34.923887 0.0126965</code></pre>
+<p>Tan sólo las combinaciones M4-M1 y M4-M3 muestran resultados significativos indicando que la máquina M4 es comparable con la M2, es decir, la media de envases sin defecto es igual para dichas máquinas, pero distintas de la M1 y M3 que también puede considerarse iguales. Veamos los resultados gráficamente:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># Tests de comparaciones</span></a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(fit.envasado),<span class="dt">las=</span><span class="dv">1</span>,<span class="dt">tcl =</span> <span class="fl">-.3</span>)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov015-1.png" width="672" /></p>
+</div>
+<div id="datos-de-venenos-1" class="section level4">
+<h4><span class="header-section-number">1.6.1.3</span> Datos de venenos</h4>
+<p>En este caso la especificación de todos los posibles modelos así como su comparación resulta más costosa ya que están involucrados dos factores de clasificación. Los posibles modelos son:</p>
+<ul>
+<li><span class="math inline">\(tiempo \sim veneno * antidoto\)</span>: Modelo con interacción, donde hay al menos una combinación de veneno y antídoto con tiempo de reacción medio distinto de otras combinaciones.</li>
+<li><span class="math inline">\(tiempo \sim veneno + antidoto\)</span>: Modelo sin interacción con efectos principales, donde el efecto del veneno y el antídoto tiene un efecto aditivo en e tiempo medio de reacción.</li>
+<li><span class="math inline">\(tiempo \sim veneno\)</span>: Modelo con efecto principal marginal del veneno, donde hay almenos un tipo de veneno con un tiempo medio de reacción distinto pero los antidotos no tienen efecto.</li>
+<li><span class="math inline">\(tiempo \sim antidoto\)</span>: Modelo con efecto principal marginal del antídoto, donde hay al menos un tipo de antídoto con un tiempo medio de reacción distinto pero los venenos no tienen efecto.</li>
+<li><span class="math inline">\(tiempo \sim 1\)</span>: Modelo sin efectos, donde el tiempo de reacción no cambia con el antídoto y el tipo de veneno.</li>
+</ul>
+<p>Vamos a realizar el contraste <span class="math inline">\(F\)</span> parcial para determinar si la interacción es necesaria en este modelo.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># Modelo sin interacción</span></a>
+<a class="sourceLine" id="cb33-2" title="2">m0 &lt;-<span class="st"> </span><span class="kw">lm</span>(tiempo <span class="op">~</span><span class="st"> </span>veneno <span class="op">+</span><span class="st"> </span>antidoto, <span class="dt">data =</span> venenos)</a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="co"># Comparación</span></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="kw">anova</span>(m0,fit.venenos)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: tiempo ~ veneno + antidoto
+## Model 2: tiempo ~ antidoto * veneno
+##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+## 1     42 1.0504                           
+## 2     36 0.8001  6   0.25027 1.8768 0.1118</code></pre>
+<p>Dado que el p-valor no es significativo (p-valor &gt; 0.05) podemos concluir que ambos modelos pueden ser considerarse como iguales, es decir, el efecto de interacción no resulta significativo. Vamos a comparar las estimaciones de ambos modelos y representamos gráficamente el modelo sin interacción. En este caso obtendremos un gráfico por cada factor dado que no actúan de forma conjunta sino de forma aditiva. Utilizamos el parámetro <code>"pred"</code> para obtener las estimaciones de las medias asociadas a cada factor.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># Estimaciones de ambos modelos</span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="kw">tab_model</span>(fit.venenos, m0, <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+tiempo
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+tiempo
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  col7">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.41
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.26 – 0.56
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.45
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.34 – 0.57
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.47
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.25 – 0.68
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.36
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.23 – 0.49
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.06 – 0.37
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.150
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.08
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.05 – 0.21
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+0.232
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AD]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.20
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.02 – 0.41
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.069
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.22
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.09 – 0.35
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+<strong>0.002</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+veneno [VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.09
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.31 – 0.12
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.386
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.07
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.19 – 0.04
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+0.198
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+veneno [VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.20
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.42 – 0.01
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.063
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.45 – -0.23
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AB] * veneno<br>[VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.03
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.27 – 0.33
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.855
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AC] * veneno<br>[VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.10
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.40 – 0.20
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.507
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AD] * veneno<br>[VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.15 – 0.45
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.321
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AB] * veneno<br>[VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.64 – -0.04
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.028</strong>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AC] * veneno<br>[VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.13
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.43 – 0.17
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.389
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AD] * veneno<br>[VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.08
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.39 – 0.22
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.572
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+48
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+48
+</td>
+</tr>
+</table>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co"># Gráfico del modelo sin interacción</span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="kw">plot_model</span>(m0,<span class="st">&quot;pred&quot;</span>)</a></code></pre></div>
+<pre><code>## $veneno</code></pre>
+<p><img src="libroSTAT_files/figure-html/aov017-1.png" width="672" /></p>
+<pre><code>## 
+## $antidoto</code></pre>
+<p><img src="libroSTAT_files/figure-html/aov017-2.png" width="672" /></p>
+<p>Como era de esperar, dado que la interacción no es significativa, los coeficientes estimados (incrementos respecto de las medias de referencia dadas por el antídoto AA y el veneno VA) no varían sustancialmente entre ambos modelos. En el gráfico podemos ver que el veneno con un tiempo de reacción más pequeño es el asociado con el veneno VC, mientras que si nos fijamos en el antídoto, el menor tiempo de reacción se da para el AA. Dado que no hay interacción el modelo sugiere que independientemente del veneno utilizado, el antídoto más efectivo es el AA, seguido por el AC, AD, y por último el AB. Para confirmar este hecho deberíamos obtener las ecuaciones de estimación asociadas que vienen dadas por:</p>
+<p><span class="math display">\[\begin{array}{lll} 
+\mu_{AA,VA} &amp; = \alpha_0 + \alpha_{AA} + \beta_{VA} &amp; = 0.45 + 0 + 0 = 0.45\\
+\mu_{AA,VB} &amp; = \alpha_0 + \alpha_{AA} + \beta_{VB} &amp; = 0.45 + 0 - 0.07 = 0.38\\
+\mu_{AA,VC} &amp; = \alpha_0 + \alpha_{AA} + \beta_{VC} &amp; = 0.45 + 0 - 0.34 = 0.11\\
+\mu_{AB,VA} &amp; = \alpha_0 + \alpha_{AB} + \beta_{VA} &amp; = 0.45 + 0.36 + 0 = 0.81\\
+\mu_{AB,VB} &amp; = \alpha_0 + \alpha_{AB} + \beta_{VB} &amp; = 0.45 + 0.36 - 0.07 = 0.74\\
+\mu_{AB,VC} &amp; = \alpha_0 + \alpha_{AB} + \beta_{VC} &amp; = 0.45 + 0.36 - 0.34 = 0.47\\
+\mu_{AC,VA} &amp; = \alpha_0 + \alpha_{AC} + \beta_{VA} &amp; = 0.45 + 0.08 + 0 = 0.53\\
+\mu_{AC,VB} &amp; = \alpha_0 + \alpha_{AC} + \beta_{VB} &amp; = 0.45 + 0.08 - 0.07 = 0.46\\
+\mu_{AC,VC} &amp; = \alpha_0 + \alpha_{AC} + \beta_{VC} &amp; = 0.45 + 0.08 - 0.34 = 0.19\\
+\mu_{AD,VA} &amp; = \alpha_0 + \alpha_{AD} + \beta_{VA} &amp; = 0.45 + 0.22 + 0 = 0.67\\
+\mu_{AD,VB} &amp; = \alpha_0 + \alpha_{AD} + \beta_{VB} &amp; = 0.45 + 0.22 - 0.07 = 0.60\\
+\mu_{AD,VC} &amp; = \alpha_0 + \alpha_{AD} + \beta_{VC} &amp; = 0.45 + 0.22 - 0.34 = 0.33\\
+\end{array}\]</span></p>
+<p>Para determinar el modelo final sin necesidad de comparar todos los posibles modelos utilizamos los procedimientos secuenciales. Fijamos el valor de la significatividad del test <span class="math inline">\(F\)</span> para descartar efectos no significativos mediante el parámetro <code>prem</code> en la función <code>ols_step_backward_p</code>.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># Selección basada en test F</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="kw">ols_step_backward_p</span>(fit.venenos, <span class="dt">prem =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<pre><code>## 
+## 
+##                               Elimination Summary                               
+## -------------------------------------------------------------------------------
+##         Variable                         Adj.                                      
+## Step        Removed        R-Square    R-Square     C(p)       AIC        RMSE     
+## -------------------------------------------------------------------------------
+##    1    antidoto:veneno      0.6508      0.6092    5.2608    -33.2407    0.1581    
+## -------------------------------------------------------------------------------</code></pre>
+<p>Para utilizar el criterio AIC utilizamos la función <code>step()</code> porque la función <code>ols_step_backward_aic</code> no esta diseñada especificamente para trabajar con interacciones de factores y puede lleavr a soluciones erróneas. La única opción pasa por evaluar todos los modelos con la función <code>ols_step_all_possible</code> y elegir el mejor de ellos teniendo en cuenta la construcción del modelo. Mostraremos como hacerlo para este ejemplo tan sencillo pero no será práctico en modelos más complejos.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># Selección con función step</span></a>
+<a class="sourceLine" id="cb41-2" title="2">stats<span class="op">::</span><span class="kw">step</span>(fit.venenos, <span class="dt">direction =</span> <span class="st">&quot;backward&quot;</span>, <span class="dt">trace =</span> <span class="dv">-1</span>)</a></code></pre></div>
+<pre><code>## Start:  AIC=-172.52
+## tiempo ~ antidoto * veneno
+## 
+##                   Df Sum of Sq    RSS     AIC
+## &lt;none&gt;                         0.8001 -172.52
+## - antidoto:veneno  6   0.25027 1.0504 -171.46</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = tiempo ~ antidoto * veneno, data = venenos)
+## 
+## Coefficients:
+##         (Intercept)           antidotoAB           antidotoAC  
+##              0.4125               0.4675               0.1550  
+##          antidotoAD             venenoVB             venenoVC  
+##              0.1975              -0.0925              -0.2025  
+## antidotoAB:venenoVB  antidotoAC:venenoVB  antidotoAD:venenoVB  
+##              0.0275              -0.1000               0.1500  
+## antidotoAB:venenoVC  antidotoAC:venenoVC  antidotoAD:venenoVC  
+##             -0.3425              -0.1300              -0.0850</code></pre>
+<p>El proceso indica que no podemos descartar el efecto de interacción contradiciendo los resultados obtenidos con el test <span class="math inline">\(F\)</span>. En este tipo de modelos siempre es preferible utilizar el test <span class="math inline">\(F\)</span> en lugar del <span class="math inline">\(AIC\)</span>. Veamos la solución con todos los modelos:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># Todos los modelos posibles</span></a>
+<a class="sourceLine" id="cb44-2" title="2">seleccion &lt;-<span class="st"> </span><span class="kw">ols_step_all_possible</span>(fit.venenos)</a>
+<a class="sourceLine" id="cb44-3" title="3"><span class="kw">cbind</span>(seleccion,seleccion[,<span class="st">&quot;aic&quot;</span>])[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">8</span>)]</a></code></pre></div>
+<pre><code>##   mindex n                      predictors        aic
+## 3      1 1                 antidoto:veneno -32.304440
+## 2      2 1                          veneno  -9.042063
+## 1      3 1                        antidoto  -4.274275
+## 5      4 2        antidoto antidoto:veneno -34.304440
+## 6      5 2          veneno antidoto:veneno -34.304440
+## 4      6 2                 antidoto veneno -33.240672
+## 7      7 3 antidoto veneno antidoto:veneno -34.304440</code></pre>
+<p>Lo primero que debemos hacer es ignorar aquellos modelos que no resultan posibles desde el punto de vista de la modelización estadística. Estos modelos son todos aquellos que consideran la interacción pero no los dos factores principales asociados. Estos son los modelos (<code>mindex</code>) 1, 4, y 5. Podemos ver en ese caso que los modelos con menor AIC son el 7 (modelo con interacción) y el 6 (modelo sin interacción). Concretamente el seleccionado sería el de interacción contradiciendo en cierta forma los resultados obtenidos con el test <span class="math inline">\(F\)</span> como hemos visto anteriormente.</p>
+</div>
+</div>
+</div>
+<div id="diagnóstico" class="section level2">
+<h2><span class="header-section-number">1.7</span> Diagnóstico</h2>
+<p>Los procedimientos de diagnóstico son los mismos que en los modelos de regresión salvo por el hecho de que la igualdad de varianzas de los residuos se debe cumplir para cada uno de los grupos determinados por los niveles de los factores, es decir, varianzas residuales iguales. En el caso de la hipótesis de normalidad utilizaremos los tests vistos en la unidad anterior, mientras que para la hipótesis de igualdad de varianzas tenemos diferentes alternativas:</p>
+<ul>
+<li><code>bartlett.test()</code>: Test de Bartlett para homogeneidad de varianzas utilizando el test <span class="math inline">\(F\)</span>. Este test puedo funcionar incorrectamente cuando los residuos no son normales.</li>
+<li><code>leveneTest()</code>: Test de Levene para igualdad de varianzas. Funciona bien en cualquier situación.</li>
+</ul>
+<p>También se pueden realizar los diagnósticos gráficos de residuos para cada hipótesis, pero en para este tipo de modelos nos centraremos principalmente en la realización de los tests. El único gráfico que realizaremos será el gráfico de cajas de residuos versus niveles del factor para validar la homogeneidad de varianzas y la linealidad de las medias estimadas. La amplitud de las cajas debería ser similar para verificar homogeneidad y las medias deberían situarse en torno al cero para validar linealidad.</p>
+<p>En cuanto al estudio de influencia, nos centraremos principalmente en la distancia de Cook dado que no tiene sentido considerar la influencia sobre los coeficientes del modelo ni sobre los valores ajustados dada la estructura agrupada del banco de datos a analizar.</p>
+<div id="ejemplos-2" class="section level3">
+<h3><span class="header-section-number">1.7.1</span> Ejemplos</h3>
+<p>Para realizar el diagnóstico partiremos del modelo ajustado en el apartado anterior para cada banco de datos. En caso de detectar algún problema con las hipótesis del modelo deberemos ajustar un nuevo modelo y verificar que cumple las hipótesis.</p>
+<div id="datos-de-insecticidas-2" class="section level4">
+<h4><span class="header-section-number">1.7.1.1</span> Datos de insecticidas</h4>
+<p>Obtenemos los valores de diagnóstico y realizamos los correspondientes tests de hipótesis y análisis de influencia. En este caso utilizamos la versión del test de barlett más precisa (función <code>barlett.test</code>), sin la aproximación que realiza la función <code>ols_test_bartlett</code>.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="co"># Valores de diagnóstico</span></a>
+<a class="sourceLine" id="cb46-2" title="2">diagnostico &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.insecticidas)</a>
+<a class="sourceLine" id="cb46-3" title="3"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb46-4" title="4"><span class="kw">ggplot</span>(diagnostico,<span class="kw">aes</span>(<span class="dt">x =</span> spray, <span class="dt">y =</span> .stdresid)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-5" title="5"><span class="st">   </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-6" title="6"><span class="st">   </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov021-1.png" width="672" /></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="co"># Tests de hipótesis</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="kw">ols_test_normality</span>(fit.insecticidas)</a></code></pre></div>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9601         0.0223 
+## Kolmogorov-Smirnov        0.1301         0.1747 
+## Cramer-von Mises          6.6076         0.0000 
+## Anderson-Darling          1.2015         0.0037 
+## -----------------------------------------------</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">leveneTest</span>(.stdresid <span class="op">~</span><span class="st"> </span>spray, <span class="dt">data =</span> diagnostico)</a></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##       Df F value   Pr(&gt;F)   
+## group  5  3.8214 0.004223 **
+##       66                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="co"># Análisis de influencia</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="kw">ols_plot_cooksd_chart</span>(fit.insecticidas)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov021-2.png" width="672" /></p>
+<p>Las medias presentan pocas desviaciones respecto del valor cero y la amplitud de las cajas es bastante similar. Haciendo uso de los test se verifican las hipótesis de normalidad e igualdad de varianzas. Se detectan observaciones potencialmente influyentes, pero ningún valor de la distancia de Cook es superior a 1 y no clasificamos ninguna observación como influyente.</p>
+<p>El modelo final para este conjunto de datos es el analizado en la sección de estimación de esta unidad.</p>
+</div>
+<div id="datos-de-envasado-2" class="section level4">
+<h4><span class="header-section-number">1.7.1.2</span> Datos de envasado</h4>
+<p>Obtenemos los valores de diagnóstico y realizamos los correspondientes tests de hipótesis y análisis de influencia.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="co"># Valores de diagnóstico</span></a>
+<a class="sourceLine" id="cb52-2" title="2">diagnostico &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.envasado)</a>
+<a class="sourceLine" id="cb52-3" title="3"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb52-4" title="4"><span class="kw">ggplot</span>(diagnostico,<span class="kw">aes</span>(<span class="dt">x =</span> maquina, <span class="dt">y =</span> .stdresid)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb52-5" title="5"><span class="st">   </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-6" title="6"><span class="st">   </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov027-1.png" width="672" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="co"># Tests de hipótesis</span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="kw">ols_test_normality</span>(fit.envasado)</a></code></pre></div>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9074         0.1058 
+## Kolmogorov-Smirnov        0.176          0.6420 
+## Cramer-von Mises          1.5833         0.0000 
+## Anderson-Darling          0.5552         0.1269 
+## -----------------------------------------------</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">leveneTest</span>(.stdresid <span class="op">~</span><span class="st"> </span>maquina, <span class="dt">data =</span> diagnostico)</a></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##       Df F value Pr(&gt;F)
+## group  3  0.2091 0.8882
+##       12</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="co"># Análisis de influencia</span></a>
+<a class="sourceLine" id="cb57-2" title="2"><span class="kw">ols_plot_cooksd_chart</span>(fit.envasado)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov027-2.png" width="672" /></p>
+<p>Los tests de hipótesis resultan no significativos indicando que el modelo propuesto verifica dichas hipótesis. No se detectan además observaciones influyentes, con lo que el modelo propuesto y que fue analizado en la sección de estimación es el modelo final para este banco de datos.</p>
+</div>
+<div id="datos-de-venenos-2" class="section level4">
+<h4><span class="header-section-number">1.7.1.3</span> Datos de venenos</h4>
+<p>Utilizamos el modelo sin interacción que hemos obtenido tras el proceso de selección de efectos tratada en la sección anterior.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="co"># Modelo</span></a>
+<a class="sourceLine" id="cb58-2" title="2">fit.venenos &lt;-<span class="st"> </span><span class="kw">lm</span> (tiempo <span class="op">~</span><span class="st"> </span>veneno <span class="op">+</span><span class="st"> </span>antidoto, <span class="dt">data =</span> venenos)</a>
+<a class="sourceLine" id="cb58-3" title="3"><span class="co"># Valores de diagnóstico</span></a>
+<a class="sourceLine" id="cb58-4" title="4">diagnostico &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.venenos)</a>
+<a class="sourceLine" id="cb58-5" title="5"><span class="co"># Tests de hipótesis</span></a>
+<a class="sourceLine" id="cb58-6" title="6"><span class="kw">ols_test_normality</span>(fit.venenos)</a></code></pre></div>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9221         0.0035 
+## Kolmogorov-Smirnov        0.113          0.5353 
+## Cramer-von Mises         12.0813         0.0000 
+## Anderson-Darling          0.8952         0.0205 
+## -----------------------------------------------</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">leveneTest</span>(.stdresid <span class="op">~</span><span class="st"> </span>veneno<span class="op">*</span>antidoto, <span class="dt">data =</span> diagnostico)</a></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##       Df F value    Pr(&gt;F)    
+## group 11  4.1582 0.0005539 ***
+##       36                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># Análisis de influencia</span></a>
+<a class="sourceLine" id="cb62-2" title="2"><span class="kw">ols_plot_cooksd_chart</span>(fit.venenos)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov028-1.png" width="672" /></p>
+<p>Se verifica la hipótesis de normalidad pero no así la de igualdad de varianzas. No se presentan oes influyentes. Se plantea utilizar Box-Cox para obtener una posible transformación de la respuesta que permita verificar las hipótesis del modelo.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">MASS<span class="op">::</span><span class="kw">boxcox</span>(fit.venenos) </a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov030-1.png" width="672" /></p>
+<p>A la vista del intervalo de confianza obtenido para el parámetro de Box-Cox, la transformación que deberíamos usar es la inversa. Transformamos la variable respuesta y procedemos de nuevo con la selección del modelo.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># Creamos la variable transformada</span></a>
+<a class="sourceLine" id="cb64-2" title="2">venenos &lt;-<span class="st"> </span>venenos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">tiempoinv =</span> <span class="dv">1</span><span class="op">/</span>tiempo)</a>
+<a class="sourceLine" id="cb64-3" title="3"><span class="co"># Ajustamos el modelo de nuevo</span></a>
+<a class="sourceLine" id="cb64-4" title="4">fit.venenos.inv &lt;-<span class="st"> </span><span class="kw">lm</span>(tiempoinv <span class="op">~</span><span class="st"> </span>antidoto<span class="op">*</span>veneno, <span class="dt">data =</span> venenos)</a>
+<a class="sourceLine" id="cb64-5" title="5"><span class="co"># Selección utilizando el test F</span></a>
+<a class="sourceLine" id="cb64-6" title="6"><span class="kw">ols_step_backward_p</span>(fit.venenos.inv, <span class="dt">prem =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<pre><code>## 
+## 
+##                              Elimination Summary                               
+## ------------------------------------------------------------------------------
+##         Variable                         Adj.                                     
+## Step        Removed        R-Square    R-Square     C(p)       AIC       RMSE     
+## ------------------------------------------------------------------------------
+##    1    antidoto:veneno      0.8454       0.827    0.4181    75.5483    0.4911    
+## ------------------------------------------------------------------------------</code></pre>
+<p>El modelo resultante es aquel que no contiene la interacción. Obtenemos los coeficientes de ese modelo, así como las medias estimadas para la combinación de veneno-antídoto. Expresamos las medias con la transformación propuesta.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># Modelo sin interacción</span></a>
+<a class="sourceLine" id="cb66-2" title="2">fit.venenos.inv &lt;-<span class="st"> </span><span class="kw">lm</span>(tiempoinv <span class="op">~</span><span class="st"> </span>antidoto <span class="op">+</span><span class="st"> </span>veneno, <span class="dt">data =</span> venenos)</a>
+<a class="sourceLine" id="cb66-3" title="3"><span class="co"># Estimaciones de ambos modelos</span></a>
+<a class="sourceLine" id="cb66-4" title="4"><span class="kw">tab_model</span>(fit.venenos.inv, <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+tiempoinv
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+2.70
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+2.35 – 3.05
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.66
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-2.06 – -1.25
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.57
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.98 – -0.17
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.007</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+antidoto [AD]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.35
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.76 – -0.95
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+veneno [VB]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.47
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.12 – 0.82
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.010</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+veneno [VC]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+2.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+1.65 – 2.35
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+48
+</td>
+</tr>
+</table>
+<p>Las ecuaciones de estimación son:</p>
+<p><span class="math display">\[\begin{array}{lll} 
+1/\mu_{AA,VA} &amp; = \alpha_0 + \alpha_{AA} + \beta_{VA} &amp; = 2.70 + 0 + 0 = 2.70\\
+1/\mu_{AA,VB} &amp; = \alpha_0 + \alpha_{AA} + \beta_{VB} &amp; = 2.70 + 0 + 0.47 = 3.17\\
+1/\mu_{AA,VC} &amp; = \alpha_0 + \alpha_{AA} + \beta_{VC} &amp; = 2.70 + 0 + 2.00 = 4.70\\
+1/\mu_{AB,VA} &amp; = \alpha_0 + \alpha_{AB} + \beta_{VA} &amp; = 2.70 - 1.66 + 0 = 1.04\\
+1/\mu_{AB,VB} &amp; = \alpha_0 + \alpha_{AB} + \beta_{VB} &amp; = 2.70 - 1.66 + 0.47 = 1.51\\
+1/\mu_{AB,VC} &amp; = \alpha_0 + \alpha_{AB} + \beta_{VC} &amp; = 2.70 - 1.66 + 2.00 = 3.04\\
+1/\mu_{AC,VA} &amp; = \alpha_0 + \alpha_{AC} + \beta_{VA} &amp; = 2.70 - 0.57 + 0 = 2.13\\
+1/\mu_{AC,VB} &amp; = \alpha_0 + \alpha_{AC} + \beta_{VB} &amp; = 2.70 - 0.57 + 0.47 = 2.60\\
+1/\mu_{AC,VC} &amp; = \alpha_0 + \alpha_{AC} + \beta_{VC} &amp; = 2.70 - 0.57 + 2.00 = 4.13\\
+1/\mu_{AD,VA} &amp; = \alpha_0 + \alpha_{AD} + \beta_{VA} &amp; = 2.70 - 1.35 + 0 = 1.35\\
+1/\mu_{AD,VB} &amp; = \alpha_0 + \alpha_{AD} + \beta_{VB} &amp; = 2.70 - 1.35 + 0.47 = 1.82\\
+1/\mu_{AD,VC} &amp; = \alpha_0 + \alpha_{AD} + \beta_{VC} &amp; = 2.70 - 1.35 + 2.00 = 3.35\\
+\end{array}\]</span></p>
+<p>Veamos si se verifican las hipótesis del modelo:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="co"># Valores de diagnóstico</span></a>
+<a class="sourceLine" id="cb67-2" title="2">diagnostico &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.venenos.inv)</a>
+<a class="sourceLine" id="cb67-3" title="3"><span class="co"># Tests de hipótesis</span></a>
+<a class="sourceLine" id="cb67-4" title="4"><span class="kw">ols_test_normality</span>(fit.venenos.inv)</a></code></pre></div>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9789         0.5339 
+## Kolmogorov-Smirnov        0.1057         0.6192 
+## Cramer-von Mises          6.0617         0.0000 
+## Anderson-Darling          0.2948         0.5834 
+## -----------------------------------------------</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">leveneTest</span>(.stdresid <span class="op">~</span><span class="st"> </span>veneno<span class="op">*</span>antidoto, <span class="dt">data =</span> diagnostico)</a></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##       Df F value Pr(&gt;F)
+## group 11  1.1672 0.3429
+##       36</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="co"># Análisis de influencia</span></a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="kw">ols_plot_cooksd_chart</span>(fit.venenos.inv)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov032-2-1.png" width="672" /></p>
+<p>Se verifican las hipótesis del modelo. La transformación planteada permite obtener un modelo válido para la fase de predicción, y nos permite extraer conclusiones sobre la relación entre veneno y antídoto con el tiempo de reacción.</p>
+</div>
+</div>
+</div>
+<div id="predicción" class="section level2">
+<h2><span class="header-section-number">1.8</span> Predicción</h2>
+<p>El proceso de predicción en este tipo de modelos es muy simple ya que los posibles valores de las predictoras coinciden con las medias de los posibles niveles o combinación de los niveles del factor o factores que aparezcan en el modelo final. En este caso solo tiene sentido predecir los valores de la media ya que nuestro objetivo es el estudio de dichas medias. Dichas medias se obtienen a partir de los incrementos estimados para cada modelo.</p>
+<div id="ejemplos-3" class="section level3">
+<h3><span class="header-section-number">1.8.1</span> Ejemplos</h3>
+<p>Obtenemos las tablas de medias estimadas para cada uno de los ejemplos tratados en esta unidad.</p>
+<div id="datos-de-insecticidas-3" class="section level4">
+<h4><span class="header-section-number">1.8.1.1</span> Datos de insecticidas</h4>
+<p>Podemos obtener la tabla de predicción y el gráfico asociado con el código siguiente:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="co"># Objeto gráfico</span></a>
+<a class="sourceLine" id="cb72-2" title="2">p &lt;-<span class="st"> </span><span class="kw">plot_model</span>(fit.insecticidas, <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="st">&quot;spray&quot;</span>,</a>
+<a class="sourceLine" id="cb72-3" title="3">           <span class="dt">show.stat =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb72-4" title="4">           <span class="dt">title =</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb72-5" title="5"><span class="co"># Tabla de estimaciones</span></a>
+<a class="sourceLine" id="cb72-6" title="6">p<span class="op">$</span>data</a></code></pre></div>
+<pre><code>## 
+## # Predicted values of count
+## # x = spray
+## 
+## x | Predicted |   SE | group_col |         95% CI
+## -------------------------------------------------
+## 1 |     14.50 | 1.13 |         1 | [12.28, 16.72]
+## 2 |     15.33 | 1.13 |         1 | [13.11, 17.55]
+## 3 |      2.08 | 1.13 |         1 | [-0.14,  4.30]
+## 4 |      4.92 | 1.13 |         1 | [ 2.70,  7.14]
+## 5 |      3.50 | 1.13 |         1 | [ 1.28,  5.72]
+## 6 |     16.67 | 1.13 |         1 | [14.45, 18.89]</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb74-2" title="2">p</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov033-1.png" width="672" /></p>
+</div>
+<div id="datos-de-envasado-3" class="section level4">
+<h4><span class="header-section-number">1.8.1.2</span> Datos de envasado</h4>
+<p>Podemos obtener la tabla de predicción y el gráfico asociado con el código siguiente:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># Objeto gráfico</span></a>
+<a class="sourceLine" id="cb75-2" title="2">p &lt;-<span class="st"> </span><span class="kw">plot_model</span>(fit.envasado, <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="st">&quot;maquina&quot;</span>,</a>
+<a class="sourceLine" id="cb75-3" title="3">           <span class="dt">show.stat =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb75-4" title="4">           <span class="dt">title =</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb75-5" title="5"><span class="co"># Tabla de estimaciones</span></a>
+<a class="sourceLine" id="cb75-6" title="6">p<span class="op">$</span>data</a></code></pre></div>
+<pre><code>## 
+## # Predicted values of produccion
+## # x = maquina
+## 
+## x | Predicted |   SE | group_col |           95% CI
+## ---------------------------------------------------
+## 1 |    106.00 | 3.67 |         1 | [ 98.80, 113.20]
+## 2 |    113.75 | 3.67 |         1 | [106.55, 120.95]
+## 3 |    104.50 | 3.67 |         1 | [ 97.30, 111.70]
+## 4 |    124.00 | 3.67 |         1 | [116.80, 131.20]</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb77-2" title="2">p</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov034-1.png" width="672" /></p>
+</div>
+<div id="datos-de-venenos-3" class="section level4">
+<h4><span class="header-section-number">1.8.1.3</span> Datos de venenos</h4>
+<p>En este caso debemos tener en cuenta que los valores de predicción vendrán expresados en términos de la inversa de la respuesta. Habrá que deshacer la transformación para obtener los valores de predicción en la escala real de la predictora.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="co"># Objeto gráfico</span></a>
+<a class="sourceLine" id="cb78-2" title="2">p &lt;-<span class="st"> </span><span class="kw">plot_model</span>(fit.venenos.inv, <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="kw">c</span>(<span class="st">&quot;veneno&quot;</span>,<span class="st">&quot;antidoto&quot;</span>),</a>
+<a class="sourceLine" id="cb78-3" title="3">           <span class="dt">show.stat =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb78-4" title="4">           <span class="dt">title =</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb78-5" title="5"><span class="co"># Tabla de estimaciones en términos de la inversa</span></a>
+<a class="sourceLine" id="cb78-6" title="6">p<span class="op">$</span>data</a></code></pre></div>
+<pre><code>## 
+## # Predicted values of tiempoinv
+## # x = veneno
+## 
+## # antidoto = AA
+## 
+## x | Predicted |   SE | group_col |       95% CI
+## -----------------------------------------------
+## 1 |      2.70 | 0.17 |        AA | [2.36, 3.04]
+## 2 |      3.16 | 0.17 |        AA | [2.82, 3.50]
+## 3 |      4.70 | 0.17 |        AA | [4.36, 5.04]
+## 
+## # antidoto = AB
+## 
+## x | Predicted |   SE | group_col |       95% CI
+## -----------------------------------------------
+## 1 |      1.04 | 0.17 |        AB | [0.70, 1.38]
+## 2 |      1.51 | 0.17 |        AB | [1.17, 1.85]
+## 3 |      3.04 | 0.17 |        AB | [2.70, 3.38]
+## 
+## # antidoto = AC
+## 
+## x | Predicted |   SE | group_col |       95% CI
+## -----------------------------------------------
+## 1 |      2.12 | 0.17 |        AC | [1.78, 2.46]
+## 2 |      2.59 | 0.17 |        AC | [2.25, 2.93]
+## 3 |      4.13 | 0.17 |        AC | [3.78, 4.47]
+## 
+## # antidoto = AD
+## 
+## x | Predicted |   SE | group_col |       95% CI
+## -----------------------------------------------
+## 1 |      1.34 | 0.17 |        AD | [1.00, 1.68]
+## 2 |      1.81 | 0.17 |        AD | [1.47, 2.15]
+## 3 |      3.35 | 0.17 |        AD | [3.01, 3.69]</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="co"># Gráfico de interacción estimado</span></a>
+<a class="sourceLine" id="cb80-2" title="2">p</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/aov035-1.png" width="672" /></p>
+<p>Tomando los valores de las tablas anteriores y calcula la inversa tendríamos la estimación en la escala de la variable original (<code>tiempo</code>).</p>
+</div>
+</div>
+</div>
+<div id="ejercicios" class="section level2">
+<h2><span class="header-section-number">1.9</span> Ejercicios</h2>
+<p><strong>Ejercicio 1.</strong> Se realiza una investigación para conocer los niveles de fosfato inorgánico en plasma (mg / dl) una hora después de una prueba de tolerancia a la glucosa estándar para sujetos obesos, con o sin hiperinsulinemia, y controles. Los datos corresponden con la tabla 6.18 de Dobson (2002).</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="co"># Lectura de datos</span></a>
+<a class="sourceLine" id="cb81-2" title="2">ejer01 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/3L4EtK&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;cd&quot;</span>)</a></code></pre></div>
+<p><strong>Ejercicio 2.</strong> Se lleva a cabo un estudio sobre el contenido promedio de grasa (en porcentaje) en la leche del ganado de cinco razas distintas canadienses. Para ello se consideran veinte ejemplares de pura raza (diez de dos años y diez maduras de más de cuatro años de cada una de cinco razas.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="co"># Lectura de datos</span></a>
+<a class="sourceLine" id="cb82-2" title="2">ejer02 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/J2ZKWK&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;dcc&quot;</span>)</a></code></pre></div>
+<p><strong>Ejercicio 3.</strong> Los datos que se presentan a continuación <span class="citation">(Dobson <a href="#ref-Dobson02" role="doc-biblioref">2002</a>)</span> corresponden a un estudio en el que semillas genéticamente iguales son asignadas aleatoriamente, bien a un entorno enriquecido nutricionalmente (tratamiento), bien a condiciones estándar (control). Una vez han crecido todas las plantas, se recolectan, secan y pesan. El interés es investigar el efecto del tratamiento utilizado sobre le peso seco (en gramos) de las plantas en cuestión.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.17</span>, <span class="fl">5.58</span>, <span class="fl">5.18</span>, <span class="fl">6.11</span>, <span class="fl">4.50</span>, <span class="fl">4.61</span>, <span class="fl">5.17</span>, <span class="fl">4.53</span>, <span class="fl">5.33</span>, <span class="fl">5.14</span>, <span class="fl">4.81</span>, <span class="fl">4.17</span>, <span class="fl">4.41</span>, <span class="fl">3.59</span>, <span class="fl">5.87</span>, <span class="fl">3.83</span>, <span class="fl">6.03</span>, <span class="fl">4.89</span>, <span class="fl">4.32</span>, <span class="fl">4.69</span>)</a>
+<a class="sourceLine" id="cb83-2" title="2">entorno &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;tratamiento&quot;</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="st">&quot;control&quot;</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb83-3" title="3">ejercicio03 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(peso,entorno)</a></code></pre></div>
+<p><strong>Ejercicio 4.</strong> Se realiza un estudio experimental para estudiar el rendimiento de un proceso químico en función de la concentración del compuesto base (A, B, C y D), el catalizador usado (C1, C2, y C3), y la temperatura usada en el proceso (T1, T2). Se quiere estudiar como afectan estos factores en el rendimiento del proceso.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">ejercicio04 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://bit.ly/2GhFsl7&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;dccc&quot;</span>)</a>
+<a class="sourceLine" id="cb84-2" title="2">ejercicio04 &lt;-<span class="st"> </span>ejercicio04 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb84-3" title="3"><span class="st">   </span><span class="kw">mutate_if</span>(<span class="kw">sapply</span>(ejercicio04,is.character),as.factor)</a></code></pre></div>
+
+<div id="refs" class="references">
+<div>
+<p>Dobson, A. 2002. <em>An Introduction to Generalized Linear Models</em>. CRC Press.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Dobson02">
+<p>Dobson, A. 2002. <em>An Introduction to Generalized Linear Models</em>. CRC Press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["libroSTAT.pdf"],
+"toc": {
+"collapse": "subsection"
+},
+"split_by": "section"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
