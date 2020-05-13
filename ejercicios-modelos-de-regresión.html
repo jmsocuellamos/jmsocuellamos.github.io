@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Unidad 2 Ejercicios modelos de regresión | Modelos Estadísticos</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Unidad 2 Ejercicios modelos de regresión | Modelos Estadísticos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unidad 2 Ejercicios modelos de regresión | Modelos Estadísticos" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Javier Morales (Universidad Miguel Hernández de Elche)" />
+<meta name="author" content="Mª Asunción Martínez (Universidad Miguel Hernández de Elche)" />
+
+
+<meta name="date" content="2020-05-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="predicción.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelos Estadísticos</a></li>
+<li><a href="./">J. Morales y A.M. Mayoral</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="1" data-path="rlm.html"><a href="rlm.html"><i class="fa fa-check"></i><b>1</b> Regresión Lineal Múltiple y Polinómica</a><ul>
+<li class="chapter" data-level="1.1" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html"><i class="fa fa-check"></i><b>1.1</b> Tipos de modelos</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html#modelos-de-rlm"><i class="fa fa-check"></i><b>1.1.1</b> Modelos de RLM</a></li>
+<li class="chapter" data-level="1.1.2" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html#modelos-de-rp"><i class="fa fa-check"></i><b>1.1.2</b> Modelos de RP</a></li>
+<li class="chapter" data-level="1.1.3" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html#expresión-en-r-de-los-modelos"><i class="fa fa-check"></i><b>1.1.3</b> Expresión en <code>R</code> de los modelos</a></li>
+<li class="chapter" data-level="1.1.4" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html#modelo-saturado-y-anidado"><i class="fa fa-check"></i><b>1.1.4</b> Modelo saturado y anidado</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>1.2</b> Estimación, inferencia y bondad de ajuste</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#estimación-por-mínimos-cuadrados"><i class="fa fa-check"></i><b>1.2.1</b> Estimación por mínimos cuadrados</a></li>
+<li class="chapter" data-level="1.2.2" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#estimación-por-máxima-verosimilitud"><i class="fa fa-check"></i><b>1.2.2</b> Estimación por máxima verosimilitud</a></li>
+<li class="chapter" data-level="1.2.3" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#inferencia"><i class="fa fa-check"></i><b>1.2.3</b> Inferencia</a></li>
+<li class="chapter" data-level="1.2.4" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#ejemplos"><i class="fa fa-check"></i><b>1.2.4</b> Ejemplos</a></li>
+<li class="chapter" data-level="1.2.5" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#bondad-del-ajuste"><i class="fa fa-check"></i><b>1.2.5</b> Bondad del ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html"><i class="fa fa-check"></i><b>1.3</b> Comparación y selección de modelos</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#significatividad-de-los-predictores"><i class="fa fa-check"></i><b>1.3.1</b> Significatividad de los predictores</a></li>
+<li class="chapter" data-level="1.3.2" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#los-estadísticos-aic-y-bic"><i class="fa fa-check"></i><b>1.3.2</b> Los estadísticos <span class="math inline">\(AIC\)</span> y <span class="math inline">\(BIC\)</span></a></li>
+<li class="chapter" data-level="1.3.3" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#procedimientos-secuenciales-de-selección-de-variables"><i class="fa fa-check"></i><b>1.3.3</b> Procedimientos secuenciales de selección de variables</a></li>
+<li class="chapter" data-level="1.3.4" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#funciones-especificas-para-modelos-de-regresión"><i class="fa fa-check"></i><b>1.3.4</b> Funciones especificas para modelos de regresión</a></li>
+<li class="chapter" data-level="1.3.5" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#ejemplos-2"><i class="fa fa-check"></i><b>1.3.5</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="multicolinealidad-y-diagnóstico-del-modelo.html"><a href="multicolinealidad-y-diagnóstico-del-modelo.html"><i class="fa fa-check"></i><b>1.4</b> Multicolinealidad y Diagnóstico del modelo</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="multicolinealidad-y-diagnóstico-del-modelo.html"><a href="multicolinealidad-y-diagnóstico-del-modelo.html#multicolinealidad"><i class="fa fa-check"></i><b>1.4.1</b> Multicolinealidad</a></li>
+<li class="chapter" data-level="1.4.2" data-path="multicolinealidad-y-diagnóstico-del-modelo.html"><a href="multicolinealidad-y-diagnóstico-del-modelo.html#diagnóstico-del-modelo"><i class="fa fa-check"></i><b>1.4.2</b> Diagnóstico del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="predicción.html"><a href="predicción.html"><i class="fa fa-check"></i><b>1.5</b> Predicción</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="predicción.html"><a href="predicción.html#estimación-de-la-respuesta-media."><i class="fa fa-check"></i><b>1.5.1</b> Estimación de la respuesta media.</a></li>
+<li class="chapter" data-level="1.5.2" data-path="predicción.html"><a href="predicción.html#predicción-de-nuevas-observaciones."><i class="fa fa-check"></i><b>1.5.2</b> Predicción de nuevas observaciones.</a></li>
+<li class="chapter" data-level="1.5.3" data-path="predicción.html"><a href="predicción.html#ejemplos-5"><i class="fa fa-check"></i><b>1.5.3</b> Ejemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ejercicios-modelos-de-regresión.html"><a href="ejercicios-modelos-de-regresión.html"><i class="fa fa-check"></i><b>2</b> Ejercicios modelos de regresión</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Creado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Estadísticos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ejercicios-modelos-de-regresión" class="section level1">
+<h1><span class="header-section-number">Unidad 2</span> Ejercicios modelos de regresión</h1>
+<p>A continuación, se presenta una colección de ejercicios referidos a los modelos de regresión. Los pasos a seguir para la obtención del modelo son los que hemos ido desarrollando: representación gráfica y propuesta de modelo, ajuste, bondad de ajuste, diagnóstico y predicción. En caso de encontrar problemas con el diagnóstico se deberá proponer un nuevo modelo alternativo.</p>
+<p><strong>Ejercicio 1.</strong> Se propone a una empresa que fabrica vasos de cristal un nuevo proceso de control de calidad. Hasta ahora la empresa seleccionaba una caja de vasos al final de la fabricación y observaba si había alguno roto. Esto provocaba un gran gasto ya que en caso de encontrar algún defecto la caja se desembala y los vasos vuelven a la cadena de embalaje. Ahora se propone seleccionar vasos antes de embalar y determinar así el porcentaje de defectos. Se desea saber si ambos porcentajes están relacionados. Los datos aparecen a continuación:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="co"># carga de datos</span></a>
+<a class="sourceLine" id="cb135-2" title="2">cajas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>, <span class="fl">3.1</span>, <span class="fl">3.0</span>, <span class="fl">3.6</span>, <span class="fl">3.8</span>, <span class="fl">2.7</span>, <span class="fl">3.1</span>, <span class="fl">2.7</span>, <span class="fl">2.7</span>, <span class="fl">3.3</span>, <span class="fl">3.2</span>, <span class="fl">2.1</span>, <span class="fl">3.0</span>, <span class="fl">2.6</span>)</a>
+<a class="sourceLine" id="cb135-3" title="3">vasos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.1</span>, <span class="fl">3.9</span>, <span class="fl">3.4</span>, <span class="fl">4.0</span>, <span class="fl">3.6</span>, <span class="fl">3.6</span>, <span class="fl">3.1</span>, <span class="fl">3.6</span>, <span class="fl">2.9</span>, <span class="fl">3.6</span>, <span class="fl">4.1</span>, <span class="fl">2.6</span>, <span class="fl">3.1</span>, <span class="fl">2.8</span>)</a>
+<a class="sourceLine" id="cb135-4" title="4">ejer01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(cajas,vasos)</a></code></pre></div>
+<p><strong>Ejercicio 2.</strong> En 1929 Edwin Hubble investiga la relación entre la distancia (en megaparsecs. 1 parsec=3.26 años luz) de una galaxia a la tierra y la velocidad (en Km/sg) con la cual parece retroceder. Observo que las galaxias aparecen alejarse de nosotros no importa cual sea la dirección en que miremos. Se piensa de hecho que esto es el resultado del ”Big Bang”. Hubble esperaba aportar conocimiento sobre la formación del universo y sobre cual podría ser su evolución en el futuro. Los datos que recogió incluyen las distancias de la tierra a 24 galaxias, así como sus correspondientes velocidades de retroceso. El objetivo principal del estudio que Hubble llevo a cabo era determinar la edad del universo, y para ello establece lo que se conoce hasta ahora como la ley de Hubble:
+<span class="math display">\[V = H_0*D\]</span>
+donde <span class="math inline">\(V\)</span> es la velocidad, <span class="math inline">\(D\)</span> es la distancia, y <span class="math inline">\(H_0\)</span> es la constante de Hubble.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1">distancia &lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">032</span>,.<span class="dv">034</span>,.<span class="dv">214</span>,.<span class="dv">263</span>,.<span class="dv">275</span>,.<span class="dv">275</span>,.<span class="dv">45</span>,.<span class="dv">5</span>,.<span class="dv">5</span>,.<span class="dv">63</span>,.<span class="dv">8</span>,.<span class="dv">9</span>,.<span class="dv">9</span>,</a>
+<a class="sourceLine" id="cb136-2" title="2">               <span class="fl">.9</span>,.<span class="dv">9</span>,<span class="fl">1.0</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>,<span class="fl">1.4</span>,<span class="fl">1.7</span>,<span class="fl">2.0</span>,<span class="fl">2.0</span>,<span class="fl">2.0</span>,<span class="fl">2.0</span>)</a>
+<a class="sourceLine" id="cb136-3" title="3">velocidad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">170</span>,<span class="dv">290</span>,<span class="op">-</span><span class="dv">130</span>,<span class="op">-</span><span class="dv">70</span>,<span class="op">-</span><span class="dv">185</span>,<span class="op">-</span><span class="dv">220</span>,<span class="dv">200</span>,<span class="dv">290</span>,<span class="dv">270</span>,<span class="dv">200</span>,<span class="dv">300</span>,<span class="op">-</span><span class="dv">30</span>,<span class="dv">650</span></a>
+<a class="sourceLine" id="cb136-4" title="4">               ,<span class="dv">150</span>,<span class="dv">500</span>,<span class="dv">920</span>,<span class="dv">450</span>,<span class="dv">500</span>,<span class="dv">500</span>,<span class="dv">960</span>,<span class="dv">500</span>,<span class="dv">850</span>,<span class="dv">800</span>,<span class="dv">1090</span>) </a>
+<a class="sourceLine" id="cb136-5" title="5">ejer02 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(distancia,velocidad)</a></code></pre></div>
+<p>(HINT: En primer lugar debes transformar el modelo teórico propuesto para expresarlo en términos de un modelo RLS. Recuerda almacenar las transformaciones en tu banco de datos para proceder con el ajuste del modelo.)</p>
+<p><strong>Ejercicio 3.</strong> Un grupo de ingenieros agrónomos esta estudiando la evolución de un proceso infeccioso sobre un conjunto de plantas. En concreto durante un período de días se calcula de forma aproximada la fracción de infección de dichas plantas. Por este motivo, dos días consecutivos pueden tener fracciones de infección inferiores. Para evitar esto se proponen dos modelos teóricos:
+<span class="math display">\[(I) \text{   } y = \beta_0 x^{\beta_1}\]</span>
+<span class="math display">\[(II) \text{   } y = \beta_0 + \beta_1 log(x)\]</span></p>
+<p>donde y es el grado de infección y x el número de días transcurridos</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1">dia &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">200</span></a>
+<a class="sourceLine" id="cb137-2" title="2">infecc &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.02063762</span>, <span class="fl">0.05637206</span>, <span class="fl">0.11889346</span>, <span class="fl">0.11376972</span>, <span class="fl">0.13772089</span>, <span class="fl">0.19055130</span>, <span class="fl">0.18509772</span>, <span class="fl">0.16887353</span>, <span class="fl">0.19753055</span>, <span class="fl">0.21835949</span>, <span class="fl">0.26677238</span>, <span class="fl">0.26360653</span>, <span class="fl">0.27772497</span>, <span class="fl">0.28447172</span>, <span class="fl">0.28300082</span>, <span class="fl">0.34108177</span>, <span class="fl">0.32594214</span>, <span class="fl">0.28675461</span>, <span class="fl">0.34971616</span>, <span class="fl">0.33537176</span>, <span class="fl">0.33217888</span>, <span class="fl">0.35748261</span>, <span class="fl">0.34925483</span>, <span class="fl">0.36278067</span>, <span class="fl">0.37211460</span>, <span class="fl">0.35783240</span>, <span class="fl">0.41498583</span>, <span class="fl">0.40769174</span>, <span class="fl">0.38800213</span>, <span class="fl">0.44174297</span>, <span class="fl">0.43087261</span>, <span class="fl">0.42190606</span>, <span class="fl">0.45097338</span>, <span class="fl">0.45570700</span>, <span class="fl">0.45946960</span>, <span class="fl">0.46153400</span>, <span class="fl">0.46340109</span>, <span class="fl">0.45549254</span>, <span class="fl">0.45487365</span>, <span class="fl">0.45750686</span>, <span class="fl">0.45521341</span>, <span class="fl">0.46881463</span>, <span class="fl">0.45141048</span>, <span class="fl">0.52372846</span>, <span class="fl">0.50803021</span>, <span class="fl">0.46482596</span>, <span class="fl">0.48254773</span>, <span class="fl">0.48449405</span>, <span class="fl">0.51255671</span>, <span class="fl">0.49833262</span>, <span class="fl">0.50802495</span>, <span class="fl">0.50526564</span>, <span class="fl">0.50777983</span>, <span class="fl">0.53873568</span>, <span class="fl">0.50950327</span>, <span class="fl">0.54693458</span>, <span class="fl">0.48815063</span>, <span class="fl">0.53327501</span>, <span class="fl">0.52645577</span>, <span class="fl">0.53063462</span>, <span class="fl">0.53618898</span>, <span class="fl">0.52077545</span>, <span class="fl">0.52633078</span>, <span class="fl">0.51474555</span>, <span class="fl">0.51575426</span>, <span class="fl">0.54528626</span>, <span class="fl">0.55015967</span>, <span class="fl">0.54419107</span>, <span class="fl">0.56346905</span>, <span class="fl">0.58787669</span>, <span class="fl">0.53886562</span>, <span class="fl">0.50427534</span>, <span class="fl">0.57230842</span>, <span class="fl">0.53970820</span>, <span class="fl">0.54179538</span>, <span class="fl">0.57769618</span>, <span class="fl">0.55308538</span>, <span class="fl">0.53593047</span>, <span class="fl">0.56550374</span>, <span class="fl">0.56060245</span>, <span class="fl">0.56496884</span>, <span class="fl">0.57400395</span>, <span class="fl">0.56030226</span>, <span class="fl">0.58199322</span>, <span class="fl">0.56606007</span>, <span class="fl">0.57844415</span>, <span class="fl">0.59505931</span>, <span class="fl">0.58311616</span>, <span class="fl">0.56916054</span>, <span class="fl">0.59989923</span>, <span class="fl">0.59801493</span>, <span class="fl">0.59031303</span>, <span class="fl">0.58529898</span>, <span class="fl">0.56912505</span>, <span class="fl">0.61003513</span>, <span class="fl">0.57193641</span>, <span class="fl">0.62878888</span>, <span class="fl">0.61677661</span>, <span class="fl">0.58247460</span>, <span class="fl">0.56770688</span>, <span class="fl">0.57505675</span>, <span class="fl">0.59541545</span>, <span class="fl">0.58634056</span>, <span class="fl">0.58530427</span>, <span class="fl">0.57418797</span>, <span class="fl">0.59326985</span>, <span class="fl">0.57940758</span>, <span class="fl">0.56266765</span>, <span class="fl">0.58932866</span>, <span class="fl">0.61620602</span>, <span class="fl">0.58719856</span>, <span class="fl">0.61173102</span>, <span class="fl">0.56806743</span>, <span class="fl">0.60015458</span>, <span class="fl">0.61248238</span>, <span class="fl">0.60893367</span>, <span class="fl">0.60582869</span>, <span class="fl">0.59169408</span>, <span class="fl">0.58829584</span>, <span class="fl">0.58557803</span>, <span class="fl">0.60917339</span>, <span class="fl">0.58862023</span>, <span class="fl">0.59849746</span>, <span class="fl">0.60391548</span>, <span class="fl">0.64663334</span>, <span class="fl">0.59742612</span>, <span class="fl">0.61587231</span>, <span class="fl">0.61341390</span>, <span class="fl">0.59329848</span>, <span class="fl">0.61178139</span>, <span class="fl">0.64276168</span>, <span class="fl">0.62355522</span>, <span class="fl">0.61599580</span>, <span class="fl">0.60735889</span>, <span class="fl">0.57537341</span>, <span class="fl">0.63968664</span>, <span class="fl">0.58846078</span>, <span class="fl">0.63307852</span>, <span class="fl">0.65706008</span>, <span class="fl">0.59059116</span>, <span class="fl">0.63408846</span>, <span class="fl">0.61538542</span>, <span class="fl">0.58975607</span>, <span class="fl">0.59146830</span>, <span class="fl">0.59028687</span>, <span class="fl">0.61224876</span>, <span class="fl">0.59417456</span>, <span class="fl">0.63770437</span>, <span class="fl">0.66647829</span>, <span class="fl">0.59925939</span>, <span class="fl">0.64127259</span>, <span class="fl">0.64141050</span>, <span class="fl">0.63317968</span>, <span class="fl">0.60686830</span>, <span class="fl">0.62514131</span>, <span class="fl">0.62241142</span>, <span class="fl">0.63976259</span>, <span class="fl">0.62153212</span>, <span class="fl">0.64899315</span>, <span class="fl">0.62242964</span>, <span class="fl">0.65143794</span>, <span class="fl">0.60985758</span>, <span class="fl">0.60609047</span>, <span class="fl">0.69656194</span>, <span class="fl">0.62384676</span>, <span class="fl">0.63858650</span>, <span class="fl">0.64578674</span>, <span class="fl">0.62380855</span>, <span class="fl">0.64424572</span>, <span class="fl">0.64170765</span>, <span class="fl">0.63043627</span>, <span class="fl">0.63646096</span>, <span class="fl">0.63488074</span>, <span class="fl">0.67853395</span>, <span class="fl">0.62153691</span>, <span class="fl">0.61483840</span>, <span class="fl">0.63790480</span>, <span class="fl">0.64374543</span>, <span class="fl">0.64664922</span>, <span class="fl">0.62913057</span>, <span class="fl">0.61740673</span>, <span class="fl">0.66430865</span>, <span class="fl">0.63241999</span>, <span class="fl">0.62246721</span>, <span class="fl">0.63541282</span>, <span class="fl">0.63655235</span>, <span class="fl">0.66304830</span>, <span class="fl">0.64289529</span>, <span class="fl">0.65662894</span>, <span class="fl">0.63190605</span>, <span class="fl">0.64652159</span>, <span class="fl">0.63607656</span>, <span class="fl">0.64479640</span>, <span class="fl">0.62532881</span>, <span class="fl">0.61734833</span>, <span class="fl">0.68383389</span>, <span class="fl">0.65622608</span>, <span class="fl">0.61950582</span>, <span class="fl">0.63262438</span>, <span class="fl">0.62145169</span>) </a>
+<a class="sourceLine" id="cb137-3" title="3">ejer03 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(dia,infecc)</a></code></pre></div>
+<p>Los modelos teóricos anteriores se pueden transformar a modelos de regresión lineal simple sin muchos problemas. Para el modelo (I) consideramos la transformación logarítmica:</p>
+<p><span class="math display">\[log(y) = log(\beta_0) + \beta_1 log(x) \longrightarrow y&#39; = \beta_0 + \beta_1 x`\]</span></p>
+<p>donde el <span class="math inline">\(&#39;\)</span> indica la nueva variable o parámetro. Podemos estudiar el comportamiento lineal obteniendo dichas variables, y volver al modelo original utilizando las transformaciones.</p>
+<p>Para el modelo (II) ya viene expresado como un modelo lineal donde únicamente tenemos que obtener la variable predictora transformada mediante la función logaritmo.</p>
+<p><strong>Ejercicio 4.</strong> Se trata de determinar la pérdida de color sufrida por cierto compuesto cuando es sometido a altas temperaturas. Los datos recogidos son los siguientes:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1">temperatura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">460</span>, <span class="dv">450</span>, <span class="dv">440</span>, <span class="dv">430</span>, <span class="dv">420</span>, <span class="dv">410</span>, <span class="dv">450</span>, <span class="dv">440</span>, <span class="dv">430</span>, <span class="dv">420</span>, </a>
+<a class="sourceLine" id="cb138-2" title="2">                 <span class="dv">410</span>, <span class="dv">400</span>, <span class="dv">420</span>, <span class="dv">410</span>, <span class="dv">400</span>)</a>
+<a class="sourceLine" id="cb138-3" title="3">perdida &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, </a>
+<a class="sourceLine" id="cb138-4" title="4">             <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>)</a>
+<a class="sourceLine" id="cb138-5" title="5">ejer04 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(temperatura,perdida)</a></code></pre></div>
+<p><strong>Ejercicio 5.</strong> Karl Pearson recogió información sobre 1100 familias en Inglaterra en el periodo de 1893 a 1898. En particular este banco de datos contiene las alturas de las madres y las hijas de dichas familias. En concreto se registran las alturas de las hijas mayores de 18 años y las madres de menos de 65 años. Originalmente se estaba interesado en estudiar una posible asociación entre la altura de las madres y las hijas ¿Que podríamos concluir a la vista de los datos? las variables recogidas son: “Mheight” (altura de la madre) y “Dheight” (altura de la hija)</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="kw">data</span>(<span class="st">&quot;heights&quot;</span>)</a>
+<a class="sourceLine" id="cb139-2" title="2">ejer05 &lt;-heights</a></code></pre></div>
+<p><strong>Ejercicio 6.</strong> Se realiza un estudio de campo para conocer el desarrollo de cierta especie de pez del lago lakemary en EEUU. Para medir el desarrollo se establece la edad de cada pez capturado mediante un procedimiento proporcionado por los biólogos. Además se mide la longitud del pez para tratar de establecer el estado de maduración de cada ejemplar. La investigación trata de relacionar la longitud del pez con su edad para determinar el número de capturas permitidas. Las variables recogidas son: “Age” (edad del pez), y “Length” (longitud del pez en mm).</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">data</span>(<span class="st">&quot;lakemary&quot;</span>)</a>
+<a class="sourceLine" id="cb140-2" title="2">ejer06 &lt;-lakemary</a></code></pre></div>
+<p><strong>Ejercicio 7.</strong> Se realiza un estudio para determinar el tiempo de erupción del geyser (Old Faithful Geyser, dentro del parque nacional de Yellowstone) a partir del tiempo de espera entre dos erupciones consecutivas. Se trata de analizar la información para determinar el periodo de visitas. Para ellos se recogieron datos durante un periodo determinado que se considera estándar para establecer la distribución de erupciones. Las variables consideradas son: “Duration” (duración de la erupción en segundos) y “Interval” (tiempo de espera entres dos erupciones consecutivas).</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="kw">data</span>(<span class="st">&quot;geyser&quot;</span>)</a>
+<a class="sourceLine" id="cb141-2" title="2">ejer07 &lt;-geyser</a></code></pre></div>
+<p><strong>Ejercicio 8.</strong> Los datos muestran el porcentaje de calorías totales obtenidas de carbohidratos complejos, para veinte diabéticos dependientes de insulina que habían seguido una dieta alta en carbohidratos durante seis meses. Se consideró que el cumplimiento del régimen estaba relacionado con la edad (en años), age, el peso corporal (relativo al peso “ideal” para la altura), weight, y otros componentes de la dieta como el porcentaje de proteínas ingeridas. Los datos corresponden con la tabla 6.3 de Dobson (2002).</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">ejer08 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/Grm8xM&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;dddd&quot;</span>)</a></code></pre></div>
+<p><strong>Ejercicio 9.</strong> Es bien sabido que la concentración de colesterol en el suero sanguíneo aumenta con la edad, pero es menos claro si el nivel de colesterol también está asociado con el peso corporal. Los datos muestran para una treinta de mujeres el colesterol sérico (milimoles por litro), la edad (años) y el índice de masa corporal (peso dividido por la altura al cuadrado, donde el peso se midió en kilogramos y la altura en metros). Los datos corresponden con la tabla 6.17 de Dobson (2002).</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">ejer09 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/EKXWRc&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;ddd&quot;</span>)</a></code></pre></div>
+<p><strong>Ejercicio 10.</strong> En un estudio sobre las diferentes clases de queso cheddar que se fabrican en LaTrobe Valley de Victoria, Australia, se analizaron muestras de queso por su composición química: concentración de ácido acético (escala logarítmica); concentración de sulfuro de hidrógeno (escala logarítmica); y la concentración de ácido láctico. Por otro lado, se paso una muestra de cada uno de ellos a un conjunto de catadores y se registro la puntuación obtenida por cada uno de ellos. Estamos interesados en relacionar la puntuación final de los catadores con los resultados del análisis químico.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">ejer10 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/V4lDNs&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;dddd&quot;</span>)</a></code></pre></div>
+<p><strong>Ejercicio 11.</strong> Los datos correspondientes a esta base de datos muestran la producción, Q, en toneladas, la mano de obra, L, en horas, y el capital, K, en horas máquina, de 14 empresas de un sector industrial. Se desea ajustar los datos a la función de producción Cobb-Douglas dada por:
+<span class="math display">\[Q = A L^l K^k e^{\epsilon}\]</span></p>
+<ul>
+<li>Identifica el objetivo u objetivos del problema propuesto. Describe el tipo de variables involucradas para el modelo propuesto. Escribe los modelos, identifica el tipo, e indica el número de parámetros involucrados.</li>
+<li>Ajusta los modelos mediante el proceso de selección de variables que consideres más adecuado. Describe los modelos obtenidos (ecuación del modelo) interpretando en términos económicos los coeficientes estimados de dicho modelo, y las medidas de bondad de ajuste de cada uno de ellos.</li>
+<li>Realiza el diagnóstico del modelo ajustado indicando los gráficos utilizados y las conclusiones obtenidas. Si el modelo debe ser mejorados indica como lo haces, y describe los resultados del nuevo modelo obtenido.</li>
+<li>¿Cuál es la predicción de la producción media para una empresa con 1900 horas de trabajo y 475 de capital? ¿Cuál consideras que es la combinación óptima para determinar las empresas más eficientes en términos de productividad?.</li>
+</ul>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">ejer11 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://bit.ly/2UIq9F9&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;dddd&quot;</span>)</a>
+<a class="sourceLine" id="cb145-2" title="2">ejer11 &lt;-<span class="st"> </span>ejer11 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb145-3" title="3"><span class="st"> </span><span class="kw">mutate_if</span>(<span class="kw">sapply</span>(ejer11,is.character),as.factor)</a></code></pre></div>
+<p><strong>Ejercicio 12.</strong> La producción de cereales viene determinada principalmente por las condiciones climáticas previas a la recolección. En concreto se recogen las condiciones climáticas en diferentes años. Las características medidas son:</p>
+<ul>
+<li>anyo = año de la medición.</li>
+<li>preinv = precipitación de invierno.</li>
+<li>tempmay = temperatura de mayo.</li>
+<li>prejun = precipitación de junio.</li>
+<li>tempjun = temperatura de junio.</li>
+<li>prejul = precipitación de julio.</li>
+<li>tempjul = temperatura de julio.</li>
+<li>preago = precipitación de agosto.</li>
+<li>tempago = temperatura de agosto.</li>
+<li>produccion = producción de cereales.</li>
+</ul>
+<p>Para el banco de datos correspondiente</p>
+<ul>
+<li>Propón el tipo de modelo a utilizar. Selecciona el mejor modelo basado en el AIC. Expresa el modelo obtenido y extrae todas las conclusiones que se deriven de él. ¿Crees que un procedimiento de selección basado en el test F proporcionaría el mismo modelo?</li>
+<li>Las variables no incluidas en dicho modelo puede considerarse que no contribuyen a explicar la producción de cereales. ¿Qué haces para comprobar esto? ¿Las variables incluidas contribuyen de forma significativa a explicar la producción de cereales?</li>
+<li>Realiza un análisis de influencia y comenta los resultados obtenidos. ¿Crees necesario plantear un nuevo modelo?</li>
+<li>Comprueba las hipótesis sobre el modelo ajustado y comenta los resultados. Si resulta necesario propón un modelo alternativo y analízalo de forma completa.</li>
+</ul>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">lectura &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://goo.gl/Yi5g6S&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb146-2" title="2">ejer12 &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(lectura)</a></code></pre></div>
+<p><strong>Ejercicio 13.</strong> En un estudio medio ambiental sobre la diversidad de especies de tortuga en las islas Galápagos se recogió información sobre el número de especies endémicas (Endemics), así como el área de la isla (área), la altura del pico más alto de a isla (Elevation), la distancia a la isla más cercana (Nearest), la distancia a la isla de Santa Cruz (Scruz), y el área de la isla más próxima (Adjacent).</p>
+<p>El estudio está interesado las condiciones que pueden afectar a un mayor número de especies
+endémicas de tortuga sin tener en cuenta el número total de especies presentes.</p>
+<ul>
+<li>Identifica la variable respuesta, las predictoras, y el tipo de cada una de ellas.</li>
+<li>Realiza e interpreta los gráficos individuales descriptivos entre la respuesta y cada predictora de forma individual.</li>
+<li>Para tratar de linealizar las relaciones entre respuesta y predictora se transforman tomas las variables con la función logaritmo neperiano. ¿Cómo se interpretan los gráficos individuales descriptivos entre las variables transformadas?</li>
+<li>¿Qué tipo de modelo parece el más adecuado para esta situación experimental? Escribe la forma reducida de dicho modelo.</li>
+<li>Partiendo del modelo más complejo y utilizando el AIC como criterio de selección, escribe la ecuación del modelo resultante del proceso de selección. ¿Qué podemos decir de la bondad del ajuste del modelo obtenido?</li>
+<li>¿Cómo interpretamos los gráficos y test de diagnóstico asociados con el modelo obtenido?</li>
+<li>Realiza un análisis de influencia y si lo consideras necesario ajusta un nuevo modelo y analízalo.</li>
+<li>En función del modelo obtenido, construye diferentes escenarios para predecir el número de especies en una isla en función de las variables predictoras presentes en él. ¿Cuáles son las condiciones óptimas para la determinación de especies endémicas?</li>
+</ul>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1">Endemics &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">23</span>, <span class="dv">21</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">4</span>,<span class="dv">2</span>, <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">17</span>, <span class="dv">4</span>, <span class="dv">19</span>, <span class="dv">89</span>, <span class="dv">23</span>,</a>
+<a class="sourceLine" id="cb147-2" title="2"><span class="dv">2</span>, <span class="dv">37</span>, <span class="dv">33</span>, <span class="dv">9</span>, <span class="dv">30</span>, <span class="dv">65</span>, <span class="dv">81</span>, <span class="dv">95</span>, <span class="dv">28</span>, <span class="dv">73</span>, <span class="dv">16</span>, <span class="dv">8</span>, <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb147-3" title="3">Area &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">25.09</span>, <span class="fl">1.24</span>, <span class="fl">0.21</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>, <span class="fl">0.34</span>, <span class="fl">0.08</span>, <span class="fl">2.33</span>, <span class="fl">0.03</span>, <span class="fl">0.18</span>,</a>
+<a class="sourceLine" id="cb147-4" title="4"><span class="fl">58.27</span>, <span class="fl">634.49</span>,<span class="fl">0.57</span>, <span class="fl">0.78</span>, <span class="fl">17.35</span>, <span class="fl">4669.32</span>, <span class="fl">129.49</span>, <span class="fl">0.01</span>, <span class="fl">59.56</span>, <span class="fl">17.95</span>,</a>
+<a class="sourceLine" id="cb147-5" title="5"><span class="fl">0.23</span>,<span class="fl">4.89</span>, <span class="fl">551.62</span>, <span class="fl">572.33</span>, <span class="fl">903.82</span>, <span class="fl">24.08</span>, <span class="fl">170.92</span>, <span class="fl">1.84</span>, <span class="fl">1.24</span>, <span class="fl">2.85</span>)</a>
+<a class="sourceLine" id="cb147-6" title="6">Elevation &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">346</span>, <span class="dv">109</span>, <span class="dv">114</span>, <span class="dv">46</span>, <span class="dv">77</span>, <span class="dv">119</span>, <span class="dv">93</span>, <span class="dv">168</span>,<span class="dv">71</span>, <span class="dv">112</span>, <span class="dv">198</span>, <span class="dv">1494</span>,</a>
+<a class="sourceLine" id="cb147-7" title="7"><span class="dv">49</span>, <span class="dv">227</span>, <span class="dv">76</span>, <span class="dv">1707</span>, <span class="dv">343</span>, <span class="dv">25</span>, <span class="dv">777</span>, <span class="dv">458</span>, <span class="dv">94</span>, <span class="dv">367</span>, <span class="dv">716</span>, <span class="dv">906</span>, <span class="dv">864</span>, <span class="dv">259</span>, <span class="dv">640</span>,</a>
+<a class="sourceLine" id="cb147-8" title="8"><span class="dv">147</span>, <span class="dv">186</span>, <span class="dv">253</span>)</a>
+<a class="sourceLine" id="cb147-9" title="9">Nearest &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">2.8</span>, <span class="fl">1.9</span>, <span class="fl">1.9</span>, <span class="dv">8</span>, <span class="dv">6</span>, <span class="fl">34.1</span>, <span class="fl">0.4</span>, <span class="fl">2.6</span>, <span class="fl">1.1</span>, <span class="fl">4.3</span>,</a>
+<a class="sourceLine" id="cb147-10" title="10"><span class="fl">1.1</span>, <span class="fl">4.6</span>, <span class="fl">47.4</span>, <span class="fl">0.7</span>,<span class="fl">29.1</span>, <span class="fl">3.3</span>, <span class="fl">29.1</span>, <span class="fl">10.7</span>, <span class="fl">0.5</span>, <span class="fl">4.4</span>, <span class="fl">45.2</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>,</a>
+<a class="sourceLine" id="cb147-11" title="11"><span class="fl">16.5</span>, <span class="fl">2.6</span>, <span class="fl">0.6</span>, <span class="fl">6.8</span>, <span class="fl">34.1</span>)</a>
+<a class="sourceLine" id="cb147-12" title="12">Scruz &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.6</span>, <span class="fl">26.3</span>,<span class="fl">58.7</span>, <span class="fl">47.4</span>, <span class="fl">1.9</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="fl">290.2</span>, <span class="fl">0.4</span>, <span class="fl">50.2</span>, <span class="fl">88.3</span>,</a>
+<a class="sourceLine" id="cb147-13" title="13"><span class="fl">95.3</span>, <span class="fl">93.1</span>, <span class="fl">62.2</span>,<span class="fl">92.2</span>,<span class="fl">28.1</span>, <span class="fl">85.9</span>, <span class="fl">45.9</span>, <span class="fl">119.6</span>, <span class="fl">10.7</span>, <span class="fl">0.6</span>, <span class="fl">24.4</span>, <span class="fl">66.6</span>,</a>
+<a class="sourceLine" id="cb147-14" title="14"><span class="fl">19.8</span>, <span class="dv">0</span>, <span class="fl">16.5</span>, <span class="fl">49.2</span>, <span class="fl">9.6</span>, <span class="fl">50.9</span>, <span class="fl">254.7</span>)</a>
+<a class="sourceLine" id="cb147-15" title="15">Adjacent &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.84</span>, <span class="fl">572.33</span>, <span class="fl">0.78</span>, <span class="fl">0.18</span>, <span class="fl">903.82</span>, <span class="fl">1.84</span>, <span class="fl">0.34</span>, <span class="fl">2.85</span>, <span class="fl">17.95</span>,</a>
+<a class="sourceLine" id="cb147-16" title="16"><span class="fl">0.1</span>, <span class="fl">0.57</span>, <span class="fl">4669.32</span>, <span class="fl">58.27</span>, <span class="fl">0.21</span>, <span class="fl">129.49</span>, <span class="fl">634.49</span>, <span class="fl">59.56</span>, <span class="fl">0.1</span>, <span class="fl">129.49</span>,</a>
+<a class="sourceLine" id="cb147-17" title="17"><span class="fl">0.03</span>, <span class="fl">25.09</span>, <span class="fl">572.33</span>, <span class="fl">0.57</span>, <span class="fl">4.89</span>, <span class="fl">0.52</span>, <span class="fl">0.52</span>, <span class="fl">0.1</span>, <span class="fl">25.09</span>, <span class="fl">17.95</span>, <span class="fl">2.33</span>)</a>
+<a class="sourceLine" id="cb147-18" title="18">ejer13 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Endemics,Area,Elevation,Nearest,Scruz,Adjacent)</a></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="predicción.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["libroSTAT.pdf", "libroSTAT.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

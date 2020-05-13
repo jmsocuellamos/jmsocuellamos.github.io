@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.3 Comparación y selección de modelos | Modelos Estadísticos</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.3 Comparación y selección de modelos | Modelos Estadísticos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.3 Comparación y selección de modelos | Modelos Estadísticos" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Javier Morales (Universidad Miguel Hernández de Elche)" />
+<meta name="author" content="Mª Asunción Martínez (Universidad Miguel Hernández de Elche)" />
+
+
+<meta name="date" content="2020-05-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estimación-inferencia-y-bondad-de-ajuste.html"/>
+<link rel="next" href="multicolinealidad-y-diagnóstico-del-modelo.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelos Estadísticos</a></li>
+<li><a href="./">J. Morales y A.M. Mayoral</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="1" data-path="rlm.html"><a href="rlm.html"><i class="fa fa-check"></i><b>1</b> Regresión Lineal Múltiple y Polinómica</a><ul>
+<li class="chapter" data-level="1.1" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html"><i class="fa fa-check"></i><b>1.1</b> Tipos de modelos</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html#modelos-de-rlm"><i class="fa fa-check"></i><b>1.1.1</b> Modelos de RLM</a></li>
+<li class="chapter" data-level="1.1.2" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html#modelos-de-rp"><i class="fa fa-check"></i><b>1.1.2</b> Modelos de RP</a></li>
+<li class="chapter" data-level="1.1.3" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html#expresión-en-r-de-los-modelos"><i class="fa fa-check"></i><b>1.1.3</b> Expresión en <code>R</code> de los modelos</a></li>
+<li class="chapter" data-level="1.1.4" data-path="tipos-de-modelos.html"><a href="tipos-de-modelos.html#modelo-saturado-y-anidado"><i class="fa fa-check"></i><b>1.1.4</b> Modelo saturado y anidado</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>1.2</b> Estimación, inferencia y bondad de ajuste</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#estimación-por-mínimos-cuadrados"><i class="fa fa-check"></i><b>1.2.1</b> Estimación por mínimos cuadrados</a></li>
+<li class="chapter" data-level="1.2.2" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#estimación-por-máxima-verosimilitud"><i class="fa fa-check"></i><b>1.2.2</b> Estimación por máxima verosimilitud</a></li>
+<li class="chapter" data-level="1.2.3" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#inferencia"><i class="fa fa-check"></i><b>1.2.3</b> Inferencia</a></li>
+<li class="chapter" data-level="1.2.4" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#ejemplos"><i class="fa fa-check"></i><b>1.2.4</b> Ejemplos</a></li>
+<li class="chapter" data-level="1.2.5" data-path="estimación-inferencia-y-bondad-de-ajuste.html"><a href="estimación-inferencia-y-bondad-de-ajuste.html#bondad-del-ajuste"><i class="fa fa-check"></i><b>1.2.5</b> Bondad del ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html"><i class="fa fa-check"></i><b>1.3</b> Comparación y selección de modelos</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#significatividad-de-los-predictores"><i class="fa fa-check"></i><b>1.3.1</b> Significatividad de los predictores</a></li>
+<li class="chapter" data-level="1.3.2" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#los-estadísticos-aic-y-bic"><i class="fa fa-check"></i><b>1.3.2</b> Los estadísticos <span class="math inline">\(AIC\)</span> y <span class="math inline">\(BIC\)</span></a></li>
+<li class="chapter" data-level="1.3.3" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#procedimientos-secuenciales-de-selección-de-variables"><i class="fa fa-check"></i><b>1.3.3</b> Procedimientos secuenciales de selección de variables</a></li>
+<li class="chapter" data-level="1.3.4" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#funciones-especificas-para-modelos-de-regresión"><i class="fa fa-check"></i><b>1.3.4</b> Funciones especificas para modelos de regresión</a></li>
+<li class="chapter" data-level="1.3.5" data-path="comparación-y-selección-de-modelos.html"><a href="comparación-y-selección-de-modelos.html#ejemplos-2"><i class="fa fa-check"></i><b>1.3.5</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="multicolinealidad-y-diagnóstico-del-modelo.html"><a href="multicolinealidad-y-diagnóstico-del-modelo.html"><i class="fa fa-check"></i><b>1.4</b> Multicolinealidad y Diagnóstico del modelo</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="multicolinealidad-y-diagnóstico-del-modelo.html"><a href="multicolinealidad-y-diagnóstico-del-modelo.html#multicolinealidad"><i class="fa fa-check"></i><b>1.4.1</b> Multicolinealidad</a></li>
+<li class="chapter" data-level="1.4.2" data-path="multicolinealidad-y-diagnóstico-del-modelo.html"><a href="multicolinealidad-y-diagnóstico-del-modelo.html#diagnóstico-del-modelo"><i class="fa fa-check"></i><b>1.4.2</b> Diagnóstico del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="predicción.html"><a href="predicción.html"><i class="fa fa-check"></i><b>1.5</b> Predicción</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="predicción.html"><a href="predicción.html#estimación-de-la-respuesta-media."><i class="fa fa-check"></i><b>1.5.1</b> Estimación de la respuesta media.</a></li>
+<li class="chapter" data-level="1.5.2" data-path="predicción.html"><a href="predicción.html#predicción-de-nuevas-observaciones."><i class="fa fa-check"></i><b>1.5.2</b> Predicción de nuevas observaciones.</a></li>
+<li class="chapter" data-level="1.5.3" data-path="predicción.html"><a href="predicción.html#ejemplos-5"><i class="fa fa-check"></i><b>1.5.3</b> Ejemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ejercicios-modelos-de-regresión.html"><a href="ejercicios-modelos-de-regresión.html"><i class="fa fa-check"></i><b>2</b> Ejercicios modelos de regresión</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Creado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Estadísticos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="comparación-y-selección-de-modelos" class="section level2">
+<h2><span class="header-section-number">1.3</span> Comparación y selección de modelos</h2>
+<p>La modelización de datos es siempre una faena tediosa debido a la innumerable cantidad de alternativas posibles. Está por determinar el tipo de modelo, las transformaciones más adecuadas, identificar las variables más relevantes, descartar las innecesarias, y posteriormente abordar la diagnosis y validación del modelo, que trataremos en las secciones siguientes. Si el modelo está mal especificado, las estimaciones de los coeficientes pueden resultar considerablemente sesgadas. Una buena especificación del modelo es un trabajo, en general, complicado de obtener.</p>
+<p>Si se ha optado por la modelización lineal de una respuesta en función de una serie de posibles variables predictoras, y el objetivo es seleccionar el mejor subconjunto de predictores para explicar la respuesta, el planteamiento es siempre el de obtener “buenas” predicciones. Sin embargo, sabemos que cuantos más predictores incluyamos en el modelo, mejores predicciones tendremos (menos sesgo), pero a la vez menos precisión sobre ellas (ya que la varianza es proporcional al número de variables predictoras en el modelo). Para la selección del “mejor” modelo habremos de llegar a un compromiso entre estos dos propósitos. Tratamos pues la selección de variables como un problema de comparación y selección de modelos.</p>
+<p>Vamos a presentar diversos criterios para comparar modelos y seleccionar el mejor modelo de entre dos alternativas. En ocasiones todos darían los mismos resultados, pero generalmente no, por lo que habrá de ser el analista el que decida qué criterio utilizar en función de sus intereses prioritarios. La selección del modelo se puede realizar con múltiples criterios pero aquí presentamos los más habituales basados en:</p>
+<ul>
+<li>la significatividad de los predictores que están presentes en el modelo y los que no;</li>
+<li>Los estadísticos <span class="math inline">\(AIC\)</span> (<em>Akaike Information Criteria</em>) y <span class="math inline">\(BIC\)</span> (<em>Bayesian Information Criteria</em>);</li>
+</ul>
+<p>Una vez seleccionado el “mejor” modelo según el criterio elegido, habremos de proseguir la confirmación del mismo realizando la diagnosis y la validación del modelo, que puede fallar en algún paso, lo que nos conduciría de nuevo a la reformulación del modelo (y todos los pasos que le siguen), optando por aquellas correcciones y/o transformaciones de variables sugeridas en el diagnóstico. La consecución del <em>mejor modelo</em> será pues, un procedimiento iterativo, basado en selección y valoración de la calidad del ajuste, diagnóstico y validación. En muchas situaciones prácticas nos conformaremos con encontrar el modelo que tenga un funcionamiento más adecuado aunque no sea prefecto.</p>
+<div id="significatividad-de-los-predictores" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Significatividad de los predictores</h3>
+<p>Este procedimiento se basa en la comparación de modelos basada en las sumas de cuadrados y el test <span class="math inline">\(F\)</span> resultante de compararlas.</p>
+<p>Supongamos que tenemos ajustado un modelo definido por <span class="math inline">\(p\)</span> coeficientes. Si queremos valorar la contribución que hacen al ajuste de los datos un subconjunto de <span class="math inline">\(q\)</span> variables predictoras adicionales, debemos plantear el contraste</p>
+<p><span class="math display" id="eq:contrasteparcial">\[\begin{equation}
+H_0: y=X_p \beta_p + \epsilon, \ \ vs. \ \ H_1:y=X_{p+q} \beta_{p+q} + \epsilon.
+\tag{1.11}
+\end{equation}\]</span></p>
+<p>Para resolver el contraste <a href="comparación-y-selección-de-modelos.html#eq:contrasteparcial">(1.11)</a> se utiliza una versión del test <span class="math inline">\(F\)</span> de regresión de la tabla ANOVA. Para resolverlo basta con ajustar los modelos con <span class="math inline">\(p\)</span> y <span class="math inline">\(p+q\)</span> predictoras, para obtener las sumas de cuadrados del error respectivas, <span class="math inline">\(SSE(p)\)</span> y <span class="math inline">\(SSE(p+q)\)</span>. Su diferencia representa la reducción del error debida a la inclusión de los <span class="math inline">\(q\)</span> regresores adicionales, y bajo <span class="math inline">\(H_0\)</span> tienen una distribución chi-cuadrado, independiente de <span class="math inline">\(SSE(p)\)</span>. Se puede definir entonces un estadístico <span class="math inline">\(F\)</span> para realizar la comparación de modelos y resolver el contraste <a href="comparación-y-selección-de-modelos.html#eq:contrasteparcial">(1.11)</a>, dado por:</p>
+<p><span class="math display" id="eq:testFparcial">\[\begin{equation}
+F_q=\frac{(SSE(p)-SSE(p+q))/q}{SSE(p)/(n-p)} \sim F_{q,n-p}.
+\tag{1.12}
+\end{equation}\]</span></p>
+<p>Las <span class="math inline">\(q\)</span> variables adicionales se consideran relevantes (significativas) en la explicación de la respuesta, si <span class="math inline">\(F_q\)</span> tiene asociado un p-valor significativo. Un criterio para seleccionar el mejor modelo es quedarse con aquel menos complejo (en términos de predictoras presentes en el modelo) y que pueda considerarse con la misma capacidad predictiva (test <span class="math inline">\(F\)</span> parcial no significativo) que cualquier otro más complejo.</p>
+</div>
+<div id="los-estadísticos-aic-y-bic" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Los estadísticos <span class="math inline">\(AIC\)</span> y <span class="math inline">\(BIC\)</span></h3>
+<p>El criterio de información de Akaike (Akaike, 1973) está basado en la función de verosimilitud e incluye una penalización que aumenta con el número de parámetros estimados en el modelo. Premia pues, los modelos que dan un buen ajuste en términos de verosimilitud y a la vez son parsimoniosos (tienen pocos parámetros).</p>
+<p>Si <span class="math inline">\(\hat{\beta}\)</span> es el estimador máximo-verosímil del modelo de dimensión <span class="math inline">\(p\)</span>, y <span class="math inline">\(l(\theta)\)</span> denota el logaritmo (neperiano) de la verosimilitud asociada con dicho modelo, el estadístico <span class="math inline">\(AIC\)</span> se define por:</p>
+<p><span class="math display" id="eq:AIC">\[\begin{equation}
+AIC=-2\,l(\hat{\beta})+2p.
+\tag{1.13}
+\end{equation}\]</span></p>
+<p>Una versión del <span class="math inline">\(AIC\)</span> que tiene en cuenta también el número de datos utilizados en el ajuste, es el <em>Schwarz’s Bayesian criterion</em> (Schwarz, 1978), conocido como <span class="math inline">\(BIC\)</span>, y definido por:</p>
+<p><span class="math display" id="eq:BIC">\[\begin{equation}
+BIC=-2\,l(\hat{\beta})+log(n)\,p.
+\tag{1.14}
+\end{equation}\]</span></p>
+<p>Si queremos comparar dos modelos con estos criterios, se debe seleccionar el modelo con un menor valor en estos estadísticos.</p>
+</div>
+<div id="procedimientos-secuenciales-de-selección-de-variables" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> Procedimientos secuenciales de selección de variables</h3>
+<p>Los criterios anteriores resultan de utilidad cunado queremos comparar dos modelos diferentes (“modelos en competencia”), pero pueden resultar poco prácticos si el número de modelos en competencia es muy elevado, es decir, tenemos muchas posibles variables predictoras. Por ese motivo se introducen los conocidos como procedimientos secuenciales que permiten la evaluación de muchos modelos en competencia en muy poco tiempo, utilizando cualquiera de los criterios anteriores.</p>
+<p>La idea básica es partir de un modelo con cierto número de regresores, y secuencialmente moverse hacia modelos mejores (según el criterio elegido) con más o menos regresores de entre todos los observados. Una vez elegido el criterio para la selección, distinguimos básicamente entre los siguientes procedimientos secuenciales, en función de cuál es el punto (modelo) de partida y la forma de ir considerando modelos alternativos:</p>
+<ul>
+<li><strong>hacia adelante,</strong> se parte del modelo más simple y se van incluyendo una a una las variables que satisfacen el criterio de inclusión;</li>
+<li><strong>hacia atrás,</strong> se parte del modelo más complejo y se van excluyendo una a una las variables que satisfacen el criterio de exclusión;</li>
+<li><strong>paso a paso,</strong> se suele partir de un modelo y en cada paso se incluye o excluye la variable que satisface el criterio de inclusión/exclusión.</li>
+</ul>
+<p>Hay que tener en cuenta que dependiendo del tipo de modelo deberemos utilizar un tipo de procedimiento u otro. En el caso de los MRP no podemos utilizar el procedimiento hacia adelante, ya que se parte siempre del modelo con un mayor grado y se trata de identificar si dicho grado puede ser eliminado, dado que siempre tratamos de obtener el modelo más parsimonioso. En el caso de los modelos RLM no hay una preferencia con respecto al procedimiento secuencial.</p>
+<p>Los procedimientos hacia adelante y hacia atrás los hemos de llevar a cabo en R de forma manual y generalmente se utiliza el test F asociado a cada paso para resolver si una variable o efecto debe entrar o salir del modelo. Para ello utilizaremos las funciones <code>drop1()</code> y <code>add1()</code>. El procedimiento paso a paso es automático y se realiza con la función <code>step()</code>.</p>
+</div>
+<div id="funciones-especificas-para-modelos-de-regresión" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> Funciones especificas para modelos de regresión</h3>
+<p>En la librería <code>olsrr</code> dedicada exclusivamente al análisis de modelos de regresión (simple, múltiple y polinómica) se presentan diferentes funciones para los procesos de selección automática de variables utilizando el test <span class="math inline">\(F\)</span> parcial y el criterio AIC. Presentamos sólo aquellas funciones que utilizan como punto de partida el modelo saturado. Dichas funciones son:</p>
+<ul>
+<li><code>ols_step_backward_p(model)</code>: selección desde el modelo saturado mediante el test <span class="math inline">\(F\)</span>. Fijamos el parámetro <code>prem</code> igual a 0.05 para marcar el nivel de significatividad del contraste.</li>
+<li><code>ols_step_backward_aic(model)</code>: selección desde el modelo saturado mediante AIC.</li>
+</ul>
+<p>Aunque estas funciones pueden mostrar todo el desarrollo de selección (al igual que la función <code>step()</code>), la ventaja principal es que puede mostrar un resumen del proceso final para estudiar el modelo final obtenido. En los ejemplos mostraremos el uso de estas funciones.</p>
+</div>
+<div id="ejemplos-2" class="section level3">
+<h3><span class="header-section-number">1.3.5</span> Ejemplos</h3>
+<p>A continuación, se muestra como utilizar los criterios de selección de variables y los procedimientos secuenciales de selección en los bancos de datos que venimos trabajando en esta unidad.</p>
+<div id="datos-de-bosque-2" class="section level4">
+<h4><span class="header-section-number">1.3.5.1</span> Datos de Bosque</h4>
+<p>Veamos como seleccionar el mejor modelo para los datos de bosque. En puntos anteriores ya hemos obtenido el modelo saturado y pudimos ver como la variable <code>dbh</code> parecía no resultar relevante para explicar el comportamiento del volumen obtenido. Proponemos un nuevo modelo sin dicha variable y comparamos ambos modelos utilizando los criterios de comparación.</p>
+<p><em>Para la comparación de modelos anidados siempre deberemos empezar desde el modelo más sencillo al más complejo.</em></p>
+<p>Los modelos que deseamos comparar son:
+<span class="math display">\[\begin{array}{ll}
+M_2: &amp; vol \sim d16 + ht\\
+M_1: &amp; vol \sim dbh + d16 + ht
+\end{array}\]</span></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># Modelo saturado</span></a>
+<a class="sourceLine" id="cb37-2" title="2">M1 &lt;-<span class="st"> </span><span class="kw">lm</span>(vol <span class="op">~</span><span class="st"> </span>dbh <span class="op">+</span><span class="st"> </span>d16 <span class="op">+</span><span class="st"> </span>ht, <span class="dt">data =</span> bosque)</a>
+<a class="sourceLine" id="cb37-3" title="3"><span class="co"># Construimos modelo sin dbh</span></a>
+<a class="sourceLine" id="cb37-4" title="4">M2 &lt;-<span class="st"> </span><span class="kw">lm</span>(vol <span class="op">~</span><span class="st"> </span>d16 <span class="op">+</span><span class="st"> </span>ht, <span class="dt">data =</span> bosque)</a>
+<a class="sourceLine" id="cb37-5" title="5"><span class="co"># Comparación mediante test F</span></a>
+<a class="sourceLine" id="cb37-6" title="6"><span class="kw">anova</span>(M2, M1)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: vol ~ d16 + ht
+## Model 2: vol ~ dbh + d16 + ht
+##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+## 1     17 177.36                           
+## 2     16 153.30  1     24.06 2.5111 0.1326</code></pre>
+<p>El test <span class="math inline">\(F\)</span> parcial resulta no significativo (p-valor = 0.1326) al comparar los modelos <span class="math inline">\(M_1\)</span> y <span class="math inline">\(M_2\)</span>, lo que implica que ambos modelos pueden ser considerados iguales. Comparamos el proceso inferencial en cada modelo, dado que al considerar el modelo más simple estamos admitiendo que <code>dbh</code> no es relevante para explicar el comportamiento del volumen.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># Comparativa de modelos</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="kw">tab_model</span>(M1,M2,<span class="dt">show.ci =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+vol
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+vol
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-108.58
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-105.90
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+dbh
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+1.63
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.133
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+d16
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+5.67
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+7.41
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+ht
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.69
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.001</strong>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.68
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+20
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+20
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="2">
+0.959 / 0.951
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="2">
+0.953 / 0.947
+</td>
+</tr>
+</table>
+<p>Se puede ver que el <span class="math inline">\(R^2\)</span> ajustado para ambos modelos es prácticamente idéntico reflejando que poseen la misma capacidad explicativa. Los modelos obtenidos muestran estimaciones de los coeficientes muy parecidos para ambos modelos. Eliminar la variable <code>dbh</code> no afecta a la capacidad explicativa del modelo, y no altera la contribución de cada predictora a la explicación de la respuesta. El modelo resultante viene dado por:
+<span class="math display">\[
+\widehat{\text{vol}} = -105.90 + 7.41*\text{d16} + 0.68*\text{ht} 
+\]</span></p>
+<p>Utilzamos ahora los criterios <span class="math inline">\(AIC\)</span> y <span class="math inline">\(BIC\)</span> para comparar ambos modelos:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">g2 &lt;-<span class="st"> </span><span class="kw">glance</span>(M2)</a>
+<a class="sourceLine" id="cb40-2" title="2">g1 &lt;-<span class="st"> </span><span class="kw">glance</span>(M1)</a>
+<a class="sourceLine" id="cb40-3" title="3"><span class="kw">kable</span>(<span class="kw">rbind</span>(g1, g2),<span class="dt">digits =</span> <span class="dv">2</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+r.squared
+</th>
+<th style="text-align:right;">
+adj.r.squared
+</th>
+<th style="text-align:right;">
+sigma
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+logLik
+</th>
+<th style="text-align:right;">
+AIC
+</th>
+<th style="text-align:right;">
+BIC
+</th>
+<th style="text-align:right;">
+deviance
+</th>
+<th style="text-align:right;">
+df.residual
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.96
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+3.10
+</td>
+<td style="text-align:right;">
+124.93
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-48.75
+</td>
+<td style="text-align:right;">
+107.49
+</td>
+<td style="text-align:right;">
+112.47
+</td>
+<td style="text-align:right;">
+153.30
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+3.23
+</td>
+<td style="text-align:right;">
+170.95
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-50.20
+</td>
+<td style="text-align:right;">
+108.41
+</td>
+<td style="text-align:right;">
+112.39
+</td>
+<td style="text-align:right;">
+177.36
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+</tbody>
+</table>
+<p>Si utilizamos el <span class="math inline">\(AIC\)</span> podemos concluir que el modelo preferido es <span class="math inline">\(M_2\)</span> dado que obtenemos un valor más pequeño, mientras que si usamos el <span class="math inline">\(BIC\)</span> el preferido es <span class="math inline">\(M1\)</span>. Sin embargo, dado que en ambos casos las diferencias entre ambos modelos son excesivamente pequeñas concluir que uno es mejor que otro resulta complicado y utilizamos el criterio de simplicidad. Ante modelos parecidos elegimos el menos complejo que en este caso sería el que tiene menos predictoras (modelo <span class="math inline">\(M2\)</span>).</p>
+<p>Por último, veremos como utilizar el procedimiento secuencial automático por pasos para obtener el mejor modelo para este conjunto de datos. En este caso partimos del modelo saturado.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">stats<span class="op">::</span><span class="kw">step</span>(fit.bosque)</a></code></pre></div>
+<pre><code>## Start:  AIC=48.73
+## vol ~ dbh + d16 + ht
+## 
+##        Df Sum of Sq    RSS    AIC
+## &lt;none&gt;              153.30 48.733
+## - dbh   1     24.06 177.36 49.649
+## - ht    1    173.42 326.72 61.867
+## - d16   1    213.21 366.51 64.166</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = vol ~ dbh + d16 + ht, data = bosque)
+## 
+## Coefficients:
+## (Intercept)          dbh          d16           ht  
+##   -108.5758       1.6258       5.6714       0.6938</code></pre>
+<p>El proceso de selección comienza a partir del moldeo saturado y determina para cada predictora cual sería el cambio en el <span class="math inline">\(AIC\)</span> (columna AIC) si dicha variable fuera eliminada del modelo. El modelo saturado tiene un <span class="math inline">\(AIC\)</span> de 48.733 (fila <code>&lt;none&gt;</code>), mientras que el modelo donde se elimina la variable <code>dbh</code> (fila <code>- dbh</code>) tiene un <span class="math inline">\(AIC\)</span> de 49.649. Atendiendo al criterio establecido de quedarnos con el modelo con un menor <span class="math inline">\(AIC\)</span> el modelo preferido sería el saturado. Esto contradice los resultados obtenidos con el test <span class="math inline">\(F\)</span> parcial pero es posible cuando tenemos pocos datos o los valores de <span class="math inline">\(AIC\)</span> están muy próximos.</p>
+<p>Repetimos el análisis de selección automática con las funciones de la libreria <code>olsrr</code>.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">ols_step_backward_p</span>(fit.bosque, <span class="dt">prem =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<pre><code>## 
+## 
+##                           Elimination Summary                            
+## ------------------------------------------------------------------------
+##         Variable                  Adj.                                      
+## Step    Removed     R-Square    R-Square     C(p)       AIC        RMSE     
+## ------------------------------------------------------------------------
+##    1    dbh           0.9526      0.9471    4.5111    108.4066    3.2300    
+## ------------------------------------------------------------------------</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">ols_step_backward_aic</span>(fit.bosque)</a></code></pre></div>
+<pre><code>## [1] &quot;No variables have been removed from the model.&quot;</code></pre>
+<p>Como se puede ver la solución es la misma que la obtenida con la función <code>step()</code>pero la forma de mostrar los resultados es mucho más simple.</p>
+<p>En casos con muchas posibles predictoras puede resultar más útil compara solo los mejores modelos que podríamos obtener con todas las posibles combinaciones de predictoras. Para realizar esta tarea podemos utilizar la función <code>ols_step_best_subset()</code>. Veamos su funcionamiento con este ejemplo a pesar de que el número de predictoras es pequeño, y el número de posibles modelos es reducido.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">ols_step_best_subset</span>(fit.bosque)</a></code></pre></div>
+<pre><code>##  Best Subsets Regression 
+## -------------------------
+## Model Index    Predictors
+## -------------------------
+##      1         d16        
+##      2         d16 ht     
+##      3         dbh d16 ht 
+## -------------------------
+## 
+##                                                     Subsets Regression Summary                                                    
+## ----------------------------------------------------------------------------------------------------------------------------------
+##                        Adj.        Pred                                                                                            
+## Model    R-Square    R-Square    R-Square     C(p)        AIC        SBIC        SBC         MSEP        FPE       HSP       APC  
+## ----------------------------------------------------------------------------------------------------------------------------------
+##   1        0.9084      0.9033      0.8839    19.8001    119.5982    60.6857    122.5854    381.3477    20.9618    1.1210    0.1120 
+##   2        0.9526      0.9471       0.933     4.5111    108.4066    52.1187    112.3895    209.5068    11.9979    0.6521    0.0641 
+##   3        0.9591      0.9514      0.9242     4.0000    107.4909    52.6084    112.4696    193.1589    11.4976    0.6388    0.0614 
+## ----------------------------------------------------------------------------------------------------------------------------------
+## AIC: Akaike Information Criteria 
+##  SBIC: Sawa&#39;s Bayesian Information Criteria 
+##  SBC: Schwarz Bayesian Criteria 
+##  MSEP: Estimated error of prediction, assuming multivariate normality 
+##  FPE: Final Prediction Error 
+##  HSP: Hocking&#39;s Sp 
+##  APC: Amemiya Prediction Criteria</code></pre>
+<p>Se presentan diferentes criterios para valorar el mejor modelo de entre todas las combinaciones posibles. En este caso el analista debe decidir cual de los propuestos es más adecuado. El único criterio que no se encuentra disponible es el test <span class="math inline">\(F\)</span> parcial.</p>
+<p>Dado que la capacidad explicativa los dos modelos propuestos es muy similar será preferible el menos complejo. En la fase de diagnóstico ya comprobaremos si ese modelo más simple debe ser modificado o si por el contrario es adecuado para proceder con la fase de predicción.</p>
+<p>Almacenamos el nuevo modelo:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="co"># Modelo seleccionado</span></a>
+<a class="sourceLine" id="cb50-2" title="2">fit.bosque &lt;-<span class="st"> </span><span class="kw">lm</span>(vol <span class="op">~</span><span class="st"> </span>d16 <span class="op">+</span><span class="st"> </span>ht, <span class="dt">data =</span> bosque)</a></code></pre></div>
+</div>
+<div id="datos-de-concentración-2" class="section level4">
+<h4><span class="header-section-number">1.3.5.2</span> Datos de Concentración</h4>
+<p>Veamos como seleccionar el mejor modelo para los datos de concentración. En puntos anteriores ya hemos podido ver que el peso del hígado resultaba poco relevante, con lo que podríamos plantear un contraste para saber si podemos prescindir de dicha variable. Sin embargo, la forma habitual de proceder sería utilizar en primer lugar un procedimiento automático para seleccionar las predictoras y chequear posteriormente mediante un test <span class="math inline">\(F\)</span> parcial si el modelo obtenido posee la misma capacidad explicativa que el modelo saturado.</p>
+<p>Planteamos el proceso secuencial:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">stats<span class="op">::</span><span class="kw">step</span>(fit.concen)</a></code></pre></div>
+<pre><code>## Start:  AIC=-93.78
+## concen ~ p.cuerpo + p.higado + dosis
+## 
+##            Df Sum of Sq      RSS     AIC
+## - p.higado  1  0.004120 0.093729 -94.924
+## &lt;none&gt;                  0.089609 -93.778
+## - p.cuerpo  1  0.042408 0.132017 -88.416
+## - dosis     1  0.044982 0.134591 -88.049
+## 
+## Step:  AIC=-94.92
+## concen ~ p.cuerpo + dosis
+## 
+##            Df Sum of Sq      RSS     AIC
+## &lt;none&gt;                  0.093729 -94.924
+## - p.cuerpo  1  0.039851 0.133580 -90.192
+## - dosis     1  0.043929 0.137658 -89.621</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = concen ~ p.cuerpo + dosis, data = concentracion)
+## 
+## Coefficients:
+## (Intercept)     p.cuerpo        dosis  
+##     0.28552     -0.02044      4.12533</code></pre>
+<p>En la primera iteración el <span class="math inline">\(AIC\)</span> del modelo saturado es igual a -93.78 mientras que el del modelo que prescinde de <code>p.higado</code> es de -94.92. Por tanto, dicha variable se elimina del modelo que pasa a tener un <span class="math inline">\(AIC\)</span> de -94.92. En la segunda iteración la variable candidata a salir es <code>p.cuerpo</code>, pero su <span class="math inline">\(AIC\)</span> asociado es superior al del modelo actual y no se descarta.</p>
+<p>Verificamos mediante el test <span class="math inline">\(F\)</span> parcial:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="co"># Modelo saturado</span></a>
+<a class="sourceLine" id="cb54-2" title="2">M1 &lt;-<span class="st"> </span><span class="kw">lm</span>(concen <span class="op">~</span><span class="st"> </span>p.higado <span class="op">+</span><span class="st"> </span>p.cuerpo <span class="op">+</span><span class="st"> </span>dosis, <span class="dt">data =</span> concentracion)</a>
+<a class="sourceLine" id="cb54-3" title="3"><span class="co"># Construimos modelo sin dbh</span></a>
+<a class="sourceLine" id="cb54-4" title="4">M2 &lt;-<span class="st"> </span><span class="kw">lm</span>(concen <span class="op">~</span><span class="st"> </span>p.cuerpo <span class="op">+</span><span class="st"> </span>dosis, <span class="dt">data =</span> concentracion)</a>
+<a class="sourceLine" id="cb54-5" title="5"><span class="co"># Comparación mediante test F</span></a>
+<a class="sourceLine" id="cb54-6" title="6"><span class="kw">anova</span>(M2, M1)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: concen ~ p.cuerpo + dosis
+## Model 2: concen ~ p.higado + p.cuerpo + dosis
+##   Res.Df      RSS Df Sum of Sq      F Pr(&gt;F)
+## 1     16 0.093729                           
+## 2     15 0.089609  1   0.00412 0.6897 0.4193</code></pre>
+<p>EL test <span class="math inline">\(F\)</span> resulta no significativo indicando que el modelo más simple tiene la misma capacidad explicativa que el más complejo. Estudiamos dicho modelo comparándolo con el saturado.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="co"># Comparativa de modelos</span></a>
+<a class="sourceLine" id="cb56-2" title="2"><span class="kw">tab_model</span>(M1,M2,<span class="dt">show.ci =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+concen
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+concen
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.27
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.192
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.29
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.155
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+p.higado
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.01
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.419
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+p.cuerpo
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.02
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.018</strong>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.02
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.019</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+dosis
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+4.18
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.015</strong>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+4.13
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.015</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+19
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+19
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="2">
+0.364 / 0.237
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="2">
+0.335 / 0.251
+</td>
+</tr>
+</table>
+<p>Podemos ver coo el <span class="math inline">\(R^2\)</span> ajustado mejora al eliminar <code>p.higado</code> y los coeficientes son prácticamente idénticos:</p>
+<p><span class="math display">\[
+\widehat{\text{concen}} = 0.29 - 0.02*\text{p.cuerpo} + 4.13*\text{dosis} 
+\]</span></p>
+<p>Utilizamos ahora las funciones específicas:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">ols_step_backward_p</span>(fit.concen, <span class="dt">prem =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<pre><code>## 
+## 
+##                           Elimination Summary                            
+## ------------------------------------------------------------------------
+##         Variable                  Adj.                                      
+## Step    Removed     R-Square    R-Square     C(p)       AIC        RMSE     
+## ------------------------------------------------------------------------
+##    1    p.higado      0.3347      0.2515    2.6897    -39.0043    0.0765    
+## ------------------------------------------------------------------------</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="kw">ols_step_backward_aic</span>(fit.concen)</a></code></pre></div>
+<pre><code>## 
+## 
+##                    Backward Elimination Summary                   
+## ----------------------------------------------------------------
+## Variable        AIC       RSS     Sum Sq     R-Sq      Adj. R-Sq 
+## ----------------------------------------------------------------
+## Full Model    -37.858    0.090     0.051    0.36390      0.23668 
+## p.higado      -39.004    0.094     0.047    0.33466      0.25149 
+## ----------------------------------------------------------------</code></pre>
+<p>Almacenamos el modelo resultante para la fase de diagnóstico:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">fit.concen &lt;-<span class="st"> </span><span class="kw">lm</span>(concen <span class="op">~</span><span class="st"> </span>p.cuerpo <span class="op">+</span><span class="st"> </span>dosis, <span class="dt">data =</span> concentracion)</a></code></pre></div>
+</div>
+<div id="datos-de-papel-2" class="section level4">
+<h4><span class="header-section-number">1.3.5.3</span> Datos de Papel</h4>
+<p>Para el bando de datos de Papel se ha propuesto como modelo uno del tipo polinómico de grado 2. El proceso de selección en este caso se basa en comparar el modelo cuadrático frente al lineal para saber si es posible prescindir del grado 2, o si por el contrario es necesario para explicar la tensión del papel.</p>
+<p>Los modelos que deseamos comparar son:
+<span class="math display">\[\begin{array}{ll}
+M_2: &amp; tension \sim madera\\
+M_1: &amp; tension \sim madera + I(madera^2)
+\end{array}\]</span></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># Modelo saturado</span></a>
+<a class="sourceLine" id="cb62-2" title="2">M1 &lt;-<span class="st"> </span><span class="kw">lm</span>(tension <span class="op">~</span><span class="st"> </span>madera <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(madera<span class="op">^</span><span class="dv">2</span>), <span class="dt">data =</span> papel)</a>
+<a class="sourceLine" id="cb62-3" title="3"><span class="co"># Construimos modelo sin dbh</span></a>
+<a class="sourceLine" id="cb62-4" title="4">M2 &lt;-<span class="st"> </span><span class="kw">lm</span>(tension <span class="op">~</span><span class="st"> </span>madera, <span class="dt">data =</span> papel)</a>
+<a class="sourceLine" id="cb62-5" title="5"><span class="co"># Comparación mediante test F</span></a>
+<a class="sourceLine" id="cb62-6" title="6"><span class="kw">anova</span>(M2, M1)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: tension ~ madera
+## Model 2: tension ~ madera + I(madera^2)
+##   Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    
+## 1     17 2373.46                                  
+## 2     16  312.64  1    2060.8 105.47 1.894e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>El test <span class="math inline">\(F\)</span> parcial resulta significativo indicando que los modelos considerados tienen capacidades explicativas estadísticamente distintas. No podemos rechazar el modelo cuadrático frente al modelo lineal. Veamos la tabla de estimación de ambos modelos:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># Comparativa de modelos</span></a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="kw">tab_model</span>(M1,M2,<span class="dt">show.ci =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+tension
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+tension
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-6.67
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.067
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+21.32
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+madera
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+11.76
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+1.77
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.014</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+madera^2
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.63
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+19
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+19
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="2">
+0.909 / 0.897
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="2">
+0.305 / 0.265
+</td>
+</tr>
+</table>
+<p>El <span class="math inline">\(R^2\)</span> ajustado pasa del 26.5% en el modelo lineal al 89.7% en el modelo cuadrático indicando una gran mejora en la capacidad explicativa, y por tanto eligiendo este último como el modelo que debe pasar a la fase de diagnóstico.</p>
+<p>Utilizamos las funciones resumen
+Utilizamos ahora las funciones específicas:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">ols_step_backward_p</span>(fit.papel, <span class="dt">prem =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;No variables have been removed from the model.&quot;</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">ols_step_backward_aic</span>(fit.papel)</a></code></pre></div>
+<pre><code>## [1] &quot;No variables have been removed from the model.&quot;</code></pre>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estimación-inferencia-y-bondad-de-ajuste.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multicolinealidad-y-diagnóstico-del-modelo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["libroSTAT.pdf", "libroSTAT.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
