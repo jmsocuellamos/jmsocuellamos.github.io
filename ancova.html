@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Unidad 5 Modelos ANCOVA | Modelos Estadísticos</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Unidad 5 Modelos ANCOVA | Modelos Estadísticos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unidad 5 Modelos ANCOVA | Modelos Estadísticos" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Javier Morales (Universidad Miguel Hernández de Elche)" />
+<meta name="author" content="Mª Asunción Martínez (Universidad Miguel Hernández de Elche)" />
+
+
+<meta name="date" content="2021-03-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anova.html"/>
+<link rel="next" href="smooth.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://sites.google.com/umh.es/statistical-models" target="blank">Modelos Estadísticos</a></li>
+<li><a href="./">J. Morales y A.M. Mayoral</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html"><i class="fa fa-check"></i>Antes de empezar</a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#conceptos-básicos-del-diseño-experimental"><i class="fa fa-check"></i>Conceptos básicos del diseño experimental</a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#objetivo-del-diseño-experimental"><i class="fa fa-check"></i>Objetivo del diseño experimental</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#población-y-muestra"><i class="fa fa-check"></i>Población y muestra</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#medidas-y-escalas-de-medida"><i class="fa fa-check"></i>Medidas y escalas de medida</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#parámetros-poblacionales-y-estadísticos"><i class="fa fa-check"></i>Parámetros poblacionales y estadísticos</a></li>
+</ul></li>
+<li><a href="antes-de-empezar.html#primeros-pasos-con-r-y-rstudio">Primeros pasos con <code>R</code> y <code>RStudio</code></a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#instalación-y-puesta-en-marcha"><i class="fa fa-check"></i>Instalación y puesta en marcha</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#informes-prediseñados"><i class="fa fa-check"></i>Informes prediseñados</a></li>
+<li><a href="antes-de-empezar.html#librerías-de-r-necesarías">Librerías de <code>R</code> necesarías</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="modelstats.html"><a href="modelstats.html"><i class="fa fa-check"></i><b>1</b> Modelos estadísticos</a><ul>
+<li class="chapter" data-level="1.1" data-path="modelstats.html"><a href="modelstats.html#componentes-del-modelo"><i class="fa fa-check"></i><b>1.1</b> Componentes del modelo</a></li>
+<li class="chapter" data-level="1.2" data-path="modelstats.html"><a href="modelstats.html#tipos-de-modelos"><i class="fa fa-check"></i><b>1.2</b> Tipos de modelos</a></li>
+<li class="chapter" data-level="1.3" data-path="modelstats.html"><a href="modelstats.html#fases-en-la-construcción-de-un-modelo"><i class="fa fa-check"></i><b>1.3</b> Fases en la construcción de un modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rls.html"><a href="rls.html"><i class="fa fa-check"></i><b>2</b> Regresión Lineal Simple (RLS)</a><ul>
+<li class="chapter" data-level="2.1" data-path="rls.html"><a href="rls.html#bancos-de-datos"><i class="fa fa-check"></i><b>2.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="2.2" data-path="rls.html"><a href="rls.html#modelorls"><i class="fa fa-check"></i><b>2.2</b> El modelo RLS</a></li>
+<li class="chapter" data-level="2.3" data-path="rls.html"><a href="rls.html#estimacionrls"><i class="fa fa-check"></i><b>2.3</b> Estimación del modelo</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rls.html"><a href="rls.html#mincuadrls"><i class="fa fa-check"></i><b>2.3.1</b> Estimación Mínimos Cuadrados</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rls.html"><a href="rls.html#emvrls"><i class="fa fa-check"></i><b>2.3.2</b> Estimación Máximo Verosímil</a></li>
+<li class="chapter" data-level="2.3.3" data-path="rls.html"><a href="rls.html#emR"><i class="fa fa-check"></i><b>2.3.3</b> Estimación con R</a></li>
+<li class="chapter" data-level="2.3.4" data-path="rls.html"><a href="rls.html#ejemplos"><i class="fa fa-check"></i><b>2.3.4</b> Ejemplos</a></li>
+<li class="chapter" data-level="2.3.5" data-path="rls.html"><a href="rls.html#propiedades-de-la-recta-de-regresión."><i class="fa fa-check"></i><b>2.3.5</b> Propiedades de la recta de regresión.</a></li>
+<li class="chapter" data-level="2.3.6" data-path="rls.html"><a href="rls.html#rls_varmodel"><i class="fa fa-check"></i><b>2.3.6</b> Estimación varianza del modelo.</a></li>
+<li class="chapter" data-level="2.3.7" data-path="rls.html"><a href="rls.html#inferencia-sobre-los-coeficientes-del-modelo"><i class="fa fa-check"></i><b>2.3.7</b> Inferencia sobre los coeficientes del modelo</a></li>
+<li class="chapter" data-level="2.3.8" data-path="rls.html"><a href="rls.html#ejemplo"><i class="fa fa-check"></i><b>2.3.8</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rls.html"><a href="rls.html#bondad-del-ajuste"><i class="fa fa-check"></i><b>2.4</b> Bondad del Ajuste</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="rls.html"><a href="rls.html#rls_errorresidual"><i class="fa fa-check"></i><b>2.4.1</b> Error residual</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rls.html"><a href="rls.html#rls_tablaanova"><i class="fa fa-check"></i><b>2.4.2</b> Tabla Anova</a></li>
+<li class="chapter" data-level="2.4.3" data-path="rls.html"><a href="rls.html#coeficiente-de-determinación"><i class="fa fa-check"></i><b>2.4.3</b> Coeficiente de determinación</a></li>
+<li class="chapter" data-level="2.4.4" data-path="rls.html"><a href="rls.html#ejemplo-1"><i class="fa fa-check"></i><b>2.4.4</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rls.html"><a href="rls.html#rls_diag"><i class="fa fa-check"></i><b>2.5</b> Diagnóstico del Modelo</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rls.html"><a href="rls.html#linealidad-y-homocedasticidad."><i class="fa fa-check"></i><b>2.5.1</b> Linealidad y homocedasticidad.</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rls.html"><a href="rls.html#ejemplo-2"><i class="fa fa-check"></i><b>2.5.2</b> Ejemplo</a></li>
+<li class="chapter" data-level="2.5.3" data-path="rls.html"><a href="rls.html#normalidad"><i class="fa fa-check"></i><b>2.5.3</b> Normalidad</a></li>
+<li class="chapter" data-level="2.5.4" data-path="rls.html"><a href="rls.html#independencia."><i class="fa fa-check"></i><b>2.5.4</b> Independencia.</a></li>
+<li class="chapter" data-level="2.5.5" data-path="rls.html"><a href="rls.html#otros-gráficos-de-diagnóstico"><i class="fa fa-check"></i><b>2.5.5</b> Otros gráficos de diagnóstico</a></li>
+<li class="chapter" data-level="2.5.6" data-path="rls.html"><a href="rls.html#incumplimiento-de-hipótesis"><i class="fa fa-check"></i><b>2.5.6</b> Incumplimiento de hipótesis</a></li>
+<li class="chapter" data-level="2.5.7" data-path="rls.html"><a href="rls.html#análisis-de-influencia"><i class="fa fa-check"></i><b>2.5.7</b> Análisis de influencia</a></li>
+<li class="chapter" data-level="2.5.8" data-path="rls.html"><a href="rls.html#transformaciones"><i class="fa fa-check"></i><b>2.5.8</b> Transformaciones</a></li>
+<li class="chapter" data-level="2.5.9" data-path="rls.html"><a href="rls.html#ejemplos-1"><i class="fa fa-check"></i><b>2.5.9</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rls.html"><a href="rls.html#rls_pred"><i class="fa fa-check"></i><b>2.6</b> Predicción del modelo</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="rls.html"><a href="rls.html#respuesta-media"><i class="fa fa-check"></i><b>2.6.1</b> Respuesta media</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rls.html"><a href="rls.html#nueva-observación"><i class="fa fa-check"></i><b>2.6.2</b> Nueva observación</a></li>
+<li class="chapter" data-level="2.6.3" data-path="rls.html"><a href="rls.html#ejemplos-2"><i class="fa fa-check"></i><b>2.6.3</b> Ejemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rlm.html"><a href="rlm.html"><i class="fa fa-check"></i><b>3</b> Regresión Lineal Múltiple y Polinómica</a><ul>
+<li class="chapter" data-level="3.1" data-path="rlm.html"><a href="rlm.html#tipos-de-modelos-1"><i class="fa fa-check"></i><b>3.1</b> Tipos de modelos</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="rlm.html"><a href="rlm.html#modelos-de-rlm"><i class="fa fa-check"></i><b>3.1.1</b> Modelos de RLM</a></li>
+<li class="chapter" data-level="3.1.2" data-path="rlm.html"><a href="rlm.html#modelos-de-rp"><i class="fa fa-check"></i><b>3.1.2</b> Modelos de RP</a></li>
+<li class="chapter" data-level="3.1.3" data-path="rlm.html"><a href="rlm.html#expresión-en-r-de-los-modelos"><i class="fa fa-check"></i><b>3.1.3</b> Expresión en R de los modelos</a></li>
+<li class="chapter" data-level="3.1.4" data-path="rlm.html"><a href="rlm.html#modelo-saturado-y-anidado"><i class="fa fa-check"></i><b>3.1.4</b> Modelo saturado y anidado</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="rlm.html"><a href="rlm.html#estimación-e-inferencia"><i class="fa fa-check"></i><b>3.2</b> Estimación e inferencia</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="rlm.html"><a href="rlm.html#mínimos-cuadrados"><i class="fa fa-check"></i><b>3.2.1</b> Mínimos cuadrados</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rlm.html"><a href="rlm.html#propiedades"><i class="fa fa-check"></i><b>3.2.2</b> Propiedades</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rlm.html"><a href="rlm.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>3.2.3</b> Máxima verosimilitud</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rlm.html"><a href="rlm.html#inferencia"><i class="fa fa-check"></i><b>3.2.4</b> Inferencia</a></li>
+<li class="chapter" data-level="3.2.5" data-path="rlm.html"><a href="rlm.html#ejemplos-3"><i class="fa fa-check"></i><b>3.2.5</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rlm.html"><a href="rlm.html#bondad-del-ajuste-1"><i class="fa fa-check"></i><b>3.3</b> Bondad del ajuste</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="rlm.html"><a href="rlm.html#tabla-anova"><i class="fa fa-check"></i><b>3.3.1</b> Tabla ANOVA</a></li>
+<li class="chapter" data-level="3.3.2" data-path="rlm.html"><a href="rlm.html#coeficiente-determinación"><i class="fa fa-check"></i><b>3.3.2</b> Coeficiente determinación</a></li>
+<li class="chapter" data-level="3.3.3" data-path="rlm.html"><a href="rlm.html#ejemplos-4"><i class="fa fa-check"></i><b>3.3.3</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="rlm.html"><a href="rlm.html#comparación-y-selección-de-modelos"><i class="fa fa-check"></i><b>3.4</b> Comparación y selección de modelos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="rlm.html"><a href="rlm.html#significatividad-de-los-predictores"><i class="fa fa-check"></i><b>3.4.1</b> Significatividad de los predictores</a></li>
+<li class="chapter" data-level="3.4.2" data-path="rlm.html"><a href="rlm.html#estadísticos-aic-y-bic"><i class="fa fa-check"></i><b>3.4.2</b> Estadísticos AIC y BIC</a></li>
+<li class="chapter" data-level="3.4.3" data-path="rlm.html"><a href="rlm.html#selección-automática"><i class="fa fa-check"></i><b>3.4.3</b> Selección automática</a></li>
+<li class="chapter" data-level="3.4.4" data-path="rlm.html"><a href="rlm.html#funciones-en-r"><i class="fa fa-check"></i><b>3.4.4</b> Funciones en R</a></li>
+<li class="chapter" data-level="3.4.5" data-path="rlm.html"><a href="rlm.html#ejemplos-5"><i class="fa fa-check"></i><b>3.4.5</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="rlm.html"><a href="rlm.html#multicolinealidad"><i class="fa fa-check"></i><b>3.5</b> Multicolinealidad</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="rlm.html"><a href="rlm.html#causas"><i class="fa fa-check"></i><b>3.5.1</b> Causas</a></li>
+<li class="chapter" data-level="3.5.2" data-path="rlm.html"><a href="rlm.html#efectos"><i class="fa fa-check"></i><b>3.5.2</b> Efectos</a></li>
+<li class="chapter" data-level="3.5.3" data-path="rlm.html"><a href="rlm.html#diagnósticos"><i class="fa fa-check"></i><b>3.5.3</b> Diagnósticos</a></li>
+<li class="chapter" data-level="3.5.4" data-path="rlm.html"><a href="rlm.html#soluciones"><i class="fa fa-check"></i><b>3.5.4</b> Soluciones</a></li>
+<li class="chapter" data-level="3.5.5" data-path="rlm.html"><a href="rlm.html#ejemplos-6"><i class="fa fa-check"></i><b>3.5.5</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="rlm.html"><a href="rlm.html#diagnóstico"><i class="fa fa-check"></i><b>3.6</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="rlm.html"><a href="rlm.html#tipos-de-residuos"><i class="fa fa-check"></i><b>3.6.1</b> Tipos de Residuos</a></li>
+<li class="chapter" data-level="3.6.2" data-path="rlm.html"><a href="rlm.html#linealidad"><i class="fa fa-check"></i><b>3.6.2</b> Linealidad</a></li>
+<li class="chapter" data-level="3.6.3" data-path="rlm.html"><a href="rlm.html#homocedasticidad"><i class="fa fa-check"></i><b>3.6.3</b> Homocedasticidad</a></li>
+<li class="chapter" data-level="3.6.4" data-path="rlm.html"><a href="rlm.html#normalidad-1"><i class="fa fa-check"></i><b>3.6.4</b> Normalidad</a></li>
+<li class="chapter" data-level="3.6.5" data-path="rlm.html"><a href="rlm.html#incorrelación"><i class="fa fa-check"></i><b>3.6.5</b> Incorrelación</a></li>
+<li class="chapter" data-level="3.6.6" data-path="rlm.html"><a href="rlm.html#soluciones-a-problemas-detectados-en-el-diagnóstico-del-modelo"><i class="fa fa-check"></i><b>3.6.6</b> Soluciones a problemas detectados en el diagnóstico del modelo</a></li>
+<li class="chapter" data-level="3.6.7" data-path="rlm.html"><a href="rlm.html#análisis-de-influencia-1"><i class="fa fa-check"></i><b>3.6.7</b> Análisis de influencia</a></li>
+<li class="chapter" data-level="3.6.8" data-path="rlm.html"><a href="rlm.html#funciones-para-diagnóstico-e-influencia"><i class="fa fa-check"></i><b>3.6.8</b> Funciones para diagnóstico e influencia</a></li>
+<li class="chapter" data-level="3.6.9" data-path="rlm.html"><a href="rlm.html#ejemplos-7"><i class="fa fa-check"></i><b>3.6.9</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="rlm.html"><a href="rlm.html#predicción"><i class="fa fa-check"></i><b>3.7</b> Predicción</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="rlm.html"><a href="rlm.html#estimación-de-la-respuesta-media."><i class="fa fa-check"></i><b>3.7.1</b> Estimación de la respuesta media.</a></li>
+<li class="chapter" data-level="3.7.2" data-path="rlm.html"><a href="rlm.html#predicción-de-nuevas-observaciones."><i class="fa fa-check"></i><b>3.7.2</b> Predicción de nuevas observaciones.</a></li>
+<li class="chapter" data-level="3.7.3" data-path="rlm.html"><a href="rlm.html#ejemplos-8"><i class="fa fa-check"></i><b>3.7.3</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="rlm.html"><a href="rlm.html#ejercicios"><i class="fa fa-check"></i><b>3.8</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> Modelos ANOVA</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova.html"><a href="anova.html#bancos-de-datos-1"><i class="fa fa-check"></i><b>4.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#modelos-anova-1-vía"><i class="fa fa-check"></i><b>4.2</b> Modelos ANOVA 1 vía</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="anova.html"><a href="anova.html#especificacion-del-modelo-en-r"><i class="fa fa-check"></i><b>4.2.1</b> Especificacion del modelo en <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#modelos-anova-dos-vías"><i class="fa fa-check"></i><b>4.3</b> Modelos ANOVA dos vías</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="anova.html"><a href="anova.html#especificacion-del-modelo-en-r-1"><i class="fa fa-check"></i><b>4.3.1</b> Especificacion del modelo en <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#estimación-y-bondad-de-ajuste-del-modelo"><i class="fa fa-check"></i><b>4.4</b> Estimación y bondad de ajuste del modelo</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="anova.html"><a href="anova.html#ejemplos-9"><i class="fa fa-check"></i><b>4.4.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#comparación-y-selección-de-modelos-1"><i class="fa fa-check"></i><b>4.5</b> Comparación y selección de modelos</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="anova.html"><a href="anova.html#ejemplos-10"><i class="fa fa-check"></i><b>4.5.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#diagnóstico-1"><i class="fa fa-check"></i><b>4.6</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="anova.html"><a href="anova.html#ejemplos-11"><i class="fa fa-check"></i><b>4.6.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#predicción-1"><i class="fa fa-check"></i><b>4.7</b> Predicción</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="anova.html"><a href="anova.html#ejemplos-12"><i class="fa fa-check"></i><b>4.7.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="anova.html"><a href="anova.html#ejercicios-1"><i class="fa fa-check"></i><b>4.8</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ancova.html"><a href="ancova.html"><i class="fa fa-check"></i><b>5</b> Modelos ANCOVA</a><ul>
+<li class="chapter" data-level="5.1" data-path="ancova.html"><a href="ancova.html#bancos-de-datos-2"><i class="fa fa-check"></i><b>5.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="5.2" data-path="ancova.html"><a href="ancova.html#modelo-ancova-básico"><i class="fa fa-check"></i><b>5.2</b> Modelo ANCOVA básico</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="ancova.html"><a href="ancova.html#i-rectas-de-regresión-perpendiculares"><i class="fa fa-check"></i><b>5.2.1</b> I rectas de regresión perpendiculares</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ancova.html"><a href="ancova.html#i-rectas-de-regresión-paralelas"><i class="fa fa-check"></i><b>5.2.2</b> I rectas de regresión paralelas</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ancova.html"><a href="ancova.html#una-recta-de-regresión"><i class="fa fa-check"></i><b>5.2.3</b> Una recta de regresión</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ancova.html"><a href="ancova.html#anova-de-una-vía"><i class="fa fa-check"></i><b>5.2.4</b> ANOVA de una vía</a></li>
+<li class="chapter" data-level="5.2.5" data-path="ancova.html"><a href="ancova.html#modelos-sin-efectos"><i class="fa fa-check"></i><b>5.2.5</b> Modelos sin efectos</a></li>
+<li class="chapter" data-level="5.2.6" data-path="ancova.html"><a href="ancova.html#especificación-del-modelo-en-r"><i class="fa fa-check"></i><b>5.2.6</b> Especificación del modelo en <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ancova.html"><a href="ancova.html#análisis-preliminar"><i class="fa fa-check"></i><b>5.3</b> Análisis preliminar</a></li>
+<li class="chapter" data-level="5.4" data-path="ancova.html"><a href="ancova.html#ajuste-y-selección-del-modelo"><i class="fa fa-check"></i><b>5.4</b> Ajuste y Selección del modelo</a></li>
+<li class="chapter" data-level="5.5" data-path="ancova.html"><a href="ancova.html#diagnóstico-del-modelo"><i class="fa fa-check"></i><b>5.5</b> Diagnóstico del modelo</a></li>
+<li class="chapter" data-level="5.6" data-path="ancova.html"><a href="ancova.html#predicción-2"><i class="fa fa-check"></i><b>5.6</b> Predicción</a></li>
+<li class="chapter" data-level="5.7" data-path="ancova.html"><a href="ancova.html#ejercicios-modelos-ancova"><i class="fa fa-check"></i><b>5.7</b> Ejercicios modelos ANCOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="smooth.html"><a href="smooth.html"><i class="fa fa-check"></i><b>6</b> Modelos aditivos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="smooth.html"><a href="smooth.html#bancos-de-datos-3"><i class="fa fa-check"></i><b>6.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="6.2" data-path="smooth.html"><a href="smooth.html#funciones-de-suavizado"><i class="fa fa-check"></i><b>6.2</b> Funciones de suavizado</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="smooth.html"><a href="smooth.html#splines-de-regresión"><i class="fa fa-check"></i><b>6.2.1</b> Splines de regresión</a></li>
+<li class="chapter" data-level="6.2.2" data-path="smooth.html"><a href="smooth.html#splines-cúbicos"><i class="fa fa-check"></i><b>6.2.2</b> Splines cúbicos</a></li>
+<li class="chapter" data-level="6.2.3" data-path="smooth.html"><a href="smooth.html#splines-penalizados"><i class="fa fa-check"></i><b>6.2.3</b> Splines penalizados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="smooth.html"><a href="smooth.html#bondad-del-ajuste-y-selección-del-modelo"><i class="fa fa-check"></i><b>6.3</b> Bondad del ajuste y selección del modelo</a></li>
+<li class="chapter" data-level="6.4" data-path="smooth.html"><a href="smooth.html#diagnóstico-2"><i class="fa fa-check"></i><b>6.4</b> Diagnóstico</a></li>
+<li class="chapter" data-level="6.5" data-path="smooth.html"><a href="smooth.html#predicción-3"><i class="fa fa-check"></i><b>6.5</b> Predicción</a></li>
+<li class="chapter" data-level="6.6" data-path="smooth.html"><a href="smooth.html#ejercicios-2"><i class="fa fa-check"></i><b>6.6</b> Ejercicios</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Creado con bookdown</a></li>
+<li><a href="https://sites.google.com/umh.es/statistical-models" target="blank">Modelos Estadísticos</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Estadísticos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ancova" class="section level1">
+<h1><span class="header-section-number">Unidad 5</span> Modelos ANCOVA</h1>
+<p>En este tema se presentan los modelos ANCOVA o modelos de análisis de la covarianza. Esto modelos surgen cuando entre las posibles variables predictoras de la respuesta (de tipo numérico) consideramos tanto variables numéricas como factores. El objetivo principal de este tipo de modelos es estudiar si la relación entre las predictoras numéricas y la respuesta viene condicionada por el factor o factores de clasificación considerados, es decir, si debemos construir:</p>
+<ul>
+<li>un único modelo entre la respuesta y las predictoras de tipo numérico,</li>
+<li>un único modelo entre la respuesta y las predictoras de tipo categórico (factores),</li>
+<li>un modelo diferente entre la respuesta y las predictoras numéricas para cada nivel o combinaciones de niveles de los factores.</li>
+</ul>
+<p>Este tipo de modelos permiten una versatilidad que nos posibilita el estudio de situaciones experimentales más complejas. Sin embargo, no están exentos de dificultades sobre todo en lo que tiene que ver con el cumplimiento de las hipótesis del modelo. En función del modelo final las hipótesis de normalidad y homogeneidad varían en su aplicación. Además, el proceso de selección del mejor modelo requiere de un proceso de análisis más profundo debido a la inclusión de diferentes tipos de variables en el conjunto de posibles predictoras.</p>
+<p>Para introducir los conceptos básicos de este tipo de modelos y mostrar todas sus posibilidades de análisis comenzaremos con el modelo ANCOVA más sencillo donde únicamente consideramos dos variables predictoras, una de tipo numérico y la otra un factor. La formulación presentada se puede generalizar rápidamente a situaciones más complejas donde el número de predictoras sea mayor.</p>
+<div id="bancos-de-datos-2" class="section level2">
+<h2><span class="header-section-number">5.1</span> Bancos de datos</h2>
+<p>Veamos los diferentes bancos de datos que iremos analizando a lo largo de la unidad.</p>
+<p><strong>Ejemplo 1. Datos de tiempo de vida.</strong> Se desea estudiar el tiempo de vida de una pieza (<code>vida</code>) cortadora de dos tipos, A y B (<code>herramienta</code>), en función de la velocidad del torno (<code>velocidad</code>) en el que está integrada (en revoluciones por segundo). El objetivo del análisis es describir la relación entre el tiempo de vida de la pieza y la velocidad del torno, teniendo en cuenta de qué tipo es la pieza.</p>
+<p>Cargamos los datos y realizamos el gráfico descriptivo:</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" title="1"><span class="co"># Carga de datos</span></a>
+<a class="sourceLine" id="cb295-2" title="2">velocidad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">610</span>, <span class="dv">950</span>, <span class="dv">720</span>, <span class="dv">840</span>, <span class="dv">980</span>, <span class="dv">530</span>, <span class="dv">680</span>, <span class="dv">540</span>, <span class="dv">980</span>, <span class="dv">730</span>, <span class="dv">670</span>, </a>
+<a class="sourceLine" id="cb295-3" title="3">             <span class="dv">770</span>, <span class="dv">880</span>, <span class="dv">1000</span>, <span class="dv">760</span>, <span class="dv">590</span>, <span class="dv">910</span>, <span class="dv">650</span>, <span class="dv">810</span>, <span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb295-4" title="4">vida &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">18.73</span>, <span class="fl">14.52</span>, <span class="fl">17.43</span>, <span class="fl">14.54</span>, <span class="fl">13.44</span>, <span class="fl">25.39</span>, <span class="fl">13.34</span>, <span class="fl">22.71</span>, </a>
+<a class="sourceLine" id="cb295-5" title="5">          <span class="fl">12.68</span>, <span class="fl">19.32</span>, <span class="fl">30.16</span>, <span class="fl">27.09</span>, <span class="fl">25.40</span>, <span class="fl">26.05</span>, <span class="fl">33.49</span>, <span class="fl">35.62</span>, </a>
+<a class="sourceLine" id="cb295-6" title="6">          <span class="fl">26.07</span>, <span class="fl">36.78</span>, <span class="fl">34.95</span>, <span class="fl">43.67</span>)</a>
+<a class="sourceLine" id="cb295-7" title="7">herramienta &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</a>
+<a class="sourceLine" id="cb295-8" title="8">tiempovida &lt;-<span class="st"> </span><span class="kw">data.frame</span>(velocidad, vida, herramienta)</a>
+<a class="sourceLine" id="cb295-9" title="9"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb295-10" title="10"><span class="kw">ggplot</span>(tiempovida,  <span class="kw">aes</span>(<span class="dt">x =</span> velocidad,  <span class="dt">y =</span> vida,  <span class="dt">color =</span> herramienta)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb295-11" title="11"><span class="st">  </span><span class="kw">geom_point</span>() </a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>A la vista de la Figura anterior se puede apreciar que el comportamiento del tiempo de vida con respecto a la velocidad disminuye al aumentar esta última, y además ese descenso es distinto en función de la herramienta utilizada. A la misma velocidad la herramienta A proporciona un tiempo de vida inferior que la herramienta B. Para ambas máquinas se aprecia una tendencia lineal bastante clara que deberá ser objeto de estudio. Esto implicaría que nuestro modelo se desdoblaría en dos rectas de regresión lineal simple en función de la herramienta utilizada.</p>
+<p><strong>Ejemplo 2. Datos de longevidad.</strong> Partridge y Farquhar realizan un experimento para relacionar la vida útil (<code>longevidad</code>) de las moscas de la fruta con su actividad sexual (<code>actividad</code>). La información recogida es la longevidad en días de 125 moscas macho, divididas en cinco grupos bajo diferentes condiciones ambientales para medir su actividad sexual. Asimismo, se recoge la longitud del tórax (<code>thorax</code>) ya que se sospecha que afecta directamente a la longevidad de las moscas.</p>
+<p>Cargamos los datos y realizamos el gráfico descriptivo:</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" title="1"><span class="co"># Carga de datos</span></a>
+<a class="sourceLine" id="cb296-2" title="2">thorax &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.68</span>, <span class="fl">0.68</span>, <span class="fl">0.72</span>, <span class="fl">0.72</span>, <span class="fl">0.76</span>, <span class="fl">0.76</span>, </a>
+<a class="sourceLine" id="cb296-3" title="3">            <span class="fl">0.76</span>, <span class="fl">0.76</span>, <span class="fl">0.76</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, </a>
+<a class="sourceLine" id="cb296-4" title="4">            <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.92</span>, <span class="fl">0.92</span>, </a>
+<a class="sourceLine" id="cb296-5" title="5">            <span class="fl">0.92</span>, <span class="fl">0.94</span>, <span class="fl">0.64</span>, <span class="fl">0.7</span>, <span class="fl">0.72</span>, <span class="fl">0.72</span>, <span class="fl">0.72</span>, <span class="fl">0.76</span>, </a>
+<a class="sourceLine" id="cb296-6" title="6">            <span class="fl">0.78</span>, <span class="fl">0.8</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.88</span>, </a>
+<a class="sourceLine" id="cb296-7" title="7">            <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.92</span>, <span class="fl">0.92</span>, <span class="fl">0.92</span>, <span class="fl">0.92</span>, </a>
+<a class="sourceLine" id="cb296-8" title="8">            <span class="fl">0.92</span>, <span class="fl">0.92</span>, <span class="fl">0.94</span>, <span class="fl">0.64</span>, <span class="fl">0.68</span>, <span class="fl">0.72</span>, <span class="fl">0.76</span>, <span class="fl">0.76</span>, </a>
+<a class="sourceLine" id="cb296-9" title="9">            <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.82</span>, <span class="fl">0.82</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, </a>
+<a class="sourceLine" id="cb296-10" title="10">            <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, </a>
+<a class="sourceLine" id="cb296-11" title="11">            <span class="fl">0.88</span>, <span class="fl">0.92</span>, <span class="fl">0.92</span>, <span class="fl">0.68</span>, <span class="fl">0.68</span>, <span class="fl">0.72</span>, <span class="fl">0.76</span>, <span class="fl">0.78</span>, </a>
+<a class="sourceLine" id="cb296-12" title="12">            <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.84</span>,  <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, </a>
+<a class="sourceLine" id="cb296-13" title="13">            <span class="fl">0.84</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>, </a>
+<a class="sourceLine" id="cb296-14" title="14">            <span class="fl">0.9</span>, <span class="fl">0.92</span>, <span class="fl">0.92</span>, <span class="fl">0.64</span>, <span class="fl">0.64</span>, <span class="fl">0.68</span>, <span class="fl">0.72</span>, <span class="fl">0.72</span>, </a>
+<a class="sourceLine" id="cb296-15" title="15">            <span class="fl">0.74</span>, <span class="fl">0.76</span>, <span class="fl">0.76</span>, <span class="fl">0.76</span>, <span class="fl">0.78</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.82</span>, </a>
+<a class="sourceLine" id="cb296-16" title="16">            <span class="fl">0.82</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.84</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, </a>
+<a class="sourceLine" id="cb296-17" title="17">            <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.88</span>, <span class="fl">0.92</span>)</a>
+<a class="sourceLine" id="cb296-18" title="18">longevidad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">37</span>, <span class="dv">49</span>,  <span class="dv">46</span>,  <span class="dv">63</span>,  <span class="dv">39</span>,  <span class="dv">46</span>,  <span class="dv">56</span>,  <span class="dv">63</span>,  <span class="dv">65</span>,  </a>
+<a class="sourceLine" id="cb296-19" title="19">                <span class="dv">56</span>,  <span class="dv">65</span>,  <span class="dv">70</span>,  <span class="dv">63</span>,  <span class="dv">65</span>, <span class="dv">70</span>,  <span class="dv">77</span>,  <span class="dv">81</span>,  <span class="dv">86</span>,  </a>
+<a class="sourceLine" id="cb296-20" title="20">                <span class="dv">70</span>,  <span class="dv">70</span>,  <span class="dv">77</span>,  <span class="dv">77</span>,  <span class="dv">81</span>,  <span class="dv">77</span>,  <span class="dv">40</span>,  <span class="dv">37</span>,  <span class="dv">44</span>, </a>
+<a class="sourceLine" id="cb296-21" title="21">                <span class="dv">47</span>,  <span class="dv">47</span>,  <span class="dv">47</span>,  <span class="dv">68</span>,  <span class="dv">47</span>,  <span class="dv">54</span>,  <span class="dv">61</span>,  <span class="dv">71</span>,  <span class="dv">75</span>,  </a>
+<a class="sourceLine" id="cb296-22" title="22">                <span class="dv">89</span>,  <span class="dv">58</span>,  <span class="dv">59</span>,  <span class="dv">62</span>, <span class="dv">79</span>,  <span class="dv">96</span>,  <span class="dv">58</span>,  <span class="dv">62</span>,  <span class="dv">70</span>,  </a>
+<a class="sourceLine" id="cb296-23" title="23">                <span class="dv">72</span>,  <span class="dv">75</span>,  <span class="dv">96</span>,  <span class="dv">75</span>,  <span class="dv">46</span>,  <span class="dv">42</span>,  <span class="dv">65</span>,  <span class="dv">46</span>, <span class="dv">58</span>,  </a>
+<a class="sourceLine" id="cb296-24" title="24">                <span class="dv">42</span>,  <span class="dv">48</span>,  <span class="dv">58</span>,  <span class="dv">50</span>,  <span class="dv">80</span>,  <span class="dv">63</span>,  <span class="dv">65</span>,  <span class="dv">70</span>,  <span class="dv">70</span>,  </a>
+<a class="sourceLine" id="cb296-25" title="25">                <span class="dv">72</span>,  <span class="dv">97</span>,  <span class="dv">46</span>, <span class="dv">56</span>,  <span class="dv">70</span>,  <span class="dv">70</span>,  <span class="dv">72</span>,  <span class="dv">76</span>,  <span class="dv">90</span>,  </a>
+<a class="sourceLine" id="cb296-26" title="26">                <span class="dv">76</span>,  <span class="dv">92</span>,  <span class="dv">21</span>,  <span class="dv">40</span>,  <span class="dv">44</span>,  <span class="dv">54</span>,  <span class="dv">36</span>, <span class="dv">40</span>,  <span class="dv">56</span>,  </a>
+<a class="sourceLine" id="cb296-27" title="27">                <span class="dv">60</span>,  <span class="dv">48</span>,  <span class="dv">53</span>,  <span class="dv">60</span>,  <span class="dv">60</span>,  <span class="dv">65</span>,  <span class="dv">68</span>,  <span class="dv">60</span>,  <span class="dv">81</span>,  </a>
+<a class="sourceLine" id="cb296-28" title="28">                <span class="dv">81</span>,  <span class="dv">48</span>, <span class="dv">48</span>,  <span class="dv">56</span>,  <span class="dv">68</span>,  <span class="dv">75</span>,  <span class="dv">81</span>,  <span class="dv">48</span>,  <span class="dv">68</span>,  </a>
+<a class="sourceLine" id="cb296-29" title="29">                <span class="dv">16</span>,  <span class="dv">19</span>,  <span class="dv">19</span>,  <span class="dv">32</span>,  <span class="dv">33</span>,  <span class="dv">33</span>, <span class="dv">30</span>,  <span class="dv">42</span>,  <span class="dv">42</span>,  </a>
+<a class="sourceLine" id="cb296-30" title="30">                <span class="dv">33</span>,  <span class="dv">26</span>,  <span class="dv">30</span>,  <span class="dv">40</span>,  <span class="dv">54</span>,  <span class="dv">34</span>,  <span class="dv">34</span>,  <span class="dv">47</span>,  <span class="dv">47</span>, </a>
+<a class="sourceLine" id="cb296-31" title="31">                <span class="dv">42</span>, <span class="dv">47</span>,  <span class="dv">54</span>,  <span class="dv">54</span>,  <span class="dv">56</span>,  <span class="dv">60</span>,  <span class="dv">44</span>)</a>
+<a class="sourceLine" id="cb296-32" title="32">actividad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;G1&quot;</span>,<span class="dv">24</span>),<span class="kw">rep</span>(<span class="st">&quot;G2&quot;</span>,<span class="dv">25</span>),<span class="kw">rep</span>(<span class="st">&quot;G3&quot;</span>,<span class="dv">25</span>),<span class="kw">rep</span>(<span class="st">&quot;G4&quot;</span>,<span class="dv">25</span>),<span class="kw">rep</span>(<span class="st">&quot;G5&quot;</span>,<span class="dv">25</span>))</a>
+<a class="sourceLine" id="cb296-33" title="33">longevidad &lt;-<span class="st"> </span><span class="kw">data.frame</span>(thorax,longevidad,actividad)</a>
+<a class="sourceLine" id="cb296-34" title="34"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb296-35" title="35"><span class="kw">ggplot</span>(longevidad, <span class="kw">aes</span>(<span class="dt">x =</span> thorax, <span class="dt">y =</span> longevidad, <span class="dt">color =</span> actividad)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb296-36" title="36"><span class="st">  </span><span class="kw">geom_point</span>() </a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>Se puede ver como la longevidad aumenta cuando aumenta la longitud del thorax pero ese crecimiento no parece distinto según actividad, dado que las nubes de puntos están bastante mezcladas. En este caso no parece adecuado un modelo lineal para cada grupo de actividad.</p>
+</div>
+<div id="modelo-ancova-básico" class="section level2">
+<h2><span class="header-section-number">5.2</span> Modelo ANCOVA básico</h2>
+<p>Consideramos el modelo ANCOVA más sencillo donde consideramos dos variables predictoras: una numérica y otra un factor. Consideramos una muestra de tamaño <span class="math inline">\(n\)</span> donde tenemos:</p>
+<ul>
+<li>Una variable respuesta, <span class="math inline">\(Y\)</span>, de tipo numérico con observaciones <span class="math inline">\(y_1,...,y_n\)</span>.</li>
+<li>Una variable predictora, <span class="math inline">\(X\)</span>, de tipo numérico con observaciones <span class="math inline">\(x_1,...,x_n\)</span>.</li>
+<li>Una variable predictora, <span class="math inline">\(F\)</span>, de tipo categórico con <span class="math inline">\(I\)</span> grupos o niveles distintos de tamaños muestrales <span class="math inline">\(n_1,n_2,...,n_I\)</span>, de forma que <span class="math inline">\(n = n_1 + n_2 + ... + n_I\)</span>, de forma que el vector de observaciones de la respuesta y de la predictora numérica se pueden escribir como:</li>
+</ul>
+<p><span class="math display">\[(Y_1, Y_2,...,Y_I) = y_{11},\ldots,y_{1n_1},y_{21},\ldots,y_{2n_2},\ldots,
+y_{I1},\ldots,y_{In_I}\]</span></p>
+<p><span class="math display">\[
+(X_1, X_2,...,X_I) = x_{11},\ldots,x_{1n_1},x_{21},\ldots,x_{2n_2},\ldots,x_{I1},\ldots,x_{In_I}
+\]</span></p>
+<p>donde el primer subíndice indica el nivel del factor y el segundo la posición dentro del conjunto de datos de dicho nivel del factor.
+* Conjunto <span class="math inline">\(\mu_i\)</span> de medias de todas las observaciones de la respuesta asociadas con el nivel <span class="math inline">\(i\)</span> del factor, es decir:</p>
+<p><span class="math display">\[
+\mu_i = \frac{\sum_{j = 1}^{n_j} y_{ij}}{n_i}; \text{ i = 1, 2,..., I}
+\]</span></p>
+<ul>
+<li>Media global de la respuesta, <span class="math inline">\(\mu\)</span>, que se puede obtener como:</li>
+</ul>
+<p><span class="math display">\[
+\mu = \frac{\sum_{j = 1}^{I} \mu_{j}}{I}
+\]</span></p>
+<ul>
+<li>Incrementos, <span class="math inline">\(\alpha_i\)</span>, de cada una de las medias de cada grupo con respecto a la media global, es decir:</li>
+</ul>
+<p><span class="math display">\[
+\alpha_i= \mu - \mu_i; \text{ i = 1, 2,..., I}
+\]</span></p>
+<ul>
+<li><p>Pendiente común, <span class="math inline">\(\beta\)</span>, que representa la posible relación entre las variables de tipo numérico.</p></li>
+<li><p>Pendientes diferentes entre las predictoras numéricas asociadas a cada nivel del factor, <span class="math inline">\(\gamma_i\)</span> con <span class="math inline">\(i = 1,...,I\)</span>.</p></li>
+</ul>
+<p>En esta situación el modelo que describe la posible relación entre respuesta y predictoras se puede escribir como:
+<span class="math display" id="eq:ancova">\[\begin{equation}
+y_{ij} = \alpha_0 + \alpha_i + \beta x_{ij} + \gamma_i x_{ij} + \epsilon_{ij};\quad  i=1,...,I \quad \text{con} \quad \alpha_I = 0
+\tag{5.1}
+\end{equation}\]</span></p>
+<p>que en forma matricial se puede escribir fácilmente (de forma análoga al ANOVA de un vía) sin más que considerar <span class="math inline">\(1_(n_i )={1,...,1}\)</span> un vector de <span class="math inline">\(n_i\)</span> unos, <span class="math inline">\(0_(n_i )={0,...,0}\)</span> un vector de <span class="math inline">\(n_i\)</span> ceros, para cada uno de los niveles i del factor la matriz de diseño viene dada por:
+<span class="math display">\[
+Y = \left( 
+\begin{array}{c}
+   Y_1 \\
+   Y_2 \\
+   \ldots \\
+   Y_I \\
+\end{array}
+\right)
+=
+\left( 
+\begin{array}{ccccccccc}
+   1_{n_1} &amp; 1_{n_1} &amp; 0_{n_1} &amp; \ldots &amp; 0_{n_1} &amp; X_1 &amp; X_1 &amp; \ldots &amp; 0_{n_1}\\
+   1_{n_2} &amp; 0_{n_2} &amp; 1_{n_2} &amp; \ldots &amp; 0_{n_2} &amp; X_2 &amp; 0_{n_2} &amp; \ldots &amp; 0_{n_2}\\
+   \ldots &amp; \ldots &amp; \ldots &amp; \ldots &amp; \ldots &amp; \ldots &amp; \ldots &amp; \ldots &amp; 0_{n_3}\\
+   1_{n_I} &amp; 0_{n_I} &amp; 0_{n_I} &amp;\ldots &amp; 1_{n_I} &amp; X_I &amp; 0_{n_I} &amp; \ldots &amp; X_I\\
+\end{array}
+\right)
+\left( 
+\begin{array}{c}
+   \alpha_0 \\
+   \alpha_1 \\
+  \alpha_2 \\
+ \ldots \\
+   \alpha_{I_1} \\
+   \beta \\
+   \gamma_1\\
+   \ldots\\
+   \gamma_I\\
+\end{array}
+\right)
++
+\left( 
+\begin{array}{c}
+   e_1 \\
+   e_2 \\
+   \ldots \\
+   e_n \\
+\end{array}
+\right) = X\beta + \epsilon
+\]</span></p>
+<p>donde las primeras <span class="math inline">\(I\)</span> columnas representan el efecto del factor (ANOVA de una vía), la siguiente columna representa el efecto común entre predictoras numéricas (Regresión lineal simple), y las últimas <span class="math inline">\(I\)</span> columnas representan el efecto distinto de la predictora numérica para cada nivel del factor. Estas columnas se obtienen fácilmente multiplicando la columna de <span class="math inline">\(X\)</span> por cada de las columnas desde la <span class="math inline">\(2\)</span> a la <span class="math inline">\(I\)</span>.</p>
+<p>Las posibles modelos anidados que se pueden obtener a partir de la ecuación <a href="ancova.html#eq:ancova">(5.1)</a>, así como sus interpretaciones se presentan a continuación. Además, se ofrece la interpretación de dichos modelos en términos de los coeficientes que resulten significativos.</p>
+<div id="i-rectas-de-regresión-perpendiculares" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> I rectas de regresión perpendiculares</h3>
+<p>Este modelo es el más general y considera una pendiente distinta para la predictora numérica en función de los niveles del factor, que resulta equivalente a plantear el contraste</p>
+<p><span class="math display" id="eq:contraste1">\[\begin{equation}
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \gamma_1 = \gamma_2 = \ldots = \gamma_I = 0\\
+H_a: &amp; \mbox{Al menos hay una pendiente distinto de cero}\\
+\end{array}
+\right.
+\tag{5.2}
+\end{equation}\]</span></p>
+<p>Si rechazamos el contraste <a href="ancova.html#eq:contraste1">(5.2)</a> tendremos un modelo de regresión entre la respuesta y la predictora numérica para cada nivel del factor, es decir, I rectas de regresión distintas con ecuaciones:</p>
+<p><span class="math display" id="eq:modeloancovaconinteraccion">\[\begin{equation}
+\begin{array}{ll}
+y_{1j} &amp;= (\alpha_0 + \alpha_1) + (\beta + \gamma_1) x_{1j} + \epsilon_{1j}\\
+y_{2j} &amp;= (\alpha_0 + \alpha_2) + (\beta + \gamma_2) x_{2j} + \epsilon_{2j}\\
+\ldots &amp;= \ldots \\
+y_{Ij} &amp;= (\alpha_0 + \alpha_I) + (\beta + \gamma_I) x_{Ij} + \epsilon_{Ij}\\
+\end{array}
+\tag{5.3}
+\end{equation}\]</span></p>
+<p>con interceptaciones <span class="math inline">\(\alpha_0 + \alpha_i\)</span> y pendientes <span class="math inline">\(\beta + \gamma_i\)</span> para cada uno de los <span class="math inline">\(I\)</span> niveles del factor. Tenemos I modelos de regresión distintos (uno por cada nivel del factor), es decir, tenemos I rectas perpendiculares o que se cortan.</p>
+<p><strong>Ejemplo.</strong> Para el banco de datos de tiempo de vida podemos representar gráficamente el modelo asumiendo dos rectas de regresión perpendiculares de vida versus velocidad del torno en función de la herramienta utilizada.</p>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>Se puede ver como las rectas tienen interceptaciones distintas y pendientes algo diferentes. Las tendencias no son perpendiculares en el sentido estricto sino que existe algún punto de corte entre ellas. La resolución del contraste nos indicara si el modelo es adecuado o si deberíamos optar por un modelo más sencillo.</p>
+<p><strong>Ejemplo.</strong> Para el banco de datos de longevidad representamos gráficamente el modelo que asume 5 rectas de regresión perpendiculares de longevidad versus longitud del thorax en función del grupo de actividad.</p>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>Se puede ver como las rectas tienen interceptaciones distintas y pendientes muy similares lo que puede ser un indicativo de que este modelo de rectas perpendiculares no es adecuado.</p>
+</div>
+<div id="i-rectas-de-regresión-paralelas" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> I rectas de regresión paralelas</h3>
+<p>Si no rechazamos el contraste <a href="ancova.html#eq:contraste1">(5.2)</a> tendremos un único modelo de regresión entre la respuesta y la predictora pero con diferentes interceptaciones (la pendiente es la misma), es decir, I rectas paralelas cuyas ecuaciones vienen dadas por:</p>
+<p><span class="math display" id="eq:modeloancovasininteraccion">\[\begin{equation}
+\begin{array}{ll}
+y_{1j} &amp;= (\alpha_0 + \alpha_1) + \beta  x_{1j} + \epsilon_{1j}\\
+y_{2j} &amp;= (\alpha_0 + \alpha_2) + \beta  x_{2j} + \epsilon_{2j}\\
+\ldots &amp;= \ldots \\
+y_{Ij} &amp;= (\alpha_0 + \alpha_I) + \beta  x_{Ij} + \epsilon_{Ij}\\
+\end{array}
+\tag{5.4}
+\end{equation}\]</span></p>
+<p><strong>Ejemplo.</strong> Modelo de rectas paralelas para el banco de datos de tiempo de vida. E</p>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>¿Se diferencia mucho este gráfico del de rectas perpendiculares visto antes?</p>
+<p><strong>Ejemplo.</strong> Modelos de rectas paralelas para el banco de datos de longevidad.</p>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>En este caso el gráfico es prácticamente idéntico indicando que para estos datos el modelo de rectas paralelas tiene la misma capacidad explicativa que el de rectas perpendiculares.</p>
+<p>En la situación donde el contraste <a href="ancova.html#eq:contraste1">(5.2)</a> es no significativo podemos definir diferentes modelos anidados en función de los incrementos del factor (`s) y la pendiente <span class="math inline">\(\beta\)</span>. Los contrastes son:</p>
+<p><span class="math display" id="eq:contraste2">\[\begin{equation}
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \alpha_1 = \alpha_2 = \ldots = \alpha_I = 0\\
+H_a: &amp; \mbox{Al menos hay un incremento distinto de cero}\\
+\end{array}
+\right.
+\tag{5.5}
+\end{equation}\]</span>
+y
+<span class="math display" id="eq:contraste3">\[\begin{equation}
+\left\{ 
+\begin{array}{ll}
+H_0: &amp; \beta = 0\\
+H_a: &amp; \beta \neq 0
+\end{array}
+\right.
+\tag{5.6}
+\end{equation}\]</span></p>
+<p>La resolución de estos contrastes nos lleva a nuevos modelos que pasamos a describir.</p>
+</div>
+<div id="una-recta-de-regresión" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Una recta de regresión</h3>
+<p>Si no rechazamos la hipótesis nula de <a href="ancova.html#eq:contraste2">(5.5)</a> pero si rechazamos la hipótesis nula de <a href="ancova.html#eq:contraste3">(5.6)</a> diríamos que no hay efecto del factor pero si que podemos establecer un modelo de regresión entre la respuesta y la predictora numérica (Modelo de Regresión Lineal Simple).</p>
+<p><strong>Ejemplo.</strong> Modelo de recta de regresión para el banco de datos de tiempo de vida.</p>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>¿Qué podemos decir de este modelo frente a los anteriores?</p>
+<p><strong>Ejemplo.</strong> Modelo de recta de regresión para el banco de datos de longevidad.</p>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>¿Podríamos considerar este modelo como válido frente a los considerados antes? Recuerda que siempre buscamos modelos con capacidades explicativas similares pero con menos efectos o variables.</p>
+</div>
+<div id="anova-de-una-vía" class="section level3">
+<h3><span class="header-section-number">5.2.4</span> ANOVA de una vía</h3>
+<p>Si rechazamos la hipótesis nula de <a href="ancova.html#eq:contraste2">(5.5)</a> pero no rechazamos la hipótesis nula de <a href="ancova.html#eq:contraste3">(5.6)</a> diríamos que no hay efecto de la predictora numérica pero que si podemos establecer diferencias entre las medias de la respuesta dadas por los diferentes niveles del factor. Nos encontramos ante un modelo ANOVA de una vía. En esta situación asumimos que no existe rectas de regresión que relacionen el comportamiento de la respuesta con la predictora numérica, es decir, ya no tendremos una nube de puntos sino datos agrupados por el factor.</p>
+<p><strong>Ejemplo.</strong> Modelo ANOVA de una vía para el banco de datos de tiempo de vida.</p>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p>Se observa claramente como la herramienta de tipo B produce un tiempo de vida superior al del tipo A. Al menos el efecto del factor parece relevante para explicar el comportamiento del tiempo de vida.</p>
+<p><strong>Ejemplo.</strong> Modelo ANOVA de una vía para el banco de datos de longevidad.</p>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p>El gráfico de cajas asociado con el factor muestra que los primeros cuatro grupos tienen un comportamiento muy similar, y tan sólo el grupo cinco parecer tener una longevidad inferior al resto.</p>
+</div>
+<div id="modelos-sin-efectos" class="section level3">
+<h3><span class="header-section-number">5.2.5</span> Modelos sin efectos</h3>
+<p>Si no rechazamos la hipótesis nula de <a href="ancova.html#eq:contraste2">(5.5)</a> y no rechazamos la hipótesis nula de <a href="ancova.html#eq:contraste3">(5.6)</a> estaríamos ante un modelo nulo donde el comportamiento de la respuesta no viene explicado por las predictoras consideradas.</p>
+</div>
+<div id="especificación-del-modelo-en-r" class="section level3">
+<h3><span class="header-section-number">5.2.6</span> Especificación del modelo en <code>R</code></h3>
+<p>El modelo ANCOVA planteado para un factor <span class="math inline">\(F\)</span> y una variable predictora numérica <span class="math inline">\(X\)</span>, se puede escribir en R en su formato reducido como:</p>
+<p><span class="math display">\[Y \sim F + X + F:X\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(F\)</span> representa el efecto del factor, es decir, comparamos si las medias de la respuesta para cada grupo pueden considerarse iguales.</li>
+<li><span class="math inline">\(X\)</span> representa el efecto de regresión asociado con la variable numérica, es decir, la respuesta y X están relacionadas mediante una única pendiente que deberemos estimar.</li>
+<li><span class="math inline">\(F:X\)</span> representa el efecto de interacción entre predictoras, es decir, que la respuesta se relaciona con la predictora numérica mediante tantas curvas (generalmente líneas) como niveles tenga el factor <span class="math inline">\(F\)</span>.</li>
+</ul>
+<p>A continuación, se presentan los modelos reducidos para diferentes situaciones experimentales en el número y tipo de variables predictoras:</p>
+<ul>
+<li>Modelo para dos factores (<span class="math inline">\(F_1\)</span> y <span class="math inline">\(F_2\)</span>) y una numérica (<span class="math inline">\(X\)</span>)</li>
+</ul>
+<p><span class="math display">\[Y \sim F_1 + F_2 + F_1:F_2 + X + F_1:X + F_2:X + F_1:F_2:X\]</span>
+o en forma más simplificada <span class="math inline">\(Y \sim F_1*F_2*X\)</span></p>
+<ul>
+<li>Modelo para un factor (<span class="math inline">\(F\)</span>) y dos numéricas (<span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>)</li>
+</ul>
+<p><span class="math display">\[Y \sim F + X_1 + X_2 + F:X_1 + F:X_2\]</span>
+o en forma más simplificada <span class="math inline">\(Y \sim F*(X_1 + X_2)\)</span></p>
+<ul>
+<li>Modelo para dos factores (<span class="math inline">\(F_1\)</span> y <span class="math inline">\(F_2\)</span>) y dos numéricas (<span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>)</li>
+</ul>
+<p><span class="math display">\[Y \sim F_1*F_2*(X_1 + X_2)\]</span></p>
+<p>Como se puede ver la complejidad del modelo aumenta sustancialmente con la consideración de más variables predictoras. La forma de expresar el modelo saturado debe contemplar tanto los efectos principales asociados a cada predictora, como los efectos de interacción entre factores y entre factores y numéricas.</p>
+</div>
+</div>
+<div id="análisis-preliminar" class="section level2">
+<h2><span class="header-section-number">5.3</span> Análisis preliminar</h2>
+<p>En este tipo de modelos el análisis preliminar pasa por una representación de los diferentes modelos que pueden surgir desde el modelo saturado. En este caso se muestra como especificar los diferentes modelos y como obtener los gráficos correspondientes.</p>
+<p><strong>Ejemplo.</strong> (Tiempo de vida). El objetivo del análisis es describir la relación entre el tiempo de vida de la pieza y la velocidad del torno, teniendo en cuenta de qué tipo es la pieza. Tenemos entonces los posibles modelos que involucran a la velocidad:</p>
+<p><span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+\mbox{M0}:&amp; Vida \sim velocidad\\
+\mbox{M1}:&amp; Vida \sim velocidad + herramienta\\
+\mbox{M2}:&amp; Vida \sim velocidad + herramienta + velocidad:herramienta\\
+\end{array}
+\right.
+\]</span></p>
+<p>A continuación se presenta el código para poder representar todos estos modleos en un único gráfico.</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" title="1"><span class="co"># Comenzamos con el modelo más sencillo</span></a>
+<a class="sourceLine" id="cb297-2" title="2"></a>
+<a class="sourceLine" id="cb297-3" title="3"><span class="co"># Modelo con una única recta</span></a>
+<a class="sourceLine" id="cb297-4" title="4">M0 &lt;-<span class="st"> </span><span class="kw">lm</span>(vida <span class="op">~</span><span class="st"> </span>velocidad, <span class="dt">data =</span> tiempovida)</a>
+<a class="sourceLine" id="cb297-5" title="5"></a>
+<a class="sourceLine" id="cb297-6" title="6"><span class="co"># M1: modelo con rectas paralelas</span></a>
+<a class="sourceLine" id="cb297-7" title="7">M1 &lt;-<span class="st"> </span><span class="kw">lm</span>(vida <span class="op">~</span><span class="st"> </span>herramienta <span class="op">+</span><span class="st"> </span>velocidad, <span class="dt">data =</span> tiempovida)</a>
+<a class="sourceLine" id="cb297-8" title="8"></a>
+<a class="sourceLine" id="cb297-9" title="9"><span class="co"># M2: modelo con rectas no paralelas</span></a>
+<a class="sourceLine" id="cb297-10" title="10">M2 &lt;-<span class="st"> </span><span class="kw">lm</span>(vida <span class="op">~</span><span class="st"> </span>herramienta <span class="op">+</span><span class="st"> </span>velocidad <span class="op">+</span><span class="st"> </span>herramienta<span class="op">:</span>velocidad, <span class="dt">data =</span> tiempovida)</a>
+<a class="sourceLine" id="cb297-11" title="11"></a>
+<a class="sourceLine" id="cb297-12" title="12"><span class="co"># grid de valores para construir los modelos</span></a>
+<a class="sourceLine" id="cb297-13" title="13">grid &lt;-<span class="st"> </span>tiempovida <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">data_grid</span>(herramienta, velocidad) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb297-14" title="14"><span class="st">   </span><span class="kw">gather_predictions</span>(M0, M1, M2)</a>
+<a class="sourceLine" id="cb297-15" title="15"></a>
+<a class="sourceLine" id="cb297-16" title="16"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb297-17" title="17"><span class="kw">ggplot</span>(tiempovida,<span class="kw">aes</span>(velocidad, vida, <span class="dt">colour =</span> herramienta)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb297-18" title="18"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb297-19" title="19"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> grid, <span class="kw">aes</span>(<span class="dt">y =</span> pred)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb297-20" title="20"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>model) <span class="op">+</span></a>
+<a class="sourceLine" id="cb297-21" title="21"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Velocidad del torno&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Tiempo de vida&quot;</span>) </a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p>También representamos el modelo donde únicamente tenemos el factor (diagrama de cajas):</p>
+<p><span class="math display">\[
+\begin{array}{ll}
+\mbox{M}:&amp; Vida \sim herramienta\\
+\end{array}
+\]</span></p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" title="1"><span class="kw">ggplot</span>(tiempovida, <span class="kw">aes</span>(<span class="dt">x =</span> herramienta, <span class="dt">y =</span> vida)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb298-2" title="2"><span class="st">   </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p><strong>Ejemplo.</strong> Planterasmos los diferentes modelos para los datos de longevidad y los representamos gráficamente.</p>
+<p><span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+\mbox{M0}:&amp; longevidad \sim thorax\\
+\mbox{M1}:&amp; longevidad \sim thorax + actividad\\
+\mbox{M2}:&amp; longevidad \sim thorax + herramienta + thorax:actividad\\
+\end{array}
+\right.
+\]</span></p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" title="1"><span class="co"># Comenzamos con el modelo más sencillo</span></a>
+<a class="sourceLine" id="cb299-2" title="2"></a>
+<a class="sourceLine" id="cb299-3" title="3"><span class="co"># Modelo con una única recta</span></a>
+<a class="sourceLine" id="cb299-4" title="4">M0 &lt;-<span class="st"> </span><span class="kw">lm</span>(longevidad <span class="op">~</span><span class="st"> </span>thorax, <span class="dt">data =</span> longevidad)</a>
+<a class="sourceLine" id="cb299-5" title="5"></a>
+<a class="sourceLine" id="cb299-6" title="6"><span class="co"># M1: modelo con rectas paralelas</span></a>
+<a class="sourceLine" id="cb299-7" title="7">M1 &lt;-<span class="st"> </span><span class="kw">lm</span>(longevidad <span class="op">~</span><span class="st"> </span>actividad <span class="op">+</span><span class="st"> </span>thorax, <span class="dt">data =</span> longevidad)</a>
+<a class="sourceLine" id="cb299-8" title="8"></a>
+<a class="sourceLine" id="cb299-9" title="9"><span class="co"># M2: modelo con rectas no paralelas</span></a>
+<a class="sourceLine" id="cb299-10" title="10">M2 &lt;-<span class="st"> </span><span class="kw">lm</span>(longevidad <span class="op">~</span><span class="st"> </span>actividad <span class="op">+</span><span class="st"> </span>thorax <span class="op">+</span><span class="st"> </span>actividad<span class="op">:</span>thorax, <span class="dt">data =</span> longevidad)</a>
+<a class="sourceLine" id="cb299-11" title="11"></a>
+<a class="sourceLine" id="cb299-12" title="12"><span class="co"># grid de valores para construir los modelos</span></a>
+<a class="sourceLine" id="cb299-13" title="13">grid &lt;-<span class="st"> </span>longevidad <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">data_grid</span>(actividad, thorax) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb299-14" title="14"><span class="st">   </span><span class="kw">gather_predictions</span>(M0, M1, M2)</a>
+<a class="sourceLine" id="cb299-15" title="15"></a>
+<a class="sourceLine" id="cb299-16" title="16"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb299-17" title="17"><span class="kw">ggplot</span>(longevidad,<span class="kw">aes</span>(thorax, longevidad, <span class="dt">colour =</span> actividad)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb299-18" title="18"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb299-19" title="19"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> grid, <span class="kw">aes</span>(<span class="dt">y =</span> pred)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb299-20" title="20"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>model) <span class="op">+</span></a>
+<a class="sourceLine" id="cb299-21" title="21"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitud del tórax&quot;, y = &quot;</span>Longevidad<span class="st">&quot;) </span></a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>También representamos el modelo donde únicamente tenemos el factor (diagrama de cajas):</p>
+<p><span class="math display">\[
+\begin{array}{ll}
+\mbox{M}:&amp; longevidad \sim actividad\\
+\end{array}
+\]</span></p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1"><span class="kw">ggplot</span>(longevidad, <span class="kw">aes</span>(<span class="dt">x =</span> actividad, <span class="dt">y =</span> longevidad)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb300-2" title="2"><span class="st">   </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+</div>
+<div id="ajuste-y-selección-del-modelo" class="section level2">
+<h2><span class="header-section-number">5.4</span> Ajuste y Selección del modelo</h2>
+<p>Las hipótesis del modelo ANCOVA son que los errores se distribuyen de forma independiente mediante una distribución Normal de media cero y varianza constante σ^2 para cada uno de los grupos que determina la variable predictora de tipo factor. Estas hipótesis se adaptarán en función del tipo de modelo que finalmente alcancemos en el proceso de selección (I rectas, una recta, o un ANOVA de una vía).</p>
+<p>Dado que hemos expresado el modelo ANCOVA como un modelo de tipo lineal con una ecuación similar a los modelos de regresión múltiple, la estimación de los parámetros del modelo se puede realizar utilizando las ecuaciones normales. En el proceso de selección del mejor modelo actuaremos como en los modelos ANOVA, es decir partiremos del modelo saturado y veremos que efectos puede ser considerados como irrelevantes, y por tanto deben desaparecer del modelo. Esta selección nos permitirá elegir el modelo final resultante. En este caso más sencillo podemos escribir todos los modelos posibles y elegir el mejor de ellos, bien mediante la comparación con el test F o con el AIC, pero en la práctica se recurre a los procedimientos secuenciales automáticos que son los que presentaremos aquí.</p>
+<p><strong>Ejemplo.</strong> Realizamos la selección del mejor modleo apra el conjunto de datos de tiempo de vida. Para ello construimos el modelo saturado y utilizamos el procedimiento automático basado en el test F parcial.</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" title="1"><span class="co"># Modelo saturado</span></a>
+<a class="sourceLine" id="cb301-2" title="2">fit.vida &lt;-<span class="st"> </span><span class="kw">lm</span>(vida <span class="op">~</span><span class="st"> </span>velocidad <span class="op">*</span><span class="st"> </span>herramienta, <span class="dt">data =</span> tiempovida)</a>
+<a class="sourceLine" id="cb301-3" title="3"><span class="co"># Selección del modelo</span></a>
+<a class="sourceLine" id="cb301-4" title="4"><span class="kw">ols_step_backward_p</span>(fit.vida, <span class="dt">prem =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<pre><code>## 
+## 
+##                                  Elimination Summary                                  
+## -------------------------------------------------------------------------------------
+##         Variable                               Adj.                                      
+## Step           Removed           R-Square    R-Square     C(p)       AIC        RMSE     
+## -------------------------------------------------------------------------------------
+##    1    velocidad:herramienta      0.8969      0.8847    3.9652    106.6591    3.0919    
+## -------------------------------------------------------------------------------------</code></pre>
+<p>El proceso de selección identifica el efecto de interacción entre <code>velocidad</code> y <code>herramienta</code> como no significativo, de forma que el modelo final viene dado por:
+<span class="math display">\[vida \sim velocidad + herramienta\]</span>
+Ajustamos el modelo con rectas paralelas, es decir, la pendiente de la recta entre el tiempo de vida y la velocidad stiene la misma pendiente, variando únicamenyte la interceptación en función del tipo de herramienta utilizada. Tenemos por tanto un modelo con dos rectas paralelas (una por cada tipo de herramienta).</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" title="1"><span class="co"># Modelo saturado</span></a>
+<a class="sourceLine" id="cb303-2" title="2">fit.vida &lt;-<span class="st"> </span><span class="kw">lm</span>(vida <span class="op">~</span><span class="st"> </span>velocidad <span class="op">+</span><span class="st"> </span>herramienta, <span class="dt">data =</span> tiempovida)</a>
+<a class="sourceLine" id="cb303-3" title="3"><span class="co"># Parámetros estimados</span></a>
+<a class="sourceLine" id="cb303-4" title="4"><span class="kw">tab_model</span>(fit.vida,</a>
+<a class="sourceLine" id="cb303-5" title="5">          <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb303-6" title="6">          <span class="dt">show.p =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+vida
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+36.93
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+29.56 – 44.30
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+velocidad
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.03
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.04 – -0.02
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+herramienta [B]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+14.67
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+11.75 – 17.58
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+20
+</td>
+</tr>
+</table>
+<p>Las ecuaciones de estimación para este modelo vienen dadas por:</p>
+<p><span class="math display">\[
+\left\{ 
+\begin{array}{lll}
+\mbox{Herramienta A}:&amp; \widehat{Vida_{A}} = 36.93 + 0  - 0.03*velocidad &amp;= 36.93 -0.03*velocidad\\
+\mbox{Herramienta B}:&amp; \widehat{Vida_{B}} = 36.93 + 14.67 - 0.03*velocidad &amp;= 51.60 - 0.03*velocidad \\
+\end{array}
+\right.
+\]</span></p>
+<p>Tenemos una interceptación mayor para la herramienta B indicando que la recta asociada con dicha herramienta está por encima de la de la herramienta A, lo que en térinos prácticos nos indica que el tiempo de vida con la herramienta B siempre será superior al del tipo A para cualquier velocidad considerada. Además, la pendiente negativa asociada con la velocidad indica que conforme aumenta esta disminuye el tiempo de vida.</p>
+<p><strong>Ejemplo.</strong> Analizamos ahora los datos de longevidad. Construimos el modelo saturado y seleccionamos mediante el test <span class="math inline">\(F\)</span>.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1"><span class="co"># Modelos</span></a>
+<a class="sourceLine" id="cb304-2" title="2">fit.longevidad &lt;-<span class="st"> </span><span class="kw">lm</span>(longevidad <span class="op">~</span><span class="st"> </span>thorax <span class="op">*</span><span class="st"> </span>actividad, <span class="dt">data =</span> longevidad)</a>
+<a class="sourceLine" id="cb304-3" title="3"><span class="co"># Selección del modelo</span></a>
+<a class="sourceLine" id="cb304-4" title="4"><span class="kw">ols_step_backward_p</span>(fit.longevidad, <span class="dt">prem =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<pre><code>## 
+## 
+##                                Elimination Summary                                 
+## ----------------------------------------------------------------------------------
+##         Variable                          Adj.                                        
+## Step        Removed         R-Square    R-Square     C(p)        AIC        RMSE      
+## ----------------------------------------------------------------------------------
+##    1    thorax:actividad      0.6527       0.638    -3.7881    943.8165    10.5394    
+## ----------------------------------------------------------------------------------</code></pre>
+<p>El proceso de selección identifica el efecto de interacción entre <code>thorax</code> y <code>actividad</code> como no significativo, de forma que el modelo final viene dado por:
+<span class="math display">\[longevidad \sim thorax + actividad\]</span>
+Ajustamos el modelo y estudiamos los parámetros obtenidos:</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" title="1"><span class="co"># Modelos</span></a>
+<a class="sourceLine" id="cb306-2" title="2">fit.longevidad &lt;-<span class="st"> </span><span class="kw">lm</span>(longevidad <span class="op">~</span><span class="st"> </span>thorax <span class="op">+</span><span class="st"> </span>actividad, <span class="dt">data =</span> longevidad)</a>
+<a class="sourceLine" id="cb306-3" title="3"><span class="co"># Parámetros estimados</span></a>
+<a class="sourceLine" id="cb306-4" title="4"><span class="kw">tab_model</span>(fit.longevidad,</a>
+<a class="sourceLine" id="cb306-5" title="5">          <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb306-6" title="6">          <span class="dt">show.p =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+longevidad
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-44.61
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-65.53 – -23.69
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+thorax
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+134.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+109.13 – 159.55
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+actividad [G2]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-4.14
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-10.13 – 1.86
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+actividad [G3]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.50
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-7.48 – 4.47
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+actividad [G4]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-11.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-17.15 – -5.16
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+actividad [G5]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-24.14
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-30.12 – -18.17
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+124
+</td>
+</tr>
+</table>
+<p>Todas las rectas tienen la misma pendiente (coeficiente asociado a tórax) pero con distinto punto de origen debido al tratamiento al que son sometidos los sujetos. La pendiente positiva indica que la longevidad aumenta cuando lo hace la longitud del tórax, mientras que podemos ver que el grupo G1 es el de mayor longevidad por tener la interceptación más grande. Las ecuaciones para cada uno de los grupos viene dada por:</p>
+<p><span class="math display">\[
+\left\{ 
+\begin{array}{ll}
+\mbox{G1}:&amp; \widehat{logevidad_{G1}} = - 44.61 + 134.34*thorax\\
+\mbox{G2}:&amp; \widehat{logevidad_{G2}} = - 48.75 + 134.34*thorax \\
+\mbox{G3}:&amp; \widehat{logevidad_{G3}} = - 46.11 + 134.34*thorax \\
+\mbox{G4}:&amp; \widehat{logevidad_{G4}} = - 55.76 + 134.34*thorax \\
+\mbox{G5}:&amp; \widehat{logevidad_{G5}} = - 68.75 + 134.34*thorax \\
+\end{array}
+\right.
+\]</span></p>
+<p>El grupo con mayor longevidad es el G1, ya que tiene la interceptación más grande, mientras que el que tiene menor longevidad es G5. El orden vendría dado por <span class="math inline">\(G1 &gt; G3 &gt; G2 &gt; G4 &gt; G5\)</span>.</p>
+</div>
+<div id="diagnóstico-del-modelo" class="section level2">
+<h2><span class="header-section-number">5.5</span> Diagnóstico del modelo</h2>
+<p>En este caso el diagnóstico es similar al de los modelos de regresión pero teniendo en cuenta que las hipótesis se deben verificar para los residuos asociados a cada nivel del factor (si este está presente en el modelo). Las hipótesis son linealidad, normalidad y varianza constante. Para verificar la hipótesis de linealidad utilizamos el gráfico de residuos vs ajustados y residuos vs predictora numérica, mientras que usamos los tests de normalidad y homogeneidad para el resto de hipótesis. Utilizamos los mismos ejemplos de los puntos anteriores para mostrar como realizar el diagnóstico en este tipo de modelos.</p>
+<p><strong>Ejemplo</strong> A continuación, se presenta el diagnóstico para el modelo de tiempos de vida. Para realizar el diagnóstico partimos del modelo obtenido en la sección anterior.</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" title="1"><span class="co"># Valores de diagnóstico</span></a>
+<a class="sourceLine" id="cb307-2" title="2">diagnostico &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.vida)</a>
+<a class="sourceLine" id="cb307-3" title="3"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb307-4" title="4"><span class="kw">ggplot</span>(diagnostico,<span class="kw">aes</span>(<span class="dt">x =</span> velocidad, <span class="dt">y =</span> .stdresid, <span class="dt">colour =</span> herramienta)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb307-5" title="5"><span class="st">   </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb307-6" title="6"><span class="st">   </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb307-7" title="7"><span class="st">   </span><span class="kw">facet_wrap</span>(. <span class="op">~</span><span class="st"> </span>herramienta)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov005-1.png" width="672" /></p>
+<p>En la figura no se observan problemas con los residuos, aunque sí se puede ver que para el tipo A la variabilidad de los residuos aumenta cuando aumenta el valor ajustado, indicando posibles problemas con la homogeneidad de varianzas. Además, no se observa ningún tipo de tendencia que pueda indicar falta de linealidad. Procedemos con los tests de hipótesis.</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" title="1"><span class="co"># Tests de hipótesis</span></a>
+<a class="sourceLine" id="cb308-2" title="2"><span class="kw">ols_test_normality</span>(fit.vida)</a></code></pre></div>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9715         0.7858 
+## Kolmogorov-Smirnov        0.1232         0.8859 
+## Cramer-von Mises          1.4412          2e-04 
+## Anderson-Darling          0.2652         0.6555 
+## -----------------------------------------------</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" title="1"><span class="kw">leveneTest</span>(.stdresid <span class="op">~</span><span class="st"> </span>herramienta, <span class="dt">data =</span> diagnostico)</a></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##       Df F value Pr(&gt;F)
+## group  1  1.3888  0.254
+##       18</code></pre>
+<p>Puesto que ambos tests resultan no significativo se verifican las hipótesis del modelo, por lo que estamos en condiciones de afirmar que el modelo resultante es adecuado para explicar el comportamiento del tiempo de vida en función del tipo de pieza y de la velocidad considerada.</p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" title="1"><span class="co"># Análisis de influencia</span></a>
+<a class="sourceLine" id="cb312-2" title="2"><span class="kw">ols_plot_cooksd_chart</span>(fit.vida)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov005c-1.png" width="672" /></p>
+<p>La distancia de Cook no muestra ninguna observación influyente (valor mayor que 1). Dado que se verifican las hipótesis el modelo obtenido parece adecuado para estudiar el tiempo de vida en función de la velocidad y la herramienta utilizada.</p>
+<p><strong>Ejemplo.</strong> Analizamos ahora el modelo correspondiente a los datos de longevidad. En primer lugar, realizamos el análisis gráfico de los residuos. En este caso no hay interacción presente en el modelo y todos los gráficos deben identificar cada uno de los niveles de actividad.</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" title="1"><span class="co"># Valores de diagnóstico</span></a>
+<a class="sourceLine" id="cb313-2" title="2">diagnostico &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.longevidad)</a>
+<a class="sourceLine" id="cb313-3" title="3"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb313-4" title="4"><span class="kw">ggplot</span>(diagnostico,<span class="kw">aes</span>(<span class="dt">x =</span> thorax, <span class="dt">y =</span> .stdresid, <span class="dt">colour =</span> actividad)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb313-5" title="5"><span class="st">   </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb313-6" title="6"><span class="st">   </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb313-7" title="7"><span class="st">   </span><span class="kw">facet_wrap</span>(. <span class="op">~</span><span class="st"> </span>actividad)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov006-1.png" width="672" /></p>
+<p>En la figura se puede observar que para algún nivel del factor los residuos aumentan o disminuyen en función del valor ajustado, por ejemplo para el grupo G3 (mayor variabilidad en el centro que en los extremos) indicando posibles problemas con la homogeneidad de varianzas. Pasamos a valorar las hipótesis del modelo.</p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" title="1"><span class="co"># Tests de hipótesis</span></a>
+<a class="sourceLine" id="cb314-2" title="2"><span class="kw">ols_test_normality</span>(fit.longevidad)</a></code></pre></div>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9916         0.6607 
+## Kolmogorov-Smirnov        0.0538         0.8654 
+## Cramer-von Mises         10.2413         0.0000 
+## Anderson-Darling          0.3224         0.5241 
+## -----------------------------------------------</code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" title="1"><span class="kw">leveneTest</span>(.stdresid <span class="op">~</span><span class="st"> </span>actividad, <span class="dt">data =</span> diagnostico)</a></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##        Df F value Pr(&gt;F)
+## group   4  1.2925 0.2769
+##       119</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="co"># Análisis de influencia</span></a>
+<a class="sourceLine" id="cb318-2" title="2"><span class="kw">ols_plot_cooksd_chart</span>(fit.longevidad)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov006b-1.png" width="672" /></p>
+<p>Aunque se verifican las hipótesis del modelo y no se detectan observaciones influyentes, si que es cierto que los gráficos de residuos muestran cierto comportamiento de embudo con variabilidades más pequeñas en valores más pequeños de thorax, y mayor dispersión al aumentar la longitud del thorax. Sería recomendable probar Box-Cox para tratar de obtener una transformación de la respuesta que nos permita obtener gráficos sin esos efectos indeseables.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" title="1">MASS<span class="op">::</span><span class="kw">boxcox</span>(fit.longevidad)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov007-1.png" width="672" /></p>
+<p>La transformación raíz cuadrada parece adecuada en esta situación. Obtenemos la nueva variable y ajustamos de nuevo el modelo.</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="co"># Transformación</span></a>
+<a class="sourceLine" id="cb320-2" title="2">longevidad &lt;-<span class="st"> </span>longevidad <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">rlongevidad =</span> <span class="kw">sqrt</span>(longevidad)) </a>
+<a class="sourceLine" id="cb320-3" title="3"><span class="co"># Modelo saturado</span></a>
+<a class="sourceLine" id="cb320-4" title="4">fit.longevidad &lt;-<span class="st"> </span><span class="kw">lm</span>(rlongevidad <span class="op">~</span><span class="st"> </span>thorax <span class="op">*</span><span class="st"> </span>actividad, <span class="dt">data =</span> longevidad)</a>
+<a class="sourceLine" id="cb320-5" title="5"><span class="co"># Selección del modelo</span></a>
+<a class="sourceLine" id="cb320-6" title="6"><span class="kw">ols_step_backward_p</span>(fit.longevidad, <span class="dt">prem =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<pre><code>## 
+## 
+##                                Elimination Summary                                
+## ---------------------------------------------------------------------------------
+##         Variable                          Adj.                                       
+## Step        Removed         R-Square    R-Square     C(p)        AIC        RMSE     
+## ---------------------------------------------------------------------------------
+##    1    thorax:actividad      0.6868      0.6736    -3.0694    267.2943    0.6888    
+## ---------------------------------------------------------------------------------</code></pre>
+<p>De nuevo el modelo seleccionado prescinde del efecto de interacción. Ajustamos y estudiamos el nuevo modelo.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="co"># Modelos</span></a>
+<a class="sourceLine" id="cb322-2" title="2">fit.longevidad &lt;-<span class="st"> </span><span class="kw">lm</span>(rlongevidad <span class="op">~</span><span class="st"> </span>thorax <span class="op">+</span><span class="st"> </span>actividad, <span class="dt">data =</span> longevidad)</a>
+<a class="sourceLine" id="cb322-3" title="3"><span class="co"># Parámetros estimados</span></a>
+<a class="sourceLine" id="cb322-4" title="4"><span class="kw">tab_model</span>(fit.longevidad,</a>
+<a class="sourceLine" id="cb322-5" title="5">          <span class="dt">show.r2 =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb322-6" title="6">          <span class="dt">show.p =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+rlongevidad
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.03 – 1.71
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+thorax
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+9.41
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+7.77 – 11.06
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+actividad [G2]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.30
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.69 – 0.09
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+actividad [G3]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.12
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.51 – 0.27
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+actividad [G4]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.76
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.15 – -0.37
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+actividad [G5]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.73
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-2.12 – -1.34
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="2">
+124
+</td>
+</tr>
+</table>
+<p>¿Cuáles son las ecuaciones de estimación en este caso?</p>
+<p>El proceso de diagnóstico para el nuevo modelo permite verificar el cumplimiento de las hipótesis y la leve mejora de los gráficos de residuos.</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" title="1"><span class="co"># Valores de diagnóstico</span></a>
+<a class="sourceLine" id="cb323-2" title="2">diagnostico &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.longevidad)</a>
+<a class="sourceLine" id="cb323-3" title="3"><span class="co"># Gráfico</span></a>
+<a class="sourceLine" id="cb323-4" title="4"><span class="kw">ggplot</span>(diagnostico,<span class="kw">aes</span>(<span class="dt">x =</span> thorax, <span class="dt">y =</span> .stdresid, <span class="dt">colour =</span> actividad)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb323-5" title="5"><span class="st">   </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb323-6" title="6"><span class="st">   </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb323-7" title="7"><span class="st">   </span><span class="kw">facet_wrap</span>(. <span class="op">~</span><span class="st"> </span>actividad)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov010-1.png" width="672" /></p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" title="1"><span class="co"># Tests de hipótesis</span></a>
+<a class="sourceLine" id="cb324-2" title="2"><span class="kw">ols_test_normality</span>(fit.longevidad)</a></code></pre></div>
+<pre><code>## -----------------------------------------------
+##        Test             Statistic       pvalue  
+## -----------------------------------------------
+## Shapiro-Wilk              0.9951         0.9465 
+## Kolmogorov-Smirnov        0.0474         0.9432 
+## Cramer-von Mises         10.7431         0.0000 
+## Anderson-Darling          0.2137         0.8484 
+## -----------------------------------------------</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="kw">leveneTest</span>(.stdresid <span class="op">~</span><span class="st"> </span>actividad, <span class="dt">data =</span> diagnostico)</a></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##        Df F value Pr(&gt;F)
+## group   4  0.6856 0.6033
+##       119</code></pre>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" title="1"><span class="co"># Análisis de influencia</span></a>
+<a class="sourceLine" id="cb328-2" title="2"><span class="kw">ols_plot_cooksd_chart</span>(fit.longevidad)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov010-2.png" width="672" /></p>
+</div>
+<div id="predicción-2" class="section level2">
+<h2><span class="header-section-number">5.6</span> Predicción</h2>
+<p>El proceso de predicción en este tipo de modelos es muy simple a partir de las ecuaciones de los modelos obtenidos. De hecho, en las secciones anteriores ya hemos visto gráficamente la predicción para todos estos modelos en los ejemplos que hemos ido trabajando. Básicamente, si queremos obtener una predicción especifica deberemos dar un valor del factor y otro de la predictora numérica para calcular el valor de predicción y su correspondiente intervalo. En este caso nos imitamos a representar las bandas de predicción que podemos obtener para cada modelo.</p>
+<p><strong>Ejemplo.</strong> A continuación, se presentan las rectas de predicción para el modelo ajustado en el banco de datos de tiempo de vida.</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" title="1"><span class="kw">plot_model</span>(fit.vida, <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="kw">c</span>(<span class="st">&quot;velocidad&quot;</span>, <span class="st">&quot;herramienta&quot;</span>),</a>
+<a class="sourceLine" id="cb329-2" title="2">           <span class="dt">title =</span><span class="st">&quot;Predicción de la media del tiempo de vida&quot;</span>)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov011-1.png" width="672" /></p>
+<p>En la figura se presentan los resultados obtenidos donde queda patente el comportamiento distinto para tipo de herramienta, mostrando que la de tipo B tiene un tiempo de vida superior, pero que se va reduciendo cuando aumentamos la velocidad.</p>
+<p><strong>Ejemplo.</strong> A continuación, se presentan las rectas de predicción para el modelo ajustado en el banco de datos de longevidad. En la figura se presentan los resultados obtenidos donde queda patente el comportamiento paralelo para cada tipo de actividad, mostrando que el grupo G1 es el que muestra una mayor longevidad que aumenta además con la longitud del tórax. Además, podemos ver como el único grupo que muestra un comportamiento distinto es el del grupo G5, mientras que los otros grupos muestran predicciones muy similares.</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="kw">plot_model</span>(fit.longevidad, <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="kw">c</span>(<span class="st">&quot;thorax&quot;</span>, <span class="st">&quot;actividad&quot;</span>),</a>
+<a class="sourceLine" id="cb330-2" title="2">           <span class="dt">title =</span><span class="st">&quot;Predicción de la raíz cuadrada de la media de longevidad&quot;</span>)</a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov012-1.png" width="672" /></p>
+<p>Obtenemos ahora el gráfico de predicción en la escala original. Deshacemos el cambio de raíz cuadrada y representamos de nuevo las bandas de confianza.</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" title="1"><span class="co"># Creamos grid de predicción</span></a>
+<a class="sourceLine" id="cb331-2" title="2">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">thorax =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="kw">min</span>(longevidad<span class="op">$</span>thorax), </a>
+<a class="sourceLine" id="cb331-3" title="3">                                       <span class="kw">max</span>(longevidad<span class="op">$</span>thorax), </a>
+<a class="sourceLine" id="cb331-4" title="4">                                       <span class="fl">.01</span>),</a>
+<a class="sourceLine" id="cb331-5" title="5">                                   <span class="dt">each=</span><span class="dv">5</span>), </a>
+<a class="sourceLine" id="cb331-6" title="6"><span class="dt">actividad =</span> <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G2&quot;</span>, <span class="st">&quot;G3&quot;</span>, <span class="st">&quot;G4&quot;</span>, <span class="st">&quot;G5&quot;</span>)))</a>
+<a class="sourceLine" id="cb331-7" title="7"><span class="co"># Obtenemos la predicción para el modelo ajusatdo</span></a>
+<a class="sourceLine" id="cb331-8" title="8">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(newdata, </a>
+<a class="sourceLine" id="cb331-9" title="9">             <span class="kw">predict</span>(fit.longevidad, newdata, <span class="dt">interval=</span><span class="st">&quot;confidence&quot;</span>))</a>
+<a class="sourceLine" id="cb331-10" title="10"><span class="co"># Eliminamos la raíz cuadrada de las predicciones </span></a>
+<a class="sourceLine" id="cb331-11" title="11">newdata<span class="op">$</span>fit &lt;-<span class="st"> </span>newdata<span class="op">$</span>fit<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb331-12" title="12">newdata<span class="op">$</span>lwr &lt;-<span class="st"> </span>newdata<span class="op">$</span>lwr<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb331-13" title="13">newdata<span class="op">$</span>upr &lt;-<span class="st"> </span>newdata<span class="op">$</span>upr<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb331-14" title="14"><span class="co"># Gráfico de la predicción</span></a>
+<a class="sourceLine" id="cb331-15" title="15"><span class="kw">ggplot</span>(newdata, <span class="kw">aes</span>(<span class="dt">x =</span> thorax, <span class="dt">y =</span> fit, <span class="dt">color =</span> actividad)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb331-16" title="16"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb331-17" title="17"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> upr, <span class="dt">ymin =</span> lwr, <span class="dt">fill =</span> actividad), <span class="dt">alpha =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb331-18" title="18"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitud del thorax&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Longevidad&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Bandas de predicción&quot;)</span></a></code></pre></div>
+<p><img src="libroSTAT_files/figure-html/ancov012b-1.png" width="672" /></p>
+<p>En la figura siguiente se presentan los resultados obtenidos donde se aprecia cierta curvatura en las bandas de predicción debida al cambio en la escala de la raíz cuadrada a la escala original de la variable.</p>
+</div>
+<div id="ejercicios-modelos-ancova" class="section level2">
+<h2><span class="header-section-number">5.7</span> Ejercicios modelos ANCOVA</h2>
+<p>A continuación se presenta la colección de ejercicios de esta unidad.</p>
+<p><strong>Ejercicio 1.</strong> Disponemos de los datos de peso de 24 niños recién nacidos (<code>peso</code>), su sexo (<code>sexo</code>; “H” = Hombres y “M” = Mujeres) y la edad de sus madres (<code>edad</code>). Nos gustaría ser capaces de determinar un modelo que explique el peso de los niños recién nacidos en función de su sexo y de la edad de sus madres.</p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" title="1"><span class="co"># Lectura de datos</span></a>
+<a class="sourceLine" id="cb332-2" title="2">edad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">38</span>, <span class="dv">40</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">37</span>, <span class="dv">41</span>, <span class="dv">40</span>, <span class="dv">37</span>, <span class="dv">38</span>, <span class="dv">40</span>, <span class="dv">38</span>,</a>
+<a class="sourceLine" id="cb332-3" title="3">          <span class="dv">40</span>, <span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">38</span>, <span class="dv">42</span>, <span class="dv">39</span>, <span class="dv">40</span>, <span class="dv">37</span>, <span class="dv">36</span>, <span class="dv">38</span>, <span class="dv">39</span>, <span class="dv">40</span>)</a>
+<a class="sourceLine" id="cb332-4" title="4">peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2968</span>, <span class="dv">2795</span>, <span class="dv">3163</span>, <span class="dv">2925</span>, <span class="dv">2625</span>, <span class="dv">2847</span>, <span class="dv">3292</span>, <span class="dv">3473</span>, </a>
+<a class="sourceLine" id="cb332-5" title="5">          <span class="dv">2628</span>, <span class="dv">3176</span>, <span class="dv">3421</span>, <span class="dv">2975</span>, <span class="dv">3317</span>, <span class="dv">2729</span>, <span class="dv">2935</span>, <span class="dv">2754</span>, </a>
+<a class="sourceLine" id="cb332-6" title="6">          <span class="dv">3210</span>, <span class="dv">2817</span>, <span class="dv">3126</span>, <span class="dv">2539</span>, <span class="dv">2412</span>, <span class="dv">2991</span>, <span class="dv">2875</span>, <span class="dv">3231</span>)</a>
+<a class="sourceLine" id="cb332-7" title="7">sexo &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">2</span>,<span class="dv">12</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;M&quot;</span>))</a>
+<a class="sourceLine" id="cb332-8" title="8">ejer01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(edad, peso, sexo)</a></code></pre></div>
+<p><strong>Ejercicio 2.</strong> Se lleva a cabo una investigación sobre diversas malformaciones del sistema nervioso central registradas en nacidos vivos en Gales del Sur, Reino Unido. El estudio fue diseñado para determinar el efecto de la dureza del agua sobre la incidencia de tales malformaciones. La información registrada son: <code>NoCNS</code> = recuento de nacimientos sin problema CNS; <code>An</code> = conteo de nacimientos de Anencephalus; <code>Sp</code> = conteo de nacimientos de espina bífida; <code>Otro</code> = recuento de otros nacimientos del SNC; <code>Agua</code> = endurecimiento del agua; <code>Trabajo</code> = un factor con niveles Manual no manual en función del tipo de trabajo realizado por los padres Se está interesado en predecir el número total de malformaciones en función de la calidad del agua y el trabajo realizado por los padres.</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" title="1"><span class="co"># Lectura de datos</span></a>
+<a class="sourceLine" id="cb333-2" title="2">previo &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/bNOSxt&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;cdddddc&quot;</span>)</a>
+<a class="sourceLine" id="cb333-3" title="3"><span class="co"># Calculamos el número total de malformaciones</span></a>
+<a class="sourceLine" id="cb333-4" title="4">ejer02 &lt;-<span class="st"> </span>previo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">CNS =</span> An <span class="op">+</span><span class="st"> </span>Sp <span class="op">+</span><span class="st"> </span>Other)</a></code></pre></div>
+<p><strong>Ejercicio 3.</strong> Se ha realizado un estudio para establecer la calidad de los vinos de la variedad Pino Noir en función de un conjunto de características analizadas. Las características analizadas son <code>claridad</code>, <code>aroma</code>, <code>cuerpo</code>, <code>olor</code> y <code>matiz</code>. Para medir la <code>calidad</code> se organiza una cata ciega a un conjunto de expertos y se calcula la puntuación final de cada vino a partir de la información de todos ellos. Además se registra la región (<code>region</code>) de procedencia del vino por si puede influir en la calidad del vino.</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" title="1"><span class="co"># Lectura de datos</span></a>
+<a class="sourceLine" id="cb334-2" title="2">ejer03 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/OX9wgM&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;ddddddc&quot;</span>)</a></code></pre></div>
+<p><strong>Ejercicio 4.</strong> Una empresa recibe cargamentos de material para procesar en sus almacenes. El objetivo básico del estudio es determinar el tiempo de procesado de los cargamentos recibidos como función del tamaño del cargamento y el tipo de almacén.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1"><span class="co"># Carga de datos </span></a>
+<a class="sourceLine" id="cb335-2" title="2">ejer04 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://goo.gl/kuMNpD&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb335-3" title="3">ejer04 &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(ejer04)</a></code></pre></div>
+<p><strong>Ejercicio 5.</strong> Una empresa dedicada a la fabricación de aislantes térmicos y acústicos establece un experimento que mide la pérdida de calor (<code>Calor</code>) a través de cuatro tipos diferentes de cristal para ventanas (<code>Cristal</code>) utilizando cinco graduaciones diferentes de temperatura exterior (<code>TempExt</code>). Se prueban tres hojas de cristal en cada graduación de temperatura, y se registra la pérdida de calor para cada hoja.</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" title="1"><span class="co"># Lectura de datos</span></a>
+<a class="sourceLine" id="cb336-2" title="2">ejer05 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/V6hyVW&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;ddc&quot;</span>) </a>
+<a class="sourceLine" id="cb336-3" title="3">ejer05 &lt;-<span class="st"> </span>ejer05 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb336-4" title="4"><span class="st">  </span><span class="kw">mutate_if</span>(<span class="kw">sapply</span>(ejer05,is.character),as.factor) </a></code></pre></div>
+<p><strong>Ejercicio 6.</strong> El grupo de asesores LearnStatistics ha realizado un estudio para comprobar si las empresas destinan parte de los beneficios de sus ventas en la formación de sus empleados para mejorar su competitividad. Para ellos se recoge la información sobre ventas (<code>Ventas</code>) en miles de euros, capital invertido en formación (<code>Capital</code>) en miles de euros, y el nivel de productividad de la empresa establecido por un asesor externo (<code>Productividad</code>).</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1"><span class="co"># Lectura de datos</span></a>
+<a class="sourceLine" id="cb337-2" title="2">ejer06 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://bit.ly/2rCATaO&quot;</span>, <span class="dt">col_types =</span> <span class="st">&quot;dcd&quot;</span>)</a>
+<a class="sourceLine" id="cb337-3" title="3">ejer06 &lt;-<span class="st"> </span>ejer06 <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb337-4" title="4"><span class="st">  </span><span class="kw">mutate_if</span>(<span class="kw">sapply</span>(ejer06,is.character),as.factor) </a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="smooth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["libroSTAT.pdf", "libroSTAT.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

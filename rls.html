@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Unidad 2 Regresión Lineal Simple (RLS) | Modelos Estadísticos</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Unidad 2 Regresión Lineal Simple (RLS) | Modelos Estadísticos" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Mª Asunción Martínez (Universidad Miguel Hernández de Elche)" />
 
 
-<meta name="date" content="2021-02-26" />
+<meta name="date" content="2021-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,6 @@
   
 <link rel="prev" href="modelstats.html"/>
 <link rel="next" href="rlm.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,26 +54,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +81,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -131,24 +129,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Modelos Estadísticos</a></li>
+<li><a href="https://sites.google.com/umh.es/statistical-models" target="blank">Modelos Estadísticos</a></li>
 <li><a href="./">J. Morales y A.M. Mayoral</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
-<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
-<li class="chapter" data-level="1" data-path="modelstats.html"><a href="modelstats.html"><i class="fa fa-check"></i><b>1</b> Modelos estadísticos</a>
-<ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html"><i class="fa fa-check"></i>Antes de empezar</a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#conceptos-básicos-del-diseño-experimental"><i class="fa fa-check"></i>Conceptos básicos del diseño experimental</a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#objetivo-del-diseño-experimental"><i class="fa fa-check"></i>Objetivo del diseño experimental</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#población-y-muestra"><i class="fa fa-check"></i>Población y muestra</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#medidas-y-escalas-de-medida"><i class="fa fa-check"></i>Medidas y escalas de medida</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#parámetros-poblacionales-y-estadísticos"><i class="fa fa-check"></i>Parámetros poblacionales y estadísticos</a></li>
+</ul></li>
+<li><a href="antes-de-empezar.html#primeros-pasos-con-r-y-rstudio">Primeros pasos con <code>R</code> y <code>RStudio</code></a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#instalación-y-puesta-en-marcha"><i class="fa fa-check"></i>Instalación y puesta en marcha</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#informes-prediseñados"><i class="fa fa-check"></i>Informes prediseñados</a></li>
+<li><a href="antes-de-empezar.html#librerías-de-r-necesarías">Librerías de <code>R</code> necesarías</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="modelstats.html"><a href="modelstats.html"><i class="fa fa-check"></i><b>1</b> Modelos estadísticos</a><ul>
 <li class="chapter" data-level="1.1" data-path="modelstats.html"><a href="modelstats.html#componentes-del-modelo"><i class="fa fa-check"></i><b>1.1</b> Componentes del modelo</a></li>
 <li class="chapter" data-level="1.2" data-path="modelstats.html"><a href="modelstats.html#tipos-de-modelos"><i class="fa fa-check"></i><b>1.2</b> Tipos de modelos</a></li>
 <li class="chapter" data-level="1.3" data-path="modelstats.html"><a href="modelstats.html#fases-en-la-construcción-de-un-modelo"><i class="fa fa-check"></i><b>1.3</b> Fases en la construcción de un modelo</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="rls.html"><a href="rls.html"><i class="fa fa-check"></i><b>2</b> Regresión Lineal Simple (RLS)</a>
-<ul>
+<li class="chapter" data-level="2" data-path="rls.html"><a href="rls.html"><i class="fa fa-check"></i><b>2</b> Regresión Lineal Simple (RLS)</a><ul>
 <li class="chapter" data-level="2.1" data-path="rls.html"><a href="rls.html#bancos-de-datos"><i class="fa fa-check"></i><b>2.1</b> Bancos de datos</a></li>
 <li class="chapter" data-level="2.2" data-path="rls.html"><a href="rls.html#modelorls"><i class="fa fa-check"></i><b>2.2</b> El modelo RLS</a></li>
-<li class="chapter" data-level="2.3" data-path="rls.html"><a href="rls.html#estimacionrls"><i class="fa fa-check"></i><b>2.3</b> Estimación del modelo</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="rls.html"><a href="rls.html#estimacionrls"><i class="fa fa-check"></i><b>2.3</b> Estimación del modelo</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="rls.html"><a href="rls.html#mincuadrls"><i class="fa fa-check"></i><b>2.3.1</b> Estimación Mínimos Cuadrados</a></li>
 <li class="chapter" data-level="2.3.2" data-path="rls.html"><a href="rls.html#emvrls"><i class="fa fa-check"></i><b>2.3.2</b> Estimación Máximo Verosímil</a></li>
 <li class="chapter" data-level="2.3.3" data-path="rls.html"><a href="rls.html#emR"><i class="fa fa-check"></i><b>2.3.3</b> Estimación con R</a></li>
@@ -158,15 +165,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.7" data-path="rls.html"><a href="rls.html#inferencia-sobre-los-coeficientes-del-modelo"><i class="fa fa-check"></i><b>2.3.7</b> Inferencia sobre los coeficientes del modelo</a></li>
 <li class="chapter" data-level="2.3.8" data-path="rls.html"><a href="rls.html#ejemplo"><i class="fa fa-check"></i><b>2.3.8</b> Ejemplo</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="rls.html"><a href="rls.html#bondad-del-ajuste"><i class="fa fa-check"></i><b>2.4</b> Bondad del Ajuste</a>
-<ul>
+<li class="chapter" data-level="2.4" data-path="rls.html"><a href="rls.html#bondad-del-ajuste"><i class="fa fa-check"></i><b>2.4</b> Bondad del Ajuste</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="rls.html"><a href="rls.html#rls_errorresidual"><i class="fa fa-check"></i><b>2.4.1</b> Error residual</a></li>
 <li class="chapter" data-level="2.4.2" data-path="rls.html"><a href="rls.html#rls_tablaanova"><i class="fa fa-check"></i><b>2.4.2</b> Tabla Anova</a></li>
 <li class="chapter" data-level="2.4.3" data-path="rls.html"><a href="rls.html#coeficiente-de-determinación"><i class="fa fa-check"></i><b>2.4.3</b> Coeficiente de determinación</a></li>
 <li class="chapter" data-level="2.4.4" data-path="rls.html"><a href="rls.html#ejemplo-1"><i class="fa fa-check"></i><b>2.4.4</b> Ejemplo</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="rls.html"><a href="rls.html#rls_diag"><i class="fa fa-check"></i><b>2.5</b> Diagnóstico del Modelo</a>
-<ul>
+<li class="chapter" data-level="2.5" data-path="rls.html"><a href="rls.html#rls_diag"><i class="fa fa-check"></i><b>2.5</b> Diagnóstico del Modelo</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="rls.html"><a href="rls.html#linealidad-y-homocedasticidad."><i class="fa fa-check"></i><b>2.5.1</b> Linealidad y homocedasticidad.</a></li>
 <li class="chapter" data-level="2.5.2" data-path="rls.html"><a href="rls.html#ejemplo-2"><i class="fa fa-check"></i><b>2.5.2</b> Ejemplo</a></li>
 <li class="chapter" data-level="2.5.3" data-path="rls.html"><a href="rls.html#normalidad"><i class="fa fa-check"></i><b>2.5.3</b> Normalidad</a></li>
@@ -177,54 +182,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.8" data-path="rls.html"><a href="rls.html#transformaciones"><i class="fa fa-check"></i><b>2.5.8</b> Transformaciones</a></li>
 <li class="chapter" data-level="2.5.9" data-path="rls.html"><a href="rls.html#ejemplos-1"><i class="fa fa-check"></i><b>2.5.9</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="rls.html"><a href="rls.html#rls_pred"><i class="fa fa-check"></i><b>2.6</b> Predicción del modelo</a>
-<ul>
+<li class="chapter" data-level="2.6" data-path="rls.html"><a href="rls.html#rls_pred"><i class="fa fa-check"></i><b>2.6</b> Predicción del modelo</a><ul>
 <li class="chapter" data-level="2.6.1" data-path="rls.html"><a href="rls.html#respuesta-media"><i class="fa fa-check"></i><b>2.6.1</b> Respuesta media</a></li>
 <li class="chapter" data-level="2.6.2" data-path="rls.html"><a href="rls.html#nueva-observación"><i class="fa fa-check"></i><b>2.6.2</b> Nueva observación</a></li>
 <li class="chapter" data-level="2.6.3" data-path="rls.html"><a href="rls.html#ejemplos-2"><i class="fa fa-check"></i><b>2.6.3</b> Ejemplos</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="rlm.html"><a href="rlm.html"><i class="fa fa-check"></i><b>3</b> Regresión Lineal Múltiple y Polinómica</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="rlm.html"><a href="rlm.html#tipos-de-modelos-1"><i class="fa fa-check"></i><b>3.1</b> Tipos de modelos</a>
-<ul>
+<li class="chapter" data-level="3" data-path="rlm.html"><a href="rlm.html"><i class="fa fa-check"></i><b>3</b> Regresión Lineal Múltiple y Polinómica</a><ul>
+<li class="chapter" data-level="3.1" data-path="rlm.html"><a href="rlm.html#tipos-de-modelos-1"><i class="fa fa-check"></i><b>3.1</b> Tipos de modelos</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="rlm.html"><a href="rlm.html#modelos-de-rlm"><i class="fa fa-check"></i><b>3.1.1</b> Modelos de RLM</a></li>
 <li class="chapter" data-level="3.1.2" data-path="rlm.html"><a href="rlm.html#modelos-de-rp"><i class="fa fa-check"></i><b>3.1.2</b> Modelos de RP</a></li>
 <li class="chapter" data-level="3.1.3" data-path="rlm.html"><a href="rlm.html#expresión-en-r-de-los-modelos"><i class="fa fa-check"></i><b>3.1.3</b> Expresión en R de los modelos</a></li>
 <li class="chapter" data-level="3.1.4" data-path="rlm.html"><a href="rlm.html#modelo-saturado-y-anidado"><i class="fa fa-check"></i><b>3.1.4</b> Modelo saturado y anidado</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="rlm.html"><a href="rlm.html#estimación-e-inferencia"><i class="fa fa-check"></i><b>3.2</b> Estimación e inferencia</a>
-<ul>
+<li class="chapter" data-level="3.2" data-path="rlm.html"><a href="rlm.html#estimación-e-inferencia"><i class="fa fa-check"></i><b>3.2</b> Estimación e inferencia</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="rlm.html"><a href="rlm.html#mínimos-cuadrados"><i class="fa fa-check"></i><b>3.2.1</b> Mínimos cuadrados</a></li>
 <li class="chapter" data-level="3.2.2" data-path="rlm.html"><a href="rlm.html#propiedades"><i class="fa fa-check"></i><b>3.2.2</b> Propiedades</a></li>
 <li class="chapter" data-level="3.2.3" data-path="rlm.html"><a href="rlm.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>3.2.3</b> Máxima verosimilitud</a></li>
 <li class="chapter" data-level="3.2.4" data-path="rlm.html"><a href="rlm.html#inferencia"><i class="fa fa-check"></i><b>3.2.4</b> Inferencia</a></li>
 <li class="chapter" data-level="3.2.5" data-path="rlm.html"><a href="rlm.html#ejemplos-3"><i class="fa fa-check"></i><b>3.2.5</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="rlm.html"><a href="rlm.html#bondad-del-ajuste-1"><i class="fa fa-check"></i><b>3.3</b> Bondad del ajuste</a>
-<ul>
+<li class="chapter" data-level="3.3" data-path="rlm.html"><a href="rlm.html#bondad-del-ajuste-1"><i class="fa fa-check"></i><b>3.3</b> Bondad del ajuste</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="rlm.html"><a href="rlm.html#tabla-anova"><i class="fa fa-check"></i><b>3.3.1</b> Tabla ANOVA</a></li>
 <li class="chapter" data-level="3.3.2" data-path="rlm.html"><a href="rlm.html#coeficiente-determinación"><i class="fa fa-check"></i><b>3.3.2</b> Coeficiente determinación</a></li>
 <li class="chapter" data-level="3.3.3" data-path="rlm.html"><a href="rlm.html#ejemplos-4"><i class="fa fa-check"></i><b>3.3.3</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="rlm.html"><a href="rlm.html#comparación-y-selección-de-modelos"><i class="fa fa-check"></i><b>3.4</b> Comparación y selección de modelos</a>
-<ul>
+<li class="chapter" data-level="3.4" data-path="rlm.html"><a href="rlm.html#comparación-y-selección-de-modelos"><i class="fa fa-check"></i><b>3.4</b> Comparación y selección de modelos</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="rlm.html"><a href="rlm.html#significatividad-de-los-predictores"><i class="fa fa-check"></i><b>3.4.1</b> Significatividad de los predictores</a></li>
 <li class="chapter" data-level="3.4.2" data-path="rlm.html"><a href="rlm.html#estadísticos-aic-y-bic"><i class="fa fa-check"></i><b>3.4.2</b> Estadísticos AIC y BIC</a></li>
 <li class="chapter" data-level="3.4.3" data-path="rlm.html"><a href="rlm.html#selección-automática"><i class="fa fa-check"></i><b>3.4.3</b> Selección automática</a></li>
 <li class="chapter" data-level="3.4.4" data-path="rlm.html"><a href="rlm.html#funciones-en-r"><i class="fa fa-check"></i><b>3.4.4</b> Funciones en R</a></li>
 <li class="chapter" data-level="3.4.5" data-path="rlm.html"><a href="rlm.html#ejemplos-5"><i class="fa fa-check"></i><b>3.4.5</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="rlm.html"><a href="rlm.html#multicolinealidad"><i class="fa fa-check"></i><b>3.5</b> Multicolinealidad</a>
-<ul>
+<li class="chapter" data-level="3.5" data-path="rlm.html"><a href="rlm.html#multicolinealidad"><i class="fa fa-check"></i><b>3.5</b> Multicolinealidad</a><ul>
 <li class="chapter" data-level="3.5.1" data-path="rlm.html"><a href="rlm.html#causas"><i class="fa fa-check"></i><b>3.5.1</b> Causas</a></li>
 <li class="chapter" data-level="3.5.2" data-path="rlm.html"><a href="rlm.html#efectos"><i class="fa fa-check"></i><b>3.5.2</b> Efectos</a></li>
 <li class="chapter" data-level="3.5.3" data-path="rlm.html"><a href="rlm.html#diagnósticos"><i class="fa fa-check"></i><b>3.5.3</b> Diagnósticos</a></li>
 <li class="chapter" data-level="3.5.4" data-path="rlm.html"><a href="rlm.html#soluciones"><i class="fa fa-check"></i><b>3.5.4</b> Soluciones</a></li>
 <li class="chapter" data-level="3.5.5" data-path="rlm.html"><a href="rlm.html#ejemplos-6"><i class="fa fa-check"></i><b>3.5.5</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="rlm.html"><a href="rlm.html#diagnóstico"><i class="fa fa-check"></i><b>3.6</b> Diagnóstico</a>
-<ul>
+<li class="chapter" data-level="3.6" data-path="rlm.html"><a href="rlm.html#diagnóstico"><i class="fa fa-check"></i><b>3.6</b> Diagnóstico</a><ul>
 <li class="chapter" data-level="3.6.1" data-path="rlm.html"><a href="rlm.html#tipos-de-residuos"><i class="fa fa-check"></i><b>3.6.1</b> Tipos de Residuos</a></li>
 <li class="chapter" data-level="3.6.2" data-path="rlm.html"><a href="rlm.html#linealidad"><i class="fa fa-check"></i><b>3.6.2</b> Linealidad</a></li>
 <li class="chapter" data-level="3.6.3" data-path="rlm.html"><a href="rlm.html#homocedasticidad"><i class="fa fa-check"></i><b>3.6.3</b> Homocedasticidad</a></li>
@@ -235,45 +232,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6.8" data-path="rlm.html"><a href="rlm.html#funciones-para-diagnóstico-e-influencia"><i class="fa fa-check"></i><b>3.6.8</b> Funciones para diagnóstico e influencia</a></li>
 <li class="chapter" data-level="3.6.9" data-path="rlm.html"><a href="rlm.html#ejemplos-7"><i class="fa fa-check"></i><b>3.6.9</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="rlm.html"><a href="rlm.html#predicción"><i class="fa fa-check"></i><b>3.7</b> Predicción</a>
-<ul>
+<li class="chapter" data-level="3.7" data-path="rlm.html"><a href="rlm.html#predicción"><i class="fa fa-check"></i><b>3.7</b> Predicción</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="rlm.html"><a href="rlm.html#estimación-de-la-respuesta-media."><i class="fa fa-check"></i><b>3.7.1</b> Estimación de la respuesta media.</a></li>
 <li class="chapter" data-level="3.7.2" data-path="rlm.html"><a href="rlm.html#predicción-de-nuevas-observaciones."><i class="fa fa-check"></i><b>3.7.2</b> Predicción de nuevas observaciones.</a></li>
 <li class="chapter" data-level="3.7.3" data-path="rlm.html"><a href="rlm.html#ejemplos-8"><i class="fa fa-check"></i><b>3.7.3</b> Ejemplos</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="rlm.html"><a href="rlm.html#ejercicios"><i class="fa fa-check"></i><b>3.8</b> Ejercicios</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> Modelos ANOVA</a>
-<ul>
+<li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> Modelos ANOVA</a><ul>
 <li class="chapter" data-level="4.1" data-path="anova.html"><a href="anova.html#bancos-de-datos-1"><i class="fa fa-check"></i><b>4.1</b> Bancos de datos</a></li>
-<li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#modelos-anova-1-vía"><i class="fa fa-check"></i><b>4.2</b> Modelos ANOVA 1 vía</a>
-<ul>
+<li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#modelos-anova-1-vía"><i class="fa fa-check"></i><b>4.2</b> Modelos ANOVA 1 vía</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="anova.html"><a href="anova.html#especificacion-del-modelo-en-r"><i class="fa fa-check"></i><b>4.2.1</b> Especificacion del modelo en <code>R</code></a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#modelos-anova-dos-vías"><i class="fa fa-check"></i><b>4.3</b> Modelos ANOVA dos vías</a>
-<ul>
+<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#modelos-anova-dos-vías"><i class="fa fa-check"></i><b>4.3</b> Modelos ANOVA dos vías</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="anova.html"><a href="anova.html#especificacion-del-modelo-en-r-1"><i class="fa fa-check"></i><b>4.3.1</b> Especificacion del modelo en <code>R</code></a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#estimación-y-bondad-de-ajuste-del-modelo"><i class="fa fa-check"></i><b>4.4</b> Estimación y bondad de ajuste del modelo</a>
-<ul>
+<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#estimación-y-bondad-de-ajuste-del-modelo"><i class="fa fa-check"></i><b>4.4</b> Estimación y bondad de ajuste del modelo</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="anova.html"><a href="anova.html#ejemplos-9"><i class="fa fa-check"></i><b>4.4.1</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#comparación-y-selección-de-modelos-1"><i class="fa fa-check"></i><b>4.5</b> Comparación y selección de modelos</a>
-<ul>
+<li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#comparación-y-selección-de-modelos-1"><i class="fa fa-check"></i><b>4.5</b> Comparación y selección de modelos</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="anova.html"><a href="anova.html#ejemplos-10"><i class="fa fa-check"></i><b>4.5.1</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#diagnóstico-1"><i class="fa fa-check"></i><b>4.6</b> Diagnóstico</a>
-<ul>
+<li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#diagnóstico-1"><i class="fa fa-check"></i><b>4.6</b> Diagnóstico</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="anova.html"><a href="anova.html#ejemplos-11"><i class="fa fa-check"></i><b>4.6.1</b> Ejemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#predicción-1"><i class="fa fa-check"></i><b>4.7</b> Predicción</a>
-<ul>
+<li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#predicción-1"><i class="fa fa-check"></i><b>4.7</b> Predicción</a><ul>
 <li class="chapter" data-level="4.7.1" data-path="anova.html"><a href="anova.html#ejemplos-12"><i class="fa fa-check"></i><b>4.7.1</b> Ejemplos</a></li>
 </ul></li>
 <li class="chapter" data-level="4.8" data-path="anova.html"><a href="anova.html#ejercicios-1"><i class="fa fa-check"></i><b>4.8</b> Ejercicios</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="ancova.html"><a href="ancova.html"><i class="fa fa-check"></i><b>5</b> Modelos ANCOVA</a><ul>
+<li class="chapter" data-level="5.1" data-path="ancova.html"><a href="ancova.html#bancos-de-datos-2"><i class="fa fa-check"></i><b>5.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="5.2" data-path="ancova.html"><a href="ancova.html#modelo-ancova-básico"><i class="fa fa-check"></i><b>5.2</b> Modelo ANCOVA básico</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="ancova.html"><a href="ancova.html#i-rectas-de-regresión-perpendiculares"><i class="fa fa-check"></i><b>5.2.1</b> I rectas de regresión perpendiculares</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ancova.html"><a href="ancova.html#i-rectas-de-regresión-paralelas"><i class="fa fa-check"></i><b>5.2.2</b> I rectas de regresión paralelas</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ancova.html"><a href="ancova.html#una-recta-de-regresión"><i class="fa fa-check"></i><b>5.2.3</b> Una recta de regresión</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ancova.html"><a href="ancova.html#anova-de-una-vía"><i class="fa fa-check"></i><b>5.2.4</b> ANOVA de una vía</a></li>
+<li class="chapter" data-level="5.2.5" data-path="ancova.html"><a href="ancova.html#modelos-sin-efectos"><i class="fa fa-check"></i><b>5.2.5</b> Modelos sin efectos</a></li>
+<li class="chapter" data-level="5.2.6" data-path="ancova.html"><a href="ancova.html#especificación-del-modelo-en-r"><i class="fa fa-check"></i><b>5.2.6</b> Especificación del modelo en <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ancova.html"><a href="ancova.html#análisis-preliminar"><i class="fa fa-check"></i><b>5.3</b> Análisis preliminar</a></li>
+<li class="chapter" data-level="5.4" data-path="ancova.html"><a href="ancova.html#ajuste-y-selección-del-modelo"><i class="fa fa-check"></i><b>5.4</b> Ajuste y Selección del modelo</a></li>
+<li class="chapter" data-level="5.5" data-path="ancova.html"><a href="ancova.html#diagnóstico-del-modelo"><i class="fa fa-check"></i><b>5.5</b> Diagnóstico del modelo</a></li>
+<li class="chapter" data-level="5.6" data-path="ancova.html"><a href="ancova.html#predicción-2"><i class="fa fa-check"></i><b>5.6</b> Predicción</a></li>
+<li class="chapter" data-level="5.7" data-path="ancova.html"><a href="ancova.html#ejercicios-modelos-ancova"><i class="fa fa-check"></i><b>5.7</b> Ejercicios modelos ANCOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="smooth.html"><a href="smooth.html"><i class="fa fa-check"></i><b>6</b> Modelos aditivos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="smooth.html"><a href="smooth.html#bancos-de-datos-3"><i class="fa fa-check"></i><b>6.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="6.2" data-path="smooth.html"><a href="smooth.html#funciones-de-suavizado"><i class="fa fa-check"></i><b>6.2</b> Funciones de suavizado</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="smooth.html"><a href="smooth.html#splines-de-regresión"><i class="fa fa-check"></i><b>6.2.1</b> Splines de regresión</a></li>
+<li class="chapter" data-level="6.2.2" data-path="smooth.html"><a href="smooth.html#splines-cúbicos"><i class="fa fa-check"></i><b>6.2.2</b> Splines cúbicos</a></li>
+<li class="chapter" data-level="6.2.3" data-path="smooth.html"><a href="smooth.html#splines-penalizados"><i class="fa fa-check"></i><b>6.2.3</b> Splines penalizados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="smooth.html"><a href="smooth.html#bondad-del-ajuste-y-selección-del-modelo"><i class="fa fa-check"></i><b>6.3</b> Bondad del ajuste y selección del modelo</a></li>
+<li class="chapter" data-level="6.4" data-path="smooth.html"><a href="smooth.html#diagnóstico-2"><i class="fa fa-check"></i><b>6.4</b> Diagnóstico</a></li>
+<li class="chapter" data-level="6.5" data-path="smooth.html"><a href="smooth.html#predicción-3"><i class="fa fa-check"></i><b>6.5</b> Predicción</a></li>
+<li class="chapter" data-level="6.6" data-path="smooth.html"><a href="smooth.html#ejercicios-2"><i class="fa fa-check"></i><b>6.6</b> Ejercicios</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Creado con bookdown</a></li>
+<li><a href="https://sites.google.com/umh.es/statistical-models" target="blank">Modelos Estadísticos</a></li>
 
 </ul>
 
@@ -292,23 +310,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rls" class="section level1" number="2">
+<div id="rls" class="section level1">
 <h1><span class="header-section-number">Unidad 2</span> Regresión Lineal Simple (RLS)</h1>
 <p>Nos preocupamos en este tema del <strong>Modelo de Regresión Lineal Simple</strong> (RLS), que podemos catalogar como el modelo lineal más sencillo, a través del cual pretendemos explicar (predecir) una variable respuesta continua <span class="math inline">\(Y\)</span> a partir de una variable <em>predictora</em> también continua <span class="math inline">\(X\)</span>. Tal modelo vendrá justificado por unos buenos resultados previos en el análisis de correlación (lineal) entre las dos variables en cuestión.</p>
 <p>En el experimento o estudio del que obtenemos los datos, los valores de <span class="math inline">\(Y\)</span> se han observado y los de <span class="math inline">\(X\)</span>, bien se han observado, bien se han prefijado por parte del investigador. En cualquier caso, asumimos que la aleatoriedad (incertidumbre) está contenida sólo en la variable <span class="math inline">\(Y\)</span>, mientras que la <span class="math inline">\(X\)</span> carece de aleatoriedad y simplemente informa de lo que ocurre en los valores observados. La variable explicativa puede ser, tanto una causa de la respuesta, como un mero testigo que informa sobre cómo varía la respuesta.</p>
 <p>De ahora en adelante denotamos por <span class="math inline">\((x_1, x_2,...,x_n)\)</span> e <span class="math inline">\((y_1, y_2,...,y_n)\)</span> a los valores observados de las variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> en un experimento dado.</p>
-<div id="bancos-de-datos" class="section level2" number="2.1">
+<div id="bancos-de-datos" class="section level2">
 <h2><span class="header-section-number">2.1</span> Bancos de datos</h2>
 <p>Presentamos a continuación los bancos de datos con los que trabajamos a lo largo de esta unidad.</p>
 <p><strong>Ejemplo 1. Datos de Corrosión.</strong> Treinta aleaciones del tipo 90/10 Cu-Ni, cada una con un contenido específico de hierro son estudiadas bajo un proceso de corrosión. Tras un período de 60 días se obtiene la pérdida de peso (en miligramos al cuadrado por decímetro y día) de cada una de las aleaciones debido al proceso de corrosión. El objetivo es estudiar el nivel de corrosión en función del contenido de hierro. A continuación se presenta el banco de datos y se realiza la primera inspección gráfica.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="rls.html#cb3-1" aria-hidden="true" tabindex="-1"></a>hierro <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.48</span>, <span class="fl">0.71</span>, <span class="fl">0.95</span>, <span class="fl">1.19</span>, <span class="fl">0.01</span>, <span class="fl">0.48</span>, <span class="fl">1.44</span>, <span class="fl">0.71</span>, </span>
-<span id="cb3-2"><a href="rls.html#cb3-2" aria-hidden="true" tabindex="-1"></a>            <span class="fl">1.96</span>, <span class="fl">0.01</span>, <span class="fl">1.44</span>, <span class="fl">1.96</span>)</span>
-<span id="cb3-3"><a href="rls.html#cb3-3" aria-hidden="true" tabindex="-1"></a>peso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">127.6</span>, <span class="dv">124</span>, <span class="fl">110.8</span>, <span class="fl">103.9</span>, <span class="fl">101.5</span>, <span class="fl">130.1</span>, <span class="dv">122</span>, <span class="fl">92.3</span>, <span class="fl">113.1</span>, </span>
-<span id="cb3-4"><a href="rls.html#cb3-4" aria-hidden="true" tabindex="-1"></a>          <span class="fl">83.7</span>, <span class="dv">128</span>, <span class="fl">91.4</span>, <span class="fl">86.2</span>)</span>
-<span id="cb3-5"><a href="rls.html#cb3-5" aria-hidden="true" tabindex="-1"></a>corrosion <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(hierro,peso)</span>
-<span id="cb3-6"><a href="rls.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corrosion, <span class="fu">aes</span>(<span class="at">x =</span> hierro, <span class="at">y =</span> peso)) <span class="sc">+</span></span>
-<span id="cb3-7"><a href="rls.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb3-8"><a href="rls.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Contenido en hierro&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Pérdida de peso&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">hierro &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.01</span>, <span class="fl">0.48</span>, <span class="fl">0.71</span>, <span class="fl">0.95</span>, <span class="fl">1.19</span>, <span class="fl">0.01</span>, <span class="fl">0.48</span>, <span class="fl">1.44</span>, <span class="fl">0.71</span>, </a>
+<a class="sourceLine" id="cb3-2" title="2">            <span class="fl">1.96</span>, <span class="fl">0.01</span>, <span class="fl">1.44</span>, <span class="fl">1.96</span>)</a>
+<a class="sourceLine" id="cb3-3" title="3">peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">127.6</span>, <span class="dv">124</span>, <span class="fl">110.8</span>, <span class="fl">103.9</span>, <span class="fl">101.5</span>, <span class="fl">130.1</span>, <span class="dv">122</span>, <span class="fl">92.3</span>, <span class="fl">113.1</span>, </a>
+<a class="sourceLine" id="cb3-4" title="4">          <span class="fl">83.7</span>, <span class="dv">128</span>, <span class="fl">91.4</span>, <span class="fl">86.2</span>)</a>
+<a class="sourceLine" id="cb3-5" title="5">corrosion &lt;-<span class="st"> </span><span class="kw">data.frame</span>(hierro,peso)</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="kw">ggplot</span>(corrosion, <span class="kw">aes</span>(<span class="dt">x =</span> hierro, <span class="dt">y =</span> peso)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Contenido en hierro&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Pérdida de peso&quot;</span>) </a></code></pre></div>
 <div class="figure"><span id="fig:rls001"></span>
 <img src="libroSTAT_files/figure-html/rls001-1.png" alt="Gráfico de dispersión de pérdida de peso vs contenido en hierro." width="672" />
 <p class="caption">
@@ -317,14 +335,14 @@ Figura 2.1: Gráfico de dispersión de pérdida de peso vs contenido en hierro.
 </div>
 <p>En la figura <a href="rls.html#fig:rls001">2.1</a> se observa cómo al ir aumentando el contenido en hierro de la aleación disminuye linealmente la pérdida de peso. El modelo estadístico que propongamos deberá ser capaz de explicar dicho comportamiento.</p>
 <p><strong>Ejemplo 2. Datos de Papel</strong> Queremos estudiar la relación existente entre la concentración de madera contenida en la pulpa a partir de la que se elabora papel (madera), y la resistencia (tension, en términos de tensión que soporta) del papel resultante. El objetivo del análisis es describir la tendencia observada. A continuación se presenta el banco de datos y se realiza la primera inspección gráfica.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="rls.html#cb4-1" aria-hidden="true" tabindex="-1"></a>madera <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">5.5</span>, <span class="dv">6</span>, <span class="fl">6.5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, </span>
-<span id="cb4-2"><a href="rls.html#cb4-2" aria-hidden="true" tabindex="-1"></a>            <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>)</span>
-<span id="cb4-3"><a href="rls.html#cb4-3" aria-hidden="true" tabindex="-1"></a>tension <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.3</span>, <span class="fl">11.1</span>, <span class="fl">20.0</span>, <span class="dv">24</span>, <span class="fl">26.1</span>, <span class="dv">30</span>, <span class="fl">33.8</span>, <span class="dv">34</span>, <span class="fl">38.1</span>, <span class="fl">39.9</span>, <span class="dv">42</span>,</span>
-<span id="cb4-4"><a href="rls.html#cb4-4" aria-hidden="true" tabindex="-1"></a>             <span class="fl">46.1</span>, <span class="fl">53.1</span>, <span class="dv">52</span>, <span class="fl">52.5</span>, <span class="dv">48</span>, <span class="fl">42.8</span>, <span class="fl">27.8</span>, <span class="fl">21.9</span>)</span>
-<span id="cb4-5"><a href="rls.html#cb4-5" aria-hidden="true" tabindex="-1"></a>papel <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(madera, tension)</span>
-<span id="cb4-6"><a href="rls.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(papel, <span class="fu">aes</span>(<span class="at">x =</span> madera, <span class="at">y =</span> tension)) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="rls.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-8"><a href="rls.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Concentración de madera&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Resistencia del papel&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">madera &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">5.5</span>, <span class="dv">6</span>, <span class="fl">6.5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, </a>
+<a class="sourceLine" id="cb4-2" title="2">            <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3">tension &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">6.3</span>, <span class="fl">11.1</span>, <span class="fl">20.0</span>, <span class="dv">24</span>, <span class="fl">26.1</span>, <span class="dv">30</span>, <span class="fl">33.8</span>, <span class="dv">34</span>, <span class="fl">38.1</span>, <span class="fl">39.9</span>, <span class="dv">42</span>,</a>
+<a class="sourceLine" id="cb4-4" title="4">             <span class="fl">46.1</span>, <span class="fl">53.1</span>, <span class="dv">52</span>, <span class="fl">52.5</span>, <span class="dv">48</span>, <span class="fl">42.8</span>, <span class="fl">27.8</span>, <span class="fl">21.9</span>)</a>
+<a class="sourceLine" id="cb4-5" title="5">papel &lt;-<span class="st"> </span><span class="kw">data.frame</span>(madera, tension)</a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="kw">ggplot</span>(papel, <span class="kw">aes</span>(<span class="dt">x =</span> madera, <span class="dt">y =</span> tension)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Concentración de madera&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Resistencia del papel&quot;</span>) </a></code></pre></div>
 <div class="figure"><span id="fig:rls002"></span>
 <img src="libroSTAT_files/figure-html/rls002-1.png" alt="Gráfico de dispersión de resistencia del papel vs concentración de madera." width="672" />
 <p class="caption">
@@ -335,14 +353,14 @@ Figura 2.2: Gráfico de dispersión de resistencia del papel vs concentración d
 <p><strong>Ejemplo 3. Datos de Viscosidad.</strong> Se ha realizado un experimento para tratar de conocer la viscosidad de cierto compuesto en función de la cantidad de un tipo der aceite que se usa en su
 fabricación. Se asume una relación de tipo lineal entre la viscosidad y la cantidad de aceite
 utilizada.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="rls.html#cb5-1" aria-hidden="true" tabindex="-1"></a>aceite <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">24</span>,</span>
-<span id="cb5-2"><a href="rls.html#cb5-2" aria-hidden="true" tabindex="-1"></a>            <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>, <span class="dv">12</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>)</span>
-<span id="cb5-3"><a href="rls.html#cb5-3" aria-hidden="true" tabindex="-1"></a>viscosidad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">38</span>, <span class="dv">50</span>, <span class="dv">76</span>, <span class="dv">108</span>, <span class="dv">157</span>, <span class="dv">17</span>, <span class="dv">26</span>, <span class="dv">37</span>, <span class="dv">53</span>, <span class="dv">83</span>, <span class="dv">124</span>, <span class="dv">13</span>,</span>
-<span id="cb5-4"><a href="rls.html#cb5-4" aria-hidden="true" tabindex="-1"></a>                <span class="dv">20</span>, <span class="dv">27</span>, <span class="dv">37</span>, <span class="dv">57</span>, <span class="dv">87</span>, <span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">27</span>, <span class="dv">41</span>, <span class="dv">63</span>)</span>
-<span id="cb5-5"><a href="rls.html#cb5-5" aria-hidden="true" tabindex="-1"></a>aceites<span class="ot">&lt;-</span><span class="fu">data.frame</span>(aceite, viscosidad)</span>
-<span id="cb5-6"><a href="rls.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(aceites, <span class="fu">aes</span>(<span class="at">x =</span> aceite, <span class="at">y =</span> viscosidad)) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="rls.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-8"><a href="rls.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Cantidad de aceite&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Viscosidad&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">aceite &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">24</span>,</a>
+<a class="sourceLine" id="cb5-2" title="2">            <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>, <span class="dv">12</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>)</a>
+<a class="sourceLine" id="cb5-3" title="3">viscosidad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">26</span>, <span class="dv">38</span>, <span class="dv">50</span>, <span class="dv">76</span>, <span class="dv">108</span>, <span class="dv">157</span>, <span class="dv">17</span>, <span class="dv">26</span>, <span class="dv">37</span>, <span class="dv">53</span>, <span class="dv">83</span>, <span class="dv">124</span>, <span class="dv">13</span>,</a>
+<a class="sourceLine" id="cb5-4" title="4">                <span class="dv">20</span>, <span class="dv">27</span>, <span class="dv">37</span>, <span class="dv">57</span>, <span class="dv">87</span>, <span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">27</span>, <span class="dv">41</span>, <span class="dv">63</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5">aceites&lt;-<span class="kw">data.frame</span>(aceite, viscosidad)</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="kw">ggplot</span>(aceites, <span class="kw">aes</span>(<span class="dt">x =</span> aceite, <span class="dt">y =</span> viscosidad)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Cantidad de aceite&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Viscosidad&quot;</span>) </a></code></pre></div>
 <div class="figure"><span id="fig:rls002-1"></span>
 <img src="libroSTAT_files/figure-html/rls002-1-1.png" alt="Gráfico de dispersión de viscosidad vs cantidad de aceite." width="672" />
 <p class="caption">
@@ -350,7 +368,7 @@ Figura 2.3: Gráfico de dispersión de viscosidad vs cantidad de aceite.
 </p>
 </div>
 </div>
-<div id="modelorls" class="section level2" number="2.2">
+<div id="modelorls" class="section level2">
 <h2><span class="header-section-number">2.2</span> El modelo RLS</h2>
 <p>El modelo de Regresión lineal Simple (RLS) de la variable respuesta (<span class="math inline">\(Y\)</span>) sobre la variable predictora (<span class="math inline">\(X\)</span>) se formula prediciendo la respuesta media para un valor observado de <span class="math inline">\(X = x\)</span>, con una recta de regresión:</p>
 <p><span class="math display" id="eq:expectedRLS">\[\begin{equation}
@@ -379,7 +397,7 @@ Figura 2.3: Gráfico de dispersión de viscosidad vs cantidad de aceite.
 <li><strong>Varianza constante:</strong> <span class="math inline">\(Var(\epsilon_{i} = \sigma^{2})\)</span>. Lo que significa que las observaciones <span class="math inline">\(\{y_{i},i=1,\ldots,n\}\)</span> provienen de una misma población cuya variabilidad respecto de su media, <span class="math inline">\(\{\beta_{0} + \beta_{1}x_{i}, i=1,\ldots,n\}\)</span>, viene dada por <span class="math inline">\(\sigma^{2}\)</span>.</li>
 </ul>
 </div>
-<div id="estimacionrls" class="section level2" number="2.3">
+<div id="estimacionrls" class="section level2">
 <h2><span class="header-section-number">2.3</span> Estimación del modelo</h2>
 <p>Estimar la recta de regresión consiste en estimar los coeficientes de la regresión <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> para obtener la recta:</p>
 <p><span class="math display" id="eq:predRLS">\[\begin{equation}
@@ -388,7 +406,7 @@ Figura 2.3: Gráfico de dispersión de viscosidad vs cantidad de aceite.
 \end{equation}\]</span></p>
 <p>donde <span class="math inline">\(\hat{Y}\)</span> denota el valor de <strong>Y</strong> predicho por la recta para el valor observado de <span class="math inline">\(X = x\)</span>.</p>
 <p>Disponemos de dos criterios básicos de estimación, que proporcionan la misma solución. Utilizar uno u otro depende de nuestros intereses estadísticos. Si tan sólo queremos determinar la recta, basta con considerar el criterio de <em>Mínimos Cuadrados</em>. Si además pretendemos utilizarla con fines inferenciales o predictivos, hablaremos de que nuestra solución es la <em>máximo-verosímil</em>, pero a su vez habremos de ser más exigentes con las hipótesis del modelo, como veremos a continuación.</p>
-<div id="mincuadrls" class="section level3" number="2.3.1">
+<div id="mincuadrls" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Estimación Mínimos Cuadrados</h3>
 <p>El criterio de <strong>mínimos cuadrados</strong> o minimización del error cuadrático medio, consiste en minimizar las distancias entre los puntos observados y los predichos por la recta de ajuste. El error cuadrático medio de la recta se define como:</p>
 <p><span class="math display" id="eq:mincuadRLS">\[\begin{equation}
@@ -430,7 +448,7 @@ S_{xx} = \sum_{i=1}^{n} (x_{i}-\bar{x})^2
 S_{xy} = \sum_{i=1}^{n} (x_{i}-\bar{x})(y_{i}-\bar{y}).
 \]</span></p>
 </div>
-<div id="emvrls" class="section level3" number="2.3.2">
+<div id="emvrls" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Estimación Máximo Verosímil</h3>
 <p>Habitualmente el objetivo de un análisis de regresión no consiste únicamente en estimar la recta, sino en <em>inferir</em> con ella, esto es, asociar un error a las estimaciones obtenidas, contrastar un determinado valor de los parámetros, y/o incluso predecir la respuesta, junto con una banda de confianza, para un <span class="math inline">\(X = x\)</span> dado. En ese caso, precisamos de distribuciones de probabilidad para controlar la incertidumbre y el error. Añadimos pues, una hipótesis más sobre la distribución de la variable respuesta, o lo que es lo mismo, sobre el error aleatorio <span class="math inline">\(\epsilon\)</span>. Dicha hipótesis es la de <strong>normalidad de los errores</strong>.</p>
 <p>Así, el total de hipótesis básicas del modelo de regresión con fines inferenciales, viene resumido en la siguiente expresión:</p>
@@ -450,7 +468,7 @@ S_{xy} = \sum_{i=1}^{n} (x_{i}-\bar{x})(y_{i}-\bar{y}).
 \end{equation}\]</span></p>
 <p>Por tanto, obtener la solución más factible a la vista de los datos observados <span class="math inline">\(\{(x_i,y_i), i=1,\ldots, n\}\)</span> equivale a obtener la solución máximo-verosímil, esto es, la que maximiza la verosimilitud <a href="rls.html#eq:likelihoodrls">(2.8)</a>. Maximizar la verosimilitud es equivalente a maximizar la log-verosimilitud <span class="math inline">\(l(\beta,y)\)</span>, que tiene una expresión más sencilla sin exponenciales. La solución máximo-verosímil se obtiene derivando e igualando a cero <span class="math inline">\(l(\beta,y)\)</span>, lo que da lugar, de nuevo, a las ecuaciones normales. Así pues, la solución máximo-verosímil coincide con la de mínimos cuadrados.</p>
 </div>
-<div id="emR" class="section level3" number="2.3.3">
+<div id="emR" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> Estimación con R</h3>
 <p>Para obtener el ajuste máximo verosímil con <code>R</code> utilizamos la función <code>lm()</code> que permite el ajuste de cualquier modelo lineal. Su expresión más básica viene dada por:</p>
 <p><span class="math display">\[model &lt;- lm(y \sim x, data = ´´data´´)\]</span>
@@ -463,37 +481,37 @@ donde <span class="math inline">\(y\)</span> es la respuesta y <span class="math
 </ul>
 <p>Por el momento utilizamos las dos primeras para mostrar los resultados del ajuste. Además utilizaremos la función <code>plot_model</code> para representar gráficamente el modelo obtenido como alternativa a la función <code>ggplot()</code> que hemos utilizado en la figura <a href="rls.html#fig:rls005">2.4</a>.</p>
 </div>
-<div id="ejemplos" class="section level3" number="2.3.4">
+<div id="ejemplos" class="section level3">
 <h3><span class="header-section-number">2.3.4</span> Ejemplos</h3>
 <p>Para los datos de Corrosión se propone un modelo de regresión lineal simple para estudiar la relación entre la pérdida de peso debida a la corrosión y el contenido de hierro de la forma siguiente:</p>
 <p><span class="math display">\[
 \text{peso} = \beta_{0} + \beta_{1}*\text{hierro} + \epsilon
 \]</span></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="rls.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo</span></span>
-<span id="cb6-2"><a href="rls.html#cb6-2" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(peso <span class="sc">~</span> hierro, <span class="at">data =</span> corrosion)</span>
-<span id="cb6-3"><a href="rls.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Solución con tidy</span></span>
-<span id="cb6-4"><a href="rls.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># Ajuste del modelo</span></a>
+<a class="sourceLine" id="cb6-2" title="2">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(peso <span class="op">~</span><span class="st"> </span>hierro, <span class="dt">data =</span> corrosion)</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co"># Solución con tidy</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="kw">tidy</span>(fit)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 5
 ##   term        estimate std.error statistic  p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 ## 1 (Intercept)    130.       1.40      92.5 2.93e-17
 ## 2 hierro         -24.0      1.28     -18.8 1.06e- 9</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="rls.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solución con glm_coef</span></span>
-<span id="cb8-2"><a href="rls.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glm_coef</span>(fit)</span></code></pre></div>
-<pre><code>##     Parameter            Coefficient Pr(&gt;|t|)
-## 1 (Intercept) 129.79 (126.7, 132.87)  &lt; 0.001
-## 2      hierro -24.02 (-26.84, -21.2)  &lt; 0.001</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Solución con glm_coef</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">glm_coef</span>(fit)</a></code></pre></div>
+<pre><code>##                         Coefficient Pr(&gt;|t|)
+## (Intercept) 129.79 (127.47, 132.11)  &lt; 0.001
+## hierro      -24.02 (-26.03, -22.01)  &lt; 0.001</code></pre>
 <p>de forma que el modelo estimado viene dado por:
 <span class="math display">\[
 \widehat{\text{peso}} = 129.79 - 24.02*\text{hierro}
 \]</span></p>
 <p>esto es, un aumento de una unidad del contenido de hierro reporta una pérdida de peso de 24.02 unidades. Representamos gráficamente la recta del ajuste obtenida:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="rls.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico del ajuste</span></span>
-<span id="cb10-2"><a href="rls.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(fit,<span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="sc">~</span>hierro, </span>
-<span id="cb10-3"><a href="rls.html#cb10-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ci.lvl =</span> <span class="cn">NA</span>, </span>
-<span id="cb10-4"><a href="rls.html#cb10-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">show.data =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb10-5"><a href="rls.html#cb10-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;Contenido en hierro&quot;</span>, <span class="st">&quot;Peso&quot;</span>),</span>
-<span id="cb10-6"><a href="rls.html#cb10-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">title =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># Gráfico del ajuste</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">plot_model</span>(fit,<span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="op">~</span>hierro, </a>
+<a class="sourceLine" id="cb10-3" title="3">                <span class="dt">ci.lvl =</span> <span class="ot">NA</span>, </a>
+<a class="sourceLine" id="cb10-4" title="4">                <span class="dt">show.data =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb10-5" title="5">                <span class="dt">axis.title =</span> <span class="kw">c</span>(<span class="st">&quot;Contenido en hierro&quot;</span>, <span class="st">&quot;Peso&quot;</span>),</a>
+<a class="sourceLine" id="cb10-6" title="6">                <span class="dt">title =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:rls005"></span>
 <img src="libroSTAT_files/figure-html/rls005-1.png" alt="Ajuste de mínimos cuadrados para los datos de corrosión." width="672" />
 <p class="caption">
@@ -501,7 +519,7 @@ Figura 2.4: Ajuste de mínimos cuadrados para los datos de corrosión.
 </p>
 </div>
 </div>
-<div id="propiedades-de-la-recta-de-regresión." class="section level3" number="2.3.5">
+<div id="propiedades-de-la-recta-de-regresión." class="section level3">
 <h3><span class="header-section-number">2.3.5</span> Propiedades de la recta de regresión.</h3>
 <p>Las propiedades más relevantes y básicas del ajuste de la recta de regresión son las siguientes:</p>
 <ol style="list-style-type: decimal">
@@ -536,7 +554,7 @@ e_i=y_i-\hat{y} \rightsquigarrow \sum_i e_i=0.
 \sum_i \hat{y}_i e_i=0.
 \]</span></p>
 </div>
-<div id="rls_varmodel" class="section level3" number="2.3.6">
+<div id="rls_varmodel" class="section level3">
 <h3><span class="header-section-number">2.3.6</span> Estimación varianza del modelo.</h3>
 <p>La varianza <span class="math inline">\(\sigma^2\)</span> de los errores es una medida de la variabilidad (heterogeneidad) entre los individuos respecto a la media cuando el modelo RLS describe adecuadamente la tendencia entre las variables <span class="math inline">\(y\)</span> y <span class="math inline">\(x\)</span>, o lo que es lo mismo, de la dispersión de las observaciones respecto de la recta de regresión. Así pues, da una medida de bondad de ajuste del modelo de regresión a los datos observados. Cuando el modelo de regresión ajustado es bueno para nuestros datos, es posible conseguir una estimación de la varianza <span class="math inline">\(\sigma^2\)</span> a partir de la <em>suma de cuadrados residual</em> <span class="math inline">\(SSE\)</span>, también llamada <em>suma de cuadrados debida al error</em>:</p>
 <p><span class="math display">\[
@@ -548,7 +566,7 @@ s^2=MSE=\frac{SSE}{n-2}.
 \]</span></p>
 <p>El <em>error estándar residual</em> viene dado por <span class="math inline">\(s=\sqrt{MSE}\)</span>.</p>
 </div>
-<div id="inferencia-sobre-los-coeficientes-del-modelo" class="section level3" number="2.3.7">
+<div id="inferencia-sobre-los-coeficientes-del-modelo" class="section level3">
 <h3><span class="header-section-number">2.3.7</span> Inferencia sobre los coeficientes del modelo</h3>
 <p>Los estimadores de mínimos cuadrados <span class="math inline">\(\hat{\beta}_0\)</span> y <span class="math inline">\(\hat{\beta}_1\)</span> son insesgados y de mínima varianza de entre todos los estimadores insesgados. El hecho de especificar una distribución normal sobre los errores para la estimación máximo-verosímil, permite derivar de forma directa la distribución de dichos estimadores, que resulta también normal:</p>
 <p><span class="math display">\[
@@ -565,7 +583,7 @@ t_0 = \frac{\hat{\beta}_0-\beta_0}{s \ \sqrt{\sum_i x_i^2/n S_{xx}}}
 t_1 = \frac{\hat{\beta}_1-\beta_1}{s/\sqrt{S_{xx}}}
 \]</span></p>
 <p>Ambos estadísticos se distribuyen según una distribución <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(n-2\)</span> grados de libertad, que nos permite inferir (estimar y resolver contrastes de hipótesis) sobre los coeficientes del modelo, y en particular contestar a preguntas sobre la relación entre las variables respuesta y explicativa.</p>
-<div id="procedimientos-de-estimación" class="section level4" number="2.3.7.1">
+<div id="procedimientos-de-estimación" class="section level4">
 <h4><span class="header-section-number">2.3.7.1</span> Procedimientos de estimación</h4>
 <p>Las estimaciones puntuales de <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> las obtenemos directamente de las ecuaciones normales.</p>
 <p>Los <strong>intervalos de confianza</strong> al nivel de confianza <span class="math inline">\((1-\alpha)100\%\)</span> para <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> se construyen a partir de los estadísticos <span class="math inline">\(t\)</span> y resultan:</p>
@@ -577,7 +595,7 @@ IC(\beta_1;1-\alpha) = \hat{\beta}_1 \pm t_{\left(n-2,1-\frac{\alpha}{2}\right)}
 \]</span></p>
 <p>donde <span class="math inline">\(t_{\left(n-2,1-\frac{\alpha}{2}\right)}\)</span> es el cuantil <span class="math inline">\(1-\alpha/2\)</span> de una distribución <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(n-2\)</span> grados de libertad (los correspondientes a <span class="math inline">\(s^2\)</span>).</p>
 </div>
-<div id="procedimientos-de-contrastes-de-hipótesis" class="section level4" number="2.3.7.2">
+<div id="procedimientos-de-contrastes-de-hipótesis" class="section level4">
 <h4><span class="header-section-number">2.3.7.2</span> Procedimientos de Contrastes de Hipótesis</h4>
 <p>Si queremos <strong>contrastar Hipótesis</strong> sobre los coeficientes de la regresión:
 <span class="math display">\[\left\{\begin{array}{ll} 
@@ -593,7 +611,7 @@ H_{1}:&amp; \beta_{i} \neq \beta^{*}, i=0,1\\
 <p>Cuando el contraste propuesto sobre <span class="math inline">\(\beta_0\)</span> o <span class="math inline">\(\beta_1\)</span> tiene <span class="math inline">\(\beta^*=0\)</span>, en realidad se está contrastando, respectivamente, si la recta de regresión tiene interceptación o pendiente nula. Contrastar <span class="math inline">\(\beta_1=0\)</span> es equivalente a contrastar correlación nula entre las variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, esto es, ausencia de relación lineal. Si conseguimos rechazar esta hipótesis con significatividad, concluiremos que la variable <span class="math inline">\(X\)</span> está relacionada linealmente con <span class="math inline">\(Y\)</span> y por lo tanto se puede utilizar para predecir <span class="math inline">\(Y\)</span> a través de la recta de regresión ajustada.</p>
 </div>
 </div>
-<div id="ejemplo" class="section level3" number="2.3.8">
+<div id="ejemplo" class="section level3">
 <h3><span class="header-section-number">2.3.8</span> Ejemplo</h3>
 <p>Realizamos el proceso de inferencia para el modelo para los datos de corrosión e interpretamos los resultados obtenidos. Concretamente:</p>
 <ul>
@@ -601,17 +619,17 @@ H_{1}:&amp; \beta_{i} \neq \beta^{*}, i=0,1\\
 <li>Concluir sobre los contrastes <span class="math inline">\(\beta_0=0\)</span> y <span class="math inline">\(\beta_1=0\)</span>. Comprobar también que el último contraste <span class="math inline">\(\beta_1=0\)</span> es equivalente al contraste de correlación nula entre las variables del modelo.</li>
 </ul>
 <p>Recapturamos el resumen del modelo obtenido con la función <code>glm_coef()</code>-</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="rls.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo</span></span>
-<span id="cb11-2"><a href="rls.html#cb11-2" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(peso <span class="sc">~</span> hierro, <span class="at">data =</span> corrosion)</span>
-<span id="cb11-3"><a href="rls.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glm_coef</span>(fit)</span></code></pre></div>
-<pre><code>##     Parameter            Coefficient Pr(&gt;|t|)
-## 1 (Intercept) 129.79 (126.7, 132.87)  &lt; 0.001
-## 2      hierro -24.02 (-26.84, -21.2)  &lt; 0.001</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># Ajuste del modelo</span></a>
+<a class="sourceLine" id="cb11-2" title="2">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(peso <span class="op">~</span><span class="st"> </span>hierro, <span class="dt">data =</span> corrosion)</a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="kw">glm_coef</span>(fit)</a></code></pre></div>
+<pre><code>##                         Coefficient Pr(&gt;|t|)
+## (Intercept) 129.79 (127.47, 132.11)  &lt; 0.001
+## hierro      -24.02 (-26.03, -22.01)  &lt; 0.001</code></pre>
 <p>Como se puede observar en los resultados ninguno de los intervalos de confianza incluye al cero, lo que habla positivamente de su significatividad estadística, esto es, tenemos evidencias para predecir la pérdida de peso con el contenido de hierro inicial a través de una recta con interceptación y pendientes (significativamente) distintas de cero. De esta forma podemos ver que el efecto asociado con un incremento en una unidad de hierro produce una pérdida de peso de entre 22.01 y 26.03 unidades.</p>
 <p>Puestos a resolver el contraste <span class="math inline">\(H_0^i:\beta_i=0\)</span>, para <span class="math inline">\(i=0,1\)</span>, observamos los p-valores obtenidos en el proceso de estimación que resultan ambos significativos (&lt;0.001 para <span class="math inline">\(\beta_0\)</span> y &lt;0.001 para <span class="math inline">\(\beta_1\)</span>), lo que concluye contundentemente sobre la significatividad de ambos a favor de que son distintos de cero (se rechazan <span class="math inline">\(H_0^0\)</span> y <span class="math inline">\(H_0^1\)</span>), como ya habíamos comentado a partir de los intervalos de confianza. En particular, el contenido en hierro explica significativamente la pérdida de peso a través del modelo lineal ajustado.</p>
 </div>
 </div>
-<div id="bondad-del-ajuste" class="section level2" number="2.4">
+<div id="bondad-del-ajuste" class="section level2">
 <h2><span class="header-section-number">2.4</span> Bondad del Ajuste</h2>
 <p>Cuando hemos realizado el ajuste de un modelo de regresión lineal, hemos de verificar que efectivamente dicho modelo proporciona un buen ajuste a la hora de explicar (predecir) la variable respuesta. Básicamente la bondad del ajuste la cuantificamos con el tanto por ciento de variabilidad de la respuesta, que consigue ser explicada por el modelo ajustado. Para ello contamos con varios tipos de medidas que cuantifican esta variabilidad de diversos modos. Como medidas fundamentales de bondad de ajuste contamos con:</p>
 <ul>
@@ -620,11 +638,11 @@ H_{1}:&amp; \beta_{i} \neq \beta^{*}, i=0,1\\
 <li>el coeficiente de determinación <span class="math inline">\(R^2\)</span>.</li>
 </ul>
 <p>Todas estas medidas las desglosamos a continuación. Para obtenerlas con <code>R</code> utilizaremos las funciones <code>glance()</code>, <code>anova()</code> y <code>summary()</code>.</p>
-<div id="rls_errorresidual" class="section level3" number="2.4.1">
+<div id="rls_errorresidual" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Error residual</h3>
 <p>Es una medida de bondad del ajuste relativa a la escala de medida utilizada. En general, se prefieren modelos con menor error residual estimado <span class="math inline">\(s\)</span>, donde <span class="math inline">\(s^2\)</span> denota la estimación de la varianza <span class="math inline">\(\sigma^2\)</span> del modelo, dada en el apartado @ref(rls_varmodel).</p>
 </div>
-<div id="rls_tablaanova" class="section level3" number="2.4.2">
+<div id="rls_tablaanova" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> Tabla Anova</h3>
 <p>Una medida de lo bueno que resulta un modelo para ajustar unos datos pasa por cuantificar cuánta de la variabilidad contenida en éstos ha conseguido ser explicada por dicho modelo. Un modelo es bueno si la variabilidad explicada es mucha, o lo que es lo mismo, si las diferencias entre los datos y las predicciones según el modelo son pequeñas.</p>
 <p>Construir la tabla de ANOVA o Análisis de la Varianza consiste en:</p>
@@ -699,7 +717,7 @@ F=\frac{SSR/\sigma^2}{\frac{SSE/\sigma^2}{n-2}}=\frac{MSR}{MSE} \sim F_{1,n-2}.
 </table>
 <p>En <code>R</code> la <span class="math inline">\(SSR\)</span> se descompone a su vez para cada uno de los efectos o variables predictoras en el modelo.</p>
 </div>
-<div id="coeficiente-de-determinación" class="section level3" number="2.4.3">
+<div id="coeficiente-de-determinación" class="section level3">
 <h3><span class="header-section-number">2.4.3</span> Coeficiente de determinación</h3>
 <p>Otro estadístico útil para chequear la bondad del ajuste de la recta de regresión es el <em>coeficiente de determinación</em> <span class="math inline">\(R^2\)</span>. Éste se define como la proporción de la varianza que es explicada por la recta de regresión y se obtiene a partir de la descomposición <a href="rls.html#eq:descompvar">(2.10)</a> como:</p>
 <p><span class="math display" id="eq:Rsquad">\[\begin{equation}
@@ -709,16 +727,16 @@ R^2=\frac{SSR}{SST}.
 <p>De hecho, en el modelo RLS, <span class="math inline">\(R^2\)</span> es el cuadrado del coeficiente de regresión lineal entre la respuesta <span class="math inline">\(Y\)</span> y el predictor <span class="math inline">\(X\)</span>.</p>
 <p>Puesto que <span class="math inline">\(0\leq R^2 \leq 1\)</span> (al tratarse del coeficiente de correlación al cuadrado), un valor cercano a <span class="math inline">\(1\)</span> (entre 0.6 y 1) implicará que buena parte de la varianza es explicada por la recta de regresión, y <span class="math inline">\(R^2\approx 0\)</span> significará que prácticamente toda la variabilidad de los datos queda sin explicar por la recta. Sin embargo, <span class="math inline">\(R^2\)</span> no sirve para medir la idoneidad del modelo de regresión para describir los datos. De hecho, <span class="math inline">\(R^2\)</span> puede resultar grande a pesar de que la relación entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> no sea lineal (de hecho tiene la misma interpretación que un coeficiente de correlación, válido para cuantificar la relación lineal sólo cuando ésta existe). Siempre ha de ser utilizado con cautela. Así por ejemplo, la magnitud de <span class="math inline">\(R^2\)</span> depende del rango de variabilidad de la variable explicativa. Cuando el modelo de regresión es adecuado, la magnitud de <span class="math inline">\(R^2\)</span> aumenta (o disminuye) cuando lo hace la dispersión de <span class="math inline">\(X\)</span>. Por otro lado, podemos obtener un valor muy pequeño de <span class="math inline">\(R^2\)</span> debido a que el rango de variación de <span class="math inline">\(X\)</span> es demasiado pequeño, y entonces impedirá que se detecte su relación con <span class="math inline">\(Y\)</span>.</p>
 </div>
-<div id="ejemplo-1" class="section level3" number="2.4.4">
+<div id="ejemplo-1" class="section level3">
 <h3><span class="header-section-number">2.4.4</span> Ejemplo</h3>
 <p>Analizamos la bondad del ajuste obtenido para los datos de corrosión.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="rls.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Medidas de bondad del ajuste</span></span>
-<span id="cb13-2"><a href="rls.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 12
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># Medidas de bondad del ajuste</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">glance</span>(fit)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 11
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
-##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     0.970         0.967  3.06      352. 1.06e-9     1  -31.9  69.8  71.5
-## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.970         0.967  3.06      352. 1.06e-9     2  -31.9  69.8  71.5
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
 <p>Esta función proporciona diferentes medidas de bondad de ajuste, algunas de ellas las utilizaremos en las unidades siguientes, pero en este caso nos centramos en las que hace referencia al modelo de RLS:</p>
 <ul>
 <li><code>r.squared</code>: <span class="math inline">\(R^2\)</span> del modelo ajustado,</li>
@@ -730,7 +748,7 @@ R^2=\frac{SSR}{SST}.
 </ul>
 <p>Para este modelo el error residual tiene una magnitud de 3.05778, pero dado que no podemos comparar con otro modelo resulta difícil interpretar este valor como una medida de bondad de ajuste al no tener una escala de medida que nos indique si este valor es lo suficientemente pequeño.</p>
 <p>El valor del estadístico F (352.27) y su p-valor (1.055e-09) nos permiten concluir que podemos rechazar la hipótesis <span class="math inline">\(H_0:\beta_1=0\)</span>, o lo que es lo mismo, <span class="math inline">\(H_0\)</span>: el modelo no explica los datos, a favor de que el contenido en hierro resulta útil para predecir el la pérdida de peso debido a la corrosión a través de un modelo de regresión lineal. Veamos la descomposición de la tabla ANOVA.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="rls.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">anova</span>(fit)</a></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: peso
@@ -746,7 +764,7 @@ R^2=\frac{SSR}{SST}.
 <p>Los criterios utilizados nos permiten concluir que el modelo obtenido es adecuado desde el punto de vista de su capacidad explicativa, es decir, a la hora de medir la asociación entre la respuesta y la predictora. Sin embargo, es importante tener presente los pasos que hemos de dar a la hora de aceptar finalmente un modelo como bueno. No sólo es preciso superar la bondad del ajuste. Una vez superada esta prueba, hay que llevar a cabo el diagnóstico y validación del modelo, o verificación de las hipótesis del modelo RLS y de la capacidad predictiva del mismo. De entre todos los modelos propuestos para predecir una respuesta <span class="math inline">\(Y\)</span> que hayan superado la bondad del ajuste, el diagnóstico y la validación, podremos optar por el mejor según algún criterio preferido de comparación y selección de modelos. En los modelos de RLS esta tarea es sencilla ya que el modelo ajustado es único, pero se complicará cuando se añadan más variables predictoras como veremos en las unidades siguientes.</p>
 </div>
 </div>
-<div id="rls_diag" class="section level2" number="2.5">
+<div id="rls_diag" class="section level2">
 <h2><span class="header-section-number">2.5</span> Diagnóstico del Modelo</h2>
 <p>Una vez ajustado un modelo y habiendo superado las pruebas de bondad de ajuste pertinentes (fundamentalmente el test <span class="math inline">\(F\)</span> de Anova), hemos de proceder con el diagnóstico del modelo, que consiste en verificar si éste satisface las hipótesis básicas del modelo de regresión, que son:</p>
 <ul>
@@ -799,21 +817,21 @@ r_i = y_i - \hat{y}_i, \qquad i=1,\ldots,n.
 d_i = \frac{r_i}{\sqrt{MSE}}, \qquad i=1,\ldots,n.
 \]</span></p>
 <p>Los residuos asociados a un modelo ajustado se pueden obtener con la función <code>fortify()</code>. Esta función proporciona además las medidas de influencia para detectar observaciones anómalas, es decir, observaciones con residuos excesivamente grandes.</p>
-<div id="linealidad-y-homocedasticidad." class="section level3" number="2.5.1">
+<div id="linealidad-y-homocedasticidad." class="section level3">
 <h3><span class="header-section-number">2.5.1</span> Linealidad y homocedasticidad.</h3>
 <p>Los gráficos de residuos estandarizados frente a valores ajustados nos permiten detectar varios tipos de deficiencias del modelo ajustado. Si los residuos están distribuidos alrededor del cero y el gráfico no presenta ninguna tendencia entonces el modelo se considera adecuado. Cuando aparece alguna tendencia como una forma de embudo o un abombamiento, etc., podemos tener algún problema con la hipótesis de varianza constante para los errores (heterocedasticidad). Cuando se aprecia alguna tendencia hablamos de violación de la hipótesis de linealidad: el modelo lineal ha sido incapaz de capturar una tendencia no lineal apreciada en los residuos, posiblemente debido a que existen otras variables explicativas adicionales no consideradas en el modelo, o a que la variable predictora explica la respuesta de un modo más complejo (quizás polinómico, etc.) al considerado en el modelo lineal.</p>
 <p>Para verificar la hipótesis de homocedasticidad podemos usar el test de Breusch-Pagan para variables predictoras de tipo numérico, y el de Bartlett para variables predictoras de tipo categórico (ver unidades siguientes). Para realizar el test de Breusch-Pagan utilizamos la función <code>bptest()</code> de la librería <code>lmtest</code>, mientras que para realizar el test de Bartlett utilizamos la función <code>bartlett.test()</code>.</p>
 </div>
-<div id="ejemplo-2" class="section level3" number="2.5.2">
+<div id="ejemplo-2" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> Ejemplo</h3>
 <p>Analizamos la hipótesis de homocedasticidad para el modelo obtenido para los datos de corrosión. En primer lugar obtenemos los residuos del modelo.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="rls.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuos y medidas de diagnóstico</span></span>
-<span id="cb17-2"><a href="rls.html#cb17-2" aria-hidden="true" tabindex="-1"></a>diagnostico <span class="ot">&lt;-</span> <span class="fu">fortify</span>(fit)</span>
-<span id="cb17-3"><a href="rls.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de residuos estandarizados vs ajustados</span></span>
-<span id="cb17-4"><a href="rls.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diagnostico, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .stdresid)) <span class="sc">+</span> </span>
-<span id="cb17-5"><a href="rls.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb17-6"><a href="rls.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb17-7"><a href="rls.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># Residuos y medidas de diagnóstico</span></a>
+<a class="sourceLine" id="cb17-2" title="2">diagnostico &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit)</a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="co"># Gráfico de residuos estandarizados vs ajustados</span></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="kw">ggplot</span>(diagnostico, <span class="kw">aes</span>(<span class="dt">x =</span> .fitted, <span class="dt">y =</span> .stdresid)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:rls009"></span>
 <img src="libroSTAT_files/figure-html/rls009-1.png" alt="Gráfico de residuos estandarizados vs valores ajustados." width="672" />
 <p class="caption">
@@ -821,8 +839,8 @@ Figura 2.5: Gráfico de residuos estandarizados vs valores ajustados.
 </p>
 </div>
 <p>Se puede concluir que se verifica la hipótesis de linealidad (recta horizontal), ya que no existen tendencias en los residuos. Además con los residuos se comportan de forma aleatoria sin agrupaciones ni tendencias podemos concluir que se cumple la hipótesis de homogeneidad de varianzas. Hay que tener mucho cuidad con la interpretación de estos gráficos, ya que cuando el tamaño de muestra es pequeño, resulta difícil apreciar tenencias o agrupaciones en los residuos. Por este motivo realizamos el test de diagnóstico.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="rls.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de diagnóstico</span></span>
-<span id="cb18-2"><a href="rls.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># Test de diagnóstico</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="kw">bptest</span>(fit)</a></code></pre></div>
 <pre><code>## 
 ##  studentized Breusch-Pagan test
 ## 
@@ -830,17 +848,17 @@ Figura 2.5: Gráfico de residuos estandarizados vs valores ajustados.
 ## BP = 0.024539, df = 1, p-value = 0.8755</code></pre>
 <p>Dado que el p-valor del contraste es superior a 0.05 no podemos rechazar la hipótesis nula dada en <a href="rls.html#eq:hipohomocedasticidad">(2.15)</a>, y por tanto podemos concluir que se verifica la hipótesis de homogeneidad o varianza constante.</p>
 </div>
-<div id="normalidad" class="section level3" number="2.5.3">
+<div id="normalidad" class="section level3">
 <h3><span class="header-section-number">2.5.3</span> Normalidad</h3>
 <p>Para verificar la normalidad de los errores, disponemos de gráficos qq-plot de normalidad, en los que se representan los residuos ordenados <span class="math inline">\(r_{[i]}\)</span> (cuantiles empíricos) versus los cuantiles correspondientes a una normal estándar, <span class="math inline">\(\Phi^{-1}[(i-1)/n]\)</span>. Si es cierta la normalidad de los residuos, los puntos han de estar alineados con la diagonal. Desviaciones de la diagonal más o menos severas en las colas, e incluso en el centro de la distribución, dan indicios de desviaciones de normalidad.
 La hipótesis de normalidad se puede chequear también con histogramas de los residuos cuando el tamaño muestral es grande.</p>
 <p>Los residuos estandarizados también son útiles para detectar desviaciones de la normalidad. Si los errores se distribuyen según una normal, entonces aproximadamente el <span class="math inline">\(68\%\)</span> de los residuos estandarizados quedarán entre <span class="math inline">\(-1\)</span> y <span class="math inline">\(+1\)</span>, y el <span class="math inline">\(95\%\)</span> entre <span class="math inline">\(-2\)</span> y <span class="math inline">\(+2\)</span>.</p>
 <p>Para diagnosticar la hipótesis de normalidad se utiliza el test de Shapiro-Wilks, donde rechazar la hipótesis nula implica el rechazo de la hipótesis de normalidad. Para realizar dicho contraste utilizamos la función <code>shapiro.test()</code>.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="rls.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grafico qq</span></span>
-<span id="cb20-2"><a href="rls.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diagnostico, <span class="fu">aes</span>(<span class="at">sample =</span> .stdresid)) <span class="sc">+</span> </span>
-<span id="cb20-3"><a href="rls.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
-<span id="cb20-4"><a href="rls.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>() <span class="sc">+</span></span>
-<span id="cb20-5"><a href="rls.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># grafico qq</span></a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="kw">ggplot</span>(diagnostico, <span class="kw">aes</span>(<span class="dt">sample =</span> .stdresid)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="st">  </span><span class="kw">geom_abline</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <div class="figure">
 <img src="libroSTAT_files/figure-html/rls011,%20-1.png" alt="Gráfico de normalidad de los residuos estandarizados." width="672" />
 <p class="caption">
@@ -848,8 +866,8 @@ La hipótesis de normalidad se puede chequear también con histogramas de los re
 </p>
 </div>
 <p>El gráfico de normalidad muestra un comportamiento correcto ya que los punto se distribuyen a lo largo de la recta de normalidad. No se realiza el histograma ya que el tamaño muestral es demasiado pequeño. Pasamos al test de diagnóstico.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="rls.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de diagnóstico</span></span>
-<span id="cb21-2"><a href="rls.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(diagnostico<span class="sc">$</span>.stdresid)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># Test de diagnóstico</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="kw">shapiro.test</span>(diagnostico<span class="op">$</span>.stdresid)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -857,12 +875,12 @@ La hipótesis de normalidad se puede chequear también con histogramas de los re
 ## W = 0.92905, p-value = 0.3312</code></pre>
 <p>Dado que el p-valor del contraste es superior a 0.05 no podemos rechazar la hipótesis nula dada en <a href="rls.html#eq:hiponormalidad">(2.17)</a>, y por tanto podemos considerar que los residuos se distribuyen normalmente.</p>
 </div>
-<div id="independencia." class="section level3" number="2.5.4">
+<div id="independencia." class="section level3">
 <h3><span class="header-section-number">2.5.4</span> Independencia.</h3>
 <p>La correlación entre los datos es un proceso intrínseco al muestreo; saber cómo se ha llevado a cabo éste da información, generalmente suficiente, para poder hablar de correlación o incorrelación. En todo caso, los gráficos secuenciales de residuos sirven para detectar problemas de correlación de éstos (<em>autocorrelación</em>), o de inestabilidad de la varianza a lo largo del tiempo. También son útiles para esto los gráficos en que se representa un residuo versus el anterior en la secuencia en que han sido observados; si hay correlación se apreciará tendencia. Detectar autocorrelación llevará a considerar otro tipo de modelos distintos (autocorrelados: modelos de series temporales).</p>
 <p>Aparte de los métodos gráficos, para resolver dicho contraste se utiliza el test de Durbin-Watson, cuya función es <code>dwtest()</code>. Rechazar la hipótesis nula implica el rechazo de la hipótesis de incorrelación.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="rls.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grafico función autocorrelación</span></span>
-<span id="cb23-2"><a href="rls.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(diagnostico<span class="sc">$</span>.stdresid)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># grafico función autocorrelación</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">acf</span>(diagnostico<span class="op">$</span>.stdresid)</a></code></pre></div>
 <div class="figure">
 <img src="libroSTAT_files/figure-html/rls013,%20-1.png" alt="Gráfico de autocorrelación de los residuos estandarizados." width="672" />
 <p class="caption">
@@ -870,8 +888,8 @@ La hipótesis de normalidad se puede chequear también con histogramas de los re
 </p>
 </div>
 <p>El gráfico de la función de autocorrelación muestra la independencia de las observaciones. Todos los lags quedan dentro del rango de independencia.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="rls.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de diagnóstico</span></span>
-<span id="cb24-2"><a href="rls.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(fit, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="co"># Test de diagnóstico</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="kw">dwtest</span>(fit, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -880,11 +898,11 @@ La hipótesis de normalidad se puede chequear también con histogramas de los re
 ## alternative hypothesis: true autocorrelation is not 0</code></pre>
 <p>Dado que el p-valor del contraste es superior a 0.05 no podemos rechazar la hipótesis nula dada en <a href="rls.html#eq:hipoincorrelacion">(2.16)</a>, y por tanto podemos considerar que los residuos se distribuyen de froma independiente.</p>
 </div>
-<div id="otros-gráficos-de-diagnóstico" class="section level3" number="2.5.5">
+<div id="otros-gráficos-de-diagnóstico" class="section level3">
 <h3><span class="header-section-number">2.5.5</span> Otros gráficos de diagnóstico</h3>
 <p>Los gráficos de residuos versus valores de la variable predictora son útiles para apreciar tendencias en los residuos que han quedado sin explicar por el modelo ajustado. Básicamente se interpretan como los gráficos de residuos versus valores ajustados <span class="math inline">\(\hat{y}_i\)</span>. Es deseable que los residuos aparezcan representados en una banda horizontal sin tendencias alrededor del cero. Por ejemplo, si hay tendencias de tipo cuadrático, posiblemente hayamos de incorporar la variable <span class="math inline">\(x^2\)</span> en el modelo, o bien abordar algún tipo de transformación que permita una relación de tipo lineal entre predictor y respuesta.</p>
 </div>
-<div id="incumplimiento-de-hipótesis" class="section level3" number="2.5.6">
+<div id="incumplimiento-de-hipótesis" class="section level3">
 <h3><span class="header-section-number">2.5.6</span> Incumplimiento de hipótesis</h3>
 <p>Una vez identificado el incumplimiento de alguna de las hipótesis del modelo, hay que tratar de identificar porque se produce dicho incumplimiento. Se estudia si el incumplimiento es debido a:</p>
 <ul>
@@ -897,9 +915,9 @@ La hipótesis de normalidad se puede chequear también con histogramas de los re
 </ul>
 <p>De la primera parte se encarga de analizarla los diagnósticos de influencia, mientras que en el segundo caso se trata principalmente de realizar transformaciones de las variables involucradas en el modelo.</p>
 </div>
-<div id="análisis-de-influencia" class="section level3" number="2.5.7">
+<div id="análisis-de-influencia" class="section level3">
 <h3><span class="header-section-number">2.5.7</span> Análisis de influencia</h3>
-<p>El análisis de influencia pretende detectar aquellas observaciones cuya inclusión/exclusión en el ajuste altera sustancialmente los resultados. Es interesante siempre, localizar este tipo de datos, si existen, y evaluar su impacto en el modelo. Si estos datos influyentes son “malos” (provienen de errores en la medición, o de condiciones de experimentación diferentes, etc.) habrían de ser excluidos del ajuste; si son “buenos,” contendrán información sobre ciertas características relevantes a considerar en el ajuste.</p>
+<p>El análisis de influencia pretende detectar aquellas observaciones cuya inclusión/exclusión en el ajuste altera sustancialmente los resultados. Es interesante siempre, localizar este tipo de datos, si existen, y evaluar su impacto en el modelo. Si estos datos influyentes son “malos” (provienen de errores en la medición, o de condiciones de experimentación diferentes, etc.) habrían de ser excluidos del ajuste; si son “buenos”, contendrán información sobre ciertas características relevantes a considerar en el ajuste.</p>
 <p>A primera vista, observaciones que dan lugar a un residuo grande, pueden influir notablemente en el ajuste. Las denominaremos <em>OBSERVACIONES ALEJADAS</em>. Su existencia puede indicar también la inadecuación del modelo asumido a la realidad experimental. Si dicha observación tiene un residuo exageradamente grande la denominamos ANÓMALA (outlier en inglés). Por otra parte, observaciones que adoptan valores extremos de alguna o varias variables explicativas pueden tener más influencia que las usuales. Las denominaremos <em>OBSERVACIONES ATÍPICAS</em>.</p>
 <p>Sin embargo, las dos características no siempre suponen que las observaciones que las manifiestan sean también influyentes. Generalmente se dice que una observación es alejada si el valor absoluto del residuo es mayor que 2. Se considera anómala si el valor absoluto del residuo es mayor que 3.</p>
 <p>Un criterio para valora la influencia de una observación sobre los coeficientes del modelo es el cálculo de la distancia de CooK. Se consideran como observaciones influyentes todas aquellas cuyo valor de la distancia sea mayor que 1. Dicha distancia se obtiene directamente con la función <code>fortify(modelo)</code> en al columna denominada <code>.cooksd</code>. Existen otro tipo de medidas de influencia (se pueden obtener con la función <code>influence.measures(ajuste)</code>) pero las estudiaremos en las unidades siguientes.</p>
@@ -909,7 +927,7 @@ La hipótesis de normalidad se puede chequear también con histogramas de los re
 <li>Transformar la variable respuesta (si es de tipo continuo), o las variables predictoras (si son de tipo continuo).</li>
 </ul>
 </div>
-<div id="transformaciones" class="section level3" number="2.5.8">
+<div id="transformaciones" class="section level3">
 <h3><span class="header-section-number">2.5.8</span> Transformaciones</h3>
 <p>El tipo de transformaciones que podemos realizar se pueden dividir en tres apartados:</p>
 <ul>
@@ -993,25 +1011,25 @@ La hipótesis de normalidad se puede chequear también con histogramas de los re
 </table>
 <p>Una vez realizado el estudio de influencia la forma de proceder consiste en eliminar las observaciones influyentes y obtener un nuevo modelo sin ellas, o bien realizar alguna de las transformaciones planteadas y ajustar el nuevo modelo. Una vez construido deberemos ajustar el nuevo modelo y realizar un nuevo diagnóstico para verificar que se cumple las hipótesis. Se trata pues de un proceso circular donde a cada modificación debemos obtener un nuevo modelo y analizarlo completamente hasta llegar a un modelo que cumpla con todas las especificaciones. Sin embargo, en ocasiones puede ocurrir que no seamos capaces de encontrar un modelo que cumpla las hipótesis y deberemos buscar entre modelos más complejos de los planteados aquí.</p>
 </div>
-<div id="ejemplos-1" class="section level3" number="2.5.9">
+<div id="ejemplos-1" class="section level3">
 <h3><span class="header-section-number">2.5.9</span> Ejemplos</h3>
 <p>Procedemos con el análisis de los bancos de datos de Papel y Viscosidad presentados al inicio de esta unidad para estudiar los posibles problemas de diagnóstico que hemos venido trabajando.</p>
-<div id="papel" class="section level4" number="2.5.9.1">
+<div id="papel" class="section level4">
 <h4><span class="header-section-number">2.5.9.1</span> Papel</h4>
 <p>Planteamos y ajustamos el modelo correspondiente a los datos de Papel.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="rls.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo</span></span>
-<span id="cb26-2"><a href="rls.html#cb26-2" aria-hidden="true" tabindex="-1"></a>fit.papel <span class="ot">&lt;-</span> <span class="fu">lm</span>(tension <span class="sc">~</span> madera, <span class="at">data =</span> papel)</span>
-<span id="cb26-3"><a href="rls.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Solución con glm_coef</span></span>
-<span id="cb26-4"><a href="rls.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glm_coef</span>(fit.papel)</span></code></pre></div>
-<pre><code>##     Parameter         Coefficient Pr(&gt;|t|)
-## 1 (Intercept) 21.32 (9.86, 32.78)    0.001
-## 2      madera    1.77 (0.4, 3.14)    0.014</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="rls.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico del ajuste</span></span>
-<span id="cb28-2"><a href="rls.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(fit.papel, <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="sc">~</span>madera, </span>
-<span id="cb28-3"><a href="rls.html#cb28-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ci.lvl =</span> <span class="cn">NA</span>, </span>
-<span id="cb28-4"><a href="rls.html#cb28-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">show.data =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb28-5"><a href="rls.html#cb28-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;Concentración de madera&quot;</span>, <span class="st">&quot;Tensión del papel&quot;</span>),</span>
-<span id="cb28-6"><a href="rls.html#cb28-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">title =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="co"># Ajuste del modelo</span></a>
+<a class="sourceLine" id="cb26-2" title="2">fit.papel &lt;-<span class="st"> </span><span class="kw">lm</span>(tension <span class="op">~</span><span class="st"> </span>madera, <span class="dt">data =</span> papel)</a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="co"># Solución con glm_coef</span></a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="kw">glm_coef</span>(fit.papel)</a></code></pre></div>
+<pre><code>##                     Coefficient Pr(&gt;|t|)
+## (Intercept) 21.32 (3.15, 39.49)    0.024
+## madera       1.77 (-0.41, 3.95)    0.105</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># Gráfico del ajuste</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="kw">plot_model</span>(fit.papel, <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="op">~</span>madera, </a>
+<a class="sourceLine" id="cb28-3" title="3">                <span class="dt">ci.lvl =</span> <span class="ot">NA</span>, </a>
+<a class="sourceLine" id="cb28-4" title="4">                <span class="dt">show.data =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb28-5" title="5">                <span class="dt">axis.title =</span> <span class="kw">c</span>(<span class="st">&quot;Concentración de madera&quot;</span>, <span class="st">&quot;Tensión del papel&quot;</span>),</a>
+<a class="sourceLine" id="cb28-6" title="6">                <span class="dt">title =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:rls015"></span>
 <img src="libroSTAT_files/figure-html/rls015-1.png" alt="Ajuste para los datos de resitencia del papel" width="672" />
 <p class="caption">
@@ -1019,12 +1037,12 @@ Figura 2.6: Ajuste para los datos de resitencia del papel
 </p>
 </div>
 <p>Parece obvio que el modelo planteado no es adecuado, ya que no captura de forma adecuada la tendencia de los datos observados. De hecho, el coeficiente asociado con madera resulta no significativo, lo que daría a entender que la concentración de madera no es relevante para explicar la tensión del papel. Esta afirmación es claramente falsa ya que se aprecia claramente una tendencia de tipo cuadrático. Realizamos los gráficos de diagnóstico para corroborar este hecho.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="rls.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtenemos los residuos del modelo</span></span>
-<span id="cb29-2"><a href="rls.html#cb29-2" aria-hidden="true" tabindex="-1"></a>diganostico.papel <span class="ot">&lt;-</span> <span class="fu">fortify</span>(fit.papel)</span>
-<span id="cb29-3"><a href="rls.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de residuos vs ajustados</span></span>
-<span id="cb29-4"><a href="rls.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diganostico.papel, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .stdresid)) <span class="sc">+</span> </span>
-<span id="cb29-5"><a href="rls.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb29-6"><a href="rls.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># Obtenemos los residuos del modelo</span></a>
+<a class="sourceLine" id="cb29-2" title="2">diganostico.papel &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.papel)</a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="co"># Gráfico de residuos vs ajustados</span></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="kw">ggplot</span>(diganostico.papel, <span class="kw">aes</span>(<span class="dt">x =</span> .fitted, <span class="dt">y =</span> .stdresid)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:rls016"></span>
 <img src="libroSTAT_files/figure-html/rls016-1.png" alt="Gráfico de residuos vs ajustados para el modelo de papel" width="672" />
 <p class="caption">
@@ -1034,28 +1052,28 @@ Figura 2.7: Gráfico de residuos vs ajustados para el modelo de papel
 <p>Se observa claramente una tendencia de tipo cuadrática en los residuos lo que indica que un modelo más adecuado para estos datos sería:
 <span class="math display">\[tension \sim madera + madera^2\]</span>
 Realizamos el análisis de influencia para completar el diagnóstico, a pesar de que la introducción de la nueva pedictora proporcionará un modelo más adecuado.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="rls.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valoramos si hay alguna observación con distancia mayor que 1</span></span>
-<span id="cb30-2"><a href="rls.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(diganostico.papel<span class="sc">$</span>.cooksd) <span class="sc">&gt;</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># Valoramos si hay alguna observación con distancia mayor que 1</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="kw">abs</span>(diganostico.papel<span class="op">$</span>.cooksd) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ## [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <p>No se observa ninguna observación influyente por lo que el problema de ajuste se debe a la falta de tendencia del modelo propuesto.</p>
 </div>
-<div id="viscosidad" class="section level4" number="2.5.9.2">
+<div id="viscosidad" class="section level4">
 <h4><span class="header-section-number">2.5.9.2</span> Viscosidad</h4>
 <p>Planteamos y ajustamos el modelo correspondiente a los datos de Viscosidad.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="rls.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo</span></span>
-<span id="cb32-2"><a href="rls.html#cb32-2" aria-hidden="true" tabindex="-1"></a>fit.aceite <span class="ot">&lt;-</span> <span class="fu">lm</span>(viscosidad <span class="sc">~</span> aceite, <span class="at">data =</span> aceites)</span>
-<span id="cb32-3"><a href="rls.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Solución con glm_coef</span></span>
-<span id="cb32-4"><a href="rls.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glm_coef</span>(fit.aceite)</span></code></pre></div>
-<pre><code>##     Parameter         Coefficient Pr(&gt;|t|)
-## 1 (Intercept) 6.32 (-12.9, 25.53)    0.502
-## 2      aceite   1.47 (0.95, 1.99)  &lt; 0.001</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="rls.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico del ajuste</span></span>
-<span id="cb34-2"><a href="rls.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(fit.aceite,<span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="sc">~</span>aceite, </span>
-<span id="cb34-3"><a href="rls.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ci.lvl =</span> <span class="cn">NA</span>, </span>
-<span id="cb34-4"><a href="rls.html#cb34-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">show.data =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb34-5"><a href="rls.html#cb34-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;Cantidad de aceite&quot;</span>, <span class="st">&quot;Viscosidad&quot;</span>),</span>
-<span id="cb34-6"><a href="rls.html#cb34-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">title =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># Ajuste del modelo</span></a>
+<a class="sourceLine" id="cb32-2" title="2">fit.aceite &lt;-<span class="st"> </span><span class="kw">lm</span>(viscosidad <span class="op">~</span><span class="st"> </span>aceite, <span class="dt">data =</span> aceites)</a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="co"># Solución con glm_coef</span></a>
+<a class="sourceLine" id="cb32-4" title="4"><span class="kw">glm_coef</span>(fit.aceite)</a></code></pre></div>
+<pre><code>##                    Coefficient Pr(&gt;|t|)
+## (Intercept) 6.32 (-6.1, 18.73)    0.302
+## aceite       1.47 (0.86, 2.08)  &lt; 0.001</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># Gráfico del ajuste</span></a>
+<a class="sourceLine" id="cb34-2" title="2"><span class="kw">plot_model</span>(fit.aceite,<span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="op">~</span>aceite, </a>
+<a class="sourceLine" id="cb34-3" title="3">                <span class="dt">ci.lvl =</span> <span class="ot">NA</span>, </a>
+<a class="sourceLine" id="cb34-4" title="4">                <span class="dt">show.data =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb34-5" title="5">                <span class="dt">axis.title =</span> <span class="kw">c</span>(<span class="st">&quot;Cantidad de aceite&quot;</span>, <span class="st">&quot;Viscosidad&quot;</span>),</a>
+<a class="sourceLine" id="cb34-6" title="6">                <span class="dt">title =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:rls018"></span>
 <img src="libroSTAT_files/figure-html/rls018-1.png" alt="Ajuste para los datos de viscosidad" width="672" />
 <p class="caption">
@@ -1067,31 +1085,31 @@ Figura 2.8: Ajuste para los datos de viscosidad
 \widehat{\text{viscosidad}} = 6.32 + 1.47*\text{aceite}
 \]</span></p>
 <p>Estudiamos la capacidad explicativa del modelo:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="rls.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit.aceite)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 12
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">glance</span>(fit.aceite)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 11
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
-##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     0.624         0.606  23.8      34.9 7.31e-6     1  -104.  215.  218.
-## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.624         0.606  23.8      34.9 7.31e-6     2  -104.  215.  218.
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
 <p>El <span class="math inline">\(R^2\)</span> nos indica que el 62.4% de la variabilidad viene explicada por el modelo. Además el p-valor asociado a la tabla ANOVA resulta significativo indicando que el modelo tiene capacidad explicativa, es decir, podemos utilizar la cantidad de aceite para conocer el grado de viscosidad. Pasamos al diagnóstico del modelo.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="rls.html#cb37-1" aria-hidden="true" tabindex="-1"></a>diagnostico.aceite <span class="ot">&lt;-</span> <span class="fu">fortify</span>(fit.aceite)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">diagnostico.aceite &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.aceite)</a></code></pre></div>
 <p>En este cao utilizamos los tests estadísticos en lugar de los gráficos para concluir sobre el diagnóstico:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="rls.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Varianza constante</span></span>
-<span id="cb38-2"><a href="rls.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(fit.aceite)  </span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># Varianza constante</span></a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="kw">bptest</span>(fit.aceite)  </a></code></pre></div>
 <pre><code>## 
 ##  studentized Breusch-Pagan test
 ## 
 ## data:  fit.aceite
 ## BP = 6.0786, df = 1, p-value = 0.01368</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="rls.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalidad</span></span>
-<span id="cb40-2"><a href="rls.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(diagnostico.aceite<span class="sc">$</span>.stdresid)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># Normalidad</span></a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="kw">shapiro.test</span>(diagnostico.aceite<span class="op">$</span>.stdresid)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  diagnostico.aceite$.stdresid
 ## W = 0.95818, p-value = 0.4276</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="rls.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Independencia</span></span>
-<span id="cb42-2"><a href="rls.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(fit.aceite)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># Independencia</span></a>
+<a class="sourceLine" id="cb42-2" title="2"><span class="kw">dwtest</span>(fit.aceite)</a></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -1099,54 +1117,54 @@ Figura 2.8: Ajuste para los datos de viscosidad
 ## DW = 0.51202, p-value = 5.084e-06
 ## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <p>Como se puede ver debemos rechazar las hipótesis de varianza constante y de independencia (p-valores inferiores a 0.05). Planteamos la familia de transformaciones de Box-Cox para tratar de corregir los problemas con las hipótesis del modelo:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="rls.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxcox</span>(fit.aceite)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">boxcox</span>(fit.aceite)</a></code></pre></div>
 <p><img src="libroSTAT_files/figure-html/rls023-1.png" width="672" /></p>
 <p>El intervalo de confianza al 95% para <span class="math inline">\(\lambda\)</span> incluye el valor de <span class="math inline">\(\lambda = 0\)</span>, de forma que podríamos utilizar la transformación logaritmo para tratar de corregir los defectos encontrados en el modelo propuesto inicialmente.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="rls.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la nueva variable</span></span>
-<span id="cb45-2"><a href="rls.html#cb45-2" aria-hidden="true" tabindex="-1"></a>aceites <span class="ot">&lt;-</span> aceites <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">lviscosidad =</span> <span class="fu">log</span>(viscosidad))</span>
-<span id="cb45-3"><a href="rls.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste el nuevo modelo</span></span>
-<span id="cb45-4"><a href="rls.html#cb45-4" aria-hidden="true" tabindex="-1"></a>fit.aceite2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(lviscosidad <span class="sc">~</span> aceite, <span class="at">data =</span> aceites)</span>
-<span id="cb45-5"><a href="rls.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Solución con glm_coef</span></span>
-<span id="cb45-6"><a href="rls.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glm_coef</span>(fit.aceite2)</span></code></pre></div>
-<pre><code>##     Parameter       Coefficient Pr(&gt;|t|)
-## 1 (Intercept)  2.81 (2.52, 3.1)  &lt; 0.001
-## 2      aceite 0.03 (0.02, 0.04)  &lt; 0.001</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="rls.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico del ajuste</span></span>
-<span id="cb47-2"><a href="rls.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(fit.aceite2,<span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="sc">~</span>aceite, </span>
-<span id="cb47-3"><a href="rls.html#cb47-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ci.lvl =</span> <span class="cn">NA</span>, </span>
-<span id="cb47-4"><a href="rls.html#cb47-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">show.data =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb47-5"><a href="rls.html#cb47-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;Cantidad de aceite&quot;</span>, <span class="st">&quot;log(Viscosidad)&quot;</span>),</span>
-<span id="cb47-6"><a href="rls.html#cb47-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">title =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="co"># Calculamos la nueva variable</span></a>
+<a class="sourceLine" id="cb45-2" title="2">aceites &lt;-<span class="st"> </span>aceites <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">lviscosidad =</span> <span class="kw">log</span>(viscosidad))</a>
+<a class="sourceLine" id="cb45-3" title="3"><span class="co"># Ajuste el nuevo modelo</span></a>
+<a class="sourceLine" id="cb45-4" title="4">fit.aceite2 &lt;-<span class="st"> </span><span class="kw">lm</span>(lviscosidad <span class="op">~</span><span class="st"> </span>aceite, <span class="dt">data =</span> aceites)</a>
+<a class="sourceLine" id="cb45-5" title="5"><span class="co"># Solución con glm_coef</span></a>
+<a class="sourceLine" id="cb45-6" title="6"><span class="kw">glm_coef</span>(fit.aceite2)</a></code></pre></div>
+<pre><code>##                   Coefficient Pr(&gt;|t|)
+## (Intercept) 2.81 (2.45, 3.17)  &lt; 0.001
+## aceite      0.03 (0.02, 0.03)  &lt; 0.001</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="co"># Gráfico del ajuste</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="kw">plot_model</span>(fit.aceite2,<span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="op">~</span>aceite, </a>
+<a class="sourceLine" id="cb47-3" title="3">                <span class="dt">ci.lvl =</span> <span class="ot">NA</span>, </a>
+<a class="sourceLine" id="cb47-4" title="4">                <span class="dt">show.data =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb47-5" title="5">                <span class="dt">axis.title =</span> <span class="kw">c</span>(<span class="st">&quot;Cantidad de aceite&quot;</span>, <span class="st">&quot;log(Viscosidad)&quot;</span>),</a>
+<a class="sourceLine" id="cb47-6" title="6">                <span class="dt">title =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <p><img src="libroSTAT_files/figure-html/rls024-1.png" width="672" /></p>
 <p>El modelo resulta significativo con ecuación dada por:
 <span class="math display">\[
 \widehat{\text{lviscosidad}} = 2.81 + 0.03*\text{aceite}
 \]</span></p>
 <p>La bondad del ajuste</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="rls.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit.aceite2)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 12
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">glance</span>(fit.aceite2)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 11
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
-##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     0.738         0.726 0.363      59.3 1.52e-7     1  -8.31  22.6  26.0
-## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.738         0.726 0.363      59.3 1.52e-7     2  -8.31  22.6  26.0
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
 <p>nos da una capacidad explicativa del 73.8%. Hemos mejorado nuestra capacidad explicativa al transformar la respuesta. Por último realizamos el diagnóstico del nuevo modelo:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="rls.html#cb50-1" aria-hidden="true" tabindex="-1"></a>diagnostico.aceite2 <span class="ot">&lt;-</span> <span class="fu">fortify</span>(fit.aceite2)</span>
-<span id="cb50-2"><a href="rls.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Varianza constante</span></span>
-<span id="cb50-3"><a href="rls.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(fit.aceite2)  </span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">diagnostico.aceite2 &lt;-<span class="st"> </span><span class="kw">fortify</span>(fit.aceite2)</a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="co"># Varianza constante</span></a>
+<a class="sourceLine" id="cb50-3" title="3"><span class="kw">bptest</span>(fit.aceite2)  </a></code></pre></div>
 <pre><code>## 
 ##  studentized Breusch-Pagan test
 ## 
 ## data:  fit.aceite2
 ## BP = 0.39756, df = 1, p-value = 0.5284</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="rls.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalidad</span></span>
-<span id="cb52-2"><a href="rls.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(diagnostico.aceite2<span class="sc">$</span>.stdresid)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="co"># Normalidad</span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="kw">shapiro.test</span>(diagnostico.aceite2<span class="op">$</span>.stdresid)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  diagnostico.aceite2$.stdresid
 ## W = 0.92282, p-value = 0.07659</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="rls.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Independencia</span></span>
-<span id="cb54-2"><a href="rls.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(fit.aceite2)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="co"># Independencia</span></a>
+<a class="sourceLine" id="cb54-2" title="2"><span class="kw">dwtest</span>(fit.aceite2)</a></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -1154,8 +1172,8 @@ Figura 2.8: Ajuste para los datos de viscosidad
 ## DW = 0.24384, p-value = 6.044e-10
 ## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <p>El modelo verifica las hipótesis de varianza constante y normalidad. la hipótesis de independencia resulta significativa debido a la propia estructura de los datos, y más concretamente de la variable predictora, ya que como se puede ver solo se dan ciertos valores específicos (como si se tratara de una variable categórica más que una numérica). Podemos verificar este hecho con el gráfico de autocorrelación:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="rls.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gráfico función autocorrelación</span></span>
-<span id="cb56-2"><a href="rls.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(diagnostico.aceite2<span class="sc">$</span>.stdresid)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="co"># gráfico función autocorrelación</span></a>
+<a class="sourceLine" id="cb56-2" title="2"><span class="kw">acf</span>(diagnostico.aceite2<span class="op">$</span>.stdresid)</a></code></pre></div>
 <div class="figure"><span id="fig:rls028"></span>
 <img src="libroSTAT_files/figure-html/rls028-1.png" alt="Gráfico de autocorrelación de los residuos estandarizados." width="672" />
 <p class="caption">
@@ -1166,7 +1184,7 @@ Figura 2.9: Gráfico de autocorrelación de los residuos estandarizados.
 </div>
 </div>
 </div>
-<div id="rls_pred" class="section level2" number="2.6">
+<div id="rls_pred" class="section level2">
 <h2><span class="header-section-number">2.6</span> Predicción del modelo</h2>
 <p>Una vez obtenido un modelo definitivo, la última fase de la modelización consiste en la predicción de la respuesta a partir de un nuevo conjunto de valores de la predictora o predictoras. Básicamente se trata de utilizar valores dentro del rango de la variable predictora para conocer el valor de la respuesta sin necesidad de realizar el diseño experimental. Una vez ajustado el modelo si consideramos una observación <span class="math inline">\(X = x_0\)</span> dentro del rango de valores de <span class="math inline">\(X\)</span> la predicción de la respuesta se puede obtener a través del modelo ajustado mediante:
 <span class="math display">\[y_0 = \widehat{\beta_0} + \widehat{\beta_1} x_0.\]</span></p>
@@ -1176,7 +1194,7 @@ Figura 2.9: Gráfico de autocorrelación de los residuos estandarizados.
 <li><p><strong>Predicción del valor de la respuesta.</strong> Se trata de predecir el valor de la respuesta para un valor especifico de la variable predictora (<span class="math inline">\(X = x_0\)</span>). Dado que estamos intentando predecir un único valor y no la media de un conjunto de valores el intervalo de confianza de predicción es mayor que en el caso anterior. Tenemos más variabilidad cuando queremos predecir un valor que cuando queremos predecir la media de un conjunto de valores.</p></li>
 </ul>
 <p>Utilizaremos la función <code>predict()</code> para construir la predicción para un modelo dado. Veremos su aplicación en los diferentes ejemplos.</p>
-<div id="respuesta-media" class="section level3" number="2.6.1">
+<div id="respuesta-media" class="section level3">
 <h3><span class="header-section-number">2.6.1</span> Respuesta media</h3>
 <p>Como ya hemos indicado resulta posible obtener una estimación puntual del valor de la respuesta media a través de:
 <span class="math display" id="eq:RLSpredmean">\[\begin{equation}
@@ -1190,7 +1208,7 @@ IC(E(\bar{y}_n \mid x_0);1-\alpha) = \hat{y}_{x_0} \pm t_{(n-2,1-\frac{\alpha}{2
 \tag{2.19}
 \end{equation}\]</span></p>
 </div>
-<div id="nueva-observación" class="section level3" number="2.6.2">
+<div id="nueva-observación" class="section level3">
 <h3><span class="header-section-number">2.6.2</span> Nueva observación</h3>
 <p>Predeciremos una futura observación de la variable <span class="math inline">\(Y\)</span> para cierto valor de <span class="math inline">\(X = x_0\)</span>, con</p>
 <p><span class="math display" id="eq:RLSpredone">\[\begin{equation}
@@ -1203,48 +1221,48 @@ IC(y_{x_0};1-\alpha) = \hat{y}_{x_0} \pm t_{\left(n-2,1-\frac{\alpha}{2}\right)}
 \end{equation}\]</span></p>
 <p>Notar que tanto la estimación de la respuesta media como la predicción coinciden, aunque difieren en cuanto al grado de incertidumbre de la misma. Como es de esperar, predecir un hecho puntual en el futuro conlleva más incertidumbre que estimar en términos medios qué va a a ocurrir. Por último, comentar que cuando hemos utilizado alguna transformación (monótona) sobre la respuesta y queremos recuperar la estimación o predicción de ésta en su escala original, basta con utilizar la transformación recíproca sobre el valor predicho para obtener la predicción en la escala original.</p>
 </div>
-<div id="ejemplos-2" class="section level3" number="2.6.3">
+<div id="ejemplos-2" class="section level3">
 <h3><span class="header-section-number">2.6.3</span> Ejemplos</h3>
 <p>Dado que la estimación puntual de la predicción coincide con el modelo ajustado, ya hemos mostrado anteriormente como representar gráficamente la ecuación del modelo o predicción de la respuesta en diferentes ejemplos. En este punto nos limitamos a mostrar como obtener y representar los intervalos de confianza asociados, y como obtener la predicción para un conjunto determinado de valores de la variable predictora.</p>
-<div id="corrosión" class="section level4" number="2.6.3.1">
+<div id="corrosión" class="section level4">
 <h4><span class="header-section-number">2.6.3.1</span> Corrosión</h4>
 <p>En primer lugar recuperamos los datos y modelo obtenido para los datos de corrosión.</p>
 <p>Estamos interesados en conocer la pérdida de peso medio (estimación de la media) y la pérdida de peso específica (predicción de una futura observación) para una barra en particular cuando el contenido en hierro es de 0.5, 1, y 1.5.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="rls.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cargamos datos de predicción</span></span>
-<span id="cb57-2"><a href="rls.html#cb57-2" aria-hidden="true" tabindex="-1"></a>newpred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">hierro =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">0.5</span>))</span>
-<span id="cb57-3"><a href="rls.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicción para la media de la respuesta</span></span>
-<span id="cb57-4"><a href="rls.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción interval = &quot;confidence&quot; </span></span>
-<span id="cb57-5"><a href="rls.html#cb57-5" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(newpred, </span>
-<span id="cb57-6"><a href="rls.html#cb57-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">predict</span>(fit, </span>
-<span id="cb57-7"><a href="rls.html#cb57-7" aria-hidden="true" tabindex="-1"></a>                              newpred, </span>
-<span id="cb57-8"><a href="rls.html#cb57-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>)) </span>
-<span id="cb57-9"><a href="rls.html#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(newdata, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="co"># cargamos datos de predicción</span></a>
+<a class="sourceLine" id="cb57-2" title="2">newpred &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">hierro =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb57-3" title="3"><span class="co"># Predicción para la media de la respuesta</span></a>
+<a class="sourceLine" id="cb57-4" title="4"><span class="co"># Opción interval = &quot;confidence&quot; </span></a>
+<a class="sourceLine" id="cb57-5" title="5">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(newpred, </a>
+<a class="sourceLine" id="cb57-6" title="6">                      <span class="kw">predict</span>(fit, </a>
+<a class="sourceLine" id="cb57-7" title="7">                              newpred, </a>
+<a class="sourceLine" id="cb57-8" title="8">                              <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)) </a>
+<a class="sourceLine" id="cb57-9" title="9"><span class="kw">round</span>(newdata, <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##   hierro    fit    lwr    upr
 ## 1    0.5 117.78 115.63 119.92
 ## 2    1.0 105.77 103.87 107.67
 ## 3    0.5 117.78 115.63 119.92</code></pre>
 <p>Hemos obtenido la estimación (<code>fit</code>) e intervalo de confianza (<code>(lwr,upr)</code>) al 95% de la predicción de la pérdida de peso medio para valores específicos de contenido de hierro.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="rls.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cargamos datos de predicción</span></span>
-<span id="cb59-2"><a href="rls.html#cb59-2" aria-hidden="true" tabindex="-1"></a>newpred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">hierro =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">0.5</span>))</span>
-<span id="cb59-3"><a href="rls.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicción de un único valor</span></span>
-<span id="cb59-4"><a href="rls.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción interval = &quot;prediction&quot; </span></span>
-<span id="cb59-5"><a href="rls.html#cb59-5" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(newpred, </span>
-<span id="cb59-6"><a href="rls.html#cb59-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">predict</span>(fit, </span>
-<span id="cb59-7"><a href="rls.html#cb59-7" aria-hidden="true" tabindex="-1"></a>                              newpred, </span>
-<span id="cb59-8"><a href="rls.html#cb59-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>)) </span>
-<span id="cb59-9"><a href="rls.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(newdata, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="co"># cargamos datos de predicción</span></a>
+<a class="sourceLine" id="cb59-2" title="2">newpred &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">hierro =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb59-3" title="3"><span class="co"># Predicción de un único valor</span></a>
+<a class="sourceLine" id="cb59-4" title="4"><span class="co"># Opción interval = &quot;prediction&quot; </span></a>
+<a class="sourceLine" id="cb59-5" title="5">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(newpred, </a>
+<a class="sourceLine" id="cb59-6" title="6">                      <span class="kw">predict</span>(fit, </a>
+<a class="sourceLine" id="cb59-7" title="7">                              newpred, </a>
+<a class="sourceLine" id="cb59-8" title="8">                              <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)) </a>
+<a class="sourceLine" id="cb59-9" title="9"><span class="kw">round</span>(newdata, <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##   hierro    fit    lwr    upr
 ## 1    0.5 117.78 110.71 124.84
 ## 2    1.0 105.77  98.77 112.76
 ## 3    0.5 117.78 110.71 124.84</code></pre>
 <p>Como ya habíamos comentado la estimación que obtenemos es la misma pero los intervalos de confianza son más amplios.</p>
 <p>A continuación se muestra como representar gráficamente la predicción de la respuesta media y los intervalos de predicción al 95% de confianza para todo el rango de valores de la predictora.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="rls.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico del ajuste</span></span>
-<span id="cb61-2"><a href="rls.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(fit, <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="sc">~</span>hierro, </span>
-<span id="cb61-3"><a href="rls.html#cb61-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ci.lvl =</span> <span class="fl">0.95</span>, </span>
-<span id="cb61-4"><a href="rls.html#cb61-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">show.data =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb61-5"><a href="rls.html#cb61-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;Contenido en hierro&quot;</span>, <span class="st">&quot;Peso&quot;</span>),</span>
-<span id="cb61-6"><a href="rls.html#cb61-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">title =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="co"># Gráfico del ajuste</span></a>
+<a class="sourceLine" id="cb61-2" title="2"><span class="kw">plot_model</span>(fit, <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="op">~</span>hierro, </a>
+<a class="sourceLine" id="cb61-3" title="3">                <span class="dt">ci.lvl =</span> <span class="fl">0.95</span>, </a>
+<a class="sourceLine" id="cb61-4" title="4">                <span class="dt">show.data =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb61-5" title="5">                <span class="dt">axis.title =</span> <span class="kw">c</span>(<span class="st">&quot;Contenido en hierro&quot;</span>, <span class="st">&quot;Peso&quot;</span>),</a>
+<a class="sourceLine" id="cb61-6" title="6">                <span class="dt">title =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:rls031"></span>
 <img src="libroSTAT_files/figure-html/rls031-1.png" alt="Predicción para los datos de corrosión (media e IC95%)." width="672" />
 <p class="caption">
@@ -1252,28 +1270,28 @@ Figura 2.10: Predicción para los datos de corrosión (media e IC95%).
 </p>
 </div>
 </div>
-<div id="viscosidad-1" class="section level4" number="2.6.3.2">
+<div id="viscosidad-1" class="section level4">
 <h4><span class="header-section-number">2.6.3.2</span> Viscosidad</h4>
 <p>Vamos a realizar la predicción para el modelo ajustado a los datos de viscosidad. Recordemos que en este caso hemos transformado la respuesta con la función logaritmo para asegurar que se cumple las hipótesis del modelo, y por tanto nuestra predicción inicial es sobre dicha variable y no sobre la viscosidad. Resulta necesario deshacer la transformación logaritmo para poder obtener la predicción en la escala original de la viscosidad.</p>
 <p>Estamos interesados en conocer la viscosidad media (estimación de la media) del producto final cuando el contenido de aceite es de 10, 20, 30, 40, y 50.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="rls.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cargamos datos de predicción</span></span>
-<span id="cb62-2"><a href="rls.html#cb62-2" aria-hidden="true" tabindex="-1"></a>newpred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">aceite =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>))</span>
-<span id="cb62-3"><a href="rls.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicción para la media de la respuesta</span></span>
-<span id="cb62-4"><a href="rls.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción interval = &quot;confidence&quot; </span></span>
-<span id="cb62-5"><a href="rls.html#cb62-5" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(newpred, </span>
-<span id="cb62-6"><a href="rls.html#cb62-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">predict</span>(fit.aceite2, </span>
-<span id="cb62-7"><a href="rls.html#cb62-7" aria-hidden="true" tabindex="-1"></a>                              newpred, </span>
-<span id="cb62-8"><a href="rls.html#cb62-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>)) </span>
-<span id="cb62-9"><a href="rls.html#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(newdata, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># cargamos datos de predicción</span></a>
+<a class="sourceLine" id="cb62-2" title="2">newpred &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">aceite =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>))</a>
+<a class="sourceLine" id="cb62-3" title="3"><span class="co"># Predicción para la media de la respuesta</span></a>
+<a class="sourceLine" id="cb62-4" title="4"><span class="co"># Opción interval = &quot;confidence&quot; </span></a>
+<a class="sourceLine" id="cb62-5" title="5">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(newpred, </a>
+<a class="sourceLine" id="cb62-6" title="6">                      <span class="kw">predict</span>(fit.aceite2, </a>
+<a class="sourceLine" id="cb62-7" title="7">                              newpred, </a>
+<a class="sourceLine" id="cb62-8" title="8">                              <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)) </a>
+<a class="sourceLine" id="cb62-9" title="9"><span class="kw">round</span>(newdata, <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##   aceite  fit  lwr  upr
 ## 1     10 3.10 2.87 3.33
 ## 2     20 3.40 3.21 3.58
 ## 3     30 3.69 3.53 3.85
 ## 4     40 3.98 3.81 4.15
 ## 5     50 4.27 4.06 4.49</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="rls.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deshacemos la transformación para volver a la escala de viscosidad</span></span>
-<span id="cb64-2"><a href="rls.html#cb64-2" aria-hidden="true" tabindex="-1"></a>newdata[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">exp</span>(newdata[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb64-3"><a href="rls.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(newdata,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># Deshacemos la transformación para volver a la escala de viscosidad</span></a>
+<a class="sourceLine" id="cb64-2" title="2">newdata[,<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] &lt;-<span class="st"> </span><span class="kw">exp</span>(newdata[,<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>])</a>
+<a class="sourceLine" id="cb64-3" title="3"><span class="kw">round</span>(newdata,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##   aceite   fit   lwr   upr
 ## 1     10 22.27 17.68 28.05
 ## 2     20 29.84 24.90 35.77
@@ -1282,35 +1300,35 @@ Figura 2.10: Predicción para los datos de corrosión (media e IC95%).
 ## 5     50 71.80 57.85 89.12</code></pre>
 <p>De esta forma obtenemos las predicciones en la escala original de la variable viscosidad. ¿Cómo interpretamos los valores de predicción obtenidos?</p>
 <p>Realizamos ahora los gráficos de predicción para <code>log(viscosidad)</code> y <code>viscosidad</code>. Para este último introducimos el código necesario para deshacer la transformación.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="rls.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico del ajuste</span></span>
-<span id="cb66-2"><a href="rls.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(fit.aceite2, <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="sc">~</span>aceite, </span>
-<span id="cb66-3"><a href="rls.html#cb66-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ci.lvl =</span> <span class="fl">0.95</span>, </span>
-<span id="cb66-4"><a href="rls.html#cb66-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">show.data =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb66-5"><a href="rls.html#cb66-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;Contenido de aceite&quot;</span>, <span class="st">&quot;log(Viscosidad)&quot;</span>),</span>
-<span id="cb66-6"><a href="rls.html#cb66-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">title =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># Gráfico del ajuste</span></a>
+<a class="sourceLine" id="cb66-2" title="2"><span class="kw">plot_model</span>(fit.aceite2, <span class="st">&quot;pred&quot;</span>, <span class="dt">terms =</span> <span class="op">~</span>aceite, </a>
+<a class="sourceLine" id="cb66-3" title="3">                <span class="dt">ci.lvl =</span> <span class="fl">0.95</span>, </a>
+<a class="sourceLine" id="cb66-4" title="4">                <span class="dt">show.data =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb66-5" title="5">                <span class="dt">axis.title =</span> <span class="kw">c</span>(<span class="st">&quot;Contenido de aceite&quot;</span>, <span class="st">&quot;log(Viscosidad)&quot;</span>),</a>
+<a class="sourceLine" id="cb66-6" title="6">                <span class="dt">title =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:rls034"></span>
 <img src="libroSTAT_files/figure-html/rls034-1.png" alt="Predicción para los datos de log(viscosidad) (media e IC95%)." width="672" />
 <p class="caption">
 Figura 2.11: Predicción para los datos de log(viscosidad) (media e IC95%).
 </p>
 </div>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="rls.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construímos una secuencia de predicción</span></span>
-<span id="cb67-2"><a href="rls.html#cb67-2" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">aceite =</span> <span class="fu">seq</span>(<span class="fu">min</span>(aceites<span class="sc">$</span>aceite),</span>
-<span id="cb67-3"><a href="rls.html#cb67-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">max</span>(aceites<span class="sc">$</span>aceite), </span>
-<span id="cb67-4"><a href="rls.html#cb67-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">length =</span> <span class="dv">50</span>))</span>
-<span id="cb67-5"><a href="rls.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicción para la media de la respuesta</span></span>
-<span id="cb67-6"><a href="rls.html#cb67-6" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(newdata, <span class="fu">predict</span>(fit.aceite2, </span>
-<span id="cb67-7"><a href="rls.html#cb67-7" aria-hidden="true" tabindex="-1"></a>                                       newdata, </span>
-<span id="cb67-8"><a href="rls.html#cb67-8" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>))</span>
-<span id="cb67-9"><a href="rls.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Deshacemos la transformación para volver a la escala de viscosidad</span></span>
-<span id="cb67-10"><a href="rls.html#cb67-10" aria-hidden="true" tabindex="-1"></a>newdata[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">exp</span>(newdata[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb67-11"><a href="rls.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico del ajuste</span></span>
-<span id="cb67-12"><a href="rls.html#cb67-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(newdata, <span class="fu">aes</span>(<span class="at">x =</span> aceite, <span class="at">y =</span> fit)) <span class="sc">+</span></span>
-<span id="cb67-13"><a href="rls.html#cb67-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb67-14"><a href="rls.html#cb67-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb67-15"><a href="rls.html#cb67-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> aceites, <span class="fu">aes</span>(<span class="at">x =</span> aceite, <span class="at">y =</span> viscosidad)) <span class="sc">+</span></span>
-<span id="cb67-16"><a href="rls.html#cb67-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Cantidad de aceite&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Viscosidad&quot;</span>) <span class="sc">+</span></span>
-<span id="cb67-17"><a href="rls.html#cb67-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="co"># Construímos una secuencia de predicción</span></a>
+<a class="sourceLine" id="cb67-2" title="2">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">aceite =</span> <span class="kw">seq</span>(<span class="kw">min</span>(aceites<span class="op">$</span>aceite),</a>
+<a class="sourceLine" id="cb67-3" title="3">                                   <span class="kw">max</span>(aceites<span class="op">$</span>aceite), </a>
+<a class="sourceLine" id="cb67-4" title="4">                                   <span class="dt">length =</span> <span class="dv">50</span>))</a>
+<a class="sourceLine" id="cb67-5" title="5"><span class="co"># Predicción para la media de la respuesta</span></a>
+<a class="sourceLine" id="cb67-6" title="6">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(newdata, <span class="kw">predict</span>(fit.aceite2, </a>
+<a class="sourceLine" id="cb67-7" title="7">                                       newdata, </a>
+<a class="sourceLine" id="cb67-8" title="8">                                       <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>))</a>
+<a class="sourceLine" id="cb67-9" title="9"><span class="co"># Deshacemos la transformación para volver a la escala de viscosidad</span></a>
+<a class="sourceLine" id="cb67-10" title="10">newdata[,<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] &lt;-<span class="st"> </span><span class="kw">exp</span>(newdata[,<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>])</a>
+<a class="sourceLine" id="cb67-11" title="11"><span class="co"># Gráfico del ajuste</span></a>
+<a class="sourceLine" id="cb67-12" title="12"><span class="kw">ggplot</span>(newdata, <span class="kw">aes</span>(<span class="dt">x =</span> aceite, <span class="dt">y =</span> fit)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-13" title="13"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb67-14" title="14"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> upr, <span class="dt">ymin =</span> lwr), <span class="dt">alpha =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-15" title="15"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> aceites, <span class="kw">aes</span>(<span class="dt">x =</span> aceite, <span class="dt">y =</span> viscosidad)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-16" title="16"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Cantidad de aceite&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Viscosidad&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-17" title="17"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:rls035"></span>
 <img src="libroSTAT_files/figure-html/rls035-1.png" alt="Predicción para los datos de viscosidad (media e IC95%)." width="672" />
 <p class="caption">
