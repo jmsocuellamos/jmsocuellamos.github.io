@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Unidad 12 Modelos Log-Lineales | Modelos Estadísticos</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Unidad 12 Modelos Log-Lineales | Modelos Estadísticos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unidad 12 Modelos Log-Lineales | Modelos Estadísticos" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Javier Morales (Universidad Miguel Hernández de Elche)" />
+<meta name="author" content="Mª Asunción Martínez (Universidad Miguel Hernández de Elche)" />
+
+
+<meta name="date" content="2021-05-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="bancos-de-datos-6.html"/>
+<link rel="next" href="modelos-logit-multinomial.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://sites.google.com/umh.es/statistical-models" target="blank">Modelos Estadísticos</a></li>
+<li><a href="./">J. Morales y A.M. Mayoral</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html"><i class="fa fa-check"></i>Antes de empezar</a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#conceptos-básicos-del-diseño-experimental"><i class="fa fa-check"></i>Conceptos básicos del diseño experimental</a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#objetivo-del-diseño-experimental"><i class="fa fa-check"></i>Objetivo del diseño experimental</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#población-y-muestra"><i class="fa fa-check"></i>Población y muestra</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#medidas-y-escalas-de-medida"><i class="fa fa-check"></i>Medidas y escalas de medida</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#parámetros-poblacionales-y-estadísticos"><i class="fa fa-check"></i>Parámetros poblacionales y estadísticos</a></li>
+</ul></li>
+<li><a href="antes-de-empezar.html#primeros-pasos-con-r-y-rstudio">Primeros pasos con <code>R</code> y <code>RStudio</code></a><ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#instalación-y-puesta-en-marcha"><i class="fa fa-check"></i>Instalación y puesta en marcha</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#informes-prediseñados"><i class="fa fa-check"></i>Informes prediseñados</a></li>
+<li><a href="antes-de-empezar.html#librerías-de-r-necesarías">Librerías de <code>R</code> necesarías</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="modelstats.html"><a href="modelstats.html"><i class="fa fa-check"></i><b>1</b> Modelos estadísticos</a><ul>
+<li class="chapter" data-level="1.1" data-path="modelstats.html"><a href="modelstats.html#componentes-del-modelo"><i class="fa fa-check"></i><b>1.1</b> Componentes del modelo</a></li>
+<li class="chapter" data-level="1.2" data-path="modelstats.html"><a href="modelstats.html#tipos-de-modelos"><i class="fa fa-check"></i><b>1.2</b> Tipos de modelos</a></li>
+<li class="chapter" data-level="1.3" data-path="modelstats.html"><a href="modelstats.html#fases-en-la-construcción-de-un-modelo"><i class="fa fa-check"></i><b>1.3</b> Fases en la construcción de un modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rls.html"><a href="rls.html"><i class="fa fa-check"></i><b>2</b> Regresión Lineal Simple (RLS)</a><ul>
+<li class="chapter" data-level="2.1" data-path="rls.html"><a href="rls.html#bancos-de-datos"><i class="fa fa-check"></i><b>2.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="2.2" data-path="rls.html"><a href="rls.html#modelorls"><i class="fa fa-check"></i><b>2.2</b> El modelo RLS</a></li>
+<li class="chapter" data-level="2.3" data-path="rls.html"><a href="rls.html#estimacionrls"><i class="fa fa-check"></i><b>2.3</b> Estimación del modelo</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="rls.html"><a href="rls.html#mincuadrls"><i class="fa fa-check"></i><b>2.3.1</b> Estimación Mínimos Cuadrados</a></li>
+<li class="chapter" data-level="2.3.2" data-path="rls.html"><a href="rls.html#emvrls"><i class="fa fa-check"></i><b>2.3.2</b> Estimación Máximo Verosímil</a></li>
+<li class="chapter" data-level="2.3.3" data-path="rls.html"><a href="rls.html#emR"><i class="fa fa-check"></i><b>2.3.3</b> Estimación con R</a></li>
+<li class="chapter" data-level="2.3.4" data-path="rls.html"><a href="rls.html#ejemplos"><i class="fa fa-check"></i><b>2.3.4</b> Ejemplos</a></li>
+<li class="chapter" data-level="2.3.5" data-path="rls.html"><a href="rls.html#propiedades-de-la-recta-de-regresión."><i class="fa fa-check"></i><b>2.3.5</b> Propiedades de la recta de regresión.</a></li>
+<li class="chapter" data-level="2.3.6" data-path="rls.html"><a href="rls.html#rls_varmodel"><i class="fa fa-check"></i><b>2.3.6</b> Estimación varianza del modelo.</a></li>
+<li class="chapter" data-level="2.3.7" data-path="rls.html"><a href="rls.html#inferencia-sobre-los-coeficientes-del-modelo"><i class="fa fa-check"></i><b>2.3.7</b> Inferencia sobre los coeficientes del modelo</a></li>
+<li class="chapter" data-level="2.3.8" data-path="rls.html"><a href="rls.html#ejemplo"><i class="fa fa-check"></i><b>2.3.8</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="rls.html"><a href="rls.html#bondad-del-ajuste"><i class="fa fa-check"></i><b>2.4</b> Bondad del Ajuste</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="rls.html"><a href="rls.html#rls_errorresidual"><i class="fa fa-check"></i><b>2.4.1</b> Error residual</a></li>
+<li class="chapter" data-level="2.4.2" data-path="rls.html"><a href="rls.html#rls_tablaanova"><i class="fa fa-check"></i><b>2.4.2</b> Tabla Anova</a></li>
+<li class="chapter" data-level="2.4.3" data-path="rls.html"><a href="rls.html#coeficiente-de-determinación"><i class="fa fa-check"></i><b>2.4.3</b> Coeficiente de determinación</a></li>
+<li class="chapter" data-level="2.4.4" data-path="rls.html"><a href="rls.html#ejemplo-1"><i class="fa fa-check"></i><b>2.4.4</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="rls.html"><a href="rls.html#rls_diag"><i class="fa fa-check"></i><b>2.5</b> Diagnóstico del Modelo</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rls.html"><a href="rls.html#linealidad-y-homocedasticidad."><i class="fa fa-check"></i><b>2.5.1</b> Linealidad y homocedasticidad.</a></li>
+<li class="chapter" data-level="2.5.2" data-path="rls.html"><a href="rls.html#ejemplo-2"><i class="fa fa-check"></i><b>2.5.2</b> Ejemplo</a></li>
+<li class="chapter" data-level="2.5.3" data-path="rls.html"><a href="rls.html#normalidad"><i class="fa fa-check"></i><b>2.5.3</b> Normalidad</a></li>
+<li class="chapter" data-level="2.5.4" data-path="rls.html"><a href="rls.html#independencia."><i class="fa fa-check"></i><b>2.5.4</b> Independencia.</a></li>
+<li class="chapter" data-level="2.5.5" data-path="rls.html"><a href="rls.html#otros-gráficos-de-diagnóstico"><i class="fa fa-check"></i><b>2.5.5</b> Otros gráficos de diagnóstico</a></li>
+<li class="chapter" data-level="2.5.6" data-path="rls.html"><a href="rls.html#incumplimiento-de-hipótesis"><i class="fa fa-check"></i><b>2.5.6</b> Incumplimiento de hipótesis</a></li>
+<li class="chapter" data-level="2.5.7" data-path="rls.html"><a href="rls.html#análisis-de-influencia"><i class="fa fa-check"></i><b>2.5.7</b> Análisis de influencia</a></li>
+<li class="chapter" data-level="2.5.8" data-path="rls.html"><a href="rls.html#transformaciones"><i class="fa fa-check"></i><b>2.5.8</b> Transformaciones</a></li>
+<li class="chapter" data-level="2.5.9" data-path="rls.html"><a href="rls.html#ejemplos-1"><i class="fa fa-check"></i><b>2.5.9</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rls.html"><a href="rls.html#rls_pred"><i class="fa fa-check"></i><b>2.6</b> Predicción del modelo</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="rls.html"><a href="rls.html#respuesta-media"><i class="fa fa-check"></i><b>2.6.1</b> Respuesta media</a></li>
+<li class="chapter" data-level="2.6.2" data-path="rls.html"><a href="rls.html#nueva-observación"><i class="fa fa-check"></i><b>2.6.2</b> Nueva observación</a></li>
+<li class="chapter" data-level="2.6.3" data-path="rls.html"><a href="rls.html#ejemplos-2"><i class="fa fa-check"></i><b>2.6.3</b> Ejemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rlm.html"><a href="rlm.html"><i class="fa fa-check"></i><b>3</b> Regresión Lineal Múltiple y Polinómica</a><ul>
+<li class="chapter" data-level="3.1" data-path="rlm.html"><a href="rlm.html#tipos-de-modelos-1"><i class="fa fa-check"></i><b>3.1</b> Tipos de modelos</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="rlm.html"><a href="rlm.html#modelos-de-rlm"><i class="fa fa-check"></i><b>3.1.1</b> Modelos de RLM</a></li>
+<li class="chapter" data-level="3.1.2" data-path="rlm.html"><a href="rlm.html#modelos-de-rp"><i class="fa fa-check"></i><b>3.1.2</b> Modelos de RP</a></li>
+<li class="chapter" data-level="3.1.3" data-path="rlm.html"><a href="rlm.html#expresión-en-r-de-los-modelos"><i class="fa fa-check"></i><b>3.1.3</b> Expresión en R de los modelos</a></li>
+<li class="chapter" data-level="3.1.4" data-path="rlm.html"><a href="rlm.html#modelo-saturado-y-anidado"><i class="fa fa-check"></i><b>3.1.4</b> Modelo saturado y anidado</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="rlm.html"><a href="rlm.html#estimación-e-inferencia"><i class="fa fa-check"></i><b>3.2</b> Estimación e inferencia</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="rlm.html"><a href="rlm.html#mínimos-cuadrados"><i class="fa fa-check"></i><b>3.2.1</b> Mínimos cuadrados</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rlm.html"><a href="rlm.html#propiedades"><i class="fa fa-check"></i><b>3.2.2</b> Propiedades</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rlm.html"><a href="rlm.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>3.2.3</b> Máxima verosimilitud</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rlm.html"><a href="rlm.html#inferencia"><i class="fa fa-check"></i><b>3.2.4</b> Inferencia</a></li>
+<li class="chapter" data-level="3.2.5" data-path="rlm.html"><a href="rlm.html#ejemplos-3"><i class="fa fa-check"></i><b>3.2.5</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rlm.html"><a href="rlm.html#bondad-del-ajuste-1"><i class="fa fa-check"></i><b>3.3</b> Bondad del ajuste</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="rlm.html"><a href="rlm.html#tabla-anova"><i class="fa fa-check"></i><b>3.3.1</b> Tabla ANOVA</a></li>
+<li class="chapter" data-level="3.3.2" data-path="rlm.html"><a href="rlm.html#coeficiente-determinación"><i class="fa fa-check"></i><b>3.3.2</b> Coeficiente determinación</a></li>
+<li class="chapter" data-level="3.3.3" data-path="rlm.html"><a href="rlm.html#ejemplos-4"><i class="fa fa-check"></i><b>3.3.3</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="rlm.html"><a href="rlm.html#comparación-y-selección-de-modelos"><i class="fa fa-check"></i><b>3.4</b> Comparación y selección de modelos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="rlm.html"><a href="rlm.html#significatividad-de-los-predictores"><i class="fa fa-check"></i><b>3.4.1</b> Significatividad de los predictores</a></li>
+<li class="chapter" data-level="3.4.2" data-path="rlm.html"><a href="rlm.html#estadísticos-aic-y-bic"><i class="fa fa-check"></i><b>3.4.2</b> Estadísticos AIC y BIC</a></li>
+<li class="chapter" data-level="3.4.3" data-path="rlm.html"><a href="rlm.html#selección-automática"><i class="fa fa-check"></i><b>3.4.3</b> Selección automática</a></li>
+<li class="chapter" data-level="3.4.4" data-path="rlm.html"><a href="rlm.html#funciones-en-r"><i class="fa fa-check"></i><b>3.4.4</b> Funciones en R</a></li>
+<li class="chapter" data-level="3.4.5" data-path="rlm.html"><a href="rlm.html#ejemplos-5"><i class="fa fa-check"></i><b>3.4.5</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="rlm.html"><a href="rlm.html#multicolinealidad"><i class="fa fa-check"></i><b>3.5</b> Multicolinealidad</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="rlm.html"><a href="rlm.html#causas"><i class="fa fa-check"></i><b>3.5.1</b> Causas</a></li>
+<li class="chapter" data-level="3.5.2" data-path="rlm.html"><a href="rlm.html#efectos"><i class="fa fa-check"></i><b>3.5.2</b> Efectos</a></li>
+<li class="chapter" data-level="3.5.3" data-path="rlm.html"><a href="rlm.html#diagnósticos"><i class="fa fa-check"></i><b>3.5.3</b> Diagnósticos</a></li>
+<li class="chapter" data-level="3.5.4" data-path="rlm.html"><a href="rlm.html#soluciones"><i class="fa fa-check"></i><b>3.5.4</b> Soluciones</a></li>
+<li class="chapter" data-level="3.5.5" data-path="rlm.html"><a href="rlm.html#ejemplos-6"><i class="fa fa-check"></i><b>3.5.5</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="rlm.html"><a href="rlm.html#diagnóstico"><i class="fa fa-check"></i><b>3.6</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="rlm.html"><a href="rlm.html#tipos-de-residuos"><i class="fa fa-check"></i><b>3.6.1</b> Tipos de Residuos</a></li>
+<li class="chapter" data-level="3.6.2" data-path="rlm.html"><a href="rlm.html#linealidad"><i class="fa fa-check"></i><b>3.6.2</b> Linealidad</a></li>
+<li class="chapter" data-level="3.6.3" data-path="rlm.html"><a href="rlm.html#homocedasticidad"><i class="fa fa-check"></i><b>3.6.3</b> Homocedasticidad</a></li>
+<li class="chapter" data-level="3.6.4" data-path="rlm.html"><a href="rlm.html#normalidad-1"><i class="fa fa-check"></i><b>3.6.4</b> Normalidad</a></li>
+<li class="chapter" data-level="3.6.5" data-path="rlm.html"><a href="rlm.html#incorrelación"><i class="fa fa-check"></i><b>3.6.5</b> Incorrelación</a></li>
+<li class="chapter" data-level="3.6.6" data-path="rlm.html"><a href="rlm.html#soluciones-a-problemas-detectados-en-el-diagnóstico-del-modelo"><i class="fa fa-check"></i><b>3.6.6</b> Soluciones a problemas detectados en el diagnóstico del modelo</a></li>
+<li class="chapter" data-level="3.6.7" data-path="rlm.html"><a href="rlm.html#análisis-de-influencia-1"><i class="fa fa-check"></i><b>3.6.7</b> Análisis de influencia</a></li>
+<li class="chapter" data-level="3.6.8" data-path="rlm.html"><a href="rlm.html#funciones-para-diagnóstico-e-influencia"><i class="fa fa-check"></i><b>3.6.8</b> Funciones para diagnóstico e influencia</a></li>
+<li class="chapter" data-level="3.6.9" data-path="rlm.html"><a href="rlm.html#ejemplos-7"><i class="fa fa-check"></i><b>3.6.9</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="rlm.html"><a href="rlm.html#predicción"><i class="fa fa-check"></i><b>3.7</b> Predicción</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="rlm.html"><a href="rlm.html#estimación-de-la-respuesta-media."><i class="fa fa-check"></i><b>3.7.1</b> Estimación de la respuesta media.</a></li>
+<li class="chapter" data-level="3.7.2" data-path="rlm.html"><a href="rlm.html#predicción-de-nuevas-observaciones."><i class="fa fa-check"></i><b>3.7.2</b> Predicción de nuevas observaciones.</a></li>
+<li class="chapter" data-level="3.7.3" data-path="rlm.html"><a href="rlm.html#ejemplos-8"><i class="fa fa-check"></i><b>3.7.3</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="rlm.html"><a href="rlm.html#ejercicios"><i class="fa fa-check"></i><b>3.8</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>4</b> Modelos ANOVA</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova.html"><a href="anova.html#bancos-de-datos-1"><i class="fa fa-check"></i><b>4.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="4.2" data-path="anova.html"><a href="anova.html#modelos-anova-1-vía"><i class="fa fa-check"></i><b>4.2</b> Modelos ANOVA 1 vía</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="anova.html"><a href="anova.html#especificacion-del-modelo-en-r"><i class="fa fa-check"></i><b>4.2.1</b> Especificacion del modelo en <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="anova.html"><a href="anova.html#modelos-anova-dos-vías"><i class="fa fa-check"></i><b>4.3</b> Modelos ANOVA dos vías</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="anova.html"><a href="anova.html#especificacion-del-modelo-en-r-1"><i class="fa fa-check"></i><b>4.3.1</b> Especificacion del modelo en <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="anova.html"><a href="anova.html#estimación-y-bondad-de-ajuste-del-modelo"><i class="fa fa-check"></i><b>4.4</b> Estimación y bondad de ajuste del modelo</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="anova.html"><a href="anova.html#ejemplos-9"><i class="fa fa-check"></i><b>4.4.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="anova.html"><a href="anova.html#comparación-y-selección-de-modelos-1"><i class="fa fa-check"></i><b>4.5</b> Comparación y selección de modelos</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="anova.html"><a href="anova.html#ejemplos-10"><i class="fa fa-check"></i><b>4.5.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="anova.html"><a href="anova.html#diagnóstico-1"><i class="fa fa-check"></i><b>4.6</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="anova.html"><a href="anova.html#ejemplos-11"><i class="fa fa-check"></i><b>4.6.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="anova.html"><a href="anova.html#predicción-1"><i class="fa fa-check"></i><b>4.7</b> Predicción</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="anova.html"><a href="anova.html#ejemplos-12"><i class="fa fa-check"></i><b>4.7.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="anova.html"><a href="anova.html#ejercicios-1"><i class="fa fa-check"></i><b>4.8</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ancova.html"><a href="ancova.html"><i class="fa fa-check"></i><b>5</b> Modelos ANCOVA</a><ul>
+<li class="chapter" data-level="5.1" data-path="ancova.html"><a href="ancova.html#bancos-de-datos-2"><i class="fa fa-check"></i><b>5.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="5.2" data-path="ancova.html"><a href="ancova.html#modelo-ancova-básico"><i class="fa fa-check"></i><b>5.2</b> Modelo ANCOVA básico</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="ancova.html"><a href="ancova.html#i-rectas-de-regresión-perpendiculares"><i class="fa fa-check"></i><b>5.2.1</b> I rectas de regresión perpendiculares</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ancova.html"><a href="ancova.html#i-rectas-de-regresión-paralelas"><i class="fa fa-check"></i><b>5.2.2</b> I rectas de regresión paralelas</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ancova.html"><a href="ancova.html#una-recta-de-regresión"><i class="fa fa-check"></i><b>5.2.3</b> Una recta de regresión</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ancova.html"><a href="ancova.html#anova-de-una-vía"><i class="fa fa-check"></i><b>5.2.4</b> ANOVA de una vía</a></li>
+<li class="chapter" data-level="5.2.5" data-path="ancova.html"><a href="ancova.html#modelos-sin-efectos"><i class="fa fa-check"></i><b>5.2.5</b> Modelos sin efectos</a></li>
+<li class="chapter" data-level="5.2.6" data-path="ancova.html"><a href="ancova.html#especificación-del-modelo-en-r"><i class="fa fa-check"></i><b>5.2.6</b> Especificación del modelo en <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ancova.html"><a href="ancova.html#análisis-preliminar"><i class="fa fa-check"></i><b>5.3</b> Análisis preliminar</a></li>
+<li class="chapter" data-level="5.4" data-path="ancova.html"><a href="ancova.html#ajuste-y-selección-del-modelo"><i class="fa fa-check"></i><b>5.4</b> Ajuste y Selección del modelo</a></li>
+<li class="chapter" data-level="5.5" data-path="ancova.html"><a href="ancova.html#diagnóstico-del-modelo"><i class="fa fa-check"></i><b>5.5</b> Diagnóstico del modelo</a></li>
+<li class="chapter" data-level="5.6" data-path="ancova.html"><a href="ancova.html#predicción-2"><i class="fa fa-check"></i><b>5.6</b> Predicción</a></li>
+<li class="chapter" data-level="5.7" data-path="ancova.html"><a href="ancova.html#ejercicios-modelos-ancova"><i class="fa fa-check"></i><b>5.7</b> Ejercicios modelos ANCOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="smooth.html"><a href="smooth.html"><i class="fa fa-check"></i><b>6</b> Modelos aditivos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="smooth.html"><a href="smooth.html#bancos-de-datos-3"><i class="fa fa-check"></i><b>6.1</b> Bancos de datos</a></li>
+<li class="chapter" data-level="6.2" data-path="smooth.html"><a href="smooth.html#funciones-de-suavizado"><i class="fa fa-check"></i><b>6.2</b> Funciones de suavizado</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="smooth.html"><a href="smooth.html#splines-de-regresión"><i class="fa fa-check"></i><b>6.2.1</b> Splines de regresión</a></li>
+<li class="chapter" data-level="6.2.2" data-path="smooth.html"><a href="smooth.html#splines-cúbicos"><i class="fa fa-check"></i><b>6.2.2</b> Splines cúbicos</a></li>
+<li class="chapter" data-level="6.2.3" data-path="smooth.html"><a href="smooth.html#splines-penalizados"><i class="fa fa-check"></i><b>6.2.3</b> Splines penalizados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="smooth.html"><a href="smooth.html#bondad-del-ajuste-y-selección-del-modelo"><i class="fa fa-check"></i><b>6.3</b> Bondad del ajuste y selección del modelo</a></li>
+<li class="chapter" data-level="6.4" data-path="smooth.html"><a href="smooth.html#diagnóstico-2"><i class="fa fa-check"></i><b>6.4</b> Diagnóstico</a></li>
+<li class="chapter" data-level="6.5" data-path="smooth.html"><a href="smooth.html#predicción-3"><i class="fa fa-check"></i><b>6.5</b> Predicción</a></li>
+<li class="chapter" data-level="6.6" data-path="smooth.html"><a href="smooth.html#ejercicios-2"><i class="fa fa-check"></i><b>6.6</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glm.html"><a href="glm.html"><i class="fa fa-check"></i><b>7</b> Modelos Lineales Generalizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="glm.html"><a href="glm.html#modelo-teórico"><i class="fa fa-check"></i><b>7.1</b> Modelo Teórico</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="glm.html"><a href="glm.html#distribución-binomial-logit-link"><i class="fa fa-check"></i><b>7.1.1</b> Distribución Binomial (logit link)</a></li>
+<li class="chapter" data-level="7.1.2" data-path="glm.html"><a href="glm.html#distribución-poisson-log-link"><i class="fa fa-check"></i><b>7.1.2</b> Distribución Poisson (log link)</a></li>
+<li class="chapter" data-level="7.1.3" data-path="glm.html"><a href="glm.html#distribución-normal-link-identidad"><i class="fa fa-check"></i><b>7.1.3</b> Distribución Normal (link identidad)</a></li>
+<li class="chapter" data-level="7.1.4" data-path="glm.html"><a href="glm.html#distribución-gamma-link-recíproco"><i class="fa fa-check"></i><b>7.1.4</b> Distribución Gamma (link recíproco)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="glm.html"><a href="glm.html#estimación-de-los-glm"><i class="fa fa-check"></i><b>7.2</b> Estimación de los GLM</a></li>
+<li class="chapter" data-level="7.3" data-path="glm.html"><a href="glm.html#bondad-del-ajuste-2"><i class="fa fa-check"></i><b>7.3</b> Bondad del ajuste</a></li>
+<li class="chapter" data-level="7.4" data-path="glm.html"><a href="glm.html#comparación-de-modelos"><i class="fa fa-check"></i><b>7.4</b> Comparación de modelos</a></li>
+<li class="chapter" data-level="7.5" data-path="glm.html"><a href="glm.html#diagnóstico-de-los-glm"><i class="fa fa-check"></i><b>7.5</b> Diagnóstico de los GLM</a></li>
+<li class="chapter" data-level="7.6" data-path="glm.html"><a href="glm.html#predicción-de-los-glm"><i class="fa fa-check"></i><b>7.6</b> Predicción de los GLM</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="glmbinomial.html"><a href="glmbinomial.html"><i class="fa fa-check"></i><b>8</b> GLM respuesta binomial</a><ul>
+<li class="chapter" data-level="8.1" data-path="glmbinomial.html"><a href="glmbinomial.html#tipos-de-datos-binomiales"><i class="fa fa-check"></i><b>8.1</b> Tipos de datos binomiales</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="glmbinomial.html"><a href="glmbinomial.html#información-individualizada-por-sujeto"><i class="fa fa-check"></i><b>8.1.1</b> Información individualizada por sujeto</a></li>
+<li class="chapter" data-level="8.1.2" data-path="glmbinomial.html"><a href="glmbinomial.html#información-agrupada-por-sujetos"><i class="fa fa-check"></i><b>8.1.2</b> Información agrupada por sujetos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="glmbinomial.html"><a href="glmbinomial.html#especificación-e-hipótesis-de-modelo"><i class="fa fa-check"></i><b>8.2</b> Especificación e hipótesis de modelo</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="glmbinomial.html"><a href="glmbinomial.html#funciones-link"><i class="fa fa-check"></i><b>8.2.1</b> Funciones link</a></li>
+<li class="chapter" data-level="8.2.2" data-path="glmbinomial.html"><a href="glmbinomial.html#representación-de-las-funciones-link"><i class="fa fa-check"></i><b>8.2.2</b> Representación de las funciones link</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="glmbinomial.html"><a href="glmbinomial.html#estimación-y-bondad-de-ajuste"><i class="fa fa-check"></i><b>8.3</b> Estimación y bondad de ajuste</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="glmbinomial.html"><a href="glmbinomial.html#ejemplos-13"><i class="fa fa-check"></i><b>8.3.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="glmbinomial.html"><a href="glmbinomial.html#selección-del-modelo"><i class="fa fa-check"></i><b>8.4</b> Selección del modelo</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="glmbinomial.html"><a href="glmbinomial.html#ejemplos-14"><i class="fa fa-check"></i><b>8.4.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="glmbinomial.html"><a href="glmbinomial.html#diagnóstico-3"><i class="fa fa-check"></i><b>8.5</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="glmbinomial.html"><a href="glmbinomial.html#ejemplos-15"><i class="fa fa-check"></i><b>8.5.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="glmbinomial.html"><a href="glmbinomial.html#predicción-4"><i class="fa fa-check"></i><b>8.6</b> Predicción</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="glmbinomial.html"><a href="glmbinomial.html#ejemplos-16"><i class="fa fa-check"></i><b>8.6.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="glmbinomial.html"><a href="glmbinomial.html#ejercicios-3"><i class="fa fa-check"></i><b>8.7</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="glmpoisson.html"><a href="glmpoisson.html"><i class="fa fa-check"></i><b>9</b> GLM Poisson</a><ul>
+<li class="chapter" data-level="9.1" data-path="glmpoisson.html"><a href="glmpoisson.html#bancos-de-datos-4"><i class="fa fa-check"></i><b>9.1</b> Bancos de datos</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="glmpoisson.html"><a href="glmpoisson.html#telas"><i class="fa fa-check"></i><b>9.1.1</b> Telas</a></li>
+<li class="chapter" data-level="9.1.2" data-path="glmpoisson.html"><a href="glmpoisson.html#barcos"><i class="fa fa-check"></i><b>9.1.2</b> Barcos</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="glmpoisson.html"><a href="glmpoisson.html#modelo-teórico-1"><i class="fa fa-check"></i><b>9.2</b> Modelo Teórico</a></li>
+<li class="chapter" data-level="9.3" data-path="glmpoisson.html"><a href="glmpoisson.html#estimación-y-bondad-de-ajuste-del-modelo-1"><i class="fa fa-check"></i><b>9.3</b> Estimación y bondad de ajuste del modelo</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="glmpoisson.html"><a href="glmpoisson.html#ejemplos-17"><i class="fa fa-check"></i><b>9.3.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="glmpoisson.html"><a href="glmpoisson.html#selección-del-modelo-1"><i class="fa fa-check"></i><b>9.4</b> Selección del modelo</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="glmpoisson.html"><a href="glmpoisson.html#ejemplos-18"><i class="fa fa-check"></i><b>9.4.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="glmpoisson.html"><a href="glmpoisson.html#diagnóstico-4"><i class="fa fa-check"></i><b>9.5</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="glmpoisson.html"><a href="glmpoisson.html#ejemplos-19"><i class="fa fa-check"></i><b>9.5.1</b> Ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="glmpoisson.html"><a href="glmpoisson.html#predicción-5"><i class="fa fa-check"></i><b>9.6</b> Predicción</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="glmpoisson.html"><a href="glmpoisson.html#bancos-de-datos-5"><i class="fa fa-check"></i><b>9.6.1</b> Bancos de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="glmpoisson.html"><a href="glmpoisson.html#ejercicios-4"><i class="fa fa-check"></i><b>9.7</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="glmtablascont.html"><a href="glmtablascont.html"><i class="fa fa-check"></i><b>10</b> GLM para tablas de contingencia</a></li>
+<li class="chapter" data-level="11" data-path="bancos-de-datos-6.html"><a href="bancos-de-datos-6.html"><i class="fa fa-check"></i><b>11</b> Bancos de datos</a><ul>
+<li class="chapter" data-level="11.1" data-path="bancos-de-datos-6.html"><a href="bancos-de-datos-6.html#melanoma"><i class="fa fa-check"></i><b>11.1</b> Melanoma</a></li>
+<li class="chapter" data-level="11.2" data-path="bancos-de-datos-6.html"><a href="bancos-de-datos-6.html#gripe"><i class="fa fa-check"></i><b>11.2</b> Gripe</a></li>
+<li class="chapter" data-level="11.3" data-path="bancos-de-datos-6.html"><a href="bancos-de-datos-6.html#aspirina"><i class="fa fa-check"></i><b>11.3</b> Aspirina</a></li>
+<li class="chapter" data-level="11.4" data-path="bancos-de-datos-6.html"><a href="bancos-de-datos-6.html#aspiraciones"><i class="fa fa-check"></i><b>11.4</b> Aspiraciones</a></li>
+<li class="chapter" data-level="11.5" data-path="bancos-de-datos-6.html"><a href="bancos-de-datos-6.html#contraceptivos"><i class="fa fa-check"></i><b>11.5</b> Contraceptivos</a></li>
+<li class="chapter" data-level="11.6" data-path="bancos-de-datos-6.html"><a href="bancos-de-datos-6.html#satisfacción-laboral"><i class="fa fa-check"></i><b>11.6</b> Satisfacción laboral</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelos-log-lineales.html"><a href="modelos-log-lineales.html"><i class="fa fa-check"></i><b>12</b> Modelos Log-Lineales</a><ul>
+<li class="chapter" data-level="12.1" data-path="modelos-log-lineales.html"><a href="modelos-log-lineales.html#especificación-en-r"><i class="fa fa-check"></i><b>12.1</b> Especificación en R</a></li>
+<li class="chapter" data-level="12.2" data-path="modelos-log-lineales.html"><a href="modelos-log-lineales.html#ejemplos-20"><i class="fa fa-check"></i><b>12.2</b> Ejemplos</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="modelos-log-lineales.html"><a href="modelos-log-lineales.html#melanoma-1"><i class="fa fa-check"></i><b>12.2.1</b> Melanoma</a></li>
+<li class="chapter" data-level="12.2.2" data-path="modelos-log-lineales.html"><a href="modelos-log-lineales.html#aspirina-1"><i class="fa fa-check"></i><b>12.2.2</b> Aspirina</a></li>
+<li class="chapter" data-level="12.2.3" data-path="modelos-log-lineales.html"><a href="modelos-log-lineales.html#gripe-1"><i class="fa fa-check"></i><b>12.2.3</b> Gripe</a></li>
+<li class="chapter" data-level="12.2.4" data-path="modelos-log-lineales.html"><a href="modelos-log-lineales.html#aspiraciones-1"><i class="fa fa-check"></i><b>12.2.4</b> Aspiraciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="modelos-logit-multinomial.html"><a href="modelos-logit-multinomial.html"><i class="fa fa-check"></i><b>13</b> Modelos Logit-Multinomial</a></li>
+<li class="chapter" data-level="14" data-path="estimación.html"><a href="estimación.html"><i class="fa fa-check"></i><b>14</b> Estimación</a><ul>
+<li class="chapter" data-level="14.1" data-path="estimación.html"><a href="estimación.html#respuesta-binaria-nominal-y-predictora-nominal"><i class="fa fa-check"></i><b>14.1</b> Respuesta binaria nominal y predictora nominal</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="estimación.html"><a href="estimación.html#datos-aspirina"><i class="fa fa-check"></i><b>14.1.1</b> Datos Aspirina</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="estimación.html"><a href="estimación.html#respuesta-multinomial-nominal-y-predictora-nominal"><i class="fa fa-check"></i><b>14.2</b> Respuesta multinomial nominal y predictora nominal</a></li>
+<li class="chapter" data-level="14.3" data-path="estimación.html"><a href="estimación.html#respuesta-nominal-predictora-ordinal"><i class="fa fa-check"></i><b>14.3</b> Respuesta nominal, predictora ordinal</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="estimación.html"><a href="estimación.html#datos-aspiraciones-universitarias"><i class="fa fa-check"></i><b>14.3.1</b> Datos Aspiraciones universitarias</a></li>
+<li class="chapter" data-level="14.3.2" data-path="estimación.html"><a href="estimación.html#datos-de-contraceptivos"><i class="fa fa-check"></i><b>14.3.2</b> Datos de Contraceptivos</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="estimación.html"><a href="estimación.html#respuesta-ordinal-predictora-nominal"><i class="fa fa-check"></i><b>14.4</b> Respuesta ordinal, predictora nominal</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="estimación.html"><a href="estimación.html#datos-de-gripe"><i class="fa fa-check"></i><b>14.4.1</b> Datos de gripe</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="estimación.html"><a href="estimación.html#respuesta-ordinal-predictora-ordinal"><i class="fa fa-check"></i><b>14.5</b> Respuesta ordinal, predictora ordinal</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="estimación.html"><a href="estimación.html#datos-satisfacción-laboral"><i class="fa fa-check"></i><b>14.5.1</b> Datos Satisfacción laboral</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="diagnóstico-5.html"><a href="diagnóstico-5.html"><i class="fa fa-check"></i><b>15</b> Diagnóstico</a><ul>
+<li class="chapter" data-level="15.1" data-path="diagnóstico-5.html"><a href="diagnóstico-5.html#ejemplos-21"><i class="fa fa-check"></i><b>15.1</b> Ejemplos</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="diagnóstico-5.html"><a href="diagnóstico-5.html#aspirina-2"><i class="fa fa-check"></i><b>15.1.1</b> Aspirina</a></li>
+<li class="chapter" data-level="15.1.2" data-path="diagnóstico-5.html"><a href="diagnóstico-5.html#aspiraciones-2"><i class="fa fa-check"></i><b>15.1.2</b> Aspiraciones</a></li>
+<li class="chapter" data-level="15.1.3" data-path="diagnóstico-5.html"><a href="diagnóstico-5.html#contraceptivos-1"><i class="fa fa-check"></i><b>15.1.3</b> Contraceptivos</a></li>
+<li class="chapter" data-level="15.1.4" data-path="diagnóstico-5.html"><a href="diagnóstico-5.html#gripe-2"><i class="fa fa-check"></i><b>15.1.4</b> Gripe</a></li>
+<li class="chapter" data-level="15.1.5" data-path="diagnóstico-5.html"><a href="diagnóstico-5.html#satisfacción-laboral-1"><i class="fa fa-check"></i><b>15.1.5</b> Satisfacción laboral</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="predicción-6.html"><a href="predicción-6.html"><i class="fa fa-check"></i><b>16</b> Predicción</a></li>
+<li class="chapter" data-level="17" data-path="ejercicios-5.html"><a href="ejercicios-5.html"><i class="fa fa-check"></i><b>17</b> Ejercicios</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Creado con bookdown</a></li>
+<li><a href="https://sites.google.com/umh.es/statistical-models" target="blank">Modelos Estadísticos</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Estadísticos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modelos-log-lineales" class="section level1">
+<h1><span class="header-section-number">Unidad 12</span> Modelos Log-Lineales</h1>
+<p>Las cuestiones básicas de interés en el análisis de tablas de contingencia son detectar asociación entre los factores de clasificación y predecir las frecuencias medias observadas. Dichas cuestiones se pueden resolver a partir de la modelización log-lineal de las frecuencias esperadas.
+Consideramos, para presentar estos modelos, únicamente dos vías de clasificación, F1 y F2. Si los factores se consideran independientes el número de individuos que esperamos clasificar en la celda <span class="math inline">\((i, j)\)</span> (nivel <span class="math inline">\(i\)</span> de F1 y nivel <span class="math inline">\(j\)</span> de F2) se puede calcular a través del producto de los sucesos independientes “número esperado de individuos clasificados en el nivel i de F1”, <span class="math inline">\(\mu_{i+}\)</span>, y “número esperado de individuos clasificados en el nivel j de F2”, <span class="math inline">\(\mu_{+j}\)</span> esto es,</p>
+<p><span class="math display">\[E(Y_{ij}) = \mu_{ij} = \mu_{i+}*\mu_{+j}\]</span></p>
+<p>El efecto multiplicativo de los factores para predecir la frecuencia observada da lugar, de modo natural, a modelos logarítmicos aditivos (modelos log-lineales) de la forma:</p>
+<p><span class="math display">\[log(E(Y_{ij})) = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij}\]</span></p>
+<p>donde <span class="math inline">\(\alpha_i\)</span> representa el efecto principal del factor fila F1 , <span class="math inline">\(\beta_j\)</span> el correspondiente al factor columna F2 y el <span class="math inline">\((\alpha\beta)_{ij}\)</span> efecto de interacción entre ambos. Este modelo se denomina modelo saturado, ya que tiene tantos parámetros como celdas estamos considerando en la combinación de los factores, y tiene poco interés desde el punto de vista estadístico ya que cada parámetro del modelo se estima con un único valor en la muestra de datos. Contrastar independencia versus asociación será equivalente a contrastar interacción nula versus no nula en el modelo log-lineal, es decir debemos estudiar los modelos:</p>
+<ul>
+<li>El modelo saturado dado por <span class="math inline">\(Frecuencias \sim F1 * F2\)</span></li>
+<li>El modelo sin interacción dado por <span class="math inline">\(Frecuencias \sim F1 + F2\)</span></li>
+</ul>
+<p>dados por las expresiones</p>
+<p><span class="math display">\[\begin{array}{ll}
+M_0: log(E(Y_{ij})) &amp;= \mu + \alpha_i + \beta_j\\ 
+M_1: log(E(Y_{ij})) &amp;= \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij}\\ 
+\end{array}\]</span></p>
+<p>En la práctica para contrastar independencia ajustamos un modelo con únicamente los efectos principales y valoramos la bondad del ajuste conseguido mediante el test <span class="math inline">\(\chi^2\)</span>. En conclusión, reconocer asociación entre los factores de clasificación de una tabla de contingencia es equivalente a rechazar interacción nula entre ellos en el modelo log-lineal con el que se predicen las frecuencias observadas en las celdas.</p>
+<p>Cuando consideramos la tabla de contingencia asociada con tres factores el modelo saturado vendrá dado por:</p>
+<p><span class="math display">\[Frecuencias \sim F1 + F2 + F3 + F1:F2 + F1:F3 + F2:F3 + F1:F2:F3\]</span>
+donde el efecto de interacción triple <span class="math inline">\(F1:F2:F3\)</span> nos permite estudiar si existe asociación entre los tres factores conjuntamente. En caso de que el contraste de bondad de ajuste del modelo reducido</p>
+<p><span class="math display">\[M_0: Frecuencias \sim F1 + F2 + F3 + F1:F2 + F1:F3 + F2:F3\]</span>
+no resulte significativo, podremos abordar el estudio de las interacciones dobles de la siguiente forma:</p>
+<ul>
+<li>la interacción <span class="math inline">\(F1:F2\)</span> nos permite estudiar la asociación entre ambos factores dado F3</li>
+<li>la interacción <span class="math inline">\(F1:F3\)</span> nos permite estudiar la asociación entre ambos factores dado F2</li>
+<li>la interacción <span class="math inline">\(F2:F3\)</span> nos permite estudiar la asociación entre ambos factores dado F1</li>
+</ul>
+<p>Por tanto, debemos estudiar la bondad de ajuste de los modelos
+<span class="math display">\[\begin{array}{ll}
+M_1:&amp; Frecuencias \sim F1 + F2 + F3 + F1:F3 + F2:F3\\ 
+M_2:&amp; Frecuencias \sim F1 + F2 + F3 + F1:F2 + F2:F3\\
+M_3:&amp; Frecuencias \sim F1 + F2 + F3 + F1:F2 + F1:F3\\
+\end{array}\]</span></p>
+<p>para detectar las posibles asociaciones. En la pra´ctica siempre se fija un factor como varaible respuesta y los otros dos como predictoras, de forma que, si el factor F1 actúa como respuesta y los otros dos factores como predictoras, el modelo M3 no tiene sentido práctico, ya que en realidad nuestro interés radica en la asociación entre respuesta y predictoras.</p>
+<p>Así podemos seguir aumentando el número de factores en el modelo y estudiando las posibles asociaciones entre ellos. Se trata pues de un procedimiento de comparación de efectos o modelos de tipo manual y no automático como habíamos hecho en otro tipo de modelos.</p>
+<p>Para escribir de forma reducida lo modelos anteriores usamos la siguiente notación (que también nos vale para el ajuste de los modelos en <code>R</code>).
+<span class="math display">\[\begin{array}{ll}
+M_0:&amp; Frecuencias \sim (F1+F2+F3)^2\\ 
+M_1:&amp; Frecuencias \sim F2*F3 + F1 + F1:F3\\ 
+M_2:&amp; Frecuencias \sim F2*F3 + F1 + F1:F2\\
+M_3:&amp; Frecuencias \sim F1*F3 + F2 + F1:F2\\
+\end{array}\]</span></p>
+<div id="especificación-en-r" class="section level2">
+<h2><span class="header-section-number">12.1</span> Especificación en R</h2>
+<p>Para el ajuste de estos modelos utilizamos la función <code>glm()</code> con las especificaciones siguientes:</p>
+<p><span class="math display">\[glm(modelo, family = poisson(), data_set)\]</span></p>
+<p>donde <span class="math inline">\(modelo\)</span> se establece según las notaciones reducidas que hemos presentado tanto para dos como para tres factores.</p>
+</div>
+<div id="ejemplos-20" class="section level2">
+<h2><span class="header-section-number">12.2</span> Ejemplos</h2>
+<p>A continuación estudiamos de forma inicial la independencia o dependencia en los ejemplos del inicio. Para el análisis de independencia utilizamos el test <span class="math inline">\(\chi^2\)</span> de bondad de ajuste y concluímos en función del p-valor obtenido.</p>
+<div id="melanoma-1" class="section level3">
+<h3><span class="header-section-number">12.2.1</span> Melanoma</h3>
+<p>En este caso la pregunta de interés es si ¿existe asociación entre el tipo de tumor y su localización?, que equivale a estudiar si el efecto de interacción entre tipo de tumor y su localización resulta significativo, es decir, estudiar la bondad de ajuste del modelo sin interacción entre ambos.</p>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb554-1" title="1"><span class="co"># Ajuste del modelo sin interacción</span></a>
+<a class="sourceLine" id="cb554-2" title="2">fit.melanoma &lt;-<span class="st"> </span><span class="kw">glm</span>(frequency <span class="op">~</span><span class="st"> </span>type <span class="op">+</span><span class="st"> </span>site, </a>
+<a class="sourceLine" id="cb554-3" title="3">                    <span class="dt">family =</span> <span class="kw">poisson</span>(), </a>
+<a class="sourceLine" id="cb554-4" title="4">                    <span class="dt">data =</span> Melanoma)</a>
+<a class="sourceLine" id="cb554-5" title="5"><span class="co"># Bondad del asjute del modelo</span></a>
+<a class="sourceLine" id="cb554-6" title="6"><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(fit.melanoma<span class="op">$</span>deviance, fit.melanoma<span class="op">$</span>df.residual)</a></code></pre></div>
+<pre><code>## [1] 2.050453e-09</code></pre>
+<p>Dado que el valor es inferior a 0.05 podemos concluir que hay evidencias estadísticas a favor de la asociación entre los factores tipo de tumor y localización, es decir, determinados tipos de tumor se presentan en ciertas localizaciones con más frecuencia que en otras.</p>
+</div>
+<div id="aspirina-1" class="section level3">
+<h3><span class="header-section-number">12.2.2</span> Aspirina</h3>
+<p>En el estudio se controlaron las variables úlcera y localización. A los pacientes clasificados en cada una de las combinaciones de estas dos variables se les preguntó sobre el consumo de aspirina, que es la variable aleatoria y por tanto la variable a explicar en función de las otras dos. Las cuestiones que nos planteamos son:</p>
+<ul>
+<li><p>En el grupo gástrico ¿la úlcera está asociada con el consumo de aspirina? ¿y en el grupo duodenal?. Para ambas cuestiones estamos planteando si, dado un grupo especifico (<code>locali</code>), el consumo de aspirina (<code>aspirina</code>) está relacionado con la existencia de úlcera (<code>ulcera</code>). Ambas preguntas se pueden contestar estudiando el efecto de interacción entre el consumo de aspirina y el desarrollo de una úlcera (<code>aspirina:ulcera</code>).</p></li>
+<li><p>Si dicha asociación existe, cabe preguntarse si dicha relación es similar en los dos grupos de pacientes.</p></li>
+</ul>
+<p>En este caso el estudio de la independencia total nos llevaría a analizar un modelo donde eliminamos la interacción de orden tres. Dicho modelo se puede obtener y analizar con:</p>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb556-1" title="1"><span class="co"># Ajuste del modelo sin interacción</span></a>
+<a class="sourceLine" id="cb556-2" title="2">fit.aspirina &lt;-<span class="st"> </span><span class="kw">glm</span>(frecuencia <span class="op">~</span><span class="st"> </span>(locali <span class="op">+</span><span class="st"> </span>ulcera <span class="op">+</span><span class="st"> </span>aspirina)<span class="op">^</span><span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb556-3" title="3">                    <span class="dt">family =</span> <span class="kw">poisson</span>(), </a>
+<a class="sourceLine" id="cb556-4" title="4">                    <span class="dt">data =</span> Aspirina)</a>
+<a class="sourceLine" id="cb556-5" title="5"><span class="co"># Bondad del asjute del modelo</span></a>
+<a class="sourceLine" id="cb556-6" title="6"><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(fit.aspirina<span class="op">$</span>deviance, fit.aspirina<span class="op">$</span>df.residual)</a></code></pre></div>
+<pre><code>## [1] 0.01219027</code></pre>
+<p>Dado que el p-valor resulta significativo podemos concluir que existe asociación entre los factores considerados. Pasamos ahora a estudiar cada una de las cuestiones planteadas ahora que sabemos que los factores están relacionados. Para saber si la existencia del desarrollo de una úlcera está asociado con el consumo de aspirina para cada tipo de úlcera, ajustamos un modelo sin la interacción <code>aspirina:ulcera</code></p>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb558-1" title="1"><span class="co"># Ajuste del modelo sin interacción</span></a>
+<a class="sourceLine" id="cb558-2" title="2">fit.aspirina &lt;-<span class="st"> </span><span class="kw">glm</span>(frecuencia <span class="op">~</span><span class="st"> </span>locali<span class="op">*</span>ulcera <span class="op">+</span><span class="st"> </span>aspirina <span class="op">+</span><span class="st"> </span>aspirina<span class="op">:</span>locali, </a>
+<a class="sourceLine" id="cb558-3" title="3">                    <span class="dt">family =</span> <span class="kw">poisson</span>(), </a>
+<a class="sourceLine" id="cb558-4" title="4">                    <span class="dt">data =</span> Aspirina)</a>
+<a class="sourceLine" id="cb558-5" title="5"><span class="co"># Bondad del asjute del modelo</span></a>
+<a class="sourceLine" id="cb558-6" title="6"><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(fit.aspirina<span class="op">$</span>deviance, fit.aspirina<span class="op">$</span>df.residual)</a></code></pre></div>
+<pre><code>## [1] 0.000143616</code></pre>
+<p>Se rechaza claramente independencia entre el consumo de aspirina y la existencia de úlcera para ambos tipos de úlcera.</p>
+<p>Pasamos ahora a la segunda cuestión, es decir, tratamos de averiguar si existe asociación entre el consumo de aspirina y el tipo de úlcera desarrollada. Para ello debemos analizar la interacción entre <code>aspirina:locali</code> cuando sabemos que se ha desarrollado una úlcera</p>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb560-1" title="1"><span class="co"># Ajuste del modelo sin interacción</span></a>
+<a class="sourceLine" id="cb560-2" title="2">fit.aspirina &lt;-<span class="st"> </span><span class="kw">glm</span>(frecuencia <span class="op">~</span><span class="st"> </span>locali<span class="op">*</span>ulcera <span class="op">+</span><span class="st"> </span>aspirina <span class="op">+</span><span class="st"> </span>aspirina<span class="op">:</span>ulcera, </a>
+<a class="sourceLine" id="cb560-3" title="3">                    <span class="dt">family =</span> <span class="kw">poisson</span>(), </a>
+<a class="sourceLine" id="cb560-4" title="4">                    <span class="dt">data =</span> Aspirina)</a>
+<a class="sourceLine" id="cb560-5" title="5"><span class="co"># Bondad del asjute del modelo</span></a>
+<a class="sourceLine" id="cb560-6" title="6"><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(fit.aspirina<span class="op">$</span>deviance, fit.aspirina<span class="op">$</span>df.residual)</a></code></pre></div>
+<pre><code>## [1] 0.005147627</code></pre>
+<p>Rechazamos la hipótesis de independencia a favor de que el consumo de aspirina es diferente en pacientes con distinto tipo de úlcera.</p>
+</div>
+<div id="gripe-1" class="section level3">
+<h3><span class="header-section-number">12.2.3</span> Gripe</h3>
+<p>Estudiamos la posible asociación entre la respuesta tars la vacunación y si el sujeto eras tratado o no.</p>
+<p>Podemos cargar los datos y representarlos gráficamente</p>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" title="1"><span class="co"># Ajuste del modelo sin interacción</span></a>
+<a class="sourceLine" id="cb562-2" title="2">fit.gripe &lt;-<span class="st"> </span><span class="kw">glm</span>(frequency <span class="op">~</span><span class="st"> </span>treatment <span class="op">+</span><span class="st"> </span>response, </a>
+<a class="sourceLine" id="cb562-3" title="3">                    <span class="dt">family =</span> <span class="kw">poisson</span>(), </a>
+<a class="sourceLine" id="cb562-4" title="4">                    <span class="dt">data =</span> Gripe)</a>
+<a class="sourceLine" id="cb562-5" title="5"><span class="co"># Bondad del asjute del modelo</span></a>
+<a class="sourceLine" id="cb562-6" title="6"><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(fit.gripe<span class="op">$</span>deviance, fit.gripe<span class="op">$</span>df.residual)</a></code></pre></div>
+<pre><code>## [1] 8.95007e-05</code></pre>
+<p>puesto que el p-valor obtenido es significativo podemos concluir que hay asociación entre los factores considerados, es decir, la respuesta tras la vacunación se asocia con el grupo de tratamiento.</p>
+</div>
+<div id="aspiraciones-1" class="section level3">
+<h3><span class="header-section-number">12.2.4</span> Aspiraciones</h3>
+<p>Estamso interesados en conocer si existe asociación entre el estatus, la motivacion familiar y las aspiraciones universitarias. En este caso la variable que actuaría como respuesta son las aspiraciones universitarias, mientras que las otras dos se utilizan como varaible clasificadoras. Ajustamos el modelo sin interacción triple para establecer la posible asociación.</p>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" title="1"><span class="co"># Ajuste del modelo sin interacción</span></a>
+<a class="sourceLine" id="cb564-2" title="2">fit.aspiraciones &lt;-<span class="st"> </span><span class="kw">glm</span>(frecuencia <span class="op">~</span><span class="st"> </span>(estatus <span class="op">+</span><span class="st"> </span>motivacion <span class="op">+</span><span class="st"> </span>aspiraciones)<span class="op">^</span><span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb564-3" title="3">                    <span class="dt">family =</span> <span class="kw">poisson</span>(), </a>
+<a class="sourceLine" id="cb564-4" title="4">                    <span class="dt">data =</span> Aspiraciones)</a>
+<a class="sourceLine" id="cb564-5" title="5"><span class="co"># Bondad del asjute del modelo</span></a>
+<a class="sourceLine" id="cb564-6" title="6"><span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(fit.aspiraciones<span class="op">$</span>deviance, fit.aspiraciones<span class="op">$</span>df.residual)</a></code></pre></div>
+<pre><code>## [1] 0.664965</code></pre>
+<p>en este caso no parece existir uan asociación entre los tres factores, pero ¿podría alguno de ellos estar asociado con las aspiraciones? ¿Cómo interpretamos los modelos siguientes?</p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb566-1" title="1"><span class="co"># Modelo 1</span></a>
+<a class="sourceLine" id="cb566-2" title="2">fit.aspiraciones &lt;-<span class="st"> </span><span class="kw">glm</span>(frecuencia <span class="op">~</span><span class="st"> </span>estatus<span class="op">*</span>motivacion <span class="op">+</span><span class="st"> </span>aspiraciones <span class="op">+</span><span class="st"> </span>aspiraciones<span class="op">:</span>motivacion, </a>
+<a class="sourceLine" id="cb566-3" title="3">                        <span class="dt">family =</span> <span class="kw">poisson</span>(), </a>
+<a class="sourceLine" id="cb566-4" title="4">                        <span class="dt">data =</span> Aspiraciones)</a>
+<a class="sourceLine" id="cb566-5" title="5"><span class="co"># Modelo 2</span></a>
+<a class="sourceLine" id="cb566-6" title="6">fit.aspiraciones &lt;-<span class="st"> </span><span class="kw">glm</span>(frecuencia <span class="op">~</span><span class="st"> </span>estatus<span class="op">*</span>motivacion <span class="op">+</span><span class="st"> </span>aspiraciones <span class="op">+</span><span class="st"> </span>aspiraciones<span class="op">:</span>estatus, </a>
+<a class="sourceLine" id="cb566-7" title="7">                        <span class="dt">family =</span> <span class="kw">poisson</span>(),  </a>
+<a class="sourceLine" id="cb566-8" title="8">                        <span class="dt">data =</span> Aspiraciones)</a></code></pre></div>
+<p><strong>Ejercicio.</strong> Realiza el análisis de independencia apra los bancos de datos <code>Contraceptivos</code> y <code>Salud Laboral</code>.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bancos-de-datos-6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelos-logit-multinomial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["libroSTAT.pdf", "libroSTAT.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
