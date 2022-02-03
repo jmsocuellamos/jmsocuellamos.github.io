@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Antes de empezar | Modelos Estadísticos</title>
-  <meta name="description" content="Antes de empezar | Modelos Estadísticos" />
+  <title>Unidad 11 Modelos Lineales Generalizados | Modelos Estadísticos</title>
+  <meta name="description" content="Unidad 11 Modelos Lineales Generalizados | Modelos Estadísticos" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Antes de empezar | Modelos Estadísticos" />
+  <meta property="og:title" content="Unidad 11 Modelos Lineales Generalizados | Modelos Estadísticos" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Antes de empezar | Modelos Estadísticos" />
+  <meta name="twitter:title" content="Unidad 11 Modelos Lineales Generalizados | Modelos Estadísticos" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="smooth.html"/>
+<link rel="next" href="glmbinomial.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -573,120 +573,129 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="antes-de-empezar" class="section level1 unnumbered">
-<h1>Antes de empezar</h1>
-<p>La importancia de la estadística dentro del campo experimental siempre ha sido muy relevante, ya que para poder extraer conclusiones de un conjunto de datos experimentales se hace necesaria la utilización de procedimientos estadísticos más o menos sofisticados. Con la irrupción de los ordenadores personales y de los programas estadísticos para legos en la materia, así como la explosión tecnológica que estamos viviendo en los últimos años, la importancia de un correcto estudio estadístico de los datos experimentales se hace más necesaria que nunca. Se siguen publicando trabajos de investigación basados en datos experimentales donde el tratamiento estadístico de la información allí recogida puede considerarse como decepcionante. Con esta materia pretendemos guiar al estudiante en un correcto uso y análisis de las técnicas estadísticas más habituales en los diseños experimentales.</p>
-<p>El tratamiento estadístico de datos experimentales se puede caracterizar en dos grandes áreas: <strong>estudios descriptivos</strong> y <strong>análisis y modelización</strong>. Los estudios descriptivos se centran en el procesado de los datos experimentales obtenidos con el objetivo de establecer o reflejar posibles patrones o tendencias en su comportamiento. Se engloban dentro de este ámbito todas la técnicas estadísticas que permiten los resúmenes numéricos y gráficos de la información observada, así como la detección de observaciones anómalas, la transformación y el filtrado de los datos experimentales. Sin embargo, los estudios descriptivos tienen la gran limitación de que sus resultados están circunscritos a los datos observados, y por tanto no se pueden generalizar a la población más general de la que se han obtenido. En el análisis y modelización se pretende generalizar los posibles patrones de comportamiento observados, en la fase descriptiva, mediante la construcción de modelos que nos permiten aproximar el comportamiento de datos experimentales no observados. Evidentemente la construcción de dichos modelos estadísticos no es una tarea rutinaria que debe tomarse a la ligera. La propia naturaleza de los datos observados puede dar una idea de los posibles modelos que se pueden utilizar, pero el modelo final obtenido es el resultados de un proceso iterativo de construcción, verificación y validación que puede resultar costoso en algunas situaciones.</p>
-<p>La modelización estadística resulta relevante para representar el comportamiento de los datos experimentales de la forma más sencilla posible mediante modelos matemáticos donde se introduce de forma natural la incertidumbre de cualquier diseño experimental. Esta asignatura se centrará en la fase de modelización pero para poder llegar a comprender su naturaleza es necesario introducir primero los conceptos básicos de cualquier estudio estadístico, así como los procedimientos de estadística descriptiva y el estudio de la aleatoriedad en los diseños experimentales.</p>
-<p>Este tema establece las definiciones básicas de cualquier estudio estadístico sobre diferentes ejemplos e introduce la nomenclatura básica de los modelos estadísticos que estudiaremos más adelante.</p>
-<blockquote>
-<p><em>Usar la estadística no necesariamente es sinónimo de utilizar palabras raras o de hacer cálculos complicados. Significa que deseamos ver la realidad de forma objetiva, a través de datos que reflejen de la mejor manera posible qué es lo que está ocurriendo. Una vez se tienen los datos hay que saber sacarles la información y saberla plasmar de forma clara y convincente.</em></p>
-</blockquote>
-<div id="conceptos-básicos-del-diseño-experimental" class="section level2 unnumbered">
-<h2>Conceptos básicos del diseño experimental</h2>
-<p>En esta sección presentamos los conceptos básicos que utilizaremos a lo largo de la materia. Se trata únicamente de un resumen muy esquemática, pero nos sirve para sentar las bases de los temas siguientes.</p>
-<div id="objetivo-del-diseño-experimental" class="section level3 unnumbered">
-<h3>Objetivo del diseño experimental</h3>
-<p>El objetivo de cualquier diseño experimental es aquellos que pretendemos estudiar en función del tipo de información que se ha recogido y del tipo de premisas establecidas antes de la recolección de los datos. Además es importante establecer el número de repeticiones del experimento que vamos a realizar, ya que eso condicionará el análisis de dichos datos. Si nuestro diseño experimental es muy complejo puede ocurrir que plantemos más de un objetivo.</p>
-<p><strong>Ejemplo 1 (Degradación compuesto orgánico).</strong> Se va a realizar un experimento para conocer el tiempo que tarda en degradarse un compuesto orgánico. En este caso nuestro objetivo es el tiempo hasta la degradación. Si el experimneto considera diferentes tipos de compuestos nuestro objetivo podría ser comparar el tiempo de degradación en función del tipo de compuesto.</p>
-</div>
-<div id="población-y-muestra" class="section level3 unnumbered">
-<h3>Población y muestra</h3>
-<p>Se define la población como el conjunto de sujetos u objetos que son de interés para el objetivo u objetivos planteados en nuestro diseño experimental. EL problema principal es que la población de sujetos u objetos suele ser demasiado grande para poder analizarla de forma completa, y por tanto debemos acudir a un subconjunto de dicha población para llevar a cabo nuestro diseño experimental.</p>
-<p>Se define la muestra como el subconjunto de la población a la que accedemos para obtener la información necesaria de cara a responder de la forma más precisa posible al objetivo u objetivos planteados.</p>
-</div>
-<div id="medidas-y-escalas-de-medida" class="section level3 unnumbered">
-<h3>Medidas y escalas de medida</h3>
-<p>Una medida es un número o atributo que se puede calcular para cada uno de los miembros de la población que está relacionado directamente con el objetivo de interés de la investigación. El conjunto de medidas obtenidas para cada uno de los elementos muestrales se denominan datos muestrales.</p>
-<p>EL conjunto de medidas que se pueden observar y registrar para un conjunto de sujetos u objetos bajo investigación se denominan variables. Por tanto, una variable es el conjunto de valores que puede tomar cierta característica de la población sobre la que se realiza el estudio estadístico. Se distinguen dos tipos que pasamos a describir a continuación.</p>
-<div id="variables-cualitativas" class="section level4 unnumbered">
-<h4>Variables cualitativas</h4>
-<p>Son el tipo de variables que como su nombre lo indica expresan distintas cualidades, características o modalidad. Cada modalidad que se presenta se denomina atributo o categoría, y la medición consiste en una clasificación de dichos atributos. Las variables cualitativas pueden ser dicotómicas cuando sólo pueden tomar dos valores posibles, como sí y no, hombre y mujer o ser politómicas cuando pueden adquirir tres o más valores. Dentro de ellas podemos distinguir:</p>
-<ol style="list-style-type: lower-roman">
-<li><strong>Variable cualitativa ordinal</strong>: La variable puede tomar distintos valores ordenados siguiendo una escala establecida, aunque no es necesario que el intervalo entre mediciones sea uniforme, por ejemplo: leve, moderado, fuerte.</li>
-<li><strong>Variable cualitativa nominal</strong>: En esta variable los valores no pueden ser sometidos a un criterio de orden, como por ejemplo los colores.</li>
-</ol>
-</div>
-<div id="variables-cuantitativas" class="section level4 unnumbered">
-<h4>Variables cuantitativas</h4>
-<p>Son las variables que toman como argumento cantidades numéricas. Las variables cuantitativas además pueden ser:</p>
-<ol style="list-style-type: lower-roman">
-<li><strong>Variable discreta</strong>: Es la variable que presenta separaciones o interrupciones en la escala de valores que puede tomar. Estas separaciones o interrupciones indican la ausencia de valores entre los distintos valores específicos que la variable pueda asumir. Ejemplo: El número de hijos (1, 2, 3, 4, 5). En muchas ocasiones una variable cualitativa ordinal puede ser interpretada como una variable discreta asociando a las categorías de la variable valores numéricos respetando el orden o escala establecida. Por ejemplo a la escala leve, moderado y fuerte le podríamos asociar la escala 1, 2 y 3 para mantener el orden.<br />
-</li>
-<li><strong>Variable continua</strong>: Es la variable que puede adquirir cualquier valor dentro de un intervalo especificado de valores. Por ejemplo el peso (2,3 kg, 2,4 kg, 2,5 kg,…), la altura (1,64 m, 1,65 m, 1,66 m,…), o el salario. Solamente se está limitado por la precisión del aparato medidor, en teoría permiten que existan valores infinitos entre dos valores observados.</li>
-</ol>
-<p>De forma habitual, la estructura de cualquier banco de datos (asociado a un diseño experimental) tiene una estructura matricial donde en las filas se colocan los sujetos bajo estudio y en las columnas se sitúan las variables medidas para cada uno de ellos.</p>
-<p>Asociada a cada variable de nuestro banco de datos se puede establecer lo que conocemos como parámetro o parámetros de interés de la variable.</p>
-<p><strong>Ejemplo 2 (Variable de interés).</strong> Para el diseño experimental del estudio de la degradación del compuesto orgánico presentado en el ejemplo <a href="intro.html#exm:ejemplo1">1.1</a>, la variable de interés es de tipo continuo y viene dada por el tiempo de degradación asociado a cada repetición del experimento. Sin embargo, a la hora de extraer conclusiones no podemos presentar todo el conjunto de datos sino que recurrimos a un resumen de dichos datos.</p>
-</div>
-</div>
-<div id="parámetros-poblacionales-y-estadísticos" class="section level3 unnumbered">
-<h3>Parámetros poblacionales y estadísticos</h3>
-<p>Asociado a cada variable se puede establecer lo que conocemos como <strong>parámetro o parámetros</strong> de interés de la variable. En el ejemplo anterior el parámetro de interés es el tiempo medio de degradación. Dado que generalmente no es posible examinar toda la población y debemos recurrir a una muestra de dicha población, es imposible conocer el verdadero valor del parámetro asociado con dicha variable. Para sortear este problema definimos el <strong>estadístico</strong> como una realización del parámetro para los datos muestrales observados. Por tanto el valor del estadístico (denominado estimación) varia entre dos muestras de las misma población. Cuanto mayor es la muestra más se parecerá el valor del estadístico al del parámetro.</p>
-<p>En ocasiones ocurrirá que el número de parámetros asociado con una variable no es único, ya que se pueden establecer varios parámetros para estudiar el comportamiento de una variable. En el caso de variables de tipo cuantitativo siempre existen dos parámetros de interés: la media y la desviación típica. El primero nos indica como se sitúan los datos mientras que el segundo nos indica como se reparten los datos muestrales alrededor de la media.</p>
-<p><strong>Ejemplo 3 (Parámetro de interés).</strong> Para el diseño experimental del estudio de la degradación del compuesto orgánico presentado en el ejemplo <a href="intro.html#exm:ejemplo1">1.1</a>, el parámetro poblacional de interés es el tiempo medio de degradación, mientras que el estadístico es la media del tiempo de degradación observado para los sujetos de la muestra. Distinguimos entonces entre media poblacional (parámetro) y media muestral (estadístico).</p>
-</div>
-</div>
-<div id="primeros-pasos-con-r-y-rstudio" class="section level2 unnumbered">
-<h2>Primeros pasos con <code>R</code> y <code>RStudio</code></h2>
-<p>Para poder utilizar el código expuesto en estos materiales es necesario la instalación del programa <code>R</code>, del programa <code>RStudio</code> y de diferentes librerías de <code>R</code>. En los puntos siguientes se describe brevemente cada uno de estos puntos. Se recomienda además la consulta de los materiales electrónicos siguientes para complmentar la formación.</p>
+<div id="glm" class="section level1" number="11">
+<h1><span class="header-section-number">Unidad 11</span> Modelos Lineales Generalizados</h1>
+<p>Todos los modelos estudiados hasta ahora comparten los mismos supuestos teóricos, dado que el tipo de variable respuesta es siempre de tipo numérico. Aunque este tipo de modelos abarcan un gran conjunto de situaciones experimentales, también es cierto que en algunos casos resulta difícil cumplir las hipótesis establecidas. De hecho, este tipo de modelos se asocian habitualmente con variables respuesta de tipo Normal, pero ¿qué ocurre cuando la variable no puede considerarse Normal? ¿Cómo podemos modelizar situaciones experimentales donde la variable respuesta es de tipo Binomial o Poisson?</p>
+<p>Son este tipo de situaciones las que motivan la introducción de un nuevo tipo de modelos que como caso particular engloban todos los vistos en los temas anteriores. Concretamente estudiaremos situaciones donde:</p>
 <ul>
-<li>Childs, D. Z. (2017). APS 135: Introduction to Exploratory Data Analysis with R. <a href="https://dzchilds.github.io/eda-for-bio/">Versión electrónica</a>.</li>
-<li>Grosser, M. 2017. Tidyverse Cookbook. <a href="https://bookdown.org/Tazinho/Tidyverse-Cookbook/">Versión electrónica incompleta</a>.</li>
-<li>Wickham, H. 2015. Advanced R. CRC Press. <a href="https://adv-r.hadley.nz/">Versión electrónica resumida</a>.</li>
-<li>Wickham, H. 2010. ggplot2. Third Edition. Springer. <a href="http://ggplot2.org/">Recursos electrónicos</a>.</li>
-<li>Wickham, H. &amp; Grolemund, G. 2016. R for Data Science. O’Reilly. <a href="http://r4ds.had.co.nz/">Versión electrónica resumida</a>.</li>
+<li>la variable respuesta es de tipo Binomial, es decir, hemos observado si se cumple o no cierta condición experimental como resultado de un conjunto de variables predictoras que pueden ser de tipo numérico o categórico.</li>
+<li>la variable respuesta es de tipo Poisson, es decir, hemos observado el número de ocasiones que ha ocurrido un evento en un tiempo o espacio determinado como resultado de un conjunto de variables predictoras que pueden ser de tipo numérico o categórico.</li>
+<li>la variable respuesta es de tipo Exponencial, es decir, hemos observado el tiempo transcurrido hasta que ocurre un evento de interés como resultado de un conjunto de variables predictoras que pueden ser de tipo numérico o categórico.</li>
+<li>la variable respuesta es de tipo numérico, pero sólo puede tomar valores positivos de forma asimétrica, es decir, se encuentra concentrada en un conjunto de valores y su frecuencia disminuye cuando aumenta el valor de la respuesta. Este tipo de variable se conoce como Gamma.</li>
 </ul>
-<div id="instalación-y-puesta-en-marcha" class="section level3 unnumbered">
-<h3>Instalación y puesta en marcha</h3>
+<p>La característica común a todas estas situaciones es que la respuesta se puede englobar dentro de un conjunto de variables aleatorias cuya función de densidad puede ser escrita a través de una misma expresión. Todo este conjunto de variables se conocen con el nombre de familia exponencial.</p>
+<div id="modelo-teórico" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Modelo Teórico</h2>
+<p>Supongamos que hemos observado una situación experimental que involucra <span class="math inline">\(n\)</span> sujetos cuyo conjunto de datos dispone de una variable respuesta <span class="math inline">\(Y\)</span> y <span class="math inline">\(p\)</span> variables predictoras <span class="math inline">\(X_1,...,X_p\)</span>. Denotamos por <span class="math inline">\(Y_i\)</span> al valor de la respuesta para el sujeto <span class="math inline">\(i\)</span>, y <span class="math inline">\(x_{i1},...,x_{ip}\)</span> al valor de las predictoras para el mismo sujeto. Como ya vimos anteriormente el objetivo de cualquier modelo es estudiar el comportamiento de la respuesta a partir de la información contenida en las variables predictoras, es decir:</p>
+<p><span class="math display">\[E(Y_i|x_{i1},...,x_{ip}) = \mu_i\]</span></p>
+<p>Los supuestos del GLM son:</p>
 <ul>
-<li><p><strong>Instalación de R y RStudio</strong>. Leer el capítulo de introducción del libro de Childs (2017) e instalar ambos programas descargándolos de sus correspondientes webs:</p>
+<li><span class="math inline">\(Y_i\)</span> son observaciones aleatorias e independientes cuya distribución de probabilidad corresponde a la familia exponencial con <span class="math inline">\(E(Y_i) = \mu_i\)</span>.</li>
+<li>Las variables predictoras proporcionan un conjunto de predictores lineales <span class="math inline">\(\eta_i\)</span>:</li>
+</ul>
+<p><span class="math display">\[\eta_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{21} + ... + \beta_p x_{ip}\]</span></p>
 <ul>
-<li>Para instalar el programa <code>R</code>: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></li>
-<li>Para instalar RStudio: <a href="https://rstudio.com/" class="uri">https://rstudio.com/</a></li>
+<li>Existe una función <span class="math inline">\(g()\)</span> denominada función link (enlace) que establece que</li>
+</ul>
+<p><span class="math display">\[g(\mu_i) = \eta_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{21} + ... + \beta_p x_{ip}\]</span></p>
+<p>Es decir, tenemos un modelo lineal donde modelizamos la media de la respuesta sino una función de dicha media. A continuación se muestran las funciones link más habituales para los diferentes tipos de variable respuesta.</p>
+<div id="distribución-binomial-logit-link" class="section level3" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Distribución Binomial (logit link)</h3>
+<p>En esta situación el valor esperado de la respuesta viene dado por <span class="math inline">\(E(Y_i) = n \pi_i\)</span>, donde <span class="math inline">\(\pi_i\)</span> es la probabilidad de éxito, y la función link más habitual es:</p>
+<p><span class="math display">\[g(\mu_i) = log\left(\frac{\mu_i}{n - \mu_i}\right)\]</span>
+Si sustituimos el valor de <span class="math inline">\(\mu_i\)</span> y simplificamos tenemos que:</p>
+<p><span class="math display">\[g(\mu_i) = log\left(\frac{\pi_i}{1 - \pi_i}\right)\]</span>
+donde podemos ver que el objeto de nuestra modelización es una función de la probabilidad de éxito, que en realidad es nuestro parámetro de interés en este tipo de situaciones.</p>
+<div id="ejemplo-3" class="section level4" number="11.1.1.1">
+<h4><span class="header-section-number">11.1.1.1</span> Ejemplo</h4>
+<p>En un experimento se sometió a cierto número de cucarachas a cinco horas de exposición a disulfato de carbono gaseoso a varias concentraciones. Se pretendía investigar la relación existente entre la dosis de disulfato administrada y la resistencia de los insectos. La variable respuesta es <span class="math inline">\(Y_i\)</span> = número de escarabajos muertos en un total de ni sometidos a una misma dosis de pesticida <span class="math inline">\(x_i\)</span>. La distribución habitual es binomial, <span class="math inline">\(Y_i ~ Bi(n_i; \pi_i)\)</span> para <span class="math inline">\(i = 1,...,n\)</span>, con <span class="math inline">\(\pi_i\)</span> = probabilidad de muerte a dosis <span class="math inline">\(x_i\)</span>.</p>
+</div>
+</div>
+<div id="distribución-poisson-log-link" class="section level3" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Distribución Poisson (log link)</h3>
+<p>En esta situación el valor esperado de la respuesta viene dado por <span class="math inline">\(E(Y_i) = \mu_i\)</span>, donde <span class="math inline">\(\mu_i\)</span> es la tasa de ocurrencia, y la función link más habitual es:</p>
+<p><span class="math display">\[g(\mu_i) = log(\mu_i)\]</span></p>
+<p>donde podemos ver que el objeto de nuestra modelización es una función de la tasa de ocurrencia, que en realidad es nuestro parámetro de interés en este tipo de situaciones.</p>
+<div id="ejemplo-4" class="section level4" number="11.1.2.1">
+<h4><span class="header-section-number">11.1.2.1</span> Ejemplo</h4>
+<p>Se realiza un estudio en pacientes con una forma de cáncer de piel llamado melanoma maligno. En dicho estudio se recogió información sobre la localización del tumor y su tipo histológico. Los datos son el número de pacientes en cada combinación de tipo de tumor y localización. El interés básico del análisis es investigar la relación entre el tipo de tumor y su localización.</p>
+</div>
+</div>
+<div id="distribución-normal-link-identidad" class="section level3" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> Distribución Normal (link identidad)</h3>
+<p>En esta situación el valor esperado de la respuesta viene dado por <span class="math inline">\(E(Y_i) = \mu_i\)</span>, donde <span class="math inline">\(\mu_i\)</span> es la media de la población, y la función link más habitual es:</p>
+<p><span class="math display">\[g(\mu_i) = \mu_i\]</span></p>
+<p>que corresponde exactamente con la expresión de los modelos lineales que hemos trabajo en temas anteriores.</p>
+</div>
+<div id="distribución-gamma-link-recíproco" class="section level3" number="11.1.4">
+<h3><span class="header-section-number">11.1.4</span> Distribución Gamma (link recíproco)</h3>
+<p>En esta situación la función link es:</p>
+<p><span class="math display">\[g(\mu_i) = \frac{1}{\mu_i}\]</span></p>
+<div id="ejemplo-5" class="section level4" number="11.1.4.1">
+<h4><span class="header-section-number">11.1.4.1</span> Ejemplo</h4>
+<p>Se realiza un ensayo clínico donde se registra el tiempo de supervivencia (en semanas) para pacientes de leucemia y su correspondiente conteo inicial de células blancas en la sangre (en escala log10). El interés del análisis es intentar predecir el tiempo de supervivencia <span class="math inline">\(Y\)</span> en función del número inicial de células blancas <span class="math inline">\(x_i\)</span>. Una distribución usual en la modelización de tiempos de superveniencia es la exponencial, que es un caso particular de la distribución Gamma.</p>
+</div>
+</div>
+</div>
+<div id="estimación-de-los-glm" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Estimación de los GLM</h2>
+<p>Es evidente que debemos modificar los procedimientos de estimación de los parámetros ya que la estructura lineal se asume sobre la transformación de la media de la respuesta y no sobre los valores de la respuesta directamente como ocurría en los modelos lineales. Los métodos de máxima verosimilitud para la estimación de los parámetros se basan en el <em>Método de Scoring</em> o el <em>Método de Newton-Raphson</em>. Se trata de métodos de estimación iterativos, y no directos como en el caso de los modelos lineales, que finalizan cuando se alcanzan las condiciones de convergencia del método. En la mayoría de situaciones experimentales dichos métodos convergen en pocas iteracciones y proporcionan las estimaciones del parámetro del modelo. Haciendo uso del Teorema Central del Límite resulta posible obtener además intervalos de confianza para los parámetros del modelo.</p>
+<p>Para la estimación de este tipo de modelos utilizamos la función <code>glm()</code> cuya estructura viene dada por:</p>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="glm.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(modelo,<span class="at">family =</span> <span class="fu">distri</span>(<span class="at">link =</span> tipo),data_set)</span></code></pre></div>
+<p>donde <code>modelo</code> representa la ecuación del modelo en la forma <span class="math inline">\(respuesta \sim predictoras\)</span>, <code>distri</code> representa la distribución de probabilidad asociada con la respuesta, <code>tipo</code> la función link utilizada y <code>data_set</code> el conjunto de dato sobre el que se ajusta el modelo. En temas sucesivos veremos como especificar esta función en cada una de las situaciones experimentales planteadas.</p>
+<p>Para estudiar en profundidad los procedimientos de estimación se puede leer el capítulo 2 de MayMor01.</p>
+</div>
+<div id="bondad-del-ajuste-2" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Bondad del ajuste</h2>
+<p>Un aspecto importante en el ajuste de un modelo es determinar si describe adecuadamente o no los datos observados. Cuando ajustamos un modelo lineal generalizado, juzgamos la adecuación del modelo comparando la verosimilitud del modelo ajustado con la verosimilitud del modelo saturado.</p>
+<p>El modelo saturado es un modelo de forma similar al modelo propuesto que describe de modo perfecto los datos. Por tanto, tiene poca utilidad desde el punto de vista de ajuste de un modelo. Sin embargo, es útil para medir cómo un ajuste concreto se parece a un ajuste “perfecto.”</p>
+<p><strong>Ejmplo.</strong> <em>Considerando <span class="math inline">\(Y_1,...,Y_n\)</span> v.a. normales, con <span class="math inline">\(E(Y_i) = \mu_i\)</span> y varianza común <span class="math inline">\(\sigma^2\)</span>, se propone un modelo en el que todas las medias <span class="math inline">\(\mu_i\)</span> son iguales,
+<span class="math display">\[\mu_1 = ... = \mu_n = \mu.\]</span></em></p>
+<p><em>En el modelo saturado se usa la misma distribución (normal), el mismo link (identidad), y hay un parámetro a estimar por cada dato <span class="math inline">\((\mu_i \to y_i)\)</span>:</em></p>
+<p><span class="math display">\[\text{Modelo propuesto } E(Y_i) = \mu, i=1,...,n \to \widehat{\mu}_i = \bar{y}\]</span>
+<span class="math display">\[\text{Modelo saturado } E(Y_i) = \mu_i, i=1,...,n \to \widehat{\mu}_i = y_i\]</span></p>
+<p>En los GLM el estadístico utilizado para valorar la bondad del ajuste obtenido se denomina <code>D = Deviance</code>. Dicho estadístico mide como de grande es la desviación del modelo ajustado respecto de los datos (modelo saturado). Si <span class="math inline">\(D\)</span> es grande, el modelo ajustado proporciona un ajuste pobre. Un valor pequeño de <span class="math inline">\(D\)</span> es indicador de un buen ajuste. Para decidir qué se considera “D grande” y qué “D pequeño,” es preciso utilizar la distribución en el muestreo del estadístico.</p>
+<p><em>Cuando el modelo propuesto proporciona un buen ajuste de los datos, entonces</em>
+<span class="math display">\[D \text{ } \dot{\sim} \text{ } \chi^2_{n-p}, \text{ asintóticamente}\]</span>
+<em>donde <span class="math inline">\(n\)</span> es el número de datos a ajustar y <span class="math inline">\(p\)</span> el número de parámetros del modelo.</em></p>
+<p>En la práctica comparamos el valor de la deviance con el cuantil 0.95 de una <span class="math inline">\(Chi^2\)</span> con <span class="math inline">\(n-p\)</span> grados de libertad. Si <span class="math inline">\(D\)</span> es menor que el cuantil diremos que tenemos un buen ajuste. En la práctica obtendremos el p-valor asociado con dicha deviance y lo comparemos con el valor de referencia 0.05. Si el p-valor obtenido es superior a 0.05 diremos que tenemos un buen ajuste.</p>
+</div>
+<div id="comparación-de-modelos" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> Comparación de modelos</h2>
+<p>Aunque un modelo con más parámetros proporcione un ajuste mejor que otro con menos parámetros, cabe plantearse si en realidad todos los parámetros estimados son necesarios. Esta cuestión se puede resolver con tests basados en la deviance y en el estadístico de Wald, siempre y cuando se trate de modelos anidados. Otros estadísticos como el AIC permiten la comparación más general de modelos no necesariamente anidados.</p>
+<p>Dos modelos en competencia pueden ser comparados mediante la deviance cuando tienen la misma distribución y función link y sólo difieren en el número de parámetros, es decir, cuando se trata de modelos anidados. Supongamos dos modelos <span class="math inline">\(M1\)</span> con <span class="math inline">\(p_1\)</span> parámetros y <span class="math inline">\(M2\)</span> con <span class="math inline">\(p_2\)</span> parámetros, de forma que el primero está anidado en el segundo, es decir, <span class="math inline">\(p_1 &lt; p_2\)</span>. En esta situación el estadístico para valorar si ambos modelos pueden considerarse iguales, es decir, debemos elegir <span class="math inline">\(M1\)</span> ya que es más simple, sigue una distribución <span class="math inline">\(\chi^2_{p_2-p_1}\)</span>. Para resolver la comparación debemos obtener el cuantil 0.95 de la distribución chi cuadrado y compararlo con el valor del estadístico. Si el pvalor asociado es inferior a 0.05 rechazaremos el modelo <span class="math inline">\(M1\)</span> en favor del modelo <span class="math inline">\(M2\)</span>, mientras que si es superior a 0.05 elegiremos el modelo <span class="math inline">\(M1\)</span>.</p>
+<p>Para la selección automática de efectos en la construcción de un modelo se pueden utilizar los estadísticos AIC o el BIC. En ambos casos seleccionaremos el modelo con menor valor en dichos estadísticos. Procedemos de igual forma a los que hacíamos en los modelos lineales que involucran más de una variable predictora.</p>
+</div>
+<div id="diagnóstico-de-los-glm" class="section level2" number="11.5">
+<h2><span class="header-section-number">11.5</span> Diagnóstico de los GLM</h2>
+<p>Los residuos se pueden utilizar para explorar la adecuación del ajuste de un modelo respecto a la elección de la función de varianza, la función link y los términos a incluir en el predictor lineal. Los residuos pueden también ser útiles para detectar observaciones influyentes o valores anómalos que requieran una investigación más intensa. Para modelos lineales generalizados, requerimos una definición algo más amplia de residuos, que sea aplicable a todas las distribuciones que pueden reemplazar a la Normal.</p>
+<p>Los gráficos de residuos pueden ser muy útiles a la hora de detectar fallos sistemáticos en un modelo para ajustar unos datos. Detectados los fallos, la labor siguiente consiste en solventar las deficiencias y reajustar el modelo. Sin embargo, cuando la respuesta toma sólo unos pocos valores, como ocurre en pruebas Bernoulli, la utilidad de los residuos es limitada.</p>
+<p>La especificación incorrecta de un modelo se puede deber a una serie de factores:</p>
+<ul>
+<li>elección incorrecta de la distribución de probabilidad,</li>
+<li>especificación incorrecta de la forma en que la respuesta media cambia con las variables explicativas, ya sea porque:
+<ul>
+<li>la componente sistemática <span class="math inline">\(\eta()\)</span> está mal especificada,</li>
+<li>o la función link <span class="math inline">\(g()\)</span> no es apropiada,</li>
 </ul></li>
-<li><p><strong>Primeros pasos en R y RStudio</strong>. Leer los capítulos 1, 2, y 3 de Childs (2017), el capítulo 4 de Wickham (2015), y los capítulos 4 y 6 de Wickham (2016) para un desarrollo más amplio. Realizar los ejercicios que van a apareciendo a lo largo de los capítulos.</p></li>
-<li><p><strong>Estructuras de datos</strong>. Leer los capítulos 4, 5, 6 y 9 de Childs (2017) para una breve introducción y los capítulos 2 y 3 de Wickham (2015) para completar la información. Realiza los ejercicios que van apareciendo.</p></li>
-<li><p><strong>Instalación y uso de librerías en RStudio</strong>. Leer el capítulo 8 de Childs (2017) e instala las librerías tidyverse, stringr, forcats, lubridate, magrittr, broom y datasets mediante la consola de RStudio. Carga las librerías con el comando library para comprobar que se han instalando de forma correcta.</p></li>
-<li><p><strong>Creación de proyectos y entornos de trabajo</strong>. Leer el capítulo 8 de Wickham (2016). Crea un proyecto para esta unidad, selecciona el directorio de trabajo donde se encuentra situado el proyecto, y guarda el entorno de trabajo.</p></li>
+<li>variables explicativas no incorporadas en el modelo,</li>
+<li>funciones incorrectas de las variables explicativas en el modelo, incluyendo interacciones desconocidas entre ellas, o no disponibilidad de suficientes funciones diferentes,</li>
+<li>dependencia entre las observaciones, por ejemplo, a lo largo del tiempo (autocorrelación).</li>
 </ul>
+<p>Se definen en este caso los <em>residuos deviance estandarizados</em> que son los utilizados para diagnosticar el modelo, obtenidos como los residuos asociados con el predictor lineal. Sin embargo, dada la estructura de los GLM podemos definir también los residuos de la respuesta que son los obtenidos entre el valor de la respuesta y el proporcionado al deshacer el cambio involucrado en la función link.</p>
+<p>Utilizaremos los procedimientos gráficos vistos en temas anteriores para proceder con el diagnóstico de este tipo de modelos.</p>
 </div>
-</div>
-<div id="informes-prediseñados" class="section level2 unnumbered">
-<h2>Informes prediseñados</h2>
-<p>En los últimos tiempos se ha puesto de modo la creación de informes directos apartir del código utilizado en Rstudio mediante la creación de documentos específicos. Su puede consulyar una guía sencilla de uso en <a href="http://www.unavarra.es/personal/tgoicoa/ESTADISTICA_RMarkdown_tomas/basicRmarkdown/index.html">enlace</a>. Un desaroollo más completo se puede ver en este <a href="https://bookdown.org/yihui/rmarkdown/">enlace</a>. También se puede consultar este <a href="https://www.youtube.com/watch?v=V0eJE55aTrY">vídeo</a>.</p>
-</div>
-<div id="librerías-de-r-necesarías" class="section level2 unnumbered">
-<h2>Librerías de <code>R</code> necesarías</h2>
-<p>Para poder utilizar el código expuesto en estos materiales es necesario la instalación de diferentes librerías de <code>R</code>. A continuación se encuentra el código para cargar dichas librerías. Para algún análisis especifíco se utilizará alguna librería accesoria que será cargada con el comando <code>require()</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="antes-de-empezar.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="antes-de-empezar.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb1-3"><a href="antes-de-empezar.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-4"><a href="antes-de-empezar.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb1-5"><a href="antes-de-empezar.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1-6"><a href="antes-de-empezar.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb1-7"><a href="antes-de-empezar.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb1-8"><a href="antes-de-empezar.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pubh)</span>
-<span id="cb1-9"><a href="antes-de-empezar.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasets)</span>
-<span id="cb1-10"><a href="antes-de-empezar.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
-<span id="cb1-11"><a href="antes-de-empezar.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb1-12"><a href="antes-de-empezar.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-13"><a href="antes-de-empezar.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-14"><a href="antes-de-empezar.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
-<span id="cb1-15"><a href="antes-de-empezar.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moonBook)</span>
-<span id="cb1-16"><a href="antes-de-empezar.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjlabelled)</span>
-<span id="cb1-17"><a href="antes-de-empezar.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb1-18"><a href="antes-de-empezar.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb1-19"><a href="antes-de-empezar.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span>
-<span id="cb1-20"><a href="antes-de-empezar.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span>
-<span id="cb1-21"><a href="antes-de-empezar.html#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
-<span id="cb1-22"><a href="antes-de-empezar.html#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
-<span id="cb1-23"><a href="antes-de-empezar.html#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alr4)</span>
-<span id="cb1-24"><a href="antes-de-empezar.html#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(equatiomatic) </span>
-<span id="cb1-25"><a href="antes-de-empezar.html#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-26"><a href="antes-de-empezar.html#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survminer)</span></code></pre></div>
-<p>Configuramos además el tema de los gráficos para que tengan un aspecto más limpio y más fácil de exportar en formato pdf o word. Para ellos utilizamos la función <code>theme_set()</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="antes-de-empezar.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_sjplot2</span>())</span></code></pre></div>
+<div id="predicción-de-los-glm" class="section level2" number="11.6">
+<h2><span class="header-section-number">11.6</span> Predicción de los GLM</h2>
+<p>La predicción en este tipo de modelos se divide en dos fases:</p>
+<ul>
+<li>predicción del predictor lineal</li>
+<li>predicción de la respuesta</li>
+</ul>
+<p>Dado un GLM con predictor lineal dado por <span class="math inline">\(\eta_i = X_i\beta\)</span> y función link <span class="math inline">\(g(\mu_i)\)</span>, el proceso de estimación del modelo nos proporciona los valores estimados de <span class="math inline">\(\beta\)</span>, de forma que obtendríamos el valor ajustado del predictor lineal como:
+<span class="math display">\[\widehat{\eta}_i = X_i\widehat{\beta}\]</span></p>
+<p>y el valor ajustado de como</p>
+<p><span class="math display">\[\mu_i = g^{-1}(\widehat{\eta}_i) = g^{-1}(X_i\widehat{\beta})\]</span></p>
 
 </div>
 </div>
@@ -695,8 +704,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="smooth.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="glmbinomial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
