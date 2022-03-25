@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Unidad 12 Modelos Lineales Generalizados | Modelos Estadísticos</title>
+<meta name="description" content="Todos los modelos estudiados hasta ahora comparten los mismos supuestos teóricos, dado que el tipo de variable respuesta es siempre de tipo numérico. Aunque este tipo de modelos abarcan un gran...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Unidad 12 Modelos Lineales Generalizados | Modelos Estadísticos">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Todos los modelos estudiados hasta ahora comparten los mismos supuestos teóricos, dado que el tipo de variable respuesta es siempre de tipo numérico. Aunque este tipo de modelos abarcan un gran...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unidad 12 Modelos Lineales Generalizados | Modelos Estadísticos">
+<meta name="twitter:description" content="Todos los modelos estudiados hasta ahora comparten los mismos supuestos teóricos, dado que el tipo de variable respuesta es siempre de tipo numérico. Aunque este tipo de modelos abarcan un gran...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Modelos Estadísticos</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Bienvenidos</a></li>
+<li><a class="" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
+<li><a class="" href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></li>
+<li><a class="" href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></li>
+<li><a class="" href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
+<li><a class="" href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
+<li><a class="" href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></li>
+<li><a class="" href="rlm.html"><span class="header-section-number">7</span> Regresión Lineal Múltiple y Polinómica</a></li>
+<li><a class="" href="anova.html"><span class="header-section-number">8</span> Modelos ANOVA</a></li>
+<li><a class="" href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></li>
+<li><a class="" href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
+<li><a class="" href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
+<li><a class="active" href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
+<li><a class="" href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></li>
+<li><a class="" href="glmpoisson.html"><span class="header-section-number">14</span> GLM Poisson</a></li>
+<li><a class="" href="glmtablascont.html"><span class="header-section-number">15</span> GLM para tablas de contingencia</a></li>
+<li><a class="" href="glmsuperv.html"><span class="header-section-number">16</span> GLM para datos de supervivencia</a></li>
+<li><a class="" href="referencias.html">Referencias</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="glm" class="section level1" number="12">
+<h1>
+<span class="header-section-number">Unidad 12</span> Modelos Lineales Generalizados<a class="anchor" aria-label="anchor" href="#glm"><i class="fas fa-link"></i></a>
+</h1>
+<p>Todos los modelos estudiados hasta ahora comparten los mismos supuestos teóricos, dado que el tipo de variable respuesta es siempre de tipo numérico. Aunque este tipo de modelos abarcan un gran conjunto de situaciones experimentales, también es cierto que en algunos casos resulta difícil cumplir las hipótesis establecidas. De hecho, este tipo de modelos se asocian habitualmente con variables respuesta de tipo Normal, pero ¿qué ocurre cuando la variable no puede considerarse Normal? ¿Cómo podemos modelizar situaciones experimentales donde la variable respuesta es de tipo Binomial o Poisson?</p>
+<p>Son este tipo de situaciones las que motivan la introducción de un nuevo tipo de modelos que como caso particular engloban todos los vistos en los temas anteriores. Concretamente estudiaremos situaciones donde:</p>
+<ul>
+<li>la variable respuesta es de tipo Binomial, es decir, hemos observado si se cumple o no cierta condición experimental como resultado de un conjunto de variables predictoras que pueden ser de tipo numérico o categórico.</li>
+<li>la variable respuesta es de tipo Poisson, es decir, hemos observado el número de ocasiones que ha ocurrido un evento en un tiempo o espacio determinado como resultado de un conjunto de variables predictoras que pueden ser de tipo numérico o categórico.</li>
+<li>la variable respuesta es de tipo Exponencial, es decir, hemos observado el tiempo transcurrido hasta que ocurre un evento de interés como resultado de un conjunto de variables predictoras que pueden ser de tipo numérico o categórico.</li>
+<li>la variable respuesta es de tipo numérico, pero sólo puede tomar valores positivos de forma asimétrica, es decir, se encuentra concentrada en un conjunto de valores y su frecuencia disminuye cuando aumenta el valor de la respuesta. Este tipo de variable se conoce como Gamma.</li>
+</ul>
+<p>La característica común a todas estas situaciones es que la respuesta se puede englobar dentro de un conjunto de variables aleatorias cuya función de densidad puede ser escrita a través de una misma expresión. Todo este conjunto de variables se conocen con el nombre de familia exponencial.</p>
+<div id="modelo-teórico" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Modelo Teórico<a class="anchor" aria-label="anchor" href="#modelo-te%C3%B3rico"><i class="fas fa-link"></i></a>
+</h2>
+<p>Supongamos que hemos observado una situación experimental que involucra <span class="math inline">\(n\)</span> sujetos cuyo conjunto de datos dispone de una variable respuesta <span class="math inline">\(Y\)</span> y <span class="math inline">\(p\)</span> variables predictoras <span class="math inline">\(X_1,...,X_p\)</span>. Denotamos por <span class="math inline">\(Y_i\)</span> al valor de la respuesta para el sujeto <span class="math inline">\(i\)</span>, y <span class="math inline">\(x_{i1},...,x_{ip}\)</span> al valor de las predictoras para el mismo sujeto. Como ya vimos anteriormente el objetivo de cualquier modelo es estudiar el comportamiento de la respuesta a partir de la información contenida en las variables predictoras, es decir:</p>
+<p><span class="math display">\[E(Y_i|x_{i1},...,x_{ip}) = \mu_i\]</span></p>
+<p>Los supuestos del GLM son:</p>
+<ul>
+<li>
+<span class="math inline">\(Y_i\)</span> son observaciones aleatorias e independientes cuya distribución de probabilidad corresponde a la familia exponencial con <span class="math inline">\(E(Y_i) = \mu_i\)</span>.</li>
+<li>Las variables predictoras proporcionan un conjunto de predictores lineales <span class="math inline">\(\eta_i\)</span>:</li>
+</ul>
+<p><span class="math display">\[\eta_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{21} + ... + \beta_p x_{ip}\]</span></p>
+<ul>
+<li>Existe una función <span class="math inline">\(g()\)</span> denominada función link (enlace) que establece que</li>
+</ul>
+<p><span class="math display">\[g(\mu_i) = \eta_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{21} + ... + \beta_p x_{ip}\]</span></p>
+<p>Es decir, tenemos un modelo lineal donde modelizamos la media de la respuesta sino una función de dicha media. A continuación se muestran las funciones link más habituales para los diferentes tipos de variable respuesta.</p>
+<div id="distribución-binomial-logit-link" class="section level3" number="12.1.1">
+<h3>
+<span class="header-section-number">12.1.1</span> Distribución Binomial (logit link)<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-binomial-logit-link"><i class="fas fa-link"></i></a>
+</h3>
+<p>En esta situación el valor esperado de la respuesta viene dado por <span class="math inline">\(E(Y_i) = n \pi_i\)</span>, donde <span class="math inline">\(\pi_i\)</span> es la probabilidad de éxito, y la función link más habitual es:</p>
+<p><span class="math display">\[g(\mu_i) = log\left(\frac{\mu_i}{n - \mu_i}\right)\]</span>
+Si sustituimos el valor de <span class="math inline">\(\mu_i\)</span> y simplificamos tenemos que:</p>
+<p><span class="math display">\[g(\mu_i) = log\left(\frac{\pi_i}{1 - \pi_i}\right)\]</span>
+donde podemos ver que el objeto de nuestra modelización es una función de la probabilidad de éxito, que en realidad es nuestro parámetro de interés en este tipo de situaciones.</p>
+<div id="ejemplo-3" class="section level4" number="12.1.1.1">
+<h4>
+<span class="header-section-number">12.1.1.1</span> Ejemplo<a class="anchor" aria-label="anchor" href="#ejemplo-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>En un experimento se sometió a cierto número de cucarachas a cinco horas de exposición a disulfato de carbono gaseoso a varias concentraciones. Se pretendía investigar la relación existente entre la dosis de disulfato administrada y la resistencia de los insectos. La variable respuesta es <span class="math inline">\(Y_i\)</span> = número de escarabajos muertos en un total de ni sometidos a una misma dosis de pesticida <span class="math inline">\(x_i\)</span>. La distribución habitual es binomial, <span class="math inline">\(Y_i ~ Bi(n_i; \pi_i)\)</span> para <span class="math inline">\(i = 1,...,n\)</span>, con <span class="math inline">\(\pi_i\)</span> = probabilidad de muerte a dosis <span class="math inline">\(x_i\)</span>.</p>
+</div>
+</div>
+<div id="distribución-poisson-log-link" class="section level3" number="12.1.2">
+<h3>
+<span class="header-section-number">12.1.2</span> Distribución Poisson (log link)<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-poisson-log-link"><i class="fas fa-link"></i></a>
+</h3>
+<p>En esta situación el valor esperado de la respuesta viene dado por <span class="math inline">\(E(Y_i) = \mu_i\)</span>, donde <span class="math inline">\(\mu_i\)</span> es la tasa de ocurrencia, y la función link más habitual es:</p>
+<p><span class="math display">\[g(\mu_i) = log(\mu_i)\]</span></p>
+<p>donde podemos ver que el objeto de nuestra modelización es una función de la tasa de ocurrencia, que en realidad es nuestro parámetro de interés en este tipo de situaciones.</p>
+<div id="ejemplo-4" class="section level4" number="12.1.2.1">
+<h4>
+<span class="header-section-number">12.1.2.1</span> Ejemplo<a class="anchor" aria-label="anchor" href="#ejemplo-4"><i class="fas fa-link"></i></a>
+</h4>
+<p>Se realiza un estudio en pacientes con una forma de cáncer de piel llamado melanoma maligno. En dicho estudio se recogió información sobre la localización del tumor y su tipo histológico. Los datos son el número de pacientes en cada combinación de tipo de tumor y localización. El interés básico del análisis es investigar la relación entre el tipo de tumor y su localización.</p>
+</div>
+</div>
+<div id="distribución-normal-link-identidad" class="section level3" number="12.1.3">
+<h3>
+<span class="header-section-number">12.1.3</span> Distribución Normal (link identidad)<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-normal-link-identidad"><i class="fas fa-link"></i></a>
+</h3>
+<p>En esta situación el valor esperado de la respuesta viene dado por <span class="math inline">\(E(Y_i) = \mu_i\)</span>, donde <span class="math inline">\(\mu_i\)</span> es la media de la población, y la función link más habitual es:</p>
+<p><span class="math display">\[g(\mu_i) = \mu_i\]</span></p>
+<p>que corresponde exactamente con la expresión de los modelos lineales que hemos trabajo en temas anteriores.</p>
+</div>
+<div id="distribución-gamma-link-recíproco" class="section level3" number="12.1.4">
+<h3>
+<span class="header-section-number">12.1.4</span> Distribución Gamma (link recíproco)<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-gamma-link-rec%C3%ADproco"><i class="fas fa-link"></i></a>
+</h3>
+<p>En esta situación la función link es:</p>
+<p><span class="math display">\[g(\mu_i) = \frac{1}{\mu_i}\]</span></p>
+<div id="ejemplo-5" class="section level4" number="12.1.4.1">
+<h4>
+<span class="header-section-number">12.1.4.1</span> Ejemplo<a class="anchor" aria-label="anchor" href="#ejemplo-5"><i class="fas fa-link"></i></a>
+</h4>
+<p>Se realiza un ensayo clínico donde se registra el tiempo de supervivencia (en semanas) para pacientes de leucemia y su correspondiente conteo inicial de células blancas en la sangre (en escala log10). El interés del análisis es intentar predecir el tiempo de supervivencia <span class="math inline">\(Y\)</span> en función del número inicial de células blancas <span class="math inline">\(x_i\)</span>. Una distribución usual en la modelización de tiempos de superveniencia es la exponencial, que es un caso particular de la distribución Gamma.</p>
+</div>
+</div>
+</div>
+<div id="estimación-de-los-glm" class="section level2" number="12.2">
+<h2>
+<span class="header-section-number">12.2</span> Estimación de los GLM<a class="anchor" aria-label="anchor" href="#estimaci%C3%B3n-de-los-glm"><i class="fas fa-link"></i></a>
+</h2>
+<p>Es evidente que debemos modificar los procedimientos de estimación de los parámetros ya que la estructura lineal se asume sobre la transformación de la media de la respuesta y no sobre los valores de la respuesta directamente como ocurría en los modelos lineales. Los métodos de máxima verosimilitud para la estimación de los parámetros se basan en el <em>Método de Scoring</em> o el <em>Método de Newton-Raphson</em>. Se trata de métodos de estimación iterativos, y no directos como en el caso de los modelos lineales, que finalizan cuando se alcanzan las condiciones de convergencia del método. En la mayoría de situaciones experimentales dichos métodos convergen en pocas iteracciones y proporcionan las estimaciones del parámetro del modelo. Haciendo uso del Teorema Central del Límite resulta posible obtener además intervalos de confianza para los parámetros del modelo.</p>
+<p>Para la estimación de este tipo de modelos utilizamos la función <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> cuya estructura viene dada por:</p>
+<div class="sourceCode" id="cb680"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">modelo</span>,family <span class="op">=</span> <span class="fu">distri</span><span class="op">(</span>link <span class="op">=</span> <span class="va">tipo</span><span class="op">)</span>,<span class="va">data_set</span><span class="op">)</span></code></pre></div>
+<p>donde <code>modelo</code> representa la ecuación del modelo en la forma <span class="math inline">\(respuesta \sim predictoras\)</span>, <code>distri</code> representa la distribución de probabilidad asociada con la respuesta, <code>tipo</code> la función link utilizada y <code>data_set</code> el conjunto de dato sobre el que se ajusta el modelo. En temas sucesivos veremos como especificar esta función en cada una de las situaciones experimentales planteadas.</p>
+<p>Para estudiar en profundidad los procedimientos de estimación se puede leer el capítulo 2 de MayMor01.</p>
+</div>
+<div id="bondad-del-ajuste-2" class="section level2" number="12.3">
+<h2>
+<span class="header-section-number">12.3</span> Bondad del ajuste<a class="anchor" aria-label="anchor" href="#bondad-del-ajuste-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Un aspecto importante en el ajuste de un modelo es determinar si describe adecuadamente o no los datos observados. Cuando ajustamos un modelo lineal generalizado, juzgamos la adecuación del modelo comparando la verosimilitud del modelo ajustado con la verosimilitud del modelo saturado.</p>
+<p>El modelo saturado es un modelo de forma similar al modelo propuesto que describe de modo perfecto los datos. Por tanto, tiene poca utilidad desde el punto de vista de ajuste de un modelo. Sin embargo, es útil para medir cómo un ajuste concreto se parece a un ajuste “perfecto”.</p>
+<p><strong>Ejmplo.</strong> <em>Considerando <span class="math inline">\(Y_1,...,Y_n\)</span> v.a. normales, con <span class="math inline">\(E(Y_i) = \mu_i\)</span> y varianza común <span class="math inline">\(\sigma^2\)</span>, se propone un modelo en el que todas las medias <span class="math inline">\(\mu_i\)</span> son iguales,
+<span class="math display">\[\mu_1 = ... = \mu_n = \mu.\]</span></em></p>
+<p><em>En el modelo saturado se usa la misma distribución (normal), el mismo link (identidad), y hay un parámetro a estimar por cada dato <span class="math inline">\((\mu_i \to y_i)\)</span>:</em></p>
+<p><span class="math display">\[\text{Modelo propuesto } E(Y_i) = \mu, i=1,...,n \to \widehat{\mu}_i = \bar{y}\]</span>
+<span class="math display">\[\text{Modelo saturado } E(Y_i) = \mu_i, i=1,...,n \to \widehat{\mu}_i = y_i\]</span></p>
+<p>En los GLM el estadístico utilizado para valorar la bondad del ajuste obtenido se denomina <code>D = Deviance</code>. Dicho estadístico mide como de grande es la desviación del modelo ajustado respecto de los datos (modelo saturado). Si <span class="math inline">\(D\)</span> es grande, el modelo ajustado proporciona un ajuste pobre. Un valor pequeño de <span class="math inline">\(D\)</span> es indicador de un buen ajuste. Para decidir qué se considera “D grande” y qué “D pequeño”, es preciso utilizar la distribución en el muestreo del estadístico.</p>
+<p><em>Cuando el modelo propuesto proporciona un buen ajuste de los datos, entonces</em>
+<span class="math display">\[D \text{ } \dot{\sim} \text{ } \chi^2_{n-p}, \text{ asintóticamente}\]</span>
+<em>donde <span class="math inline">\(n\)</span> es el número de datos a ajustar y <span class="math inline">\(p\)</span> el número de parámetros del modelo.</em></p>
+<p>En la práctica comparamos el valor de la deviance con el cuantil 0.95 de una <span class="math inline">\(Chi^2\)</span> con <span class="math inline">\(n-p\)</span> grados de libertad. Si <span class="math inline">\(D\)</span> es menor que el cuantil diremos que tenemos un buen ajuste. En la práctica obtendremos el p-valor asociado con dicha deviance y lo comparemos con el valor de referencia 0.05. Si el p-valor obtenido es superior a 0.05 diremos que tenemos un buen ajuste.</p>
+</div>
+<div id="comparación-de-modelos" class="section level2" number="12.4">
+<h2>
+<span class="header-section-number">12.4</span> Comparación de modelos<a class="anchor" aria-label="anchor" href="#comparaci%C3%B3n-de-modelos"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aunque un modelo con más parámetros proporcione un ajuste mejor que otro con menos parámetros, cabe plantearse si en realidad todos los parámetros estimados son necesarios. Esta cuestión se puede resolver con tests basados en la deviance y en el estadístico de Wald, siempre y cuando se trate de modelos anidados. Otros estadísticos como el AIC permiten la comparación más general de modelos no necesariamente anidados.</p>
+<p>Dos modelos en competencia pueden ser comparados mediante la deviance cuando tienen la misma distribución y función link y sólo difieren en el número de parámetros, es decir, cuando se trata de modelos anidados. Supongamos dos modelos <span class="math inline">\(M1\)</span> con <span class="math inline">\(p_1\)</span> parámetros y <span class="math inline">\(M2\)</span> con <span class="math inline">\(p_2\)</span> parámetros, de forma que el primero está anidado en el segundo, es decir, <span class="math inline">\(p_1 &lt; p_2\)</span>. En esta situación el estadístico para valorar si ambos modelos pueden considerarse iguales, es decir, debemos elegir <span class="math inline">\(M1\)</span> ya que es más simple, sigue una distribución <span class="math inline">\(\chi^2_{p_2-p_1}\)</span>. Para resolver la comparación debemos obtener el cuantil 0.95 de la distribución chi cuadrado y compararlo con el valor del estadístico. Si el pvalor asociado es inferior a 0.05 rechazaremos el modelo <span class="math inline">\(M1\)</span> en favor del modelo <span class="math inline">\(M2\)</span>, mientras que si es superior a 0.05 elegiremos el modelo <span class="math inline">\(M1\)</span>.</p>
+<p>Para la selección automática de efectos en la construcción de un modelo se pueden utilizar los estadísticos AIC o el BIC. En ambos casos seleccionaremos el modelo con menor valor en dichos estadísticos. Procedemos de igual forma a los que hacíamos en los modelos lineales que involucran más de una variable predictora.</p>
+</div>
+<div id="diagnóstico-de-los-glm" class="section level2" number="12.5">
+<h2>
+<span class="header-section-number">12.5</span> Diagnóstico de los GLM<a class="anchor" aria-label="anchor" href="#diagn%C3%B3stico-de-los-glm"><i class="fas fa-link"></i></a>
+</h2>
+<p>Los residuos se pueden utilizar para explorar la adecuación del ajuste de un modelo respecto a la elección de la función de varianza, la función link y los términos a incluir en el predictor lineal. Los residuos pueden también ser útiles para detectar observaciones influyentes o valores anómalos que requieran una investigación más intensa. Para modelos lineales generalizados, requerimos una definición algo más amplia de residuos, que sea aplicable a todas las distribuciones que pueden reemplazar a la Normal.</p>
+<p>Los gráficos de residuos pueden ser muy útiles a la hora de detectar fallos sistemáticos en un modelo para ajustar unos datos. Detectados los fallos, la labor siguiente consiste en solventar las deficiencias y reajustar el modelo. Sin embargo, cuando la respuesta toma sólo unos pocos valores, como ocurre en pruebas Bernoulli, la utilidad de los residuos es limitada.</p>
+<p>La especificación incorrecta de un modelo se puede deber a una serie de factores:</p>
+<ul>
+<li>elección incorrecta de la distribución de probabilidad,</li>
+<li>especificación incorrecta de la forma en que la respuesta media cambia con las variables explicativas, ya sea porque:
+<ul>
+<li>la componente sistemática <span class="math inline">\(\eta()\)</span> está mal especificada,</li>
+<li>o la función link <span class="math inline">\(g()\)</span> no es apropiada,</li>
+</ul>
+</li>
+<li>variables explicativas no incorporadas en el modelo,</li>
+<li>funciones incorrectas de las variables explicativas en el modelo, incluyendo interacciones desconocidas entre ellas, o no disponibilidad de suficientes funciones diferentes,</li>
+<li>dependencia entre las observaciones, por ejemplo, a lo largo del tiempo (autocorrelación).</li>
+</ul>
+<p>Se definen en este caso los <em>residuos deviance estandarizados</em> que son los utilizados para diagnosticar el modelo, obtenidos como los residuos asociados con el predictor lineal. Sin embargo, dada la estructura de los GLM podemos definir también los residuos de la respuesta que son los obtenidos entre el valor de la respuesta y el proporcionado al deshacer el cambio involucrado en la función link.</p>
+<p>Utilizaremos los procedimientos gráficos vistos en temas anteriores para proceder con el diagnóstico de este tipo de modelos.</p>
+</div>
+<div id="predicción-de-los-glm" class="section level2" number="12.6">
+<h2>
+<span class="header-section-number">12.6</span> Predicción de los GLM<a class="anchor" aria-label="anchor" href="#predicci%C3%B3n-de-los-glm"><i class="fas fa-link"></i></a>
+</h2>
+<p>La predicción en este tipo de modelos se divide en dos fases:</p>
+<ul>
+<li>predicción del predictor lineal</li>
+<li>predicción de la respuesta</li>
+</ul>
+<p>Dado un GLM con predictor lineal dado por <span class="math inline">\(\eta_i = X_i\beta\)</span> y función link <span class="math inline">\(g(\mu_i)\)</span>, el proceso de estimación del modelo nos proporciona los valores estimados de <span class="math inline">\(\beta\)</span>, de forma que obtendríamos el valor ajustado del predictor lineal como:
+<span class="math display">\[\widehat{\eta}_i = X_i\widehat{\beta}\]</span></p>
+<p>y el valor ajustado de como</p>
+<p><span class="math display">\[\mu_i = g^{-1}(\widehat{\eta}_i) = g^{-1}(X_i\widehat{\beta})\]</span></p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></div>
+<div class="next"><a href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#glm"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
+<li>
+<a class="nav-link" href="#modelo-te%C3%B3rico"><span class="header-section-number">12.1</span> Modelo Teórico</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#distribuci%C3%B3n-binomial-logit-link"><span class="header-section-number">12.1.1</span> Distribución Binomial (logit link)</a></li>
+<li><a class="nav-link" href="#distribuci%C3%B3n-poisson-log-link"><span class="header-section-number">12.1.2</span> Distribución Poisson (log link)</a></li>
+<li><a class="nav-link" href="#distribuci%C3%B3n-normal-link-identidad"><span class="header-section-number">12.1.3</span> Distribución Normal (link identidad)</a></li>
+<li><a class="nav-link" href="#distribuci%C3%B3n-gamma-link-rec%C3%ADproco"><span class="header-section-number">12.1.4</span> Distribución Gamma (link recíproco)</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#estimaci%C3%B3n-de-los-glm"><span class="header-section-number">12.2</span> Estimación de los GLM</a></li>
+<li><a class="nav-link" href="#bondad-del-ajuste-2"><span class="header-section-number">12.3</span> Bondad del ajuste</a></li>
+<li><a class="nav-link" href="#comparaci%C3%B3n-de-modelos"><span class="header-section-number">12.4</span> Comparación de modelos</a></li>
+<li><a class="nav-link" href="#diagn%C3%B3stico-de-los-glm"><span class="header-section-number">12.5</span> Diagnóstico de los GLM</a></li>
+<li><a class="nav-link" href="#predicci%C3%B3n-de-los-glm"><span class="header-section-number">12.6</span> Predicción de los GLM</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
