@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Unidad 11 Modelos Lineales Mixtos | Modelos Estadísticos</title>
+<meta name="description" content="Los modelos mixtos lineales son los más generales de los vistos hasra ahora ya que permiten estudio de las diferentes componentes de variabilidad que determinan el comportamiento de una variable...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Unidad 11 Modelos Lineales Mixtos | Modelos Estadísticos">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Los modelos mixtos lineales son los más generales de los vistos hasra ahora ya que permiten estudio de las diferentes componentes de variabilidad que determinan el comportamiento de una variable...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unidad 11 Modelos Lineales Mixtos | Modelos Estadísticos">
+<meta name="twitter:description" content="Los modelos mixtos lineales son los más generales de los vistos hasra ahora ya que permiten estudio de las diferentes componentes de variabilidad que determinan el comportamiento de una variable...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Modelos Estadísticos</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Bienvenidos</a></li>
+<li><a class="" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
+<li><a class="" href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></li>
+<li><a class="" href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></li>
+<li><a class="" href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
+<li><a class="" href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
+<li><a class="" href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></li>
+<li><a class="" href="rlm.html"><span class="header-section-number">7</span> Regresión Lineal Múltiple y Polinómica</a></li>
+<li><a class="" href="anova.html"><span class="header-section-number">8</span> Modelos ANOVA</a></li>
+<li><a class="" href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></li>
+<li><a class="" href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
+<li><a class="active" href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
+<li><a class="" href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
+<li><a class="" href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></li>
+<li><a class="" href="glmpoisson.html"><span class="header-section-number">14</span> GLM Poisson</a></li>
+<li><a class="" href="glmtablascont.html"><span class="header-section-number">15</span> GLM para tablas de contingencia</a></li>
+<li><a class="" href="glmsuperv.html"><span class="header-section-number">16</span> GLM para datos de supervivencia</a></li>
+<li><a class="" href="referencias.html">Referencias</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="mmixed" class="section level1" number="11">
+<h1>
+<span class="header-section-number">Unidad 11</span> Modelos Lineales Mixtos<a class="anchor" aria-label="anchor" href="#mmixed"><i class="fas fa-link"></i></a>
+</h1>
+<p>Los modelos mixtos lineales son los más generales de los vistos hasra ahora ya que permiten estudio de las diferentes componentes de variabilidad que determinan el comportamiento de una variable respuesta, es decir, nos permite tner en cuenta efectos intrínsecos del diseño experimental que no son de interés directo para el estudio del comportamiento de la respuesta. Aplicaciones de este tipo de modelos son:</p>
+<ul>
+<li>Estructuras anidadas de datos.</li>
+<li>Estructuras con medidas repetidas.</li>
+<li>Otros modelos con diferentes fuentes de variabilidad.</li>
+</ul>
+<p>Los modelos mixtos surgen por la necesidad de contemplar las diferentes fuentes de variabilidad presentes en un diseño experimental cuando las variables asociadas no son de interese principal para estudiara el comportamiento de la respuesta. También se utilizan para representar la estructura jerárquica inherente en muchos diseños experimentales.</p>
+<p>Estos modelos parten de la idea que los coeficientes del modelo se pueden descomponer en una parte determinista (coeficiente del modelo) y una parte aleatoria, de forma que:</p>
+<p><span class="math display">\[V_{Total} = V_{modelo} + V_{diseño} + V_{Residual},\]</span></p>
+<p>que en términos del diseño se escribe como:</p>
+<p><span class="math display">\[Y = X\beta + Zb + \epsilon\]</span> donde <span class="math inline">\(Z\)</span> es la matriz de efectos aleatorios asociados al diseño experimental y <span class="math inline">\(b\)</span> el conjunto de coeficientes asociado. De esta forma la variabilidad residual asociada al modelo con efectos fijos se descompone en varaibildiad deñ diseño y la varaibilidad que queda por explicar. Como ocurría en los modelos lineales se deben establecer las hipótesis sobre las componenetes aleatorias del modelo, en este caso:</p>
+<p><span class="math display">\[b \sim N(0, H)\]</span></p>
+<p><span class="math display">\[\epsilon \sim N(0, \sigma^2 I)\]</span></p>
+<p>Para el análisis de estos modelos es necesario instalar las librerías <code>lme4</code>, <code>nlme</code>, y <code>lattice</code>.</p>
+<pre><code>## 
+## Attaching package: 'lme4'</code></pre>
+<pre><code>## The following object is masked from 'package:nlme':
+## 
+##     lmList</code></pre>
+<pre><code>## The following object is masked from 'package:mosaic':
+## 
+##     factorize</code></pre>
+<p>Antes de presentar los modelos de efectos mixtos lineales más habituales vamos a proceer a presntar los diferentes ejemplos con los que trabajaremos.</p>
+<div id="ejemplos-13" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> Ejemplos<a class="anchor" aria-label="anchor" href="#ejemplos-13"><i class="fas fa-link"></i></a>
+</h2>
+<p>Los ejemplos se han extraido de los disponibles en las linbrerías <code>lme4</code> y <code>nlme.</code></p>
+<div id="estudio-del-sueño" class="section level3" number="11.1.1">
+<h3>
+<span class="header-section-number">11.1.1</span> Estudio del sueño<a class="anchor" aria-label="anchor" href="#estudio-del-sue%C3%B1o"><i class="fas fa-link"></i></a>
+</h3>
+<p>Este ejmplo contiene los resultados sobre un estudio sobre el tiempo de reacción medio por día de un conjunto de sujetos sometidos a diferentes procesos de privación de sueño. En el día 0 los sujetos tuvieron su cantidad normal de sueño. A partir de esa noche se les restringió a 3 horas de sueño por noche. Las observaciones representan el tiempo de reacción medio en una serie de pruebas realizadas cada día a cada sujeto. Las variables consideradas son:</p>
+<ul>
+<li>
+<code>Reaction</code>: tiempo medio de reacción de un sejeto en un día específico.</li>
+<li>
+<code>Days</code>: dia del ensayo.</li>
+<li>
+<code>Subject</code>: identificador del sujeto bajo estudio.</li>
+</ul>
+<div class="sourceCode" id="cb592"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">sleepstudy</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sleepstudy</span><span class="op">)</span></code></pre></div>
+<pre><code>## 'data.frame':    180 obs. of  3 variables:
+##  $ Reaction: num  250 259 251 321 357 ...
+##  $ Days    : num  0 1 2 3 4 5 6 7 8 9 ...
+##  $ Subject : Factor w/ 18 levels "308","309","310",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>En estye caso existe un variable predictora (<code>Days</code>) que trata de explicar el comportamiento de la respuesta, pero el diseño experimental introduce una fuente de variabilidad asociada a cada uno de los sujetos considerados que debería ser tenida en cuenta. Dado que los sujetos son una muestra aleatoria deberíamos introducir ese efecto como aleatorio y no como fijo. Analizamos gráficamente el comportamiento de los datos del estudio. En primer lugar consideramos que cada observación recogida es independiente, es decir, nos olvidamos de la variable sujeto. Se puede ver como el tiempo de reacción aumneta con el paso de los días.</p>
+<div class="sourceCode" id="cb594"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sleepstudy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Days</span>, y <span class="op">=</span> <span class="va">Reaction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Días"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Tiempo de reacción"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm003-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Veamos que pasa cuando consideramos el efecto aleatorio del sujeto;</p>
+<div class="sourceCode" id="cb595"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sleepstudy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Days</span>, y <span class="op">=</span> <span class="va">Reaction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Días"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Tiempo de reacción"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Subject</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm004-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Ahora se puede ver que todos los sujetos no se comportan de la misma forma, ya que hay algunos donde la evolución con los días es más pronunciada que en otros. Además se puede ver que al incio del estudio los tiempos de reacción también son diferentes entre los sujetos considerados. Por stos motivos es necesario contemplar la introducción de un efecto aleatorio que represente a los sujetos y permita estimar de forma correcta el comportamiento de cada uno de ellos.</p>
+</div>
+<div id="estudio-de-ortodoncia" class="section level3" number="11.1.2">
+<h3>
+<span class="header-section-number">11.1.2</span> Estudio de ortodoncia<a class="anchor" aria-label="anchor" href="#estudio-de-ortodoncia"><i class="fas fa-link"></i></a>
+</h3>
+<p>El conjunto de datos de Ortodoncia contiene 108 filas y 4 variables. El objetivo es estudair el cambio en una medida de ortodoncia a lo largo del tiempo para varios sujetos jóvenes. En concreto las variables consideradas son:</p>
+<ul>
+<li>
+<code>distance</code>: distancia desde la pituitaria hasta la fisura pterigomaxilar (en mm). Estas distancias se miden en imágenes de rayos X del cráneo.</li>
+<li>
+<code>age</code>: edad del sujeto ( en años). Tenemso cuatro mediciones por sujeto e las edades de 8, 10, 12 y 14 años.</li>
+<li>
+<code>Subject</code>: factor ordenado indicando el sujeto en el que se realizó la medición. Los niveles están etiquetados de M01 a M16 para los hombres y de F01 a F13 para las mujeres. La ordenación es por distancia media creciente dentro del sexo.</li>
+<li>
+<code>Sex</code>: un factor con niveles Masculino y Femenino</li>
+</ul>
+<p>En este experimento tenemos de nuevo un posible efecto del sujeto considerado. Veamos a continuación los datos del experimento y su representación gráfica.</p>
+<div class="sourceCode" id="cb596"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Orthodont"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Orthodont</span><span class="op">)</span></code></pre></div>
+<pre><code>## Classes 'nfnGroupedData', 'nfGroupedData', 'groupedData' and 'data.frame':   108 obs. of  4 variables:
+##  $ distance: num  26 25 29 31 21.5 22.5 23 26.5 23 22.5 ...
+##  $ age     : num  8 10 12 14 8 10 12 14 8 10 ...
+##  $ Subject : Ord.factor w/ 27 levels "M16"&lt;"M05"&lt;"M02"&lt;..: 15 15 15 15 3 3 3 3 7 7 ...
+##  $ Sex     : Factor w/ 2 levels "Male","Female": 1 1 1 1 1 1 1 1 1 1 ...
+##  - attr(*, "outer")=Class 'formula'  language ~Sex
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "formula")=Class 'formula'  language distance ~ age | Subject
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "labels")=List of 2
+##   ..$ x: chr "Age"
+##   ..$ y: chr "Distance from pituitary to pterygomaxillary fissure"
+##  - attr(*, "units")=List of 2
+##   ..$ x: chr "(yr)"
+##   ..$ y: chr "(mm)"
+##  - attr(*, "FUN")=function (x)  
+##   ..- attr(*, "source")= chr "function (x) max(x, na.rm = TRUE)"
+##  - attr(*, "order.groups")= logi TRUE</code></pre>
+<div class="sourceCode" id="cb598"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Orthodont</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">distance</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Edad"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Distancia"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm006-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Se puede apreciar una tendencia creciente de la distancia con la edad considerando cada fila del banco de datos como independiente del resto. Podemos añadir el efecto del sexo:</p>
+<div class="sourceCode" id="cb599"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Orthodont</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">distance</span>, color <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Edad"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Distancia"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm007-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Ahora además podemos apreciar un posible efecto del sexo. Procedemoe con el gráfico por sujeto. En este caso vamos a introducir una aproximación de lo que sería la tendencia para cada uno de los sujetos:</p>
+<div class="sourceCode" id="cb600"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Orthodont</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">distance</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">gam</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Edad"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Distancia"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Subject</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm008-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Como ocurría en el ejemplo anterior podemos observar que no todos los sujetos tienen un comportamiento similar, reforzando el hecho de que hay que tener en cuenta el efecto aleatorio del sujeto en el análisis de este modelo.</p>
+</div>
+<div id="estudio-de-pixel" class="section level3" number="11.1.3">
+<h3>
+<span class="header-section-number">11.1.3</span> Estudio de pixel<a class="anchor" aria-label="anchor" href="#estudio-de-pixel"><i class="fas fa-link"></i></a>
+</h3>
+<p>El conjunto de datos de <code>pixel</code> tiene 102 filas y 4 columnas donde la variable objetivo registra la intensidad de los píxeles de las tomografías de los perros a lo largo del tiempo. Las varaibles consideradas son:</p>
+<ul>
+<li>
+<code>Dog</code>: un factor con niveles de 1 a 10 que designa el perro en el que se realizó la exploración.</li>
+<li>
+<code>Side</code>: un factor con niveles L y R que designa el lado escaneado del perro.</li>
+<li>
+<code>day</code>: un valor numérico que indica el día posterior a la inyección del contraste en el que se realizó la exploración.</li>
+<li>
+<code>pixel</code>: un valor numérico que indica la intensidad del píxel.</li>
+</ul>
+<p>En este caso tenemos dos fuentes de variabilidad aleatoria. La primera hace referencia al sujeto (perro en este caso), y la segunda al lado del perro escaneado. Este segundo efecto está anidado dentro del efecto perro y se deberá teenr en cuenta de esta forma en el modeelo. Veasmo los datos y su representación gráfica:</p>
+<div class="sourceCode" id="cb602"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Pixel"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Pixel</span><span class="op">)</span></code></pre></div>
+<pre><code>## Classes 'nmGroupedData', 'groupedData' and 'data.frame': 102 obs. of  4 variables:
+##  $ Dog  : Factor w/ 10 levels "1","10","2","3",..: 1 1 1 1 1 1 1 3 3 3 ...
+##  $ Side : Factor w/ 2 levels "L","R": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ day  : num  0 1 2 4 6 10 14 0 1 2 ...
+##  $ pixel: num  1046 1044 1043 1050 1045 ...
+##  - attr(*, "formula")=Class 'formula'  language pixel ~ day | Dog/Side
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "formulaList")=List of 2
+##   ..$ Dog :Class 'formula'  language ~Dog
+##   .. .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##   ..$ Side:Class 'formula'  language ~Side
+##   .. .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "labels")=List of 2
+##   ..$ x: chr "Time post injection"
+##   ..$ y: chr "Pixel intensity"
+##  - attr(*, "units")=List of 1
+##   ..$ x: chr "(days)"
+##  - attr(*, "order.groups")=List of 2
+##   ..$ Dog : logi TRUE
+##   ..$ Side: logi TRUE
+##  - attr(*, "FUN")=function (x)  
+##   ..- attr(*, "source")= chr "function (x) max(x, na.rm = TRUE)"</code></pre>
+<p>En este caso realizamos únicamente el gráfico que considera todos los efectos.</p>
+<div class="sourceCode" id="cb604"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Pixel</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">day</span>, y <span class="op">=</span> <span class="va">pixel</span>, col <span class="op">=</span> <span class="va">Side</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Día"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"pixel"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Dog</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm010-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Podemos ver como existe un efecto asociado con e perro y con el lado escaneado. Por ejemplo los perros 7 y 9 tienen comportamiento muy diferente, y dicho comportamiento no está asociado únicamente con el día sino con el propio sujeto utilizado.</p>
+</div>
+<div id="estudio-avena" class="section level3" number="11.1.4">
+<h3>
+<span class="header-section-number">11.1.4</span> Estudio Avena<a class="anchor" aria-label="anchor" href="#estudio-avena"><i class="fas fa-link"></i></a>
+</h3>
+<p>Este conjunto de datos hace referencia a un estudio para analizar el redimiento de producción de diferentes varaiedades de avena sujetas a diferentes condiciones experimentales. El area de estudio se distribuyó en 6 bloques de 3 parcelas principales, cada una de ellas dividida en 4 subparcelas. Cada variedad se aplico en cada una de las parcelas pricipales , mientras que los tratamiento de abonos se aplicaron en cada una de las subparcelas definidas. El banco de datos contiene las siguientes columnas:</p>
+<ul>
+<li>
+<code>Block</code>: Bloques considerados con niveles I, II, III, IV, V y VI.</li>
+<li>
+<code>Variety</code>: Variedades de avena consideradas con 3 niveles.</li>
+<li>
+<code>nitro</code>: Tratamiento de nitrógeno (manurial) con niveles 0.0cwt, 0.2cwt, 0.4cwt y 0.6cwt, mostrando la aplicación en cwt/acre.</li>
+<li>
+<code>yield</code>: Rendimiento en 1/4lbs por subparcela, cada una de ellas con una superficie de 1/80 acres.</li>
+</ul>
+<p>En este caso tenemos como fuentes de variabilidad extra el bloque y la variedad aplicada dentro de cada bloque, ya que el objetivo principal es la influencia del tratamiento en la producción final de cada subparcela.</p>
+<div class="sourceCode" id="cb605"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Oats"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Oats</span><span class="op">)</span></code></pre></div>
+<pre><code>## Classes 'nfnGroupedData', 'nfGroupedData', 'groupedData' and 'data.frame':   72 obs. of  4 variables:
+##  $ Block  : Ord.factor w/ 6 levels "VI"&lt;"V"&lt;"III"&lt;..: 6 6 6 6 6 6 6 6 6 6 ...
+##  $ Variety: Factor w/ 3 levels "Golden Rain",..: 3 3 3 3 1 1 1 1 2 2 ...
+##  $ nitro  : num  0 0.2 0.4 0.6 0 0.2 0.4 0.6 0 0.2 ...
+##  $ yield  : num  111 130 157 174 117 114 161 141 105 140 ...
+##  - attr(*, "formula")=Class 'formula'  language yield ~ nitro | Block
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "labels")=List of 2
+##   ..$ y: chr "Yield"
+##   ..$ x: chr "Nitrogen concentration"
+##  - attr(*, "units")=List of 2
+##   ..$ y: chr "(bushels/acre)"
+##   ..$ x: chr "(cwt/acre)"
+##  - attr(*, "inner")=Class 'formula'  language ~Variety
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt;</code></pre>
+<p>Analizamos gráficamente los datos del experimento:</p>
+<div class="sourceCode" id="cb607"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oats</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">nitro</span>, y <span class="op">=</span> <span class="va">yield</span>, col <span class="op">=</span> <span class="va">Variety</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Concentración"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Rendimiento"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Block</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm012-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>¿Qué comportamiento observamos dentro de cada bloque?</p>
+</div>
+<div id="estudio-penicilina" class="section level3" number="11.1.5">
+<h3>
+<span class="header-section-number">11.1.5</span> Estudio Penicilina<a class="anchor" aria-label="anchor" href="#estudio-penicilina"><i class="fas fa-link"></i></a>
+</h3>
+<p>Los datos se describen en Davies y Goldsmith (1972) como procedentes de una investigación para “evaluar la variabilidad entre muestras de penicilina por el método de B. subtilis. En este método de prueba se vierte un medio de agar nutritivo inoculado a granel en una placa de Petri de aproximadamente 90 mm. de diámetro, conocida como placa. Cuando el medio ha fraguado, se pegan en la superficie seis pequeños cilindros huecos o macetas (de unos 4 mm. de diámetro) a intervalos igualmente espaciados. Se colocan unas gotas de las soluciones de penicilina que se van a comparar en los respectivos cilindros, y toda la placa se coloca en una incubadora durante un tiempo determinado. La penicilina se difunde desde los botes al agar, y esto produce una clara zona circular de inhibición del crecimiento de los organismos, que puede medirse fácilmente. El diámetro de la zona está relacionado de forma conocida con la concentración de penicilina en la solución.</p>
+<p>En concreto se probaron seis muestras de penicilina utilizando el método de la placa de B. subtilis en cada una de 24 placas. La respuesta es el diámetro (mm) de la zona de inhibición del crecimiento del organismo. El banco de datos contiene 144 filas y tres variables:</p>
+<ul>
+<li>
+<code>diameter</code>: diámetro (en mm) de la zona de inhibición del crecimiento del organismo.</li>
+<li>
+<code>plate</code>: placa de ensayo. Un factor con niveles de <code>a</code> hasta <code>x</code>.</li>
+<li>
+<code>sample</code>: muestra de penicilina. Un factor con niveles de <code>A</code> hasta <code>F</code>.</li>
+</ul>
+<p>En este caso no hay variables predictoras, ya que tanto la muestra y la placa deben ser considerados efectos aleatorios. Veamos los datos y su representación gráfica:</p>
+<div class="sourceCode" id="cb608"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Penicillin"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Penicillin</span><span class="op">)</span></code></pre></div>
+<pre><code>## 'data.frame':    144 obs. of  3 variables:
+##  $ diameter: num  27 23 26 23 23 21 27 23 26 23 ...
+##  $ plate   : Factor w/ 24 levels "a","b","c","d",..: 1 1 1 1 1 1 2 2 2 2 ...
+##  $ sample  : Factor w/ 6 levels "A","B","C","D",..: 1 2 3 4 5 6 1 2 3 4 ...</code></pre>
+<div class="sourceCode" id="cb610"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Penicillin</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">diameter</span>, y <span class="op">=</span> <span class="va">plate</span>, col <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Diameter"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Sample"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm013-1.png" width="95%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="modelos-teóricos" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> Modelos teóricos<a class="anchor" aria-label="anchor" href="#modelos-te%C3%B3ricos"><i class="fas fa-link"></i></a>
+</h2>
+<p>En este punto mostramos los modelos lineales de efctos aletorios más extendidos en la literatura. Comenzamos con la situación más sencilla donde tenemos una única variable predictora y donde se integran diferentes efectos aleatorios. Para el ajuste de estos modelos usamos la función <code>lmer</code> de la librería <code>lme4</code>.</p>
+<div id="modelo-con-interceptación-aleatoria" class="section level3" number="11.2.1">
+<h3>
+<span class="header-section-number">11.2.1</span> Modelo con interceptación aleatoria<a class="anchor" aria-label="anchor" href="#modelo-con-interceptaci%C3%B3n-aleatoria"><i class="fas fa-link"></i></a>
+</h3>
+<p>Los modelos de interceptación aleatoria son aquellos donde se considera que exite una relación lineal entre <span class="math inline">\(Y\)</span> y <span class="math inline">\(X\)</span> para cada una de las unidades experimentales, pero donde la recta asociada a cada sujeto parte de un punto diferente (interceptación aleatoria). En este caso consideramos como efecto aleatorio la variable <code>subject</code>. La expresión del modelo en <code>R</code> viene dada por:</p>
+<div class="sourceCode" id="cb611"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">lmer</span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="va">X</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">subject</span><span class="op">)</span>, <span class="va">datos</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="modelo-con-interceptación-y-pendiente-aleatoria" class="section level3" number="11.2.2">
+<h3>
+<span class="header-section-number">11.2.2</span> Modelo con interceptación y pendiente aleatoria<a class="anchor" aria-label="anchor" href="#modelo-con-interceptaci%C3%B3n-y-pendiente-aleatoria"><i class="fas fa-link"></i></a>
+</h3>
+<p>Los modelos de interceptación y pendiente aleatoria son aquellos donde se considera que exite una relación lineal entre <span class="math inline">\(Y\)</span> y <span class="math inline">\(X\)</span> para cada una de las unidades experimentales, pero donde la recta asociada a cada sujeto parte de un punto diferente (interceptación aleatoria) y tiene una pendiente distinta (pendiente aleatoria). Consideramos de nuevo el efecto aleatorio <code>subject</code>. La expresión del modelo en <code>R</code> viene dada por:</p>
+<div class="sourceCode" id="cb612"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">lmer</span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="va">X</span> <span class="op">+</span> <span class="op">(</span><span class="va">X</span> <span class="op">|</span> <span class="va">subject</span><span class="op">)</span>, <span class="va">datos</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="modelo-con-interceptación-aletaoria-y-efectos-anidados" class="section level3" number="11.2.3">
+<h3>
+<span class="header-section-number">11.2.3</span> Modelo con interceptación aletaoria y efectos anidados<a class="anchor" aria-label="anchor" href="#modelo-con-interceptaci%C3%B3n-aletaoria-y-efectos-anidados"><i class="fas fa-link"></i></a>
+</h3>
+<p>Los modelos de interceptación aleatoria y efectos anidados son aquellos donde se considera que exite una relación lineal entre <span class="math inline">\(Y\)</span> y <span class="math inline">\(X\)</span> para cada una de las unidades experimentales, pero donde la recta asociada a cada sujeto parte de un punto diferente (interceptación aleatoria) asociado un dos efectos aleatorios donde uno de ellos está anidado en el otro. En este caso consideramos como efecto aleatorio la variable <code>grupo</code> y dentro la variable <code>subject</code>, es decir los sujetos dentro de cada grupo pueden comportarse de forma diferente. La expresión del modelo en <code>R</code> viene dada por:</p>
+<div class="sourceCode" id="cb613"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">lmer</span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="va">X</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">grupo</span><span class="op">/</span><span class="va">subject</span><span class="op">)</span>, <span class="va">datos</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="modelo-con-interceptación-pendiente-aleatoria-y-efectos-anidados" class="section level3" number="11.2.4">
+<h3>
+<span class="header-section-number">11.2.4</span> Modelo con interceptación, pendiente aleatoria y efectos anidados<a class="anchor" aria-label="anchor" href="#modelo-con-interceptaci%C3%B3n-pendiente-aleatoria-y-efectos-anidados"><i class="fas fa-link"></i></a>
+</h3>
+<p>Como el modelo anterior pero considerando que las pendientes también son aleatorias. La expresión del modelo en <code>R</code> viene dada por:</p>
+<div class="sourceCode" id="cb614"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">lmer</span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="va">X</span> <span class="op">+</span> <span class="op">(</span><span class="va">X</span> <span class="op">|</span> <span class="va">grupo</span><span class="op">/</span><span class="va">subject</span><span class="op">)</span>, <span class="va">datos</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="modelo-con-interceptación-aletaoria-y-efectos-aditivos" class="section level3" number="11.2.5">
+<h3>
+<span class="header-section-number">11.2.5</span> Modelo con interceptación aletaoria y efectos aditivos<a class="anchor" aria-label="anchor" href="#modelo-con-interceptaci%C3%B3n-aletaoria-y-efectos-aditivos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Los modelos de interceptación aleatoria y efectos aditivos son aquellos donde se considera que exite una relación lineal entre <span class="math inline">\(Y\)</span> y <span class="math inline">\(X\)</span> para cada una de las unidades experimentales, pero donde la recta asociada a cada sujeto parte de un punto diferente (interceptación aleatoria) asociado a la suma de varios efectos aletorios. En este caso consideramos como efectos aleatorios la variable <code>grupo</code> y la variable <code>muestra</code>, es decir se suma el efcto del grupo al efecto de la muestra. La expresión del modelo en <code>R</code> viene dada por:</p>
+<div class="sourceCode" id="cb615"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">lmer</span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="va">X</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">grupo</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">muestra</span><span class="op">)</span>, <span class="va">datos</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="ajuste-y-comparación-de-modelos" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Ajuste y comparación de modelos<a class="anchor" aria-label="anchor" href="#ajuste-y-comparaci%C3%B3n-de-modelos"><i class="fas fa-link"></i></a>
+</h2>
+<p>En este apartado obtenemos el ajuste de los diferentes modelos que podemos plantear para cada uno de los ejemplos presentados en apartados anteriores. En concreto, veremos la estimación e interpretación de las componentes de cada uno de los modelos planteados y veremos como comparalos utilizando el test <code>F</code>.</p>
+<div id="estudio-del-sueño-1" class="section level3" number="11.3.1">
+<h3>
+<span class="header-section-number">11.3.1</span> Estudio del sueño<a class="anchor" aria-label="anchor" href="#estudio-del-sue%C3%B1o-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para los datos de estudio de sueño, y la vista de los gráficos realizados podemos plantear los modelos siguientes:</p>
+<ul>
+<li>Modelo sin efecto aletorio (Reaction vs Days).</li>
+<li>Modelo con interceptación aletoria por sujeto. Ajustamos una recta para cada sujeto donde partímos de interceptaciones diferentes.</li>
+<li>Modelo con interceptación y pendientes aletorias por sujeto. Ajustamos una recta para cada sujeto donde partímos de interceptaciones diferentes y la evolución (pendiente) para cada uno de ellos puede ser diferente.</li>
+</ul>
+<div class="sourceCode" id="cb616"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span>, <span class="va">sleepstudy</span><span class="op">)</span>
+<span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, <span class="va">sleepstudy</span><span class="op">)</span>
+<span class="va">fit3</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="va">Days</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, <span class="va">sleepstudy</span><span class="op">)</span></code></pre></div>
+<p>Analizamos individualmente cada uno de los modelos antes de proceder con una comparación formal.</p>
+<div class="sourceCode" id="cb617"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span> </code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Reaction ~ Days, data = sleepstudy)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -110.848  -27.483    1.546   26.142  139.953 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  251.405      6.610  38.033  &lt; 2e-16 ***
+## Days          10.467      1.238   8.454 9.89e-15 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 47.71 on 178 degrees of freedom
+## Multiple R-squared:  0.2865, Adjusted R-squared:  0.2825 
+## F-statistic: 71.46 on 1 and 178 DF,  p-value: 9.894e-15</code></pre>
+<p>El ajuste obtenido nos proporciona la recta:</p>
+<p><span class="math display">\[\widehat{Reaction} = 251.41 + 10.47*Days\]</span></p>
+<p>mostrando que el tiempo de reacción aumenta con el paso de los días y la reducción del número de horas de sueño, mientras que la desviación típica del error se sitúa en el valor 47.71, lo que indica que la parte sin explicar del modelo es muy superior a la parte explicada (<span class="math inline">\(R^2\)</span> pequeño). La solución gráfica de este modelo viene dada por:</p>
+<div class="sourceCode" id="cb619"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sleepstudy</span><span class="op">$</span><span class="va">predic1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sleepstudy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Days</span>, y <span class="op">=</span> <span class="va">Reaction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>cex <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Days</span>,<span class="va">predic1</span><span class="op">)</span>, col <span class="op">=</span><span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Días"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Tiempo de reacción"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm020-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Para el modelo con interceptación aleatoria (fit2) tenemos que:</p>
+<div class="sourceCode" id="cb620"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span> </code></pre></div>
+<pre><code>## Linear mixed model fit by REML ['lmerMod']
+## Formula: Reaction ~ Days + (1 | Subject)
+##    Data: sleepstudy
+## 
+## REML criterion at convergence: 1786.5
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -3.2257 -0.5529  0.0109  0.5188  4.2506 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev.
+##  Subject  (Intercept) 1378.2   37.12   
+##  Residual              960.5   30.99   
+## Number of obs: 180, groups:  Subject, 18
+## 
+## Fixed effects:
+##             Estimate Std. Error t value
+## (Intercept) 251.4051     9.7467   25.79
+## Days         10.4673     0.8042   13.02
+## 
+## Correlation of Fixed Effects:
+##      (Intr)
+## Days -0.371</code></pre>
+<p>En la parte de efectos fijos (comportamiento promedio de todos los sujetos) podemos ver que el modelo ajustado viene dado por la misma expresión que en el modelo anterior:</p>
+<p><span class="math display">\[\widehat{Reaction} = 251.41 + 10.47*Days\]</span></p>
+<p>mientras que con respecto a los efectos aleatorios podemos ver que la desviación típica residual del error se ha reducido hasta 30.99, y la desviación tipica asociada al efecto alaetorio de la interceptación es de 37.12, es decir, explicamos el 54.5% de la variabilidad total observada a través de la introducción del efecto aleatorio lo que redundará en mejores estimaciones y un modelo para cada sujeto.</p>
+<p>Representamos loe efectos fijos y aleatorios asociados a cada sujeto (ahora tenemos un modelo individual por sujeto).</p>
+<div class="sourceCode" id="cb622"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Efectos fijos</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/graphics-defunct.html">dotplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## $Subject</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm022-1.png" width="95%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb624"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Efectos aleatorios</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/graphics-defunct.html">dotplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/nlme/man/random.effects.html">ranef</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## $Subject</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm022-2.png" width="95%" style="display: block; margin: auto;"></div>
+<p>En el gráfico de efectos fijos podemos ver que el coeficiente asociado a Days es constante, mientars que la interceptación es diferente por sujeto, dado que hemos introducido un efecto aleatorio sobre dicho coeficiente. Este efecto se ve claramente en el gráfico de efectos aleatorios donde podemos ver los cambios en la interceptación de cada uno de los sujetos, indicando que cada sujeto parte de un punto distinto.</p>
+<p>Veamos ahora la predicción del modelo:</p>
+<div class="sourceCode" id="cb626"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sleepstudy</span><span class="op">$</span><span class="va">predic2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sleepstudy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Days</span>, y <span class="op">=</span> <span class="va">Reaction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>cex <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Days</span>,<span class="va">predic2</span><span class="op">)</span>, col <span class="op">=</span><span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Días"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Tiempo de reacción"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Subject</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm023-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Podemos ver que todas las rectas de predicción tienen la misma pendiente pero parten de interceptaciones distintas.</p>
+<p>Para el modelo con interceptación y pendiente aleatoria (fit3) tenemos que:</p>
+<div class="sourceCode" id="cb627"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span> </code></pre></div>
+<pre><code>## Linear mixed model fit by REML ['lmerMod']
+## Formula: Reaction ~ Days + (Days | Subject)
+##    Data: sleepstudy
+## 
+## REML criterion at convergence: 1743.6
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -3.9536 -0.4634  0.0231  0.4634  5.1793 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev. Corr
+##  Subject  (Intercept) 612.10   24.741       
+##           Days         35.07    5.922   0.07
+##  Residual             654.94   25.592       
+## Number of obs: 180, groups:  Subject, 18
+## 
+## Fixed effects:
+##             Estimate Std. Error t value
+## (Intercept)  251.405      6.825  36.838
+## Days          10.467      1.546   6.771
+## 
+## Correlation of Fixed Effects:
+##      (Intr)
+## Days -0.138</code></pre>
+<p>De nuevo la ecaución asociada con los efectos fijos es la misama que en los modelos anteriores pero podemos ver que la descomposición de la variabilidad asociada con las componentes aleatorias nos indica que la variabilidad asociada con el error es 25.592, mientras que con respecto a la interceptación es de 24.741, y la pendiente de 5.922. Por tanto, la varaibildiad asociada con los efctos aletaorios reepresenta más del 50% de la varaibilidad observada, lo que indica que ambos efectos son necesarios, ya que mejoramos los resultados del modelo anterior. También podemos ver que los efectos aleatorios pueden considerarse independientes ya que su correlación es de 0.07.</p>
+<p>Representamos loe efectos fijos y aleatorios asociados a cada sujeto (ahora tenemos un modelo individual por sujeto).</p>
+<div class="sourceCode" id="cb629"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Efectos fijos</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/graphics-defunct.html">dotplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## $Subject</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm025-1.png" width="95%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb631"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Efectos aleatorios</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/graphics-defunct.html">dotplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/nlme/man/random.effects.html">ranef</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## $Subject</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm025-2.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Podemos ver como la introducción de ambos efectos aleatorios nos porporcionan interceptaciones y pendientes distintas para cada sujeto. De hecho, podemos ver que hay sujetos con pendientes que son prácticamente cero, y otros donde la pendiente es muy pronunciada (vinculada con los efectos aletorios postivos más grandes). El gráfico de predicción para este modelo viene dado por:</p>
+<div class="sourceCode" id="cb633"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sleepstudy</span><span class="op">$</span><span class="va">predic3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sleepstudy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Days</span>, y <span class="op">=</span> <span class="va">Reaction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>cex <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Days</span>,<span class="va">predic3</span><span class="op">)</span>, col <span class="op">=</span><span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Días"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Tiempo de reacción"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Subject</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm026-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>En el gráfico se aprecia claramente que las rectas estimadas por cada sujeto varían tanto en interceptación como en pendiente.</p>
+<p>Podemos comparar los modelos obtenidos medainte el estadístico AIC, donde podremos ver que el mejor modelo es el fit3 (menor valor de AIC):</p>
+<div class="sourceCode" id="cb634"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/AIC.html">AIC</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/stats/AIC.html">AIC</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/stats/AIC.html">AIC</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1906.293</code></pre>
+<pre><code>## [1] 1794.465</code></pre>
+<pre><code>## [1] 1755.628</code></pre>
+<p>Por último, podemos comparar los modelos de efectos aleatorios para determinar estadísticamente si es preferible el modelo con pendeientes aleatorias frente al modelo sin pendientes aleatorias.</p>
+<div class="sourceCode" id="cb638"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">fit2</span>, <span class="va">fit3</span><span class="op">)</span></code></pre></div>
+<pre><code>## refitting model(s) with ML (instead of REML)</code></pre>
+<pre><code>## Data: sleepstudy
+## Models:
+## fit2: Reaction ~ Days + (1 | Subject)
+## fit3: Reaction ~ Days + (Days | Subject)
+##      npar    AIC    BIC  logLik deviance  Chisq Df Pr(&gt;Chisq)    
+## fit2    4 1802.1 1814.8 -897.04   1794.1                         
+## fit3    6 1763.9 1783.1 -875.97   1751.9 42.139  2  7.072e-10 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<p>El p-valor obtenido muestra que es necesario considerar el modelo más complejo (interceptaciones y pendientes aleatorias).</p>
+</div>
+<div id="estudio-de-ortodoncia-1" class="section level3" number="11.3.2">
+<h3>
+<span class="header-section-number">11.3.2</span> Estudio de ortodoncia<a class="anchor" aria-label="anchor" href="#estudio-de-ortodoncia-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para estos datos queremos explicar el comportamiento de la distancia en función de la edad, teniendo en cuenta que el crecimiento para cada sujeto puede ser diferente. Dicho efecto puede actuar sobre la interceptación, o sobre la interceptación y la pendiente. Consideramos los modelos:</p>
+<div class="sourceCode" id="cb641"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">distance</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, <span class="va">Orthodont</span><span class="op">)</span>
+<span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">distance</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="op">(</span><span class="va">age</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, <span class="va">Orthodont</span><span class="op">)</span></code></pre></div>
+<p>Comparamos ambos modelos antes de proceder con su análisis</p>
+<div class="sourceCode" id="cb642"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">fit1</span>, <span class="va">fit2</span><span class="op">)</span></code></pre></div>
+<pre><code>## refitting model(s) with ML (instead of REML)</code></pre>
+<pre><code>## Data: Orthodont
+## Models:
+## fit1: distance ~ age + (1 | Subject)
+## fit2: distance ~ age + (age | Subject)
+##      npar    AIC    BIC  logLik deviance  Chisq Df Pr(&gt;Chisq)
+## fit1    4 451.39 462.12 -221.69   443.39                     
+## fit2    6 451.21 467.30 -219.61   439.21 4.1779  2     0.1238</code></pre>
+<p>Dado que el p-valor resulta no significativo podemos considerar que ambos modelos son iguales y optamos por quedarnos con el más sencillo, que sólo contempla un efecto aleatorio sobre la interceptación. Analizamos el modelo considerado:</p>
+<div class="sourceCode" id="cb645"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML ['lmerMod']
+## Formula: distance ~ age + (1 | Subject)
+##    Data: Orthodont
+## 
+## REML criterion at convergence: 447
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -3.6645 -0.5351 -0.0129  0.4874  3.7218 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev.
+##  Subject  (Intercept) 4.472    2.115   
+##  Residual             2.049    1.432   
+## Number of obs: 108, groups:  Subject, 27
+## 
+## Fixed effects:
+##             Estimate Std. Error t value
+## (Intercept) 16.76111    0.80240   20.89
+## age          0.66019    0.06161   10.72
+## 
+## Correlation of Fixed Effects:
+##     (Intr)
+## age -0.845</code></pre>
+<p>El modelo para el comportamiento promedio (obtenido mediante los efectos fijos del modelo) viene dado por:</p>
+<p><span class="math display">\[\widehat{distance} = 16.76 + 0.66*age\]</span> Por otro lado, la variabilidad asociada con el efecto aletorio considerado (2.12) es superior a la asociado con los residuos (1.43), con lo que la consideración del efecto aletorio es muy conveniente en este modelo, ya que reducimos sensiblemente el error aleatorio del modelo.</p>
+<p>Representamos loe efectos fijos y aleatorios asociados a cada sujeto (ahora tenemos un modelo individual por sujeto).</p>
+<div class="sourceCode" id="cb647"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Efectos fijos</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/graphics-defunct.html">dotplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## $Subject</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm032-1.png" width="95%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb649"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Efectos aleatorios</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/graphics-defunct.html">dotplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/nlme/man/random.effects.html">ranef</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## $Subject</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm032-2.png" width="95%" style="display: block; margin: auto;"></div>
+<p>En los efectos aletorios obtenidos podemos ver las diferencias entre los diferentes sujetos del estudio, con sujetos con valores muy bajos y otros con valores muy altos.</p>
+<p>El gráfico de predicción para este modelo viene dado por:</p>
+<div class="sourceCode" id="cb651"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Orthodont</span><span class="op">$</span><span class="va">predic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Orthodont</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">distance</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>cex <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">predic</span><span class="op">)</span>, col <span class="op">=</span><span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Edad"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Distancia"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Subject</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm033-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Todas las rectas estimadas tienen la msima pendiente pero parten de puntos iniciales diferentes.</p>
+</div>
+<div id="estudio-de-pixel-1" class="section level3" number="11.3.3">
+<h3>
+<span class="header-section-number">11.3.3</span> Estudio de pixel<a class="anchor" aria-label="anchor" href="#estudio-de-pixel-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para estos datos queremos explicar el comportamiento de la intensidad del pixel en función del día, y consideramos el efecto aletorio del perro y del lado del perro muestreado como un efectoa anidado dentro de él. Además como la tendencia media no se correspondía exactamente con una recta sino más bien como un polinomio en gtado dos para el día, consideraremos también la incorporación de este efecto. Los modelos considerados son:</p>
+<div class="sourceCode" id="cb652"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Modelo lineal con interceptación aleatoria</span>
+<span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">pixel</span> <span class="op">~</span> <span class="va">day</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Dog</span><span class="op">/</span><span class="va">Side</span><span class="op">)</span>, <span class="va">Pixel</span><span class="op">)</span>
+<span class="co"># Modelo lineal con interceptación y pendiente aleatoria</span>
+<span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">pixel</span> <span class="op">~</span> <span class="va">day</span> <span class="op">+</span> <span class="op">(</span><span class="va">day</span> <span class="op">|</span> <span class="va">Dog</span><span class="op">/</span><span class="va">Side</span><span class="op">)</span>, <span class="va">Pixel</span><span class="op">)</span></code></pre></div>
+<pre><code>## boundary (singular) fit: see help('isSingular')</code></pre>
+<div class="sourceCode" id="cb654"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Modelo polinómico con interceptación aleatoria</span>
+<span class="va">fit3</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">pixel</span> <span class="op">~</span> <span class="va">day</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">day</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Dog</span><span class="op">/</span><span class="va">Side</span><span class="op">)</span>, <span class="va">Pixel</span><span class="op">)</span>
+<span class="co"># Modelo polinómico con interceptación y pendiente aleatoria</span>
+<span class="va">fit4</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">pixel</span> <span class="op">~</span> <span class="va">day</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">day</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="va">day</span> <span class="op">|</span> <span class="va">Dog</span><span class="op">/</span><span class="va">Side</span><span class="op">)</span>, <span class="va">Pixel</span><span class="op">)</span></code></pre></div>
+<pre><code>## boundary (singular) fit: see help('isSingular')</code></pre>
+<p>En este caso no podemos comparar todos los modelos de golpe mediante el test F porque no están anidados entre ellos. Utilizamos el estadístico AIC para determinar el mejor de ellos:</p>
+<div class="sourceCode" id="cb656"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/AIC.html">AIC</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>;<span class="fu"><a href="https://rdrr.io/r/stats/AIC.html">AIC</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span>;<span class="fu"><a href="https://rdrr.io/r/stats/AIC.html">AIC</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span>;<span class="fu"><a href="https://rdrr.io/r/stats/AIC.html">AIC</a></span><span class="op">(</span><span class="va">fit4</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 899.5381</code></pre>
+<pre><code>## [1] 908.8714</code></pre>
+<pre><code>## [1] 876.839</code></pre>
+<pre><code>## [1] 842.0051</code></pre>
+<p>El valor más bajo se obtiene para el modelo polinómico con interceptación y pendiente aleatoria. Analizamos el modelo obtenido:</p>
+<div class="sourceCode" id="cb661"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit4</span><span class="op">)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML ['lmerMod']
+## Formula: pixel ~ day + I(day^2) + (day | Dog/Side)
+##    Data: Pixel
+## 
+## REML criterion at convergence: 822
+## 
+## Scaled residuals: 
+##      Min       1Q   Median       3Q      Max 
+## -2.95926 -0.52629 -0.00073  0.47547  2.87733 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev. Corr 
+##  Side:Dog (Intercept) 108.2123 10.4025       
+##           day           0.9771  0.9885  1.00 
+##  Dog      (Intercept) 894.1972 29.9031       
+##           day           2.9232  1.7097  -0.67
+##  Residual              75.7829  8.7053       
+## Number of obs: 102, groups:  Side:Dog, 20; Dog, 10
+## 
+## Fixed effects:
+##              Estimate Std. Error t value
+## (Intercept) 1073.3610    10.1563 105.684
+## day            6.1309     0.8652   7.086
+## I(day^2)      -0.3679     0.0329 -11.182
+## 
+## Correlation of Fixed Effects:
+##          (Intr) day   
+## day      -0.516       
+## I(day^2)  0.181 -0.657
+## optimizer (nloptwrap) convergence code: 0 (OK)
+## boundary (singular) fit: see help('isSingular')</code></pre>
+<p>El modelo para la pobalción media viene dado por:</p>
+<p><span class="math display">\[\widehat{pixel} = 1073.36 + 6.13*Day - 0.37*Day^2\]</span></p>
+<p>Mientars que podemos ver como la suma de las variabildiades asociadas a todos los efectos aleatorios es muy superior a la variabilidad residual. Las variabildiades más grandes corresponden a la interceptación en ambos efectos (Dog y Dog/Side), indicando que la mayor diferencia se da entre los diferentes perros, pero que también el lado escaneado es relevante. Los efectos sobre las pendientes son mucho más pequeños debido a que la consideración del polinomio sobre la tendencia media hace que dicho efecto sea mucho más pequeño.</p>
+<p>Representamos los efectos aleatorios asociados a cada perro.</p>
+<div class="sourceCode" id="cb663"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Efectos aleatorios</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/graphics-defunct.html">dotplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/nlme/man/random.effects.html">ranef</a></span><span class="op">(</span><span class="va">fit4</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## $`Side:Dog`</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm037-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## 
+## $Dog</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm037-2.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Por último vemos la predicción conseguida:</p>
+<div class="sourceCode" id="cb666"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Pixel</span><span class="op">$</span><span class="va">predic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit4</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Pixel</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">day</span>, y <span class="op">=</span> <span class="va">pixel</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">Side</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">day</span>, <span class="va">predic</span>, col <span class="op">=</span> <span class="va">Side</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Día"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"pixel"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Dog</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm038-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>¿qué podemos decir sobre la predicción obtenida?</p>
+</div>
+<div id="estudio-de-avena" class="section level3" number="11.3.4">
+<h3>
+<span class="header-section-number">11.3.4</span> Estudio de avena<a class="anchor" aria-label="anchor" href="#estudio-de-avena"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para estos datos queremos explicar el comportamiento del rendimiento en función de la concentración de nitrógeno y la variedad teniendo en cuenta el diseño experimental que establece un efecto aleatorio por Bloque y la variedad dentro del bloque. En la parte de eectos fijos debemos tener en cuenta que la concentración de Nitrógeno es una factor ordenado, y que debemos valorar la posible interacción entre la varaiedad y la concentración de nitrógeno. Para idicar que tenemos un factor ordenado utilizaremos la función <code>ordered</code>. Consideramos los modelo siguientes:</p>
+<div class="sourceCode" id="cb667"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Modelo lineal sin interacción con interceptación aleatoria</span>
+<span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">yield</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span><span class="op">(</span><span class="va">nitro</span><span class="op">)</span> <span class="op">+</span> <span class="va">Variety</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Block</span><span class="op">/</span><span class="va">Variety</span><span class="op">)</span>, <span class="va">Oats</span><span class="op">)</span>
+<span class="co"># Modelo lineal con interacción con interceptación aleatoria</span>
+<span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">yield</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span><span class="op">(</span><span class="va">nitro</span><span class="op">)</span> <span class="op">*</span> <span class="va">Variety</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Block</span><span class="op">/</span><span class="va">Variety</span><span class="op">)</span>, <span class="va">Oats</span><span class="op">)</span></code></pre></div>
+<p>Valoramos con el test F ambos modelos:</p>
+<div class="sourceCode" id="cb668"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">fit1</span>, <span class="va">fit2</span><span class="op">)</span></code></pre></div>
+<pre><code>## refitting model(s) with ML (instead of REML)</code></pre>
+<pre><code>## Data: Oats
+## Models:
+## fit1: yield ~ ordered(nitro) + Variety + (1 | Block/Variety)
+## fit2: yield ~ ordered(nitro) * Variety + (1 | Block/Variety)
+##      npar    AIC    BIC  logLik deviance  Chisq Df Pr(&gt;Chisq)
+## fit1    9 616.04 636.53 -299.02   598.04                     
+## fit2   15 625.91 660.06 -297.95   595.91 2.1375  6     0.9066</code></pre>
+<p>Dado que el p-valor no resulta significativo nos quedamos con el modelo más simple que no considera el efecto de interacción. Analizamos el modelo obtenido:</p>
+<div class="sourceCode" id="cb671"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML ['lmerMod']
+## Formula: yield ~ ordered(nitro) + Variety + (1 | Block/Variety)
+##    Data: Oats
+## 
+## REML criterion at convergence: 569.5
+## 
+## Scaled residuals: 
+##      Min       1Q   Median       3Q      Max 
+## -1.84135 -0.66280 -0.06694  0.63822  1.66067 
+## 
+## Random effects:
+##  Groups        Name        Variance Std.Dev.
+##  Variety:Block (Intercept) 109.7    10.47   
+##  Block         (Intercept) 214.5    14.65   
+##  Residual                  162.6    12.75   
+## Number of obs: 72, groups:  Variety:Block, 18; Block, 6
+## 
+## Fixed effects:
+##                   Estimate Std. Error t value
+## (Intercept)       104.5000     7.7975  13.402
+## ordered(nitro).L   32.9447     3.0052  10.963
+## ordered(nitro).Q   -5.1667     3.0052  -1.719
+## ordered(nitro).C   -0.4472     3.0052  -0.149
+## VarietyMarvellous   5.2917     7.0789   0.748
+## VarietyVictory     -6.8750     7.0789  -0.971
+## 
+## Correlation of Fixed Effects:
+##             (Intr) or().L or().Q or().C VrtyMr
+## ordrd(nt).L  0.000                            
+## ordrd(nt).Q  0.000  0.000                     
+## ordrd(nt).C  0.000  0.000  0.000              
+## VartyMrvlls -0.454  0.000  0.000  0.000       
+## VarityVctry -0.454  0.000  0.000  0.000  0.500</code></pre>
+<p>Como tenemos cuatro dosis nitrógeno el modelo ajusta tres efectos polinómicos asociados con dicho efecto (L = lineal, Q = cuadrático, y C = cúbico). Además podemos ver las diferencias entre las tres variaedades consideradas. En cuanto a los efectos aletorios podemos ver que la varainza residual es la mitad de las varainzas que obtenemos al introducir los efectos aleatorios.</p>
+<p>En este caso vamos a ver directamente la predicción del modelo obtenida:</p>
+<div class="sourceCode" id="cb673"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Oats</span><span class="op">$</span><span class="va">predic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oats</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">nitro</span>, y <span class="op">=</span> <span class="va">yield</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">Variety</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">nitro</span>, <span class="va">predic</span>, col <span class="op">=</span> <span class="va">Variety</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Concentración"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Rendimiento"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Block</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm042-1.png" width="95%" style="display: block; margin: auto;"></div>
+</div>
+<div id="estudio-de-penicilina" class="section level3" number="11.3.5">
+<h3>
+<span class="header-section-number">11.3.5</span> Estudio de penicilina<a class="anchor" aria-label="anchor" href="#estudio-de-penicilina"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para estos datos no existe un variable predictora definida ya que tanto sample como plate corresponden al diseño experimental pero pensamos que incidan directamente en la respuesta. que trata d explicar el comportamiento de la respuesta. Las variabilidades consideradas son las asociadas con la estructura experimental y en este caso sólo piden influir en el efecto común dado que no hay variables predictora.</p>
+<div class="sourceCode" id="cb674"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">diameter</span> <span class="op">~</span> <span class="fl">1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">plate</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">sample</span><span class="op">)</span>, <span class="va">Penicillin</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML ['lmerMod']
+## Formula: diameter ~ 1 + (1 | plate) + (1 | sample)
+##    Data: Penicillin
+## 
+## REML criterion at convergence: 330.9
+## 
+## Scaled residuals: 
+##      Min       1Q   Median       3Q      Max 
+## -2.07923 -0.67140  0.06292  0.58377  2.97959 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev.
+##  plate    (Intercept) 0.7169   0.8467  
+##  sample   (Intercept) 3.7311   1.9316  
+##  Residual             0.3024   0.5499  
+## Number of obs: 144, groups:  plate, 24; sample, 6
+## 
+## Fixed effects:
+##             Estimate Std. Error t value
+## (Intercept)  22.9722     0.8086   28.41</code></pre>
+<p>¿cómo analizamos los resultados de este modelo?</p>
+<div class="sourceCode" id="cb676"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># gráfico de predicción</span>
+<span class="va">Penicillin</span><span class="op">$</span><span class="va">predic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Penicillin</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample</span>, y <span class="op">=</span> <span class="va">diameter</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample</span>, y <span class="op">=</span> <span class="va">predic</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Sample"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Diameter"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">plate</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm044-1.png" width="95%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="diagnóstico-3" class="section level2" number="11.4">
+<h2>
+<span class="header-section-number">11.4</span> Diagnóstico<a class="anchor" aria-label="anchor" href="#diagn%C3%B3stico-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>Las hipótesis sobre los residuos de este tipo d emodelos son las mismas que sobre el resto de modelos lineales (independencia, linealidad y normalidad). En este caso utilizamos procedimientos gráficos únicamente. Mostramos su uso mediante un ejemplo y dejamos el resto como ejercicios prácticos. Utilizamos los datos del sueño tomando el modelo obtenido en el punto anterior:</p>
+<div class="sourceCode" id="cb677"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">Reaction</span> <span class="op">~</span> <span class="va">Days</span> <span class="op">+</span> <span class="op">(</span><span class="va">Days</span> <span class="op">|</span> <span class="va">Subject</span><span class="op">)</span>, <span class="va">sleepstudy</span><span class="op">)</span></code></pre></div>
+<p>Obtenemos los gráficos de linealidad y normalidad para determianr si se verifican las hipótesis del modelo:</p>
+<div class="sourceCode" id="cb678"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">fit</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"p"</span>, <span class="st">"smooth"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm046-1.png" width="95%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb679"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">qqmath</span><span class="op">(</span><span class="va">fit</span>, id <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm046-2.png" width="95%" style="display: block; margin: auto;"></div>
+<p>En el primer gráfico se aprecía gran aleatoriedad en los residuos pero con algunos valores bastante grandes. Se podría analizar de nuevo este modelo prescindiendo de esas observaciones. En el segundo gráfico vemos como la distribución de los puntos es alrededor de la hipótetica linea de normalidad. Parece que se verifican ambas hipótesis y por tanto el modelo considerado es válido.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></div>
+<div class="next"><a href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mmixed"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
+<li>
+<a class="nav-link" href="#ejemplos-13"><span class="header-section-number">11.1</span> Ejemplos</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estudio-del-sue%C3%B1o"><span class="header-section-number">11.1.1</span> Estudio del sueño</a></li>
+<li><a class="nav-link" href="#estudio-de-ortodoncia"><span class="header-section-number">11.1.2</span> Estudio de ortodoncia</a></li>
+<li><a class="nav-link" href="#estudio-de-pixel"><span class="header-section-number">11.1.3</span> Estudio de pixel</a></li>
+<li><a class="nav-link" href="#estudio-avena"><span class="header-section-number">11.1.4</span> Estudio Avena</a></li>
+<li><a class="nav-link" href="#estudio-penicilina"><span class="header-section-number">11.1.5</span> Estudio Penicilina</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#modelos-te%C3%B3ricos"><span class="header-section-number">11.2</span> Modelos teóricos</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#modelo-con-interceptaci%C3%B3n-aleatoria"><span class="header-section-number">11.2.1</span> Modelo con interceptación aleatoria</a></li>
+<li><a class="nav-link" href="#modelo-con-interceptaci%C3%B3n-y-pendiente-aleatoria"><span class="header-section-number">11.2.2</span> Modelo con interceptación y pendiente aleatoria</a></li>
+<li><a class="nav-link" href="#modelo-con-interceptaci%C3%B3n-aletaoria-y-efectos-anidados"><span class="header-section-number">11.2.3</span> Modelo con interceptación aletaoria y efectos anidados</a></li>
+<li><a class="nav-link" href="#modelo-con-interceptaci%C3%B3n-pendiente-aleatoria-y-efectos-anidados"><span class="header-section-number">11.2.4</span> Modelo con interceptación, pendiente aleatoria y efectos anidados</a></li>
+<li><a class="nav-link" href="#modelo-con-interceptaci%C3%B3n-aletaoria-y-efectos-aditivos"><span class="header-section-number">11.2.5</span> Modelo con interceptación aletaoria y efectos aditivos</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#ajuste-y-comparaci%C3%B3n-de-modelos"><span class="header-section-number">11.3</span> Ajuste y comparación de modelos</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estudio-del-sue%C3%B1o-1"><span class="header-section-number">11.3.1</span> Estudio del sueño</a></li>
+<li><a class="nav-link" href="#estudio-de-ortodoncia-1"><span class="header-section-number">11.3.2</span> Estudio de ortodoncia</a></li>
+<li><a class="nav-link" href="#estudio-de-pixel-1"><span class="header-section-number">11.3.3</span> Estudio de pixel</a></li>
+<li><a class="nav-link" href="#estudio-de-avena"><span class="header-section-number">11.3.4</span> Estudio de avena</a></li>
+<li><a class="nav-link" href="#estudio-de-penicilina"><span class="header-section-number">11.3.5</span> Estudio de penicilina</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#diagn%C3%B3stico-3"><span class="header-section-number">11.4</span> Diagnóstico</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
