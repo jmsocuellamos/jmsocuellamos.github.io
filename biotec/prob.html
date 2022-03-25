@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Unidad 3 Probabilidad | Modelos Estadísticos</title>
+<meta name="description" content="En esta unidad introducimos los conceptos básicos de varaible aleatoria, distribución de probabilidad, y las variables aleatorias más habituales en la investigación científica. No se trata de una...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Unidad 3 Probabilidad | Modelos Estadísticos">
+<meta property="og:type" content="book">
+<meta property="og:description" content="En esta unidad introducimos los conceptos básicos de varaible aleatoria, distribución de probabilidad, y las variables aleatorias más habituales en la investigación científica. No se trata de una...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unidad 3 Probabilidad | Modelos Estadísticos">
+<meta name="twitter:description" content="En esta unidad introducimos los conceptos básicos de varaible aleatoria, distribución de probabilidad, y las variables aleatorias más habituales en la investigación científica. No se trata de una...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Modelos Estadísticos</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Bienvenidos</a></li>
+<li><a class="" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
+<li><a class="" href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></li>
+<li><a class="active" href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></li>
+<li><a class="" href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
+<li><a class="" href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
+<li><a class="" href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></li>
+<li><a class="" href="rlm.html"><span class="header-section-number">7</span> Regresión Lineal Múltiple y Polinómica</a></li>
+<li><a class="" href="anova.html"><span class="header-section-number">8</span> Modelos ANOVA</a></li>
+<li><a class="" href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></li>
+<li><a class="" href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
+<li><a class="" href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
+<li><a class="" href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
+<li><a class="" href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></li>
+<li><a class="" href="glmpoisson.html"><span class="header-section-number">14</span> GLM Poisson</a></li>
+<li><a class="" href="glmtablascont.html"><span class="header-section-number">15</span> GLM para tablas de contingencia</a></li>
+<li><a class="" href="glmsuperv.html"><span class="header-section-number">16</span> GLM para datos de supervivencia</a></li>
+<li><a class="" href="referencias.html">Referencias</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="prob" class="section level1" number="3">
+<h1>
+<span class="header-section-number">Unidad 3</span> Probabilidad<a class="anchor" aria-label="anchor" href="#prob"><i class="fas fa-link"></i></a>
+</h1>
+<p>En esta unidad introducimos los conceptos básicos de varaible aleatoria, distribución de probabilidad, y las variables aleatorias más habituales en la investigación científica. No se trata de una unidad sobre probabilidad (para lo que se recomienda acudir a libros con mayores desarrollos), sino una unidad práctica de conocimiento básico de las distribuciones de probabilidad que juegan un papel relevante en los procesos de inferencia y en la cnstruccion de modelos estadísticos que veremos en las unidades siguientes.</p>
+<div id="prob-intro" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Introducción<a class="anchor" aria-label="anchor" href="#prob-intro"><i class="fas fa-link"></i></a>
+</h2>
+<p>La probabilidad o el azar juega un papel muy importante en el razonamiento científico. Ejemplos de procesos biológicos donde la probabilidad juega un papel relevante son: i) la segregación de cromosomas en la formación de gametos o la ocurrencia de mutaciones genéticas. En otras ocasiones es el propio diseño experimental el que introduce la aleatoriedad como por ejemplo cuando dividimos un grupo de sujetos en función del tratamiento al que se van a ver sometidos.</p>
+<p>Las conclusiones del análisis estadístico de datos se expresan en muchas ocasiones en términos de probabilidad, ya que implícitamente se está introduciendo la aleatoriedad debida a la muestra de sujetos con el que estamos trabajando, y que generalmente no coincide con toda la población bajo estudio.</p>
+<p>En las unidades anteriores hemos visto que el estudio estadístico se centra en la información recogida sobre alguna variable relacionada directamente con el objetivo u objetivos del diseño experimental planteado. Un hecho cierto es que debido a la aleatoriedad e los sujetos resulta imposible saber con certeza el valor de dicha variable para un sujeto en particular. Se introduce de esta forma el concepto de <strong>variable aleatoria</strong> que hace referencia a todas aquellas en las que intrínsecamente se reconoce variabilidad en la respuesta de los sujetos.</p>
+<p>En este punto introducimos algo de notación que nos resultará de utilidad de aquí en adelante. Las variables aleatorias siempre se denotan en mayúsculas, <span class="math inline">\(Y\)</span>, mientras que los valores observados para un conjunto de sujetos en esa variable (muestra) se denotan por minúsculas e indicando la posición que el sujeto ocupa en el banco de datos <span class="math inline">\(y_1,y_2,...,y_n\)</span>.</p>
+<p>Por razones obvias se definen entonces las variables aleatorias discretas y las variables aleatorias continuas. Una variable discreta es aquella que sólo puede tomar un número finito o contable de posibles resultados, de forma que es posible conocer de antemano cuales son los posibles resultados que se pueden observar. Una variable continua es aquella que puede tomar infinitos valores numéricos, y por tanto es imposible identificar cada uno de los posibles valores de la variable, aunque si es posible conocer el rango de posibles resultados que se pueden observar. De forma natural se puede establecer una equivalencia entre la definición de variables categóricas y numéricas introducidas en unidades anteriores con las variables discretas y continuas.</p>
+<p>Se puede describir de forma completa una variable aleatoria sin más que especificar la probabilidad asociada a cada uno de sus posibles valores. Esta especificación se conoce con el nombre de <strong>distribución de probabilidad</strong>. Sin embargo, la forma en que se puede especificar dicha distribución de probabilidad depende del tipo de variable aleatoria con la que estemos trabajando. En el caso de variables discretas basta con determinar la probabilidad de cada uno de los posibles resultados observables de la variable, pero no ocurre así en las variables continuas donde es imposible conocer todos sus posibles valores.</p>
+</div>
+<div id="distribuciones-modelos" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Distribuciones-Modelos<a class="anchor" aria-label="anchor" href="#distribuciones-modelos"><i class="fas fa-link"></i></a>
+</h2>
+<p>En la Unidad anterior se ha visto que el objetivo principal de muchos análisis estadísticos es estudiar el comportamiento de los sujetos de una población, a partir de la información recogida en una muestra de sujetos seleccionados de dicha población. Sin embargo, cuando hablamos de una población lo hacemos teniendo en mente las variables que se han medido sobre ellos. Imaginemos que estamos interesados en conocer la nota media de acceso de todos los estudiantes de primero de grado en la Universidad Miguel Hernández de Elche (UMH). En este caso es evidente que la población objetivo son todos los estudiantes de primero de grado que han accedido a la UMH, aunque esa población contiene información sobre muchas otras variables (sexo, edad, localidad de residencia,…).Por lo tanto, todas las poblaciones se considerarán poblaciones de valores de alguna variable especificada. Si la población es infinita, nunca podremos obtener todos sus valores, e incluso si la población es finita, generalmente no queremos medir todos sus valores. En cualquier caso, deseamos obtener información sobre características particulares de la población a partir de un número restringido de valores de muestra. Por ejemplo, en el estudio de la nota de acceso podríamos querer utilizar la media de la nota media de todos los estudiantes como referencia de la población, aunque podríamos utilizar otros como el percentil 80, etc…</p>
+<p>Para proceder de esta forma, necesitamos formular un modelo adecuado para los valores <span class="math inline">\(x\)</span> que componen la población, relacionar las características de interés con los aspectos apropiados del modelo y luego usar los datos de la muestra para proporcionar estimaciones de estos aspectos.La característica esencial de tales valores <span class="math inline">\(x\)</span> en su imprevisibilidad, y lo mejor que podemos hacer es especificar la probabilidad de obtener un valor dado o un valor en un rango dado. Por lo tanto, las distribuciones de probabilidad proporcionan los modelos más apropiados para las poblaciones variables de respuesta. Más específicamente, la función de densidad de probabilidad <span class="math inline">\(f(x)\)</span> o la función de distribución de probabilidad <span class="math inline">\(F(x)\)</span> proporcionan la información necesaria, por lo que constituye el modelo de población para la variable aleatoria <span class="math inline">\(X\)</span>. Por supuesto, dado que nunca conocemos esta distribución con una certeza total, debemos suponer una forma funcional específica (modelo matemático) para <span class="math inline">\(f(x)\)</span> y <span class="math inline">\(F(x)\)</span>. Esta forma funcional usualmente involucra uno o más parámetros que pueden ser variados, y leso que se espera es que habrá algunos valores específicos de estos parámetros para los cuales la distribución resultante se ajusta adecuadamente a nuestros datos observados. Tal modelo se llama <strong>modelo paramétrico</strong> para <span class="math inline">\(X\)</span>. En el tema siguiente se presentarán los modelos paramétricos más frecuentes para una variable aleatoria <span class="math inline">\(X\)</span>.</p>
+<p>Por el momento, supongamos que hemos especificado alguna función adecuada <span class="math inline">\(f(x)\)</span> como la densidad de probabilidad de nuestra población. ¿Qué valores resumen de esta densidad se relacionan con las características de la población que generalmente son de interés? Para responder a esta situación, centrémonos en las variables discretas e interpretemos la probabilidad como una frecuencia relativa. Si la variable aleatoria <span class="math inline">\(X\)</span> tiene valores posibles <span class="math inline">\(x_1, x_2, x_3, ... ,x_n\)</span> y si <span class="math inline">\(p_i = P(X = x_i)\)</span>, entonces podemos pensar en <span class="math inline">\(p_i\)</span> como la frecuencia relativa con la que el valor <span class="math inline">\(x_i\)</span> ocurre en toda la población.</p>
+<p>Definimos el valor esperado de <span class="math inline">\(X\)</span> por la ecuación:</p>
+<p><span class="math display" id="eq:espdisc">\[\begin{equation} 
+  E(X) = \sum_{i=1}^n  x_i p_i
+  \tag{3.1}
+\end{equation}\]</span></p>
+<p>Utilizando la interpretación de frecuencia relativa de <span class="math inline">\(p_i\)</span> dada anteriormente, <span class="math inline">\(E(X)\)</span> puede interpretarse como el promedio de los valores <span class="math inline">\(X\)</span> en toda la población, por lo que es la media poblacional. Este es claramente uno de los principales valores de resumen para la población. A menudo se denota <span class="math inline">\(\mu\)</span> y como mide el “centro” de la población también se lo conoce como el parámetro de localización de la población.</p>
+<p>De forma similar se define la varianza de la población, <span class="math inline">\(\sigma2\)</span>, como:</p>
+<p><span class="math display" id="eq:vardisc">\[\begin{equation} 
+  \sigma^2 = V(X) = E\{(X-\mu)^2\} = \sum_{i=1}^n  (x_i - \mu)^2 p_i
+  \tag{3.2}
+\end{equation}\]</span></p>
+<p>La desviación típica poblacional, <span class="math inline">\(\sigma\)</span>, se obtiene a partir de la raíz cuadrada de la varianza poblacional:</p>
+<p><span class="math display" id="eq:sddisc">\[\begin{equation} 
+  \sigma = DT(X) = \sqrt{V(X)}
+  \tag{3.3}
+\end{equation}\]</span></p>
+<p>Siguiendo con el ejemplo de la variable aleatoria que representa la suma del lanzamiento de dos dados ¿Cuál es el valor esperado de la suma de ambos lanzamientos? ¿Cuál es la desviación típica? En este caso ¿la distribución es aproximada o la distribución poblacional?</p>
+<p>En el caso de variables aleatorias continuas, donde denotamos por <span class="math inline">\(R\)</span> el rango de todos los valores posibles, se define la media, varianza y desviación típica poblacional como</p>
+<p><span class="math display" id="eq:espcont">\[\begin{equation} 
+  \mu = E(X) = \int_R x f(x) dx
+  \tag{3.4}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:varcont">\[\begin{equation} 
+  \sigma^2 = V(X) = \int_R (x - \mu)^2 f(x) dx
+  \tag{3.5}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:sdcont">\[\begin{equation} 
+  \sigma = DT(X) = \sqrt{V(X)}
+  \tag{3.6}
+\end{equation}\]</span></p>
+<p>Para las variables de tipo continuo más habituales la esperanza, varianza y desviación típica poblacionales se aproximan de forma precisa (si la muestra de trabajo es adecuada) por la media, varianza y desviación típica muestral.</p>
+</div>
+<div id="distribuciones-notables" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Distribuciones notables<a class="anchor" aria-label="anchor" href="#distribuciones-notables"><i class="fas fa-link"></i></a>
+</h2>
+<p>En la práctica resultaría complicado y farragoso si para cada experimento aleatorio ligeramente diferente de otro ya realizado, tuviéramos que determinar las distribuciones de probabilidad desde cero. Afortunadamente, podemos hacer uso de las similitudes que existen entre ciertos tipos o familias de experimentos y ciertas distribuciones de probabilidad, conocidas con el nombre de <strong>distribuciones notables</strong>, que nos permiten el desarrollo de las funciones de distribución que representen las características generales del experimento.</p>
+<p>Por ejemplo, muchos experimentos comparten el elemento común de que sus resultados se pueden clasificar en uno de dos eventos: una moneda puede salir cara o cruz; un niño puede ser hombre o mujer; una persona puede morir o no morir; una persona puede ser empleada o desempleada. Estos resultados a menudo se etiquetan como “éxito” o “fracaso”, teniendo en cuenta que aquí no hay connotación de “bondad”; por ejemplo, al observar los nacimientos, el estadístico podría calificar el nacimiento de un niño como un “éxito” y la el nacimiento de una niña como un “fracaso”, pero los padres no necesariamente verían las cosas de esa manera. Esta situación experimental se conoce como experimento Bernouilli, asignando probabilidad <span class="math inline">\(\theta\)</span> al suceso calificado como éxito y probabilidad <span class="math inline">\(1-\theta\)</span> al suceso calificado como de fracaso. Dichas probabilidades son diferentes para cada situación y se pueden aproximar mediante la obtención de datos experimentales. La distribución de probabilidad que surge en este experimento se conoce como distribución Bernouilli y es la primera distribución de probabilidad notable conocida.</p>
+<div id="prob-binomial" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> Distribución Binomial<a class="anchor" aria-label="anchor" href="#prob-binomial"><i class="fas fa-link"></i></a>
+</h3>
+<p>A menudo nos interesa el resultado de los ensayos independientes y repetidos de Bernoulli, es decir, el número de éxitos en ensayos repetidos. En esta situación se considera:</p>
+<ol style="list-style-type: decimal">
+<li>sucesos independientes: el resultado de un ensayo no afecta el resultado de otro ensayo.</li>
+<li>repeticiones: las condiciones son las mismas para cada prueba, es decir, la probabilidad de éxito y fracaso permanecen constantes a través de los diferentes ensayos realizados.</li>
+</ol>
+<p>Una distribución binomial nos da las probabilidades asociadas con los ensayos independientes y repetidos de Bernoulli. En una distribución binomial, las probabilidades de interés son las de observar un cierto número de éxitos, <span class="math inline">\(r\)</span>, en <span class="math inline">\(n\)</span> ensayos independientes, cada uno de los cuales tiene solo dos resultados posibles y la misma probabilidad, <span class="math inline">\(\theta\)</span>, de éxito. Por ejemplo, usando una distribución binomial, podemos determinar la probabilidad de obtener 4 caras en 10 lanzamientos de una misma moneda.</p>
+<p>La distribución de probabilidad para este experimento queda completamente determinado si conocemos <span class="math inline">\(n\)</span> (número de repeticiones realizadas) y <span class="math inline">\(\theta\)</span> (probabilidad de éxito). Si <span class="math inline">\(X\)</span> denota la variable aleatoria asociada con este experimento, la función de densidad de probabilidad se define como:</p>
+<p><span class="math display" id="eq:probbinom">\[\begin{equation} 
+  P(X = x) = {n \choose x} \theta^x (1-\theta)^{n-x}
+  \tag{3.7}
+\end{equation}\]</span></p>
+<p>donde <span class="math inline">\({n \choose x}\)</span> representa el número combinatorio de <span class="math inline">\(n\)</span> sobre <span class="math inline">\(x\)</span>, y <span class="math inline">\(x\)</span> el número de éxitos observados. Dicha distribución se denota habitualmente:</p>
+<p><span class="math display" id="eq:varbinom">\[\begin{equation} 
+  X \sim Bi(n, \theta)
+  \tag{3.8}
+\end{equation}\]</span></p>
+<p>Esta distribución se puede evaluar para cualquier valor entre 0 y el número de repeticiones del experimento <span class="math inline">\(n\)</span>. En <code>R</code> la función <code>dbinom</code> permite obtener cualquier probabilidad de la distribución binomial una vez fijamos el valor que deseamos evaluar (<span class="math inline">\(x\)</span>), el número de repeticiones (<span class="math inline">\(n\)</span>), y la probabilidad de éxito asociada (<span class="math inline">\(\theta\)</span>).</p>
+<p>Una vez establecida la función de densidad de probabilidad resulta posible obtener el valor esperado del número de éxitos, así como conocer su variabilidad haciendo uso de las definiciones expuestas en el tema anterior. En concreto, para una variable que sigue una distribución de probabilidad Binomial (<a href="prob.html#eq:varbinom">(3.8)</a>) tenemos que:</p>
+<p><span class="math display" id="eq:espbinom">\[\begin{equation} 
+  E(X) = n \theta
+  \tag{3.9}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:varbinom">\[\begin{equation} 
+  V(X) = n \theta (1-\theta)
+  \tag{3.8}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:sdbinom">\[\begin{equation} 
+  DT(X) = \sqrt{n \theta (1-\theta)}
+  \tag{3.10}
+\end{equation}\]</span></p>
+<p>En la página web <a href="http://www.artofstat.com/" class="uri">http://www.artofstat.com/</a> se encuentra disponible una aplicación de trabajo de la distribución Binomial (<a href="https://istats.shinyapps.io/BinomialDist/" class="uri">https://istats.shinyapps.io/BinomialDist/</a>). Dicha aplicación nos permite calcular tanto probabilidades como cuantiles para un experimento binomial. Utiliza dicha aplicación para responder a las cuestiones siguientes:</p>
+<ul>
+<li>En una población de sujetos se conoce que el 39% de ellos sufre algún tipo de mutación genética. Si se obtiene una muestra de 20 sujetos ¿cuál es la probabilidad de observar tres sujetos con esa mutación genética?</li>
+<li>En una población de moscas de la fruta se conoce que el 30% son de color negro y el 70% son de color gris. Si se extrae una muestra de 15 moscas ¿cuál es la probabilidad de observar al menos cuatro moscas de color negro? ¿y de color gris?</li>
+<li>Una cierta droga causa daños en el hígado en el 1% de los pacientes. Se van a realizar estudios completos sobre 50 pacientes que están tomando dicha droga para detectar daños en el hígado. ¿Cuál es la probabilidad de que ninguno de lo pacientes muestre daños en el hígado? ¿Cuál es la probabilidad de que al menos uno de los pacientes muestre daños en el hígado?</li>
+<li>Los estudios realizados concluyen que el 10% de las adolescentes de EEUU tienen deficiencia de hierro. Se obtiene una muestra de 14 adolescentes y se desea conocer ¿cuál es la probabilidad de que al menos el 50% de ellas tengan una deficiencia de hierro?</li>
+<li>En un experimento se comprobó que la aplicación de un tratamiento químico aumentaba la resistencia a la corrosión de un material en un 80 % de los casos. Si se tratan ocho piezas, determina: (i) probabilidad de que el tratamiento sea efectivo para más de cinco piezas, (ii) probabilidad de que el tratamiento sea efectivo para al menos tres piezas, (iii) número de piezas para las que espera que el tratamiento sea efectivo.</li>
+<li>Se dispone de un cristal que tiene dos tipos de impurezas que absorben radiación de la misma longitud de onda. Una de ellas emite un electrón tras la absorción de un fotón, mientras que la segunda no emite electrones. Las impurezas están en igual concentración y distribuidas homogéneamente en el cristal. Sin embargo, la sección eficaz de absorción, que es una medida de la probabilidad de absorber un fotón, es 90 veces mayor para la impureza que emite electrones que el de la impureza que no los emite. Suponiendo que sobre el cristal inciden 200 fotones y que este es lo suficientemente grande para absorber todos, calcula la probabilidad de que al menos se emitan tres electrones.</li>
+</ul>
+</div>
+<div id="prob-poisson" class="section level3" number="3.3.2">
+<h3>
+<span class="header-section-number">3.3.2</span> Distribución Poisson<a class="anchor" aria-label="anchor" href="#prob-poisson"><i class="fas fa-link"></i></a>
+</h3>
+<p>La distribución de Poisson se emplea como un modelo para variables aleatorias de tipo discreto cuando se quieren obtener las probabilidades de ocurrencia de un evento que se distribuye al azar en el espacio o el tiempo. Algunos ejemplos de esta distribución son:</p>
+<ul>
+<li>En el estudio de cierto organismo acuático, se toman un gran número de muestras de un lago y se cuentan el número de organismos que aparecen en cada muestra. El interés principal radica en conocer cuál es la probabilidad de encontrar algún organismo en una muestra próxima si la media observada en el conjunto de nuestras es de 2 organismos.</li>
+<li>En un estudio sobre la efectividad de un insecticida sobre cierto tipo de insecto, se fumiga una gran región. Posteriormente se crea una cuadrícula sobre el terreno, se selecciona de forma aleatoria un conjunto de ellas, y se cuenta el número de insectos vivos dentro de cada una. Estamos interesados en conocer cuál es la probabilidad de que no encontremos ningún insecto vivo en una cuadrícula próxima si se sabe que que la media de insectos vivos en las cuadriculas analizadas es de 0.5.<br>
+</li>
+<li>Un grupo de investigadores observó la ocurrencia de hemangioma capilar retiniano (RCH) en pacientes con la enfermedad de von Hippel-Lindau (VHL). RCH es un tumor vascular benigno de la retina. Usando una revisión retrospectiva de series de casos consecutivos, los investigadores encontraron que el número de medio de tumores RCH por ojo para pacientes con VHL era de 4. Están interesados en conocer cuál es la probabilidad de que se detecten más de cuatro tumores por ojo.</li>
+</ul>
+<p>Como se puede ver en los ejemplos la distribución de Poisson es muy habitual en los campos de la biología y la medicina. En una distribución de Poisson, las probabilidades de interés son las de observar un número de eventos, <span class="math inline">\(x\)</span>, en un tiempo o espacio determinado. La distribución de probabilidad para este experimento queda completamente determinada si conocemos el número de eventos y <span class="math inline">\(\lambda\)</span> la tasa o media del número de eventos que ocurren por unidad de tiempo o espacio. Si <span class="math inline">\(X\)</span> denota la variable aleatoria asociada con este experimento, la función de densidad de probabilidad se define como:</p>
+<p><span class="math display" id="eq:probpois">\[\begin{equation} 
+  P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}
+  \tag{3.11}
+\end{equation}\]</span></p>
+<p>Dicha distribución se denota habitualmente: <span class="math display">\[ X \sim Po(\lambda)\]</span>. Esta distribución se puede evaluar para cualquier valor entre 0 y el número de máximo de ocurrencias que pueden ocurrir. Dado que este valor no se conoce de antemano se debe prefijar un valor máximo que asegure que la probabilidad de ese valor sea cero.</p>
+<p>En <code>R</code> la función <code>dpois</code> permite obtener cualquier probabilidad de la distribución de Poisson una vez fijamos el valor que deseamos evaluar (<span class="math inline">\(x\)</span>), y la tasa o media del número de eventos (<span class="math inline">\(\lambda\)</span>).</p>
+<p>Una vez establecida la función de densidad de probabilidad resulta posible obtener el valor esperado del número de eventos ocurridos, así como conocer su variabilidad haciendo uso de las definiciones expuestas en el tema anterior. En concreto, para una variable que sigue una distribución de probabilidad Poisson (<span class="math inline">\(X \sim Po(\lambda)\)</span>) tenemos que:</p>
+<p><span class="math display" id="eq:meanpois">\[\begin{equation} 
+  E(X) = \lambda
+  \tag{3.12}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:varpois">\[\begin{equation} 
+  V(X) = \lambda
+  \tag{3.13}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:sdpois">\[\begin{equation} 
+  DT(X) = \sqrt{\lambda}
+  \tag{3.14}
+\end{equation}\]</span></p>
+<p>En la página web <a href="http://www.artofstat.com/" class="uri">http://www.artofstat.com/</a> se encuentra disponible una aplicación de trabajo de la distribución Binomial (<a href="https://istats.shinyapps.io/PoissonDist/" class="uri">https://istats.shinyapps.io/PoissonDist/</a>). Dicha aplicación nos permite calcular tanto probabilidades como cuantiles para un experimento poisson Utiliza dicha aplicación para responder a las cuestiones siguientes:</p>
+<p>(Hint: Recuerda que la tasa de la poisson se debe modificar si las cuestiones de interés no están referenciadas a la misma escala que la escala proporcionada).</p>
+<ul>
+<li>Un laboratorio es capaz de realizar 20 análisis de cierto tipo en un hora. ¿Cuál es la probabilidad de realizar entre 30 y 36 análisis en las próximas dos horas?¿y la probabilidad de realizar más de 36? (Hint: En este caso no concemos directamente la media de la poisson ya que la escala medida no es la misma sobre la que se este interesado, por lo que es necesario ajustar la tasa a cada pregunta)</li>
+<li>Consideremos que el número de trozos de chocolate en una determinada galleta sigue una distribución de Poisson. Queremos que la probabilidad de que una galleta seleccionada al azar tenga por lo menos tres trozos de chocolate sea mayor que 0.8. Encontrar el valor entero más pequeño de la media de la distribución que asegura esta probabilidad.</li>
+<li>Un fabricante de maquinaria pesada tiene instalados en el campo 3840 generadores de gran tamaño con garantía. Sí la probabilidad de que cualquiera de ellos falle durante el año dado es de 1/1200 determine la probabilidad de que a) 4 generadores fallen durante el año en cuestión, b) que más 1 de un generador falle durante el año en cuestión.</li>
+<li>En un proceso de manufactura, en el cual se producen piezas de vidrio, ocurren defectos o burbujas, ocasionando que la pieza sea indeseable para la venta. Se sabe que en promedio 1 de cada 1000 piezas tiene una o más burbujas. ¿Cuál es la probabilidad de que en una muestra aleatoria de 8000 piezas, menos de 3 de ellas tengan burbujas?</li>
+<li>Se sabe que el número de microorganismos por gramo de una cierta muestra de suelo diluida en agua destilada se distribuye según una variable aleatoria de media 0.08. Si una preparación con un gramo de esta disolución se vuelve turbia, este gramo contiene al menos un microorganismo. Hallar la probabilidad de que una preparación que se ha vuelto turbia contenga:
+<ul>
+<li>Un solo microorganismo</li>
+<li>Menos de tres microorganismos</li>
+<li>Más de dos microorganismos</li>
+</ul>
+</li>
+<li>En un monte, el número de plantas de romero por círculo de un metro de radio, se distribuye según una variable aleatoria. Se eligen 1o plantas al azar y se mide la distancia a la planta que tiene más próxima. Las distancias observadas fueron (medidas en metros): 0.7, 1.7, 1.2, 0.4, 0.2, 0.5, 0.7, 0.8, 1.5, y 2.1. A partir de estos datos estima los parámetros de interés de la distribución y calcula cuantas plantas es de esperar que habrá en una zona del monte de unos 12500 m2 de superficie.</li>
+</ul>
+</div>
+<div id="prob-normal" class="section level3" number="3.3.3">
+<h3>
+<span class="header-section-number">3.3.3</span> Distribución Normal<a class="anchor" aria-label="anchor" href="#prob-normal"><i class="fas fa-link"></i></a>
+</h3>
+<p>Hasta ahora todas las distribuciones consideradas eran de tipo de discreto. En este punto tratamos la distribución de probabilidad de tipo continuo y más concreta mente la más famosa y utilizada de todas ellas: la distribución de probabilidad Normal. Una variable de tipo continuo es aquella que puede tomar cualquier valor dentro de un rango de valores, es decir, existe un infinito número de valores posibles para la variable aleatoria. Para representar gráficamente una distribución de una variable aleatoria continua se debe construir un subconjunto de clases o intervalos consecutivos para el rango de valores de la variable considerada y considerar el histograma resultante. Cuando consideramos un número muy grande de clases o intervalos podríamos obtener la curva suavizada que representa la función de densidad de probabilidad de la variable aleatoria.</p>
+<p>La función de densidad de probabilidad para una variable aleatoria <span class="math inline">\(X\)</span> que sigue una distribución Normal con parámetros <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span>, denotada por <span class="math inline">\(N(\mu, \sigma^2)\)</span> viene dada por:
+<span class="math display" id="eq:densinormal">\[\begin{equation} 
+  f(x) = \frac{1}{2\pi\sigma^2} exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)
+  \tag{3.15}
+\end{equation}\]</span></p>
+<p>Los dos parámetros de la distribución son <span class="math inline">\(\mu\)</span> que representa la medida de localización y <span class="math inline">\(\sigma\)</span> la medida de dispersión. Habitualmente los conocemos por sus nombres más habituales como son la media y la desviación típica. En concreto, para una variable que sigue una distribución de probabilidad Normal (<span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>) tenemos que:</p>
+<p><span class="math display" id="eq:meannormal">\[\begin{equation} 
+  E(X) = \mu
+  \tag{3.16}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:varnormal">\[\begin{equation} 
+  V(X) = \sigma^2
+  \tag{3.17}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:sdnormal">\[\begin{equation} 
+  DT(X) = \sigma
+  \tag{3.18}
+\end{equation}\]</span></p>
+<p>Las características más importantes de la distribución Normal:</p>
+<ul>
+<li>Es una distribución simétrica alrededor de la media, <span class="math inline">\(\mu\)</span>.</li>
+<li>La media, la mediana y la moda son iguales.</li>
+<li>La distribución Normal queda completamente especificada a partir de los valores de <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span>. Los diferentes valores de la media y la desviación típica desplazan hacia un lado o el otro, o consiguen una distribución más puntiaguda (desviaciones típicas más pequeñas) o más achatada (desviaciones típicas más grandes).</li>
+<li>El intervalo definido por <span class="math inline">\(\mu - 5 * \sigma, \mu + 5 * \sigma\)</span> tiene probabilidad 1, es decir, la probabilidad de los extremos inferior y superior del rango de valores se puede considerar despreciable.<br>
+</li>
+<li>Dada una variable aleatoria Normal con media <span class="math inline">\(\mu\)</span> y desviación típica <span class="math inline">\(\sigma\)</span> y tenemos un escalar <span class="math inline">\(a\)</span> tenemos que:</li>
+</ul>
+<p><span class="math display">\[ X \sim N(\mu, \sigma^2) \Longrightarrow aX \sim N(a\mu, a^2\sigma^2)\]</span>
+* Dada dos variables aleatorias Normales, <span class="math inline">\(X e Y\)</span>, con medias y desviaciones típicas respectivas: <span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\sigma_1\)</span> y <span class="math inline">\(\mu_2\)</span>, <span class="math inline">\(\sigma_2\)</span> y dos escalares <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> tenemos que</p>
+<p><span class="math display">\[ X \sim N(\mu_1, \sigma^2_1), Y \sim N(\mu_2, \sigma^2_2) \Longrightarrow aX + bY\sim N(a\mu_1+b\mu_2, a^2\sigma^2_1+b^2\sigma^2_2)\]</span></p>
+<p>Esta última propiedad se puede generalizar para el caso de <span class="math inline">\(m\)</span> variables aleatorias en lugar de 2.</p>
+<div id="teorema-central-de-límite" class="section level4" number="3.3.3.1">
+<h4>
+<span class="header-section-number">3.3.3.1</span> Teorema Central de Límite<a class="anchor" aria-label="anchor" href="#teorema-central-de-l%C3%ADmite"><i class="fas fa-link"></i></a>
+</h4>
+<p>Si las variables aleatorias <span class="math inline">\(X_1,...X_n\)</span> son una muestra aleatoria de una distribución con media <span class="math inline">\(\mu\)</span> y desviación típica <span class="math inline">\(\sigma\)</span> entonces las variables aleatorias suma (<span class="math inline">\(T = X_1+...+X_n\)</span>) y media (<span class="math inline">\(M = (X_1+...+X_n)/n\)</span>) tienen distribuciones:
+<span class="math display">\[ T \sim N\left(n\mu,n\sigma^2\right)\]</span>
+<span class="math display">\[ M \sim N\left(\mu,\frac{\sigma^2}{n}\right)\]</span></p>
+<p>En la página web <a href="http://www.artofstat.com/" class="uri">http://www.artofstat.com/</a> se encuentra disponible una aplicación de trabajo de la distribución Binomial (<a href="https://istats.shinyapps.io/NormalDist/" class="uri">https://istats.shinyapps.io/NormalDist/</a>). Dicha aplicación nos permite calcular tanto probabilidades como cuantiles para un experimento normal Utiliza dicha aplicación para responder a las cuestiones siguientes:</p>
+<ul>
+<li>La longitud L (en micras) de ciertas larvas parásitas de moluscos, sigue la distribución Normal, pero de media y desviación típica distinats, según la larva se encuentre en estadio 1 o en estadio 2 de su crecimiento. La media y la desviación típica son: 219 y 20 para el estadio 1, y 241 y 14 para el estadio 2. Para identificar el estadio en que se encuentra la larva, se adopta el criterio siguiente: Si L≤230 pertenece al estadio 1, en otro caso pertenece al estadio 2. Resolver las siguientes cuestiones:
+<ul>
+<li>Calcular la probabilidad de la presencia del suceso L≤230 para larvas del estadio 1. Idem. para larvas en el esatdio 2.</li>
+<li>Desde que nace una larva hasta que llega al estadio 3 de su desarrollo (que es fácilmente identificable), trasncurren 12 horas, permaneciendo 8 horas en el estadio 1 y 4 horas en el estadio 2. La observación de una larva cualquiera se hace en un instante que puede considerarse elegido al azar durante estas 12 horas (se desconoce cuando ha nacido la larva). Entonces, si se ha observado que una larva mide L = 225 y, por lo tanto, se considera que pertenece al estadio 1, calcular la probabilidad de equivocarnos al tomar esta decisión.</li>
+</ul>
+</li>
+<li>Supongamos que el diámetro de las aceitunas rellenas de anchoa varía entre 15 y 17 mm. Debido a al sequía del último año, la producción de aceituna verde se ha distribuido según una normal de media 15.5 mm. y desviación típica 1.2 mm. ¿Qué porcentaje de aceitunas podría ser aprovechado para rellenar de anchoa?</li>
+<li>La duración media de un lavavajillas es de 15 años y su desviación típica 0.5. Sabiendo que la vida útil del lavavajillas se distribuye normalmente, hallar la probabilidad de que al adquirir un lavavajillas, este dure más de 15 años.</li>
+<li>Una normativa europea obliga a que en los envases de yogur no debe haber menos de 120 gr. La máquina dosificadora de una empresa láctea hace los envases de yogur según una distribución normal de desviación típica de 2 gr. y media 122 gr.
+<ul>
+<li>¿Qué tanto por ciento de los envases de yogur de esa empresa cumplirá la normativa?</li>
+<li>¿Cuál deberá ser la media de la distribución normal con la cual la máquina dosificadora debe hacer los envases para que el 98% de la producción de yogures de la empresa cumpla la normativa?. (La desviación típica sigue siendo de 2 gr.).</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="otras-distribuciones" class="section level3" number="3.3.4">
+<h3>
+<span class="header-section-number">3.3.4</span> Otras distribuciones<a class="anchor" aria-label="anchor" href="#otras-distribuciones"><i class="fas fa-link"></i></a>
+</h3>
+<p>A partir de la distribución de probabilidad Normal se pueden obtener otras distribuciones de probabilidad que resultan de gran utilidad para los procesos de generalización de resultados de un diseño experimental a una población que veremos en la unidad siguiente.</p>
+<div id="distribución-chi-cuadrado" class="section level4" number="3.3.4.1">
+<h4>
+<span class="header-section-number">3.3.4.1</span> Distribución Chi-cuadrado<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-chi-cuadrado"><i class="fas fa-link"></i></a>
+</h4>
+<p>Sean n variables aleatorias <span class="math inline">\(X_1,...,X_n\)</span> independientes entre sí cuya distribución de probabilidad es idéntica para todas ellas e igual a una Normal estándar (<span class="math inline">\(N(0,1)\)</span>). Si definimos la variable aleatoria suma como:
+<span class="math display">\[X = X_1 + ... + X_n,\]</span> entonces decimos que <span class="math inline">\(X\)</span> se distribuye según una distribución Chi-cuadrado con <span class="math inline">\(n\)</span> grados de libertad y la denotamos por <span class="math display">\[X \sim \chi^2_n.\]</span></p>
+</div>
+<div id="t-se-student" class="section level4" number="3.3.4.2">
+<h4>
+<span class="header-section-number">3.3.4.2</span> T se Student<a class="anchor" aria-label="anchor" href="#t-se-student"><i class="fas fa-link"></i></a>
+</h4>
+<p>Si tenemos dos variables aleatorias independientes <span class="math inline">\(Y\)</span> y <span class="math inline">\(Z\)</span> con distribuciones de probabilidad
+<span class="math display">\[Z \sim N(0,1); Y \sim \chi^2_n,\]</span> y consideramos la variable aleatoria <span class="math inline">\(X\)</span> dada por:
+<span class="math display">\[X = \frac{Z}{\sqrt{Y/n}},\]</span> entonces decimos que dicha variable sigue una distribución <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n\)</span> grados de libertad, y se denota por
+<span class="math display">\[X \sim t_n.\]</span></p>
+</div>
+<div id="f-de-snedecor" class="section level4" number="3.3.4.3">
+<h4>
+<span class="header-section-number">3.3.4.3</span> F de Snedecor<a class="anchor" aria-label="anchor" href="#f-de-snedecor"><i class="fas fa-link"></i></a>
+</h4>
+<p>Si tenemos dos variables aleatorias independientes <span class="math inline">\(Y\)</span> y <span class="math inline">\(Z\)</span> con distribuciones de probabilidad
+<span class="math display">\[Z \sim \chi^2_n; Y \sim \chi^2_m,\]</span> y consideramos la variable aleatoria <span class="math inline">\(X\)</span> dada por:
+<span class="math display">\[X = \frac{Z/n}{Y/m},\]</span> entonces decimos que dicha variable sigue una distribución <span class="math inline">\(F\)</span> de Snedecor con <span class="math inline">\(n\)</span> y <span class="math inline">\(m\)</span> grados de libertad, y se denota por
+<span class="math display">\[X \sim F_{n,m}.\]</span></p>
+
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></div>
+<div class="next"><a href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prob"><span class="header-section-number">3</span> Probabilidad</a></li>
+<li><a class="nav-link" href="#prob-intro"><span class="header-section-number">3.1</span> Introducción</a></li>
+<li><a class="nav-link" href="#distribuciones-modelos"><span class="header-section-number">3.2</span> Distribuciones-Modelos</a></li>
+<li>
+<a class="nav-link" href="#distribuciones-notables"><span class="header-section-number">3.3</span> Distribuciones notables</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prob-binomial"><span class="header-section-number">3.3.1</span> Distribución Binomial</a></li>
+<li><a class="nav-link" href="#prob-poisson"><span class="header-section-number">3.3.2</span> Distribución Poisson</a></li>
+<li><a class="nav-link" href="#prob-normal"><span class="header-section-number">3.3.3</span> Distribución Normal</a></li>
+<li><a class="nav-link" href="#otras-distribuciones"><span class="header-section-number">3.3.4</span> Otras distribuciones</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

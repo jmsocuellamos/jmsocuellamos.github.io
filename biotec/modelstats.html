@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Unidad 5 Modelos estadísticos | Modelos Estadísticos</title>
+<meta name="description" content="De forma habitual, cuando el investigador (o investigadores) se plantea un diseño experimental y comienza con la recogida de datos es porque persigue el estudio de o verificación de un objetivo...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Unidad 5 Modelos estadísticos | Modelos Estadísticos">
+<meta property="og:type" content="book">
+<meta property="og:description" content="De forma habitual, cuando el investigador (o investigadores) se plantea un diseño experimental y comienza con la recogida de datos es porque persigue el estudio de o verificación de un objetivo...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unidad 5 Modelos estadísticos | Modelos Estadísticos">
+<meta name="twitter:description" content="De forma habitual, cuando el investigador (o investigadores) se plantea un diseño experimental y comienza con la recogida de datos es porque persigue el estudio de o verificación de un objetivo...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Modelos Estadísticos</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Bienvenidos</a></li>
+<li><a class="" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
+<li><a class="" href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></li>
+<li><a class="" href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></li>
+<li><a class="" href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
+<li><a class="active" href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
+<li><a class="" href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></li>
+<li><a class="" href="rlm.html"><span class="header-section-number">7</span> Regresión Lineal Múltiple y Polinómica</a></li>
+<li><a class="" href="anova.html"><span class="header-section-number">8</span> Modelos ANOVA</a></li>
+<li><a class="" href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></li>
+<li><a class="" href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
+<li><a class="" href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
+<li><a class="" href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
+<li><a class="" href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></li>
+<li><a class="" href="glmpoisson.html"><span class="header-section-number">14</span> GLM Poisson</a></li>
+<li><a class="" href="glmtablascont.html"><span class="header-section-number">15</span> GLM para tablas de contingencia</a></li>
+<li><a class="" href="glmsuperv.html"><span class="header-section-number">16</span> GLM para datos de supervivencia</a></li>
+<li><a class="" href="referencias.html">Referencias</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="modelstats" class="section level1" number="5">
+<h1>
+<span class="header-section-number">Unidad 5</span> Modelos estadísticos<a class="anchor" aria-label="anchor" href="#modelstats"><i class="fas fa-link"></i></a>
+</h1>
+<p>De forma habitual, cuando el investigador (o investigadores) se plantea un diseño experimental y comienza con la recogida de datos es porque persigue el estudio de o verificación de un objetivo planteado sobre la población bajo estudio. Estos objetivos se suelen establecer en base a teorías o hipótesis que se desean verificar sobre le funcionamiento de la población bajo ciertas condiciones experimentales. Por ejemplo:</p>
+<ul>
+<li>Teorías que establezcan la posible relación entre dos características de la población.</li>
+<li>Teorías que plateen la idea de comportamientos distintas para una característica de la población
+en función de una variable que clasifica a los sujetos bajo estudio en diferentes grupos.</li>
+</ul>
+<p>Es entonces cuando la modelización estadística interviene y el analista busca el mejor modelo que ajusta los datos disponibles y proporciona predicciones fiables. El objetivo de la modelización estadística es el planteamiento de una expresión matemática que representa el comportamiento general de la población bajo estudio, teniendo en cuenta el diseño experimental establecido y el objetivo u objetivos que se desean verificar</p>
+<div id="componentes-del-modelo" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Componentes del modelo<a class="anchor" aria-label="anchor" href="#componentes-del-modelo"><i class="fas fa-link"></i></a>
+</h2>
+<p>Un primer paso en la modelización estadística es el planteamiento de una expresión matemática que represente el comportamiento general de la población bajo estudio teniendo en cuenta el diseño experimental establecido y el objetivo u objetivos que se desean verificar. Esto es lo que se conoce como componente sistemática del modelo y se basa únicamente en la parte controlada del diseño experimental. Por ejemplo, si nos planteamos como objetivo conocer la suma de dos números <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, la función matemática (sistemática) que permite expresar la suma de forma única es <span class="math inline">\(a+b\)</span>. Esta componente sistemática es una función determinista, pues siempre proporciona el mismo resultado si los valores de entrada son iguales. Al proponer la parte sistemática (o determinista) de un modelo será siempre necesario concretar la variable que se asocia al objetivo o hipótesis planteada sobre la población (representada por <span class="math inline">\(Y\)</span>) y la variable o variables <span class="math inline">\((X_1, X_2,…)\)</span> relacionadas o supuestamente relacionadas con ella a través de la función matemática especificada.</p>
+<p>Supongamos un diseño experimental en el que tenemos una variable <span class="math inline">\(Y\)</span> que está ligada directamente con el objetivo de la investigación, y un conjunto de variables <span class="math inline">\(X_1, X_2,…,X_k\)</span>, que se supone que pueden influir en el comportamiento de <span class="math inline">\(Y\)</span>. Habitualmente a <span class="math inline">\(Y\)</span> se la denomina <em>variable respuesta</em> o <em>variable dependiente</em> y a las <span class="math inline">\(X’s\)</span> <em>variables predictoras</em>, <em>variables explicativas</em> e incluso <em>covariables</em> cuando se trata de variables de tipo numérico continuo. Cuando las variables <span class="math inline">\(X\)</span> son de tipo categórico se suelen denominar factores explicativos o de clasificación. A las variables <span class="math inline">\(X\)</span> se las suele denominar también variables independientes, asumiendo independencia entre ellas, aunque esta acepción puede estar algo alejada de la realidad como discutiremos más adelante; en adelante no utilizaremos esta denominación y optaremos por cualquiera de las anteriormente presentadas. En la situación más sencilla donde la respuesta puede venir influenciada de forma directa por las posibles predictoras, la respuesta media (<span class="math inline">\(\hat{Y}\)</span>) se puede modelizar a través de una función <span class="math inline">\(f\)</span> que describe la <strong>componente sistemática</strong> del modelo:</p>
+<p><span class="math display" id="eq:sistcomp">\[\begin{equation}
+  \hat{Y} = f(X_1,X_2,...,X_k)
+  \tag{5.1}
+\end{equation}\]</span></p>
+<p>Si nuestro modelo es adecuado, esta función debe reflejar el comportamiento medio esperado de la variable respuesta. Dado que sujetos distintos con los mismos valores de las <span class="math inline">\(X’s\)</span> producirán generalmente valores distintos en la respuesta, se hace necesaria la introducción de una componente variable en el modelo. Esta componente se denomina <strong>componente aleatoria</strong> y está relacionada directamente con la variabilidad de los sujetos en la respuesta para una misma combinación de valores de las variables predictoras. La denotaremos habitualmente por:</p>
+<p><span class="math display" id="eq:aletcomp">\[\begin{equation}
+  \epsilon
+  \tag{5.2}
+\end{equation}\]</span></p>
+<p>que es una variable aleatoria con distribución de probabilidad <span class="math inline">\(F\)</span>.
+Asumiendo que <a href="modelstats.html#eq:sistcomp">(5.1)</a> y <a href="modelstats.html#eq:aletcomp">(5.2)</a> tienen un efecto aditivo sobre la respuesta, nuestro modelo base de partida vendrá dado por la expresión:</p>
+<p><span class="math display" id="eq:model">\[\begin{equation}
+  Y = \hat{Y} + \epsilon = f(X_1,X_2,...,X_k) + \epsilon 
+  \tag{5.3}
+\end{equation}\]</span></p>
+<p>En función del tipo de variable respuesta, las predictoras, de la relación que se pueden establecer entre ellas a través de <span class="math inline">\(f\)</span>, y del establecimiento de las estructuras aleatorias <span class="math inline">\(F\)</span> para los errores tendremos diferentes tipos de modelos. A lo largo de esta materia veremos las diferentes posibilidades de modelización.</p>
+</div>
+<div id="tipos-de-modelos" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Tipos de modelos<a class="anchor" aria-label="anchor" href="#tipos-de-modelos"><i class="fas fa-link"></i></a>
+</h2>
+<p>En función del tipo de variable respuesta, las predictoras, de la relación que se pueden establecer entre ellas a través de <span class="math inline">\(f\)</span>, y del establecimiento de las estructuras aleatorias <span class="math inline">\(F\)</span> para los errores tendremos diferentes tipos de modelos. A lo largo de esta materia veremos las diferentes posibilidades de modelización. A lo largo de las unidades siguientes iremos estudiando las características de los diferentes modelos, pero estos se pueden agrupar en dos grandes apartados:</p>
+<ul>
+<li>
+<strong>Modelos Lineales (LM)</strong>, que engloban los modelos de regresión, los modelos ANOVA y los modelos ANCOVA.</li>
+<li>
+<strong>Modelos Lineales Generalizados (GLM)</strong>, que engloba los modelos de respuesta binomial (modelos de regresión logística), modelos de respuesta poisson, modelos para tablas de contingencia (modelos log-lineales), y modelos de supervivencia.</li>
+</ul>
+<p>Introduciremos además los modelos de suavizado y una breve introducción a los modelos de efectos aleatorios, que pueden ser utilizados en conjunción con los LM y los GLM.</p>
+</div>
+<div id="fases-en-la-construcción-de-un-modelo" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Fases en la construcción de un modelo<a class="anchor" aria-label="anchor" href="#fases-en-la-construcci%C3%B3n-de-un-modelo"><i class="fas fa-link"></i></a>
+</h2>
+<p>El proceso de modelización y análisis estadístico de un banco de datos se puede estructurar según las siguientes pautas de actuación:</p>
+<ol style="list-style-type: decimal">
+<li>Contextualización del problema. Definición de objetivos y variables.</li>
+<li>Diseño del experimento y recogida de información.</li>
+<li>Registro y procesado previo de la información disponible.</li>
+<li>Inspección gráfica e identificación de tendencias.</li>
+<li>Consideración de hipótesis distribucionales y relacionales. Propuesta de modelización.</li>
+<li>Ajuste del modelo. Comparación y selección del mejor modelo.</li>
+<li>Diagnóstico y validación del modelo ajustado.</li>
+<li>Valoración de la capacidad predictiva del modelo y predicción.</li>
+<li>Interpretación y conclusiones.</li>
+</ol>
+<p>Si la revisión/validación del modelo nos lleva a descartarlo (punto 7), será preciso una nueva propuesta, de modo que entraremos en un bucle entre los puntos (5)-(7) que culminará cuando quedemos satisfechos con el diagnóstico y la validación del modelo.</p>
+<p>A la hora de representar gráficamente la información de cada banco de datos tendremos en cuenta esta serie de principios básicos:</p>
+<ul>
+<li>La información asociada con la variable respuesta que identifica el objetivo del estudio debe situarse siempre en el eje Y o eje de ordenadas.</li>
+<li>El tipo de las variables que pueden influir en nuestra variable objetivo condiciona el tipo de gráfico. Así si estas son de tipo numérico debemos realizar un gráfico de dispersión, situando cada una de las variables predictoras <span class="math inline">\(X\)</span> en el eje de abcisas. Si las predictoras son de tipo categórico deberemos realizar un gráfico de cajas, visualizando las distintas categorías en el eje X (si bien siempre podremos invertir los ejes para mostrar las cajas en sentido horizontal y no vertical).</li>
+<li>Si combinamos variables de tipo numérico y categórico debemos realizar gráficos múltiples de dispersión donde mostremos la relación <span class="math inline">\(Y\)</span> versus <span class="math inline">\(X\)</span> para las variables numéricas en cada uno de los niveles de las variables <span class="math inline">\(X\)</span> categóricas.</li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></div>
+<div class="next"><a href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#modelstats"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
+<li><a class="nav-link" href="#componentes-del-modelo"><span class="header-section-number">5.1</span> Componentes del modelo</a></li>
+<li><a class="nav-link" href="#tipos-de-modelos"><span class="header-section-number">5.2</span> Tipos de modelos</a></li>
+<li><a class="nav-link" href="#fases-en-la-construcci%C3%B3n-de-un-modelo"><span class="header-section-number">5.3</span> Fases en la construcción de un modelo</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

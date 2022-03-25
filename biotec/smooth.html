@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Unidad 10 Modelos aditivos lineales | Modelos Estadísticos</title>
+<meta name="description" content="En esta unidad se presentan los modelos aditivos lineales. Esto modelos surgen cuando la relación entre la predictora y la respuesta (en el caso de variables numéricas) no se puede escribir de...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Unidad 10 Modelos aditivos lineales | Modelos Estadísticos">
+<meta property="og:type" content="book">
+<meta property="og:description" content="En esta unidad se presentan los modelos aditivos lineales. Esto modelos surgen cuando la relación entre la predictora y la respuesta (en el caso de variables numéricas) no se puede escribir de...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unidad 10 Modelos aditivos lineales | Modelos Estadísticos">
+<meta name="twitter:description" content="En esta unidad se presentan los modelos aditivos lineales. Esto modelos surgen cuando la relación entre la predictora y la respuesta (en el caso de variables numéricas) no se puede escribir de...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Modelos Estadísticos</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Bienvenidos</a></li>
+<li><a class="" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
+<li><a class="" href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></li>
+<li><a class="" href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></li>
+<li><a class="" href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
+<li><a class="" href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
+<li><a class="" href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></li>
+<li><a class="" href="rlm.html"><span class="header-section-number">7</span> Regresión Lineal Múltiple y Polinómica</a></li>
+<li><a class="" href="anova.html"><span class="header-section-number">8</span> Modelos ANOVA</a></li>
+<li><a class="" href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></li>
+<li><a class="active" href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
+<li><a class="" href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
+<li><a class="" href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
+<li><a class="" href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></li>
+<li><a class="" href="glmpoisson.html"><span class="header-section-number">14</span> GLM Poisson</a></li>
+<li><a class="" href="glmtablascont.html"><span class="header-section-number">15</span> GLM para tablas de contingencia</a></li>
+<li><a class="" href="glmsuperv.html"><span class="header-section-number">16</span> GLM para datos de supervivencia</a></li>
+<li><a class="" href="referencias.html">Referencias</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="smooth" class="section level1" number="10">
+<h1>
+<span class="header-section-number">Unidad 10</span> Modelos aditivos lineales<a class="anchor" aria-label="anchor" href="#smooth"><i class="fas fa-link"></i></a>
+</h1>
+<p>En esta unidad se presentan los <strong>modelos aditivos lineales</strong>. Esto modelos surgen cuando la relación entre la predictora y la respuesta (en el caso de variables numéricas) no se puede escribir de forma lineal, sino más bien a través de una función desconocida. En unidades anteriores utilizamos los modelos polinómicos para poder capturar comportamientos no lineales entre predictora y respuesta, pero en este caso utilizaremos funciones de suavizado que permiten capturar todo tipo de comportamiento entre ambas.</p>
+<p>La mayor dificultad en este tipo de modelos es que no tenemos una forma explícita para la función de suavizado, y por tanto es necesario utilizar las funciones específicas de predicción proporcionadas por la librería de ajuste para obtener el modelo resultante.</p>
+<p>En este tema sólo se pretende dar una versión introductoria de los modelos de suavizado por o que se recomienda la lectura de textos más avanzados para completar lo visto en esta unidad.</p>
+<p>El modelo aditivo más básico con una variable predictora y una respuesta Normal viene dado por:</p>
+<p><span class="math display">\[Y = f(X) + \epsilon\]</span> donde <span class="math inline">\(f()\)</span> se denomina función suave o de suavizado para la variable <span class="math inline">\(X\)</span>.</p>
+<p>Las ventajas de este tipo de modelos es que son muy flexibles ya que permiten modelizar, a través de dichas funciones suaves, relaciones de tipo no lineal entre la variable respuesta y las predictoras. Sin embargo, no todo son ventajas ya que el proceso de selección del mejor modelo se complica al añadir la elección de la función de suavizado a utilizar.</p>
+<p>En situaciones con dos variables predictoras, <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>, de tipo numérico se podrían plantear los modelos saturados siguientes:</p>
+<p><span class="math display">\[
+\begin{array}{ll}
+M0: &amp; Y \sim X_1 + X_2\\
+M1: &amp; Y \sim f(X_1) + X_2\\
+M2: &amp; Y \sim f(X_1) + f(X_2)\\
+\end{array}
+\]</span></p>
+<p>También resulta posible plantear este tipo de modelos donde se incluyen variables predictoras de tipo factor. En este caso debemos plantear una ecuación de suavizado para cada uno de los grupos determinados por el factor al igual que ocurría con el efecto de interacción en los modelos ANCOVA.</p>
+<p>Para modelizar este tipo de datos es necesario instalar y cargar la librería <code>mgcv</code>.</p>
+<div id="bancos-de-datos-3" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Bancos de datos<a class="anchor" aria-label="anchor" href="#bancos-de-datos-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>Veamos los diferentes ejemplos con los que vamos a trabajar. Muchos de ellos ya los hemos utilizado en modelos anteriores.</p>
+<p><strong>Ejemplo 1. Datos de calidad del aire.</strong> Este diseño experimental contiene la información recogida sobre el estudio de calidad del aire que ya presentamos en la Unidad 2. El objetivo de este estudio era tratar de predecir la calidad del aire, medida en términos del nivel de ozono (<code>Ozone</code>), en función de la radiación solar (<code>Solar.R</code>), velocidad del viento (<code>Wind</code>), y temperatura (<code>Temp</code>). Además, se recogen las variables mes (<code>Month</code>) y día (<code>Day</code>) de la recogida de datos. En base a las variables experimentales recogidas cabría pensar que un modelo de regresión lineal múltiple de la forma</p>
+<p><span class="math display">\[Ozone \sim Solar.R + Wind + Temp\]</span></p>
+<p>A continuación, se presenta el código para la carga de datos y el gráfico de la respuesta versus cada predictora. En la figura se pueden ver los modelos lineales ajustados, y la aparente falta de ajuste de estos. Tan solo la relación entre Ozono y Wind parece de tipo lineal, mientras que en los otros dos parece necesario realizar algún tipo de transformación para linealizar la relación. Podemos intentar encontrar dicha transformación de respuesta o predictoras pero podemos ver que los métodos de suavizado nos proporcionan una solución rápida a esta situación sin necesidad de perder el tiempo buscando transformaciones adecuadas.</p>
+<div class="sourceCode" id="cb514"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Carga de datos</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"airquality"</span><span class="op">)</span>
+<span class="co"># Seleccionamos variables de interés</span>
+<span class="va">datos</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span><span class="op">)</span><span class="op">]</span>
+<span class="va">datacomp</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt</a></span><span class="op">(</span><span class="va">datos</span>, id.vars<span class="op">=</span><span class="st">'Ozone'</span><span class="op">)</span>
+<span class="co"># Representamos respuesta vs predictoras</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">datacomp</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">value</span>,<span class="va">Ozone</span>, colour<span class="op">=</span><span class="va">variable</span><span class="op">)</span>,<span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">variable</span>, scales<span class="op">=</span><span class="st">"free_x"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="st">"Ozono"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo01-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Como veremos más adelante la solución en términos de modelo de suavizado se puede apreciar en el gráfico siguiente:</p>
+<div class="sourceCode" id="cb515"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">datacomp</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">value</span>,<span class="va">Ozone</span>, colour<span class="op">=</span><span class="va">variable</span><span class="op">)</span>,<span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">value</span>,<span class="va">Ozone</span>, colour<span class="op">=</span><span class="va">variable</span><span class="op">)</span>, 
+              method<span class="op">=</span><span class="va">loess</span>, se<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">variable</span>, scales<span class="op">=</span><span class="st">"free_x"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="st">"Ozono"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo02-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>donde podemos ver el cambio en la asociación entre las diferentes predictoras y el nivel de ozono. Las tendencias de suavizado obtenidas reflejan el comportamiento a gran escala de la predictora versus cada respuesta. ¿Qué conclusiones podemos extraer de cada uno de los suavizados obtenidos?</p>
+<p><strong>Ejemplo 2. Datos de producción.</strong> Se realiza un ensayo agrícola para estudiar la producción de cierto tipo de planta en dos localidades en función de la densidad de plantas en la parcela de producción. Las variables recogidas en el experimento son la densidad de plantas (<code>Densidad</code>), la producción global obtenida (<code>Produccion</code>), y la localidad donde se encuentra la parcela de producción (<code>Localidad</code>). El banco de datos obtenido se presenta a continuación:</p>
+<div class="sourceCode" id="cb516"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Densidad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">23.48</span>, <span class="fl">26.22</span>, <span class="fl">27.79</span>, <span class="fl">32.88</span>, <span class="fl">33.27</span>, <span class="fl">36.79</span>, 
+              <span class="fl">37.58</span>, <span class="fl">37.58</span>, <span class="fl">41.49</span>, <span class="fl">42.66</span>, <span class="fl">44.23</span>, <span class="fl">44.23</span>, 
+              <span class="fl">51.67</span>, <span class="fl">55.58</span>, <span class="fl">55.58</span>, <span class="fl">57.93</span>, <span class="fl">58.71</span>, <span class="fl">59.5</span>, 
+              <span class="fl">60.67</span>, <span class="fl">62.63</span>, <span class="fl">67.71</span>, <span class="fl">70.06</span>, <span class="fl">70.45</span>, <span class="fl">73.98</span>, 
+              <span class="fl">73.98</span>, <span class="fl">78.67</span>, <span class="fl">95.9</span>, <span class="fl">96.68</span>, <span class="fl">96.68</span>,<span class="fl">101.38</span>, 
+              <span class="fl">103.72</span>, <span class="fl">104.51</span>, <span class="fl">105.68</span>, <span class="fl">108.03</span>,<span class="fl">117.82</span>, <span class="fl">127.21</span>, 
+              <span class="fl">134.26</span>, <span class="fl">137.39</span>, <span class="fl">151.87</span>, <span class="fl">163.61</span>, <span class="fl">166.35</span>, <span class="fl">184.75</span>, 
+              <span class="fl">18.78</span>, <span class="fl">21.25</span>, <span class="fl">23.23</span>, <span class="fl">27.18</span>, <span class="fl">30.15</span>, <span class="fl">31.63</span>, <span class="fl">32.12</span>, 
+              <span class="fl">32.62</span>, <span class="fl">32.62</span>, <span class="fl">33.61</span>, <span class="fl">37.07</span>, <span class="fl">38.55</span>, <span class="fl">39.54</span>, <span class="fl">39.54</span>, 
+              <span class="fl">41.02</span>, <span class="fl">42.5</span>, <span class="fl">43.98</span>, <span class="fl">45.47</span>, <span class="fl">49.92</span>, <span class="fl">50.9</span>, <span class="fl">53.87</span>, 
+              <span class="fl">57.82</span>, <span class="fl">61.78</span>, <span class="fl">61.78</span>, <span class="fl">63.75</span>, <span class="fl">67.71</span>, <span class="fl">71.66</span>, <span class="fl">77.59</span>, 
+              <span class="fl">80.56</span>, <span class="fl">86.49</span>, <span class="fl">88.46</span>, <span class="fl">89.45</span>, <span class="fl">90.93</span>, <span class="fl">92.91</span>, <span class="fl">101.81</span>, 
+              <span class="fl">103.78</span>, <span class="fl">115.15</span>, <span class="fl">123.06</span>, <span class="fl">144.31</span>, <span class="fl">155.68</span>, <span class="fl">158.15</span>, 
+              <span class="fl">180.39</span><span class="op">)</span>
+<span class="va">Produccion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.41</span>, <span class="fl">5.46</span>, <span class="fl">5.4</span>, <span class="fl">5.4</span>, <span class="fl">5.29</span>, <span class="fl">5.25</span>, <span class="fl">5.35</span>, <span class="fl">5.25</span>, 
+                <span class="fl">5.05</span>, <span class="fl">5.12</span>, <span class="fl">5.29</span>, <span class="fl">5.04</span>, <span class="fl">5.03</span>, <span class="fl">4.96</span>, <span class="fl">4.84</span>, <span class="fl">5.12</span>, 
+                <span class="fl">4.97</span>, <span class="fl">5.02</span>, <span class="fl">4.87</span>, <span class="fl">4.83</span>, <span class="fl">4.74</span>, <span class="fl">4.76</span>, <span class="fl">4.79</span>, <span class="fl">4.9</span>, 
+                <span class="fl">4.74</span>, <span class="fl">4.51</span>, <span class="fl">4.62</span>, <span class="fl">4.58</span>, <span class="fl">4.62</span>, <span class="fl">4.58</span>, <span class="fl">4.47</span>, <span class="fl">4.4</span>, 
+                <span class="fl">4.34</span>, <span class="fl">4.47</span>, <span class="fl">4.44</span>, <span class="fl">4.24</span>, <span class="fl">4.17</span>, <span class="fl">4.2</span>, <span class="fl">4.14</span>, <span class="fl">4.02</span>, 
+                <span class="fl">4.14</span>, <span class="fl">4</span>, <span class="fl">5.61</span>, <span class="fl">5.46</span>, <span class="fl">5.2</span>, <span class="fl">5.18</span>, <span class="fl">4.95</span>, <span class="fl">5.13</span>, 
+                <span class="fl">4.93</span>, <span class="fl">5.15</span>, <span class="fl">4.72</span>, <span class="fl">5.05</span>, <span class="fl">4.92</span>, <span class="fl">5.04</span>, <span class="fl">4.82</span>, <span class="fl">4.99</span>, 
+                <span class="fl">4.66</span>, <span class="fl">4.94</span>, <span class="fl">5</span>, <span class="fl">4.7</span>, <span class="fl">4.51</span>, <span class="fl">4.63</span>, <span class="fl">4.68</span>, <span class="fl">4.53</span>, <span class="fl">4.57</span>, 
+                <span class="fl">4.55</span>, <span class="fl">4.6</span>, <span class="fl">4.54</span>, <span class="fl">4.5</span>, <span class="fl">4.24</span>, <span class="fl">4.3</span>, <span class="fl">4.32</span>, <span class="fl">4.29</span>, <span class="fl">4.38</span>, 
+                <span class="fl">4.37</span>, <span class="fl">4.26</span>, <span class="fl">4.11</span>, <span class="fl">4.31</span>, <span class="fl">3.9</span>, <span class="fl">4.04</span>, <span class="fl">3.87</span>, <span class="fl">3.69</span>, <span class="fl">3.66</span>, 
+                <span class="fl">3.37</span><span class="op">)</span> 
+<span class="va">Localidad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="fl">42</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"B"</span>, <span class="fl">42</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plantas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">Densidad</span>, <span class="va">Produccion</span>, <span class="va">Localidad</span><span class="op">)</span></code></pre></div>
+<p>A la vista de la información recogida se podría plantear un modelo ANCOVA, por lo que realizamos un gráfico de dispersión identificando cada punto según la localidad de procedencia.</p>
+<div class="sourceCode" id="cb517"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">plantas</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Densidad</span>, y <span class="op">=</span> <span class="va">Produccion</span>, colour <span class="op">=</span> <span class="va">Localidad</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Densidad"</span>, y <span class="op">=</span> <span class="st">"Producción"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo04-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Se puede ver como la producción en la localidad A queda por encima de la de la localidad B, con un descenso asociado con el aumento de la densidad de plantas. La única diferencia con los modelos ANCOVA clásicos es que el descenso no parece ajustarse a un modelo lineal, sino más bien a un modelo con una caída curvilínea. Aunque existe la posibilidad de plantear una transformación de la respuesta y/o predictora, o incluso un modelo polinómico, resulta difícil plantear un modelo tan rígido dado que ambas localidades parecen comportarse de forma distinta.</p>
+<p>Vemos el resultado del modelo de suavizado (asumiendo que cada localidad puede tener un comportamiento distinto)</p>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo05-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>El gráfico muestra las tendencias ajustadas para cada localidad reflejando una curva distinta para cada localidad, lo que permite obtener un modelo muy flexible que se adapta al comportamiento global de la producción versus la densidad de plantas en función de la localidad de procedencia. Más tarde presentaremos todas las posibilidades de modelización para este conjunto de datos.</p>
+<p><strong>Ejemplo 3. Datos de infiltración.</strong> Se conoce como infiltración el proceso por el cual el agua (riego o lluvia) se va introduciendo bajo la superficie de un terreno cultivado. Este proceso es vital para determinar las cantidades de agua de riego necesarias, para mantener el terreno en condiciones óptimas. Un parámetro habitual que sirve para estudiar dicho proceso es la carga hidráulica. Este depende tanto de la profundidad de la infiltración (<code>profundidad</code>) como del procedimiento de riego usado. Se diseña un experimento para estudiar la carga hidráulica (<code>cargahid</code>) de un terreno bajo diferentes condiciones de riego (denominados <code>tratamiento</code>). Los datos recogidos en el experimento se presentan a continuación:</p>
+<div class="sourceCode" id="cb518"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tratamiento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="fl">15</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"B"</span>, <span class="fl">15</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"C"</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">profundidad</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span>, <span class="fl">40</span>, <span class="fl">50</span>, <span class="fl">60</span>, <span class="fl">70</span>, <span class="fl">80</span>, <span class="fl">90</span>, <span class="fl">100</span>, <span class="fl">110</span>, <span class="fl">120</span>, <span class="fl">130</span>, 
+                <span class="fl">140</span>, <span class="fl">150</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span>, <span class="fl">40</span>, <span class="fl">50</span>, <span class="fl">60</span>, <span class="fl">70</span>, <span class="fl">80</span>, <span class="fl">90</span>, <span class="fl">100</span>, <span class="fl">110</span>, 
+                <span class="fl">120</span>, <span class="fl">130</span>, <span class="fl">140</span>, <span class="fl">150</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span>, <span class="fl">40</span>, <span class="fl">50</span>, <span class="fl">60</span>, <span class="fl">70</span>, <span class="fl">80</span>, <span class="fl">90</span>, 
+                <span class="fl">100</span>, <span class="fl">110</span>, <span class="fl">120</span>, <span class="fl">130</span>, <span class="fl">140</span>, <span class="fl">150</span><span class="op">)</span>
+<span class="va">cargahid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">406.90</span>, <span class="op">-</span><span class="fl">345.70</span>, <span class="op">-</span><span class="fl">335.50</span>, <span class="op">-</span><span class="fl">315.10</span>, <span class="op">-</span><span class="fl">304.90</span>, <span class="op">-</span><span class="fl">315.10</span>, 
+              <span class="op">-</span><span class="fl">323.26</span>, <span class="op">-</span><span class="fl">335.50</span>, <span class="op">-</span><span class="fl">345.70</span>, <span class="op">-</span><span class="fl">362.02</span>, <span class="op">-</span><span class="fl">374.26</span>, <span class="op">-</span><span class="fl">386.50</span>, 
+              <span class="op">-</span><span class="fl">421.18</span>, <span class="op">-</span><span class="fl">435.46</span>, <span class="op">-</span><span class="fl">447.70</span>, <span class="op">-</span><span class="fl">896.50</span>, <span class="op">-</span><span class="fl">737.38</span>, <span class="op">-</span><span class="fl">653.74</span>, 
+              <span class="op">-</span><span class="fl">470.14</span>, <span class="op">-</span><span class="fl">406.90</span>, <span class="op">-</span><span class="fl">388.54</span>, <span class="op">-</span><span class="fl">396.70</span>, <span class="op">-</span><span class="fl">396.70</span>, <span class="op">-</span><span class="fl">396.70</span>, 
+              <span class="op">-</span><span class="fl">406.90</span>, <span class="op">-</span><span class="fl">419.14</span>, <span class="op">-</span><span class="fl">437.50</span>, <span class="op">-</span><span class="fl">468.10</span>, <span class="op">-</span><span class="fl">466.06</span>, <span class="op">-</span><span class="fl">492.58</span>, 
+              <span class="op">-</span><span class="fl">896.50</span>, <span class="op">-</span><span class="fl">855.70</span>, <span class="op">-</span><span class="fl">818.98</span>, <span class="op">-</span><span class="fl">788.38</span>, <span class="op">-</span><span class="fl">678.22</span>, <span class="op">-</span><span class="fl">590.50</span>, 
+              <span class="op">-</span><span class="fl">545.62</span>, <span class="op">-</span><span class="fl">515.02</span>, <span class="op">-</span><span class="fl">498.70</span>, <span class="op">-</span><span class="fl">496.66</span>, <span class="op">-</span><span class="fl">517.06</span>, <span class="op">-</span><span class="fl">555.82</span>, 
+              <span class="op">-</span><span class="fl">619.06</span>, <span class="op">-</span><span class="fl">623.14</span>, <span class="op">-</span><span class="fl">623.14</span><span class="op">)</span>
+<span class="va">infiltracion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">tratamiento</span>, <span class="va">profundidad</span>, <span class="va">cargahid</span><span class="op">)</span></code></pre></div>
+<p>Representamos los datos mediante un gráfico de dispersión identificando cada uno de los tratamientos:</p>
+<div class="sourceCode" id="cb519"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">infiltracion</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">profundidad</span>, y <span class="op">=</span> <span class="va">cargahid</span>, colour <span class="op">=</span> <span class="va">tratamiento</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Profundidad"</span>, y <span class="op">=</span> <span class="st">"Carga Hidráulica"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo07-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>En este caso las tendencias observadas son bastante diferentes entre tratamientos y claramente no lineales. Un posible modelo de suavizado para este conjunto de datos vendría dado por:</p>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo08-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>En este caso los ajustes de suavizado se asemejan a modelos polinómicos de grado 3 o 4, de forma que se podrían plantear ambas modelizaciones y compararlas para determinar el modelo que mejor ajusta la tendencia observada en los datos.</p>
+</div>
+<div id="funciones-de-suavizado" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Funciones de suavizado<a class="anchor" aria-label="anchor" href="#funciones-de-suavizado"><i class="fas fa-link"></i></a>
+</h2>
+<p>Las funciones de suavizado son los denominados <code>splines</code> que consisten en funciones definidas sobre bases de polinomios. En nuestro caso utilizaremos los denominados splines penalizados o p-splines. Para el ajuste de este tipo de mosdelos utilizaremos la función <code>gam</code> de la libreria <code>mgcv</code>.</p>
+<p>La función de suavizado tiene la estructura siguiente:</p>
+<p><span class="math display">\[s(variable, k = , m = , bs =  , by = factor)\]</span></p>
+<p>donde <span class="math inline">\(k\)</span> es el tamaño de la base de polinomios, <span class="math inline">\(m\)</span> es el orden de los polinomios, <span class="math inline">\(bs\)</span> es el tipo de la base de splines utilizados y <span class="math inline">\(by\)</span> identifica un factor para el ajuste de las curvas de suavizado (efecto de interacción).</p>
+<div id="splines-de-regresión" class="section level3" number="10.2.1">
+<h3>
+<span class="header-section-number">10.2.1</span> Splines de regresión<a class="anchor" aria-label="anchor" href="#splines-de-regresi%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<p>Las funciones de suavizado con las que se empieza a trabajar asumen que la función de suavizado <span class="math inline">\(f(X)\)</span> se puede escribir como:</p>
+<p><span class="math display">\[
+f(X) = \sum_{i=1}^q \beta_j b_j(X)
+\]</span></p>
+<p>siendo <span class="math inline">\(\beta_j\)</span> parámetros desconocidos y <span class="math inline">\(b_1(X),\ldots,b_q(X)\)</span> una base de funciones de polinomios de dimensión <span class="math inline">\(q\)</span> (modelo polinómico de orden <span class="math inline">\(q\)</span>), de forma que el modelo lineal para la respuesta <span class="math inline">\(Y\)</span> se podría expresar como:</p>
+<p><span class="math display">\[
+y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \ldots + \beta_q x_i^q + \epsilon_i, \quad i=1,...,n
+\]</span></p>
+<p>El problema principal con esta propuesta es que la base de polinomios nos llevaría a modelos donde aparecían problemas de multicolinealidad, y que exigen un grado bastante alto para poder adaptarse a los cambios entre respuesta y predictora.</p>
+<p>Una generalización de estos modelos son los denominados “splines de regresión” que son curvas definidas a trozos mediante polinomios, es decir, dividimos el rango de <span class="math inline">\(X\)</span> en trozos y sobre cada trozo ajustamos un modelo polinómico con la única restricción que loas funciones obtenidas en cada trozo deben unirse formando una curva suave. La ventaja principal es que podemos ajustar utilizando polinomios de grado bajo en cada trozo, consiguiendo representar curvas con formas complicadas, evitando grandes oscilaciones en la tendencia que aparecen cuando utilizamos polinomios de grados muy altos.</p>
+<p>La desventaja principal es que debemos elegir el número de trozos o <code>knots</code> y el orden de la base de polinomios que debemos utilizar.</p>
+</div>
+<div id="splines-cúbicos" class="section level3" number="10.2.2">
+<h3>
+<span class="header-section-number">10.2.2</span> Splines cúbicos<a class="anchor" aria-label="anchor" href="#splines-c%C3%BAbicos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Un “spline cúbico” es una curva construida a partir de trozos de polinomios de grado 3 que se ensamblan perfectamente de forma que la curva que forma es continua hasta la segunda derivada.</p>
+<p>Son los más utilizados dentro de los splines de regresión porque utilizan polinomios muy sencillos que se adaptan perfectamente a cambios en el comportamiento entre respuesta y predictora en los diferentes trozos en que se divide el rango de <span class="math inline">\(X\)</span>.</p>
+</div>
+<div id="splines-penalizados" class="section level3" number="10.2.3">
+<h3>
+<span class="header-section-number">10.2.3</span> Splines penalizados<a class="anchor" aria-label="anchor" href="#splines-penalizados"><i class="fas fa-link"></i></a>
+</h3>
+<p>La elección del grado de suavización de la función que ajusta la tendencia entre respuesta y predictora es un tema muy importante, y está asociado al grado de la base de polinomios utilizada. Las posibilidades que tenemos a la hora de elegir el grado de suavizado pasan por utilizar los denominados “splines penalizados” que son splines de regresión en los que se introduce una penalización al realizar el ajuste del modelo. Dicha penalización viene controlada por el parámetro de suavizado <span class="math inline">\(\lambda\)</span>.</p>
+<p>Si <span class="math inline">\(\lambda = 0\)</span> estamos en el caso particular en el que no hay penalización y a medida que <span class="math inline">\(\lambda\)</span> aumenta, aumentamos la intensidad de la penalización. Cuando<span class="math inline">\(\lambda\)</span> tiende a 1 el modelo se convierte prácticamente en un modelo de regresión lineal simple. Se recomienda la lectura de la bibliografía recomendada para completar la información sobre el parámetro de suavizado y la penalización utilizada.</p>
+<p>Para ajustar este tipo de modelos en <code>R</code> utilizaremos la función anterior donde se toman valores:</p>
+<ul>
+<li>
+<span class="math inline">\(k = 10\)</span> cuando nuestra muestra es pequeña y <span class="math inline">\(k = 20\)</span> cuando nuestra muestra es grande (aunque se puede variar en función de los datos analizados).</li>
+<li>
+<span class="math inline">\(m = 2\)</span> como el orden de los polinomios.</li>
+<li>Se toma como base de splines los splines penalizados (<span class="math inline">\(bs = ps\)</span>).</li>
+</ul>
+</div>
+</div>
+<div id="bondad-del-ajuste-y-selección-del-modelo" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Bondad del ajuste y selección del modelo<a class="anchor" aria-label="anchor" href="#bondad-del-ajuste-y-selecci%C3%B3n-del-modelo"><i class="fas fa-link"></i></a>
+</h2>
+<p>La bondad del ajuste de este tipo de modelos se basa en los estadísticos AIC y GCV. El segundo de estos es específico de este tipo de modelos ya que se utiliza para estimar la curva de suavizado asociada con la variable predictora. En ambos casos cuanto menor es el valor mejor será el modelo obtenido. En la mayoría de situaciones se utilizan ambos criterios para comparar el modelo lineal con el suavizado y determinar cual es el mejor de los dos. Para este tipo de modelos se puede obtener además la capacidad explicativa del modelo construido a través de la desvianza explicada, que representa el porcentaje de variabilidad de la respuesta que viene explicada por el modelo, de forma similar al <span class="math inline">\(R^2\)</span> en los modelos de regresión.</p>
+<p>En cuanto a la selección del modelo, la principal diferencia con respecto a los modelos tratados hasta ahora es que no existen procedimientos automáticos, con lo que la construcción y validación de los modelos requiere la construcción de todos los que consideremos que pueden ser adecuados.</p>
+<p>Las posibilidades más habituales de modelización y comparación consisten en:</p>
+<ul>
+<li>Comparar diferentes tipos de modelos lineales (RLS, RLM, o MP) con el modelo suavizado.</li>
+<li>Comparar las componentes del modelo aditivo, es decir, comprobar si podemos eliminar algunos de los efectos presentes en el modelo. En este sentido, cuando tenemos más de dos variables predictoras se pueden trabajar con todos los modelos que presentamos al inicio de esta unidad.</li>
+</ul>
+<p>Para la selección del mejor modelo se usan como referencia el AIC. El criterio basado en GCV se utiliza para seleccionar la función de suavizado (en cuanto a los parámetros que se usan para su construcción).</p>
+<p>Pasamos a realizar un análisis completo de los tres ejemplos presentados al inicio de la unidad. En este tipo de modelos utilizaremos la función <code>summary</code> en lugar de <code>tab_model</code> para obtener la información del modelo ajustado.</p>
+<p><strong>Ejemplo.</strong> Estudaimos las diferentes posibilidades de modelización para el banco de datos de calidad del aire. Para construir el mejor modelo para este banco de datos vamos a proceder ajustando individualmente cada posible predictora para proceder posteriormente con modelos más complejos. Para cada modelo individual probaremos un modelo polinómico (MP) de orden 3 (para poder captar los cambios de tendencia) y el correspondiente modelo de suavizado. Los ajustaremos todos y valoraremos la capacidad explicativa de cada uno.</p>
+<p>Se proponen los modelos siguientes para la asociación entre calidad del aire y la radiación solar:</p>
+<p><span class="math display">\[
+\begin{array}{ll}
+Ozone &amp; \sim Solar.R + Solar.R^2 + Solar.R^3\\
+Ozone &amp; \sim f(Solar.R)\\
+\end{array}
+\]</span></p>
+<p>con <span class="math inline">\(f()\)</span> una función de suavidado basada en p-splines penalizdos con <span class="math inline">\(k = 10\)</span> nodos y polinomios de orden <span class="math inline">\(2\)</span>.</p>
+<p>Realizamos el ajuste de ambos modelos utilizando la función <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam()</a></code>, y comparamos ambos modelos con el estadístico <code>AIC</code>.</p>
+<div class="sourceCode" id="cb520"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># M1: modelo polinómico</span>
+<span class="va">fit1.solarr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Solar.R</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> , 
+                   data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="co"># M1: modelo suavizado</span>
+<span class="va">fit2.solarr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Solar.R</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+                   data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span></code></pre></div>
+<p>Resultados para el modelo polinómico</p>
+<div class="sourceCode" id="cb521"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit1.solarr</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Ozone ~ Solar.R + I(Solar.R^2) + I(Solar.R^3)
+## 
+## Parametric coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)   1.432e+01  1.244e+01   1.151   0.2522  
+## Solar.R      -1.245e-01  3.265e-01  -0.381   0.7038  
+## I(Solar.R^2)  3.594e-03  2.212e-03   1.625   0.1072  
+## I(Solar.R^3) -9.661e-06  4.292e-06  -2.251   0.0264 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## 
+## R-sq.(adj) =  0.225   Deviance explained = 24.6%
+## GCV = 890.23  Scale est. = 858.15    n = 111</code></pre>
+<p>La tabla de coeficientes muestra que el grado 3 del polinomio es necesario (p-valor asociado significativo), aunque la capacidad explicativa (<code>Deviance explained</code>) es muy baja (24.6%). En cuanto al modelo suavizado tendríamos:</p>
+<div class="sourceCode" id="cb523"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit2.solarr</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Ozone ~ s(Solar.R, k = 10, m = 2, bs = "ps")
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   42.099      2.783   15.13   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##              edf Ref.df     F  p-value    
+## s(Solar.R) 2.943  3.569 9.074 9.74e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.224   Deviance explained = 24.4%
+## GCV = 891.28  Scale est. = 859.62    n = 111</code></pre>
+<p>La función de suavizado es relevante (p-valor de s(Solar.R) significativo), pero la capacidad explicativa también es muy baja (24.6%), aunque del mismo orden que la obtenida con el modelo polinómico. Realizamos la comparación de ambos modelos mediante <code>AIC</code>:</p>
+<div class="sourceCode" id="cb525"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Bondad de ajuste de cada modelo (AIC)</span>
+<span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit1.solarr</span><span class="op">)</span>
+<span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit2.solarr</span><span class="op">)</span>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">g1</span>, <span class="va">g2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 7
+##      df logLik   AIC   BIC deviance df.residual  nobs
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
+## 1  4.00  -530. 1071. 1084.   91822.        107    111
+## 2  3.94  -530. 1071. 1084.   92029.        107.   111</code></pre>
+<p>Ambos modelos tienen un AIC del mismo orden por lo que resulta difícil establecer cual de ellos resultaría más conveniente. Veamos gráficamente los ajustes obtenidos donde se aprecia el comportamiento de ambos modelos.</p>
+<pre><code>## $Solar.R</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo13-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## $Solar.R</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo13-2.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Analizamos ahora el efecto de la velocidad del viento en el nivel de ozono. Se proponen los modelos siguientes:</p>
+<p><span class="math display">\[
+\begin{array}{ll}
+Ozone &amp; \sim Wind + Wind^2 + Wind^3\\
+Ozone &amp; \sim f(Wind)\\
+\end{array}
+\]</span></p>
+<p>Ajustamos ambos modelos</p>
+<div class="sourceCode" id="cb529"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># M1: modelo polinómico</span>
+<span class="va">fit1.wind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Wind</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Wind</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Wind</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> , 
+                 data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="co"># M1: modelo suavizado</span>
+<span class="va">fit2.wind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Wind</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+                 data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span></code></pre></div>
+<p>Resultados para el modelo polinómico</p>
+<div class="sourceCode" id="cb530"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit1.wind</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Ozone ~ Wind + I(Wind^2) + I(Wind^3)
+## 
+## Parametric coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 200.28778   27.01403   7.414  2.5e-11 ***
+## Wind        -32.26471    8.29374  -3.890  0.00017 ***
+## I(Wind^2)     1.92084    0.78733   2.440  0.01627 *  
+## I(Wind^3)    -0.03771    0.02305  -1.636  0.10465    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## 
+## R-sq.(adj) =  0.484   Deviance explained = 49.8%
+## GCV = 581.27  Scale est. = 561.23    n = 116</code></pre>
+<p>La tabla de coeficientes muestra que es suficiente con considera el grado 2 en el polinomio. La capacidad explicativa de este modelo se sitúa casi en el 50% (49.8%), indicando que individualmente está variable contribuye más a la explicación del nivel de ozono. En cuanto al modelo de suavizado:</p>
+<div class="sourceCode" id="cb532"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit2.wind</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Ozone ~ s(Wind, k = 10, m = 2, bs = "ps")
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   42.129      2.193   19.21   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##           edf Ref.df     F p-value    
+## s(Wind) 2.889  3.534 30.77  &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.487   Deviance explained =   50%
+## GCV = 577.41  Scale est. = 558.05    n = 116</code></pre>
+<p>La función se suavizado es relevante (p-valor significativo), y la capacidad explicativa también es del 50%. Si comparamos con el <code>AIC</code> podemos ver que ambos modelos son muy similares. En realidad deberíamos ajustar de nuevo el modelo polinómico considerando el grado 2, pero los resultados son muy similares.</p>
+<div class="sourceCode" id="cb534"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Bondad de ajuste de cada modelo (AIC)</span>
+<span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit1.wind</span><span class="op">)</span>
+<span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit2.wind</span><span class="op">)</span>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">g1</span>,<span class="va">g2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 7
+##      df logLik   AIC   BIC deviance df.residual  nobs
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
+## 1  4.00  -530. 1069. 1083.   62858.        112.   116
+## 2  3.89  -529. 1069. 1082.   62564.        112.   116</code></pre>
+<p>En cuanto a los ajustes obtenidos con cada modelo podemos ver lo que se parecen las dos soluciones propuestas.</p>
+<pre><code>## $Wind</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo18-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## $Wind</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo18-2.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Analizamos ahora el efecto de la tempreratura sobre el nivel de ozono. Proponemos los modelos:</p>
+<p><span class="math display">\[
+\begin{array}{ll}
+Ozone &amp; \sim Temp + Temp^2 + Temp^3\\
+Ozone &amp; \sim f(Temp)\\
+\end{array}
+\]</span></p>
+<p>Ajustamos ambos modelos</p>
+<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># M1: modelo polinómico</span>
+<span class="va">fit1.temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Temp</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Temp</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Temp</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> , 
+                 data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="co"># M1: modelo suavizado</span>
+<span class="va">fit2.temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Temp</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+                 data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span></code></pre></div>
+<p>Resultados para el modelo polinómico</p>
+<div class="sourceCode" id="cb539"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit1.temp</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Ozone ~ Temp + I(Temp^2) + I(Temp^3)
+## 
+## Parametric coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  0.0910285  0.0663384   1.372   0.1727  
+## Temp         2.2972754  1.6743100   1.372   0.1728  
+## I(Temp^2)   -0.0732824  0.0430854  -1.701   0.0917 .
+## I(Temp^3)    0.0006372  0.0002747   2.319   0.0222 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## 
+## Rank: 3/4
+## R-sq.(adj) =  0.533   Deviance explained = 54.1%
+## GCV = 522.02  Scale est. = 508.52    n = 116</code></pre>
+<p>La tabla de coeficientes muestra que es necesario el grado 3 en el polinomio. La capacidad explicativa de este modelo se sitúa casi en 54.1% (la más alta de forma individual). En cuanto al modelo de suavizado:</p>
+<div class="sourceCode" id="cb541"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit2.temp</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Ozone ~ s(Temp, k = 10, m = 2, bs = "ps")
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   42.129      2.043   20.62   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##           edf Ref.df     F p-value    
+## s(Temp) 3.771  4.524 32.04  &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.555   Deviance explained =   57%
+## GCV = 505.06  Scale est. = 484.29    n = 116</code></pre>
+<p>La función se suavizado es relevante (p-valor significativo), y la capacidad explicativa también es algo superior que en el modelo polinómico al alcanzar el 57%. En este caso el <code>AIC</code> para el modelo de suavizado es algo inferior al polinómico pero ambos proporcionan soluciones muy similares.</p>
+<div class="sourceCode" id="cb543"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Bondad de ajuste de cada modelo (AIC)</span>
+<span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit1.temp</span><span class="op">)</span>
+<span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit2.temp</span><span class="op">)</span>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">g1</span>,<span class="va">g2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 7
+##      df logLik   AIC   BIC deviance df.residual  nobs
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
+## 1  3.00  -525. 1057. 1068.   57462.        113.   116
+## 2  4.77  -521. 1053. 1069.   53867.        111.   116</code></pre>
+<p>La solución con cada modelo es:</p>
+<pre><code>## $Temp</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo23-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## $Temp</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo23-2.png" width="95%" style="display: block; margin: auto;"></div>
+<p>A la vista de los análisis individuales las variables predictoras más relvantes por orden de importancia serían temperatura, velocidad del viento, y por último la radiación solar. En cuanto a la elección de modelos polinómicos o suavizados los resultados son muy similares en los tres casos ya que únicamente se observa cierta preferencia del suavizado con la variable temperatura.</p>
+<p>Pasamos a analizar los modelos más complejos con dos o tres predictoras. En primer lugar comparamos modelos con estructuras polinómicas frente a modelos de suavizado. Veamos todos los modelos:</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+M1:&amp; Ozone &amp; \sim Solar.R + Solar.R^2 + Solar.R^3 + Wind + Wind^2\\
+M2:&amp; Ozone &amp; \sim Solar.R + Solar.R^2 + Solar.R^3 + Temp + Temp^2 + Temp^3\\
+M3:&amp; Ozone &amp; \sim Wind + Wind^2 + Temp + Temp^2 + Temp^3\\
+M4:&amp; Ozone &amp; \sim Solar.R + Solar.R^2 + Solar.R^3 + Wind + Wind^2 + Temp + Temp^2 + Temp^3\\
+M5:&amp; Ozone &amp; \sim f(Solar.R) + f(Wind)\\
+M6:&amp; Ozone &amp; \sim f(Solar.R) + f(Temp)\\
+M7:&amp; Ozone &amp; \sim f(Wind) + f(Temp)\\
+M8:&amp; Ozone &amp; \sim f(Solar.R) + f(Wind) + f(Temp)\\
+\end{array}
+\]</span></p>
+<p>En primer lugar ajustamos todos los modelos (con el indicador de la tabla anterior):</p>
+<div class="sourceCode" id="cb547"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit.M1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Solar.R</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="va">Wind</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Wind</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="va">fit.M2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Solar.R</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="va">Temp</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Temp</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Temp</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="va">fit.M3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Wind</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Wind</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="va">Temp</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Temp</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Temp</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="va">fit.M4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Solar.R</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="va">Wind</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Wind</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="va">Temp</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Temp</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Temp</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="va">fit.M5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Solar.R</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Wind</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="va">fit.M6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Solar.R</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Temp</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="va">fit.M7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Wind</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Temp</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="va">fit.M8</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Solar.R</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span>
+                <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Wind</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Temp</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span></code></pre></div>
+<p>En lugar de estudiar con detalle todos los modelos propuestos, utilizamos el <code>AIC</code> para ordenarlos (de mejor a peor) y analizamos los dos más relevantes.</p>
+<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Bondad de ajuste de cada modelo (AIC)</span>
+<span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M1</span><span class="op">)</span>
+<span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M2</span><span class="op">)</span>
+<span class="va">g3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M3</span><span class="op">)</span>
+<span class="va">g4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M4</span><span class="op">)</span>
+<span class="va">g5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M5</span><span class="op">)</span>
+<span class="va">g6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M6</span><span class="op">)</span>
+<span class="va">g7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M7</span><span class="op">)</span>
+<span class="va">g8</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M8</span><span class="op">)</span>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">g1</span>, <span class="va">g2</span>, <span class="va">g3</span>, <span class="va">g4</span>, <span class="va">g5</span>, <span class="va">g6</span>, <span class="va">g7</span>, <span class="va">g8</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 7
+##      df logLik   AIC   BIC deviance df.residual  nobs
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
+## 1  5.00  -523. 1057. 1074.   79944.        106.   111
+## 2  6.00  -497. 1008. 1027.   50331.        105.   111
+## 3  5.00  -506. 1024. 1041.   41853.        111.   116
+## 4  8.00  -477.  971.  996.   34858.        103.   111
+## 5  6.06  -495. 1003. 1022.   48176.        105.   111
+## 6  7.51  -493. 1003. 1026.   46669.        103.   111
+## 7  7.69  -501. 1018. 1042.   38028.        108.   116
+## 8  9.97  -470.  963.  992.   31176.        101.   111</code></pre>
+<p>Los dos mejores modelos (menor valor del <code>AIC</code>) son el M4 y el M8 que corresponden con los modelos que incorporan las tres predictoras. El M4 expresado como modelo polinómico y el M8 como modelo aditivo. De hecho, el modelo aditivo con las tres predictoras es el mejor de todos. Dado que individualmente tanto para la variable <code>Solar.R</code> y <code>Wind</code> el modelo polinómico se comportaba al mismo nivel que el suavizado, se propone una última alternativa de modelización que consiste en asumir polinomios en estas dos variables y suavizado en <code>Temp</code>:</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+M9:&amp; Ozone &amp; \sim Solar.R + Solar.R^2 + Solar.R^3 + Wind + Wind^2 + f(Temp)\\
+\end{array}
+\]</span></p>
+<div class="sourceCode" id="cb550"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit.M9</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Solar.R</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Solar.R</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="va">Wind</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Wind</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> 
+                <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Temp</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+              data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span></code></pre></div>
+<p>En lugar de estudiar con detalle todos los modelos propuestos, utilizamos el <code>AIC</code> para ordenarlos (de mejor a peor) y analizamos los dos más relevantes.</p>
+<div class="sourceCode" id="cb551"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Bondad de ajuste de cada modelo (AIC)</span>
+<span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.M9</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##      df logLik   AIC   BIC deviance df.residual  nobs
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
+## 1  8.30  -495. 1008. 1033.   48296.        103.   111</code></pre>
+<p>El <code>AIC</code> para este modelo es superior al obtenido para los modelos M4 y M8, de forma que el modelo preferido sería el M8. En primer lugar estudiamos el modelo obtenido:</p>
+<div class="sourceCode" id="cb553"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit.M8</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Ozone ~ s(Solar.R, k = 10, m = 2, bs = "ps") + s(Wind, k = 10, 
+##     m = 2, bs = "ps") + s(Temp, k = 10, m = 2, bs = "ps")
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   42.099      1.667   25.25   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##              edf Ref.df      F p-value    
+## s(Solar.R) 2.622  3.209  4.142 0.00672 ** 
+## s(Wind)    2.747  3.374 14.773 &lt; 2e-16 ***
+## s(Temp)    3.600  4.327 12.738 &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.721   Deviance explained = 74.4%
+## GCV = 339.03  Scale est. = 308.58    n = 111</code></pre>
+<p>Los tres suavizados resultan significativos y la capacidad explicativa del modelo alcanza el 74.4%. Como alternativa a este modelo podríamos considerar modelos aditivos donde aumentamos el número de nodos. Probamos este nuevo modelo duplicando el número de nodos (pasamos de 10 a 20). En este caso dado que se trata de comparar diferentes opciones de suavizado utilizaremos el criterio <code>GCV</code> para decidirnos entre los dos.</p>
+<div class="sourceCode" id="cb555"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit.M10</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Solar.R</span>, k <span class="op">=</span> <span class="fl">20</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span>
+                 <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Wind</span>, k <span class="op">=</span> <span class="fl">20</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span> 
+                 <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Temp</span>, k <span class="op">=</span> <span class="fl">20</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, 
+               data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit.M10</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Ozone ~ s(Solar.R, k = 20, m = 2, bs = "ps") + s(Wind, k = 20, 
+##     m = 2, bs = "ps") + s(Temp, k = 20, m = 2, bs = "ps")
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   42.099      1.445   29.13   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##               edf Ref.df      F p-value    
+## s(Solar.R)  1.068  1.132 10.118 0.00175 ** 
+## s(Wind)     3.588  4.416 20.900 &lt; 2e-16 ***
+## s(Temp)    16.392 17.430  7.082 &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.791   Deviance explained = 83.1%
+## GCV = 289.38  Scale est. = 231.9     n = 111</code></pre>
+<p>El valor de GCV con 10 nodos es 339.03 mientras que con 20 nodos dicho estadístico es 289.38. Por tanto, el modelo con 20 nodos es preferido. De hecho, la capacidad explicada ha crecido hasta el 83.1% (un 10% superior). El valor de <code>AIC</code> para este modelo es 941 mostrando ser mejor que el modelo polinómico. El modelo final es un suavizado independiente para cada una de las predictoras consideradas.</p>
+<p><strong>Ejemplo.</strong> Analizamos ahora el banco de datos de producción. La estructura de este banco de datos nos hace pensar que un modelo ANCOVA podría ser adecuado pero el gráfico descriptivo no deja muy claro si el comportamiento es de tipo lineal o si hay que considerar efectos de interacción entre localidad y densidad de plantas de tipo no lineal.</p>
+<div class="sourceCode" id="cb557"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">plantas</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Densidad</span>, y <span class="op">=</span> <span class="va">Produccion</span>, colour <span class="op">=</span> <span class="va">Localidad</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Densidad"</span>, y <span class="op">=</span> <span class="st">"Producción"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo30-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>El conjunto de modelos que se pueden plantear son:</p>
+<ul>
+<li>M1: Modelo lineal sin efecto de interacción.</li>
+<li>M2: Modelo lineal sin efecto de interacción.</li>
+<li>M3: Modelo polinómico de grado 2 sin interacción.</li>
+<li>M4: Modelo polinómico de grado 2 con interacción.</li>
+<li>M5: Modelo suavizado sin interacción.</li>
+<li>M6: Modelo suavizado con interacción.</li>
+</ul>
+<p>La representación gráfica de estos modelos se puede obteenr mediante:</p>
+<p><img src="10-Smooth_files/figure-html/smoo31-1.png" width="95%" style="display: block; margin: auto;"><img src="10-Smooth_files/figure-html/smoo31-2.png" width="95%" style="display: block; margin: auto;"><img src="10-Smooth_files/figure-html/smoo31-3.png" width="95%" style="display: block; margin: auto;"><img src="10-Smooth_files/figure-html/smoo31-4.png" width="95%" style="display: block; margin: auto;"><img src="10-Smooth_files/figure-html/smoo31-5.png" width="95%" style="display: block; margin: auto;"><img src="10-Smooth_files/figure-html/smoo31-6.png" width="95%" style="display: block; margin: auto;"></p>
+<p>Veamos el código necesario para ajustar cada uno de los modelos propuestos y valoremos el <code>AIC</code> y el <code>GCV</code> para seleccionar el mejor modelo.</p>
+<div class="sourceCode" id="cb558"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit.plantas.M1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Produccion</span> <span class="op">~</span> <span class="va">Localidad</span> <span class="op">+</span> <span class="va">Densidad</span>, 
+                      data <span class="op">=</span> <span class="va">plantas</span><span class="op">)</span>
+<span class="va">fit.plantas.M2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Produccion</span> <span class="op">~</span> <span class="va">Localidad</span> <span class="op">*</span> <span class="va">Densidad</span>, 
+                      data <span class="op">=</span> <span class="va">plantas</span><span class="op">)</span>
+<span class="va">fit.plantas.M3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Produccion</span> <span class="op">~</span> <span class="va">Localidad</span> <span class="op">+</span> <span class="va">Densidad</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Densidad</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>, 
+                      data <span class="op">=</span> <span class="va">plantas</span><span class="op">)</span>
+<span class="va">fit.plantas.M4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Produccion</span> <span class="op">~</span> <span class="va">Localidad</span> <span class="op">*</span> <span class="op">(</span><span class="va">Densidad</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">Densidad</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>, 
+                      data <span class="op">=</span> <span class="va">plantas</span><span class="op">)</span>
+<span class="va">fit.plantas.M5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Produccion</span> <span class="op">~</span> <span class="va">Localidad</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Densidad</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>,
+                      data <span class="op">=</span> <span class="va">plantas</span><span class="op">)</span>
+<span class="va">fit.plantas.M6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">Produccion</span> <span class="op">~</span> <span class="va">Localidad</span> <span class="op">+</span> 
+                        <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Densidad</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span>, by <span class="op">=</span> <span class="va">Localidad</span><span class="op">)</span>,
+                      data <span class="op">=</span> <span class="va">plantas</span><span class="op">)</span>
+<span class="co">### Valores de AIC</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.plantas.M1</span><span class="op">)</span>,<span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.plantas.M2</span><span class="op">)</span>,<span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.plantas.M3</span><span class="op">)</span>,
+      <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.plantas.M4</span><span class="op">)</span>,<span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.plantas.M5</span><span class="op">)</span>,<span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">fit.plantas.M6</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 7
+##      df logLik    AIC    BIC deviance df.residual  nobs
+##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
+## 1  3      46.6  -85.2  -75.4    1.62         81      84
+## 2  4      49.5  -89.0  -76.9    1.51         80      84
+## 3  4.00   63.7 -117.  -105.     1.08         80      84
+## 4  6.00   66.0 -118.  -101.     1.02         78      84
+## 5  6.34   70.9 -127.  -109.     0.909        77.7    84
+## 6  9.09   77.0 -134.  -109.     0.786        74.9    84</code></pre>
+<div class="sourceCode" id="cb560"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">### Valores de GCV</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">fit.plantas.M1</span><span class="op">$</span><span class="va">gcv.ubre</span>, <span class="va">fit.plantas.M2</span><span class="op">$</span><span class="va">gcv.ubre</span>, <span class="va">fit.plantas.M3</span><span class="op">$</span><span class="va">gcv.ubre</span>,
+      <span class="va">fit.plantas.M4</span><span class="op">$</span><span class="va">gcv.ubre</span>, <span class="va">fit.plantas.M5</span><span class="op">$</span><span class="va">gcv.ubre</span>, <span class="va">fit.plantas.M6</span><span class="op">$</span><span class="va">gcv.ubre</span><span class="op">)</span></code></pre></div>
+<pre><code>##              [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## GCV.Cp 0.02077199 0.01985587 0.01415785 0.01410118 0.01266822 0.01177339</code></pre>
+<p>Con ambos criterios de selección el modelo preferido es el M6, es decir, el modelo de suavizado con interacción con el factor localidad. Estudiamos con más detalle dicho modelo:</p>
+<div class="sourceCode" id="cb562"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit.plantas.M6</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## Produccion ~ Localidad + s(Densidad, k = 10, m = 2, bs = "ps", 
+##     by = Localidad)
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  4.84394    0.01605  301.88   &lt;2e-16 ***
+## LocalidadB  -0.32929    0.02272  -14.49   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##                          edf Ref.df     F p-value    
+## s(Densidad):LocalidadA 2.541  3.101 216.4  &lt;2e-16 ***
+## s(Densidad):LocalidadB 4.550  5.333 165.3  &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.951   Deviance explained = 95.6%
+## GCV = 0.011773  Scale est. = 0.010499  n = 84</code></pre>
+<p>Todos los efectos del modelo resultan significativos y la capacidad explicativa alcanza el 95%, indicando que el modelo obtenido es muy adecuado para estudiar la producción en las dos localidades.</p>
+<p><strong>Ejemplo.</strong> Análisis de los datos de infoltración. El gráfico descriptivo de este conjunto de datos muestra relaciones no lineales distintas entre carga hidráulica y profundidad en función del tratamiento, por lo que un modelo ANCOVA con interacción podría resultar demasiado rígido. Utilizamos un modelo suavizado para estos datos.</p>
+<div class="sourceCode" id="cb564"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit.cargahid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="va">cargahid</span> <span class="op">~</span> <span class="va">tratamiento</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">profundidad</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, 
+                                               bs <span class="op">=</span> <span class="st">"ps"</span>, 
+                                               by <span class="op">=</span> <span class="va">tratamiento</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">infiltracion</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit.cargahid</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## cargahid ~ tratamiento + s(profundidad, k = 10, m = 2, bs = "ps", 
+##     by = tratamiento)
+## 
+## Parametric coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -363.652      3.238 -112.32   &lt;2e-16 ***
+## tratamientoB -131.920      4.579  -28.81   &lt;2e-16 ***
+## tratamientoC -277.848      4.579  -60.68   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##                               edf Ref.df      F p-value    
+## s(profundidad):tratamientoA 4.031  4.797  38.27  &lt;2e-16 ***
+## s(profundidad):tratamientoB 7.224  7.928 248.40  &lt;2e-16 ***
+## s(profundidad):tratamientoC 6.862  7.584 215.45  &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.994   Deviance explained = 99.7%
+## GCV = 296.27  Scale est. = 157.24    n = 45</code></pre>
+<p>Los suavizados para cada tratamiento resultan significativos y la capacidad explicativa alcanza el 99%, indicando que el modelo a parece capturar adecuadamente la tendencia observada en los datos.</p>
+</div>
+<div id="diagnóstico-2" class="section level2" number="10.4">
+<h2>
+<span class="header-section-number">10.4</span> Diagnóstico<a class="anchor" aria-label="anchor" href="#diagn%C3%B3stico-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Una vez ajustado un modelo el estudio de los residuos nos permite realizar su diagnóstico en las mismas condiciones que los modelos lineales habituales. Las hipótesis de este modelo son las mismas que las del modelo de regresión, y por tanto, el diagnóstico se centra en los mismos procedimientos gráficos. Recordemos que debemos verificar la normalidad y varianza constante de los residuos del modelo. Sin embargo, en este tipo de modelos se añade el diagnóstico sobre el grado de suavizado del modelo considerado para saber si es necesario modificarlo.</p>
+<p>Para este tipo de modelos resulta posible obtener todos los gráficos de interés con la función <code><a href="https://rdrr.io/pkg/mgcv/man/gam.check.html">gam.check()</a></code>. Esta función ofrece dos tipos de salidas:</p>
+<ul>
+<li>Una tabla que permite contrastar los parámetros del suavizado utilizado. Los p-valores obtenidos deben resultar no significativos.</li>
+<li>gráficos de diagnóstico (qq, residuos versus ajustados, histograma de los residuos, valores observados versus valores ajustados). El gráfico qq y el histograma nos permiten verificar la hipótesis de normalidad, mientras que los residuos versus ajustados nos permite verificar la hipótesis de varianza constante. El último gráfico nos permite conocer lo bueno que es el ajuste realizado, ya que si los punto se distribuyen a lo largo de la diagonal significará que el modelo predice adecuadamente la respuesta.</li>
+</ul>
+<p><strong>Ejemplo.</strong> Realizamos el diagnóstico el modelo ajustado para los datos de calidad del aire.</p>
+<div class="sourceCode" id="cb566"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.check.html">gam.check</a></span><span class="op">(</span><span class="va">fit.M10</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo35-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## 
+## Method: GCV   Optimizer: magic
+## Smoothing parameter selection converged after 17 iterations.
+## The RMS GCV score gradient at convergence was 5.831016e-05 .
+## The Hessian was positive definite.
+## Model rank =  58 / 58 
+## 
+## Basis dimension (k) checking results. Low p-value (k-index&lt;1) may
+## indicate that k is too low, especially if edf is close to k'.
+## 
+##               k'   edf k-index p-value
+## s(Solar.R) 19.00  1.07    1.06    0.72
+## s(Wind)    19.00  3.59    1.22    0.99
+## s(Temp)    19.00 16.39    1.09    0.81</code></pre>
+<p>Los test de suavizado indican que el modelo es adecuado, pero mientras que los gráficos para validar normalidad parecen indicar que no hay problema con dicha hipótesis, si parece haberlo con la de homogeneidad de varianzas. Se aprecia un efecto de embudo (aumenta la variabilidad cuando aumenta el valor ajustado) en el gráfico de residuos versus ajustados. En este caso no podemos utilizar las transformaciones de Box-Cox que están diseñadas para los modelos estudiados en unidades anteriores, pero si podemos probar alguna transformación habitual para ver si corregimos ese defecto observado. Probamos con la raíz cuadrada. Dado que vamos a modificar la escala de la respuesta es necesario reajustar el número de nodos (ya que hemos comprimido la escala). Asumimos 10 nodos y verificamos dicho modelo.</p>
+<div class="sourceCode" id="cb568"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Modelo</span>
+<span class="va">fit.M11</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">Ozone</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Solar.R</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span> 
+                 <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Wind</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span> <span class="op">+</span>
+                 <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">Temp</span>, k <span class="op">=</span> <span class="fl">10</span>, m <span class="op">=</span> <span class="fl">2</span>, bs <span class="op">=</span> <span class="st">"ps"</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span>
+<span class="co"># Bondad del ajuste</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit.M11</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## sqrt(Ozone) ~ s(Solar.R, k = 10, m = 2, bs = "ps") + s(Wind, 
+##     k = 10, m = 2, bs = "ps") + s(Temp, k = 10, m = 2, bs = "ps")
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   6.0165     0.1165   51.62   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Approximate significance of smooth terms:
+##              edf Ref.df      F  p-value    
+## s(Solar.R) 2.145  2.655  7.684 0.000295 ***
+## s(Wind)    2.461  3.049 12.871 5.32e-07 ***
+## s(Temp)    3.862  4.622 15.929  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.747   Deviance explained = 76.6%
+## GCV = 1.6482  Scale est. = 1.5076    n = 111</code></pre>
+<div class="sourceCode" id="cb570"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Diagnóstico</span>
+<span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.check.html">gam.check</a></span><span class="op">(</span><span class="va">fit.M11</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo36-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## 
+## Method: GCV   Optimizer: magic
+## Smoothing parameter selection converged after 7 iterations.
+## The RMS GCV score gradient at convergence was 1.329944e-06 .
+## The Hessian was positive definite.
+## Model rank =  28 / 28 
+## 
+## Basis dimension (k) checking results. Low p-value (k-index&lt;1) may
+## indicate that k is too low, especially if edf is close to k'.
+## 
+##              k'  edf k-index p-value  
+## s(Solar.R) 9.00 2.15    0.97    0.35  
+## s(Wind)    9.00 2.46    0.98    0.35  
+## s(Temp)    9.00 3.86    0.84    0.03 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<p>El modelo ajustado resulta significativo con una capacidad explicativa del 76.6%. En cuanto a las hipótesis del modelo podemos ver como se ha corregido el efecto de embudo obteniendo un modelo que verifica las hipótesis de partida.</p>
+<p><strong>Ejemplo.</strong> Realizamos el diagnóstico del modelo obtenido para los datos de producción.</p>
+<div class="sourceCode" id="cb572"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.check.html">gam.check</a></span><span class="op">(</span><span class="va">fit.plantas.M6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo37-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## 
+## Method: GCV   Optimizer: magic
+## Smoothing parameter selection converged after 5 iterations.
+## The RMS GCV score gradient at convergence was 3.261881e-07 .
+## The Hessian was positive definite.
+## Model rank =  20 / 20 
+## 
+## Basis dimension (k) checking results. Low p-value (k-index&lt;1) may
+## indicate that k is too low, especially if edf is close to k'.
+## 
+##                          k'  edf k-index p-value
+## s(Densidad):LocalidadA 9.00 2.54    1.08    0.75
+## s(Densidad):LocalidadB 9.00 4.55    1.08    0.73</code></pre>
+<p>No se detecta ningún problema con las hipótesis del modelo y podemos pasar a establecer la predicción para el modelo ajustado.</p>
+<p><strong>Ejemplo.</strong> Realizamos el diagnóstico del modelo para los datos de infiltración.</p>
+<div class="sourceCode" id="cb574"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.check.html">gam.check</a></span><span class="op">(</span><span class="va">fit.cargahid</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo38-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## 
+## Method: GCV   Optimizer: magic
+## Smoothing parameter selection converged after 7 iterations by steepest
+## descent step failure.
+## The RMS GCV score gradient at convergence was 1.786612e-05 .
+## The Hessian was positive definite.
+## Model rank =  30 / 30 
+## 
+## Basis dimension (k) checking results. Low p-value (k-index&lt;1) may
+## indicate that k is too low, especially if edf is close to k'.
+## 
+##                               k'  edf k-index p-value
+## s(profundidad):tratamientoA 9.00 4.03     1.1    0.78
+## s(profundidad):tratamientoB 9.00 7.22     1.1    0.70
+## s(profundidad):tratamientoC 9.00 6.86     1.1    0.70</code></pre>
+<p>Todos los gráficos de diagnóstico parecen indicar que los residuos cumplen con las hipótesis del modelo (qq-plot, Resids vs linear pred., histogram of residuals, Response vs. ftted values). Por otro lado, el análisis del parámetro de suavizado indica que el ajuste obtenido es adecuado, no encontrando problemas importantes.</p>
+</div>
+<div id="predicción-3" class="section level2" number="10.5">
+<h2>
+<span class="header-section-number">10.5</span> Predicción<a class="anchor" aria-label="anchor" href="#predicci%C3%B3n-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>Una vez analizados y elegido el mejor modelo nos resta la fase de predicción. En este caso al no disponer de una función paramétrica que relaciona la respuesta con las predictoras no podemos obtener las ecauciones de predicción mediante una ecuación específica. Utilizamos las herramientas gráficas para ver los diferentes tipos de predicciones posibles.</p>
+<p><strong>Ejemplo.</strong> Obtenemos la predicción para el modelo de calidad del aire. En primer lugar obtenemos las predicciones marginales asociadas a cada una de las predictoras presentes en el modelo.</p>
+<div class="sourceCode" id="cb576"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">fit.M11</span>, <span class="st">"pred"</span>,
+           title <span class="op">=</span><span class="st">"Predicción de la media de la raiz cuadarada de ozono"</span><span class="op">)</span></code></pre></div>
+<pre><code>## $Solar.R</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo39-1.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## 
+## $Wind</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo39-2.png" width="95%" style="display: block; margin: auto;"></div>
+<pre><code>## 
+## $Temp</code></pre>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo39-3.png" width="95%" style="display: block; margin: auto;"></div>
+<p>En estos gráficos podemos ver el efecto de cada predictora con respecto a la respuesta a partir del suavizado estimado. En ellos podemos ver:</p>
+<ul>
+<li>el nivel de ozono aumenta con la radiación solar (hasta el valor de 250 aproximadamente), y luego empieza a caer lentamente.</li>
+<li>El nivel de ozon disminuye con el aumento de la velocidad del viento hasta casi hacerse constante.</li>
+<li>El nivel de ozono se mantiene casi constante hasta una temperatura de 70, momento en el que empieza a crecer hasta la temperatura de 90, caundo comienza a ser casi constante de nuevo.</li>
+</ul>
+<p>Además, de los gráficos marginales podemos obtener gráficos conjuntos para dos variables sin más que estudiar los efectos combinados de ambas variables. En estos gráficos se crean escenarios con respecto a una de las variables numéricas (valor bajo, valor intermedio, y valor alto) y se representa la evolución de la otra predictora.</p>
+<div class="sourceCode" id="cb580"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">fit.M11</span>, <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Solar.R"</span>, <span class="st">"Wind"</span><span class="op">)</span>,
+           title <span class="op">=</span><span class="st">"Predicción de la media de la raiz cuadarada de ozono"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo40-1.png" width="95%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb581"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">fit.M11</span>, <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Solar.R"</span>, <span class="st">"Temp"</span><span class="op">)</span>,
+           title <span class="op">=</span><span class="st">"Predicción de la media de la raiz cuadarada de ozono"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo40-2.png" width="95%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb582"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">fit.M11</span>, <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Wind"</span>, <span class="st">"Temp"</span><span class="op">)</span>,
+           title <span class="op">=</span><span class="st">"Predicción de la media de la raiz cuadarada de ozono"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo40-3.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Podemos ver cada uno de los escenarios obtenidos lo que nos permite estudiar claramente el comportamiento de la respuesta. En realidad se reproducen los resultados independientes pero para diferentes valores (escenarios) de una de las predictoras numéricas consideradas. ¿Qué información obtenemos de dichos gráficos?</p>
+<p><strong>Ejemplo.</strong> Para los datos de producciónos nos limitamos a representar gráficamente la predicción del modelo ajustado, junto con sus intervalos de confianza.</p>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo41-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Se puede ver como la producción disminuye conforme aumenta la densidad de plantas, siendo el comportamiento no lineal y distinto en cada localidad. De hecho, la producción siempre es inferior en la localidad B frente a la A en todo el rango de densidades de plantas.</p>
+<p><strong>Ejemplo.</strong> Obtenemos y analizamos las funciones de predicción para los datos de infiltración.</p>
+<div class="inline-figure"><img src="10-Smooth_files/figure-html/smoo42-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Los suavizados obtenidos se comportan adecuadamente al reproducir la tendencia observada. Se pueden ver las diferentes curvas de predicción en función del tratamiento utilizado.</p>
+</div>
+<div id="ejercicios-2" class="section level2" number="10.6">
+<h2>
+<span class="header-section-number">10.6</span> Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>En todos los ejercicios se debe proponer un modelo alterantivo basado en modelos de suavizado frente al modelo que sería de uso habitual. Se deberan comaparar ambos modelos para establecer si el modelo de suavizado es necesario.</p>
+<p><strong>Ejercicio 1.</strong> Una empresa dedicada a la fabricación de aislantes térmicos y acústicos establece un experimento que mide la pérdida de calor (<code>Calor</code>) a través de cuatro tipos diferentes de cristal para ventanas (<code>Cristal</code>) utilizando cinco graduaciones diferentes de temperatura exterior (<code>TempExt</code>). Se prueban tres hojas de cristal en cada graduación de temperatura, y se registra la pérdida de calor para cada hoja.</p>
+<div class="sourceCode" id="cb583"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Lectura de datos</span>
+<span class="va">ejer01</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://goo.gl/V6hyVW"</span>, col_types <span class="op">=</span> <span class="st">"ddc"</span><span class="op">)</span> 
+<span class="va">ejer01</span> <span class="op">&lt;-</span> <span class="va">ejer01</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">ejer01</span>,<span class="va">is.character</span><span class="op">)</span>,<span class="va">as.factor</span><span class="op">)</span> </code></pre></div>
+<p><strong>Ejercicio 2.</strong> Treinta aleaciones del tipo 90/10 Cu-Ni, cada una con un contenido específico de hierro son estudiadas bajo un proceso de corrosión. Tras un período de 60 días se obtiene la pérdida de peso (en miligramos al cuadrado por decímetro y día) de cada una de las aleaciones debido al proceso de corrosión. El objetivo es estudiar el nivel de corrosión en función del contenido de hierro. A continuación se presenta el banco de datos y se realiza la primera inspección gráfica.</p>
+<div class="sourceCode" id="cb584"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hierro</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.48</span>, <span class="fl">0.71</span>, <span class="fl">0.95</span>, <span class="fl">1.19</span>, <span class="fl">0.01</span>, <span class="fl">0.48</span>, <span class="fl">1.44</span>, <span class="fl">0.71</span>, 
+            <span class="fl">1.96</span>, <span class="fl">0.01</span>, <span class="fl">1.44</span>, <span class="fl">1.96</span><span class="op">)</span>
+<span class="va">peso</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">127.6</span>, <span class="fl">124</span>, <span class="fl">110.8</span>, <span class="fl">103.9</span>, <span class="fl">101.5</span>, <span class="fl">130.1</span>, <span class="fl">122</span>, <span class="fl">92.3</span>, <span class="fl">113.1</span>, 
+          <span class="fl">83.7</span>, <span class="fl">128</span>, <span class="fl">91.4</span>, <span class="fl">86.2</span><span class="op">)</span>
+<span class="va">ejer02</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">hierro</span>,<span class="va">peso</span><span class="op">)</span></code></pre></div>
+<p><strong>Ejercicio 3.</strong> Se ha realizado un experimento para tratar de conocer la viscosidad de cierto compuesto en función de la cantidad de un tipo der aceite que se usa en su fabricación. Se asume una relación de tipo lineal entre la viscosidad y la cantidad de aceite utilizada.</p>
+<div class="sourceCode" id="cb585"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">aceite</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">12</span>, <span class="fl">24</span>, <span class="fl">36</span>, <span class="fl">48</span>, <span class="fl">60</span>, <span class="fl">0</span>, <span class="fl">12</span>, <span class="fl">24</span>, <span class="fl">36</span>, <span class="fl">48</span>, <span class="fl">60</span>, <span class="fl">0</span>, <span class="fl">12</span>, <span class="fl">24</span>, 
+            <span class="fl">36</span>, <span class="fl">48</span>, <span class="fl">60</span>, <span class="fl">12</span>, <span class="fl">24</span>, <span class="fl">36</span>, <span class="fl">48</span>, <span class="fl">60</span><span class="op">)</span>
+<span class="va">viscosidad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">26</span>, <span class="fl">38</span>, <span class="fl">50</span>, <span class="fl">76</span>, <span class="fl">108</span>, <span class="fl">157</span>, <span class="fl">17</span>, <span class="fl">26</span>, <span class="fl">37</span>, <span class="fl">53</span>, <span class="fl">83</span>, <span class="fl">124</span>, 
+                <span class="fl">13</span>, <span class="fl">20</span>, <span class="fl">27</span>, <span class="fl">37</span>, <span class="fl">57</span>, <span class="fl">87</span>, <span class="fl">15</span>, <span class="fl">22</span>, <span class="fl">27</span>, <span class="fl">41</span>, <span class="fl">63</span><span class="op">)</span>
+<span class="va">ejer03</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">aceite</span>, <span class="va">viscosidad</span><span class="op">)</span></code></pre></div>
+<p><strong>Ejercicio 4.</strong> Se realiza un estudio de campo para conocer el desarrollo de cierta especie de pez del lago lakemary en EEUU. Para medir el desarrollo se establece la edad de cada pez capturado mediante un procedimiento proporcionado por los biólogos. Además se mide la longitud del pez para tratar de establecer el estado de maduración de cada ejemplar. La investigación trata de relacionar la edad el pez a partir de su longitud para determinar el número de capturas permitidas. Las variables recogidas son: “Age” (edad del pez), y “Length” (longitud del pez en mm).</p>
+<div class="sourceCode" id="cb586"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"lakemary"</span><span class="op">)</span>
+<span class="va">ejer04</span> <span class="op">&lt;-</span><span class="va">lakemary</span></code></pre></div>
+<p><strong>Ejercicio 5.</strong> Es bien sabido que la concentración de colesterol en el suero sanguíneo aumenta con la edad, pero es menos claro si el nivel de colesterol también está asociado con el peso corporal. Los datos muestran para una treinta de mujeres el colesterol sérico (milimoles por litro), la edad (años) y el índice de masa corporal (peso dividido por la altura al cuadrado, donde el peso se midió en kilogramos y la altura en metros). Se trata de construir un modelo que explique el nivel de colesterol en función de la edad y del índice de masas corporal. Los datos corresponden con la tabla 6.17 de Dobson (2002).</p>
+<div class="sourceCode" id="cb587"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ejer05</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://goo.gl/EKXWRc"</span>, col_types <span class="op">=</span> <span class="st">"ddd"</span><span class="op">)</span></code></pre></div>
+<p><strong>Ejercicio 6.</strong> Los datos muestran el porcentaje de calorías totales obtenidas de carbohidratos complejos, para veinte diabéticos dependientes de insulina que habían seguido una dieta alta en carbohidratos durante seis meses. Se consideró que el cumplimiento del régimen estaba relacionado con la edad (en años), age, el peso corporal (relativo al peso “ideal” para la altura), weight, y otros componentes de la dieta como el porcentaje de proteínas ingeridas. Los datos corresponden con la tabla 6.3 de Dobson (2002).</p>
+<div class="sourceCode" id="cb588"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ejer06</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://goo.gl/Grm8xM"</span>, col_types <span class="op">=</span> <span class="st">"dddd"</span><span class="op">)</span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></div>
+<div class="next"><a href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#smooth"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
+<li><a class="nav-link" href="#bancos-de-datos-3"><span class="header-section-number">10.1</span> Bancos de datos</a></li>
+<li>
+<a class="nav-link" href="#funciones-de-suavizado"><span class="header-section-number">10.2</span> Funciones de suavizado</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#splines-de-regresi%C3%B3n"><span class="header-section-number">10.2.1</span> Splines de regresión</a></li>
+<li><a class="nav-link" href="#splines-c%C3%BAbicos"><span class="header-section-number">10.2.2</span> Splines cúbicos</a></li>
+<li><a class="nav-link" href="#splines-penalizados"><span class="header-section-number">10.2.3</span> Splines penalizados</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#bondad-del-ajuste-y-selecci%C3%B3n-del-modelo"><span class="header-section-number">10.3</span> Bondad del ajuste y selección del modelo</a></li>
+<li><a class="nav-link" href="#diagn%C3%B3stico-2"><span class="header-section-number">10.4</span> Diagnóstico</a></li>
+<li><a class="nav-link" href="#predicci%C3%B3n-3"><span class="header-section-number">10.5</span> Predicción</a></li>
+<li><a class="nav-link" href="#ejercicios-2"><span class="header-section-number">10.6</span> Ejercicios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
