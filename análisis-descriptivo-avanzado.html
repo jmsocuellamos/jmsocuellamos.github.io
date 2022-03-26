@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Unidad 7 Análisis Descriptivo avanzado | Modelos Estadísticos</title>
+  <meta name="description" content="Unidad 7 Análisis Descriptivo avanzado | Modelos Estadísticos" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Unidad 7 Análisis Descriptivo avanzado | Modelos Estadísticos" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Unidad 7 Análisis Descriptivo avanzado | Modelos Estadísticos" />
+  
+  
+  
+
+
+
+<meta name="date" content="2022-02-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="análisis-descriptivo-inicial.html"/>
+<link rel="next" href="librería-de-interés.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://sites.google.com/umh.es/statistical-models" target="blank">Modelos Estadísticos</a></li>
+<li><a href="./">J. Morales y A.M. Mayoral</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html"><i class="fa fa-check"></i>Antes de empezar</a>
+<ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#conceptos-básicos-del-diseño-experimental"><i class="fa fa-check"></i>Conceptos básicos del diseño experimental</a>
+<ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#objetivo-del-diseño-experimental"><i class="fa fa-check"></i>Objetivo del diseño experimental</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#población-y-muestra"><i class="fa fa-check"></i>Población y muestra</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#medidas-y-escalas-de-medida"><i class="fa fa-check"></i>Medidas y escalas de medida</a></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#parámetros-poblacionales-y-estadísticos"><i class="fa fa-check"></i>Parámetros poblacionales y estadísticos</a></li>
+</ul></li>
+<li><a href="antes-de-empezar.html#primeros-pasos-con-r-y-rstudio">Primeros pasos con <code>R</code> y <code>RStudio</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#instalación-y-puesta-en-marcha"><i class="fa fa-check"></i>Instalación y puesta en marcha</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="antes-de-empezar.html"><a href="antes-de-empezar.html#informes-prediseñados"><i class="fa fa-check"></i>Informes prediseñados</a></li>
+<li><a href="antes-de-empezar.html#librerías-de-r-necesarías">Librerías de <code>R</code> necesarías</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#conceptos-básicos"><i class="fa fa-check"></i><b>1.1</b> Conceptos básicos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#objetivo-del-diseño-experimental-1"><i class="fa fa-check"></i><b>1.1.1</b> Objetivo del diseño experimental</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#población-y-muestra-1"><i class="fa fa-check"></i><b>1.1.2</b> Población y muestra</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#medidas-y-escalas-de-medida-1"><i class="fa fa-check"></i><b>1.1.3</b> Medidas y escalas de medida</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#parámetros-poblacionales-y-estadísticos-1"><i class="fa fa-check"></i><b>1.1.4</b> Parámetros poblacionales y estadísticos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#ejercicios"><i class="fa fa-check"></i><b>1.2</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="aed.html"><a href="aed.html"><i class="fa fa-check"></i><b>2</b> Análisis exploratorio de datos</a></li>
+<li class="chapter" data-level="3" data-path="objetivos.html"><a href="objetivos.html"><i class="fa fa-check"></i><b>3</b> Objetivos</a></li>
+<li class="chapter" data-level="4" data-path="variabilidad.html"><a href="variabilidad.html"><i class="fa fa-check"></i><b>4</b> Variabilidad</a></li>
+<li class="chapter" data-level="5" data-path="procesado-inicial.html"><a href="procesado-inicial.html"><i class="fa fa-check"></i><b>5</b> Procesado inicial</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="procesado-inicial.html"><a href="procesado-inicial.html#operaciones-con-sujetos"><i class="fa fa-check"></i><b>5.1</b> Operaciones con sujetos</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="procesado-inicial.html"><a href="procesado-inicial.html#filtrado"><i class="fa fa-check"></i><b>5.1.1</b> Filtrado</a></li>
+<li class="chapter" data-level="5.1.2" data-path="procesado-inicial.html"><a href="procesado-inicial.html#ordenación"><i class="fa fa-check"></i><b>5.1.2</b> Ordenación</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="procesado-inicial.html"><a href="procesado-inicial.html#trabajando-con-variables"><i class="fa fa-check"></i><b>5.2</b> Trabajando con variables</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="procesado-inicial.html"><a href="procesado-inicial.html#selección"><i class="fa fa-check"></i><b>5.2.1</b> Selección</a></li>
+<li class="chapter" data-level="5.2.2" data-path="procesado-inicial.html"><a href="procesado-inicial.html#creación"><i class="fa fa-check"></i><b>5.2.2</b> Creación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="procesado-inicial.html"><a href="procesado-inicial.html#creación-de-factores"><i class="fa fa-check"></i><b>5.2.3</b> Creación de factores</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="procesado-inicial.html"><a href="procesado-inicial.html#reuniendo-los-datos"><i class="fa fa-check"></i><b>5.3</b> Reuniendo los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html"><i class="fa fa-check"></i><b>6</b> Análisis Descriptivo inicial</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#una-variable-factor"><i class="fa fa-check"></i><b>6.1</b> Una variable factor</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#resúmenes-numéricos"><i class="fa fa-check"></i><b>6.1.1</b> Resúmenes numéricos</a></li>
+<li class="chapter" data-level="6.1.2" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#visualización-gráfica"><i class="fa fa-check"></i><b>6.1.2</b> Visualización gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#una-variable-numérica"><i class="fa fa-check"></i><b>6.2</b> Una variable numérica</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#resúmenes-numéricos-1"><i class="fa fa-check"></i><b>6.2.1</b> Resúmenes numéricos</a></li>
+<li class="chapter" data-level="6.2.2" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#visualización-gráfica-1"><i class="fa fa-check"></i><b>6.2.2</b> Visualización gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#dos-variables-categóricas"><i class="fa fa-check"></i><b>6.3</b> Dos variables categóricas</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#resúmenes-numéricos-2"><i class="fa fa-check"></i><b>6.3.1</b> Resúmenes numéricos</a></li>
+<li class="chapter" data-level="6.3.2" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#visualización-gráfica-2"><i class="fa fa-check"></i><b>6.3.2</b> Visualización gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#categórica-vs-numérica"><i class="fa fa-check"></i><b>6.4</b> Categórica vs Numérica</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#resúmenes-numéricos-3"><i class="fa fa-check"></i><b>6.4.1</b> Resúmenes numéricos</a></li>
+<li class="chapter" data-level="6.4.2" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#visualización-gráfica-3"><i class="fa fa-check"></i><b>6.4.2</b> Visualización gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#dos-variables-numéricas"><i class="fa fa-check"></i><b>6.5</b> Dos variables numéricas</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#resúmenes-numéricos-4"><i class="fa fa-check"></i><b>6.5.1</b> Resúmenes numéricos</a></li>
+<li class="chapter" data-level="6.5.2" data-path="análisis-descriptivo-inicial.html"><a href="análisis-descriptivo-inicial.html#visualización-gráfica-4"><i class="fa fa-check"></i><b>6.5.2</b> Visualización gráfica</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="análisis-descriptivo-avanzado.html"><a href="análisis-descriptivo-avanzado.html"><i class="fa fa-check"></i><b>7</b> Análisis Descriptivo avanzado</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="análisis-descriptivo-avanzado.html"><a href="análisis-descriptivo-avanzado.html#tres-factores"><i class="fa fa-check"></i><b>7.1</b> Tres factores</a></li>
+<li class="chapter" data-level="7.2" data-path="análisis-descriptivo-avanzado.html"><a href="análisis-descriptivo-avanzado.html#dos-factores-una-numérica"><i class="fa fa-check"></i><b>7.2</b> Dos factores, Una numérica</a></li>
+<li class="chapter" data-level="7.3" data-path="análisis-descriptivo-avanzado.html"><a href="análisis-descriptivo-avanzado.html#un-factor-dos-numéricas"><i class="fa fa-check"></i><b>7.3</b> Un factor, Dos numéricas</a></li>
+<li class="chapter" data-level="7.4" data-path="análisis-descriptivo-avanzado.html"><a href="análisis-descriptivo-avanzado.html#dos-factores-dos-numéricas"><i class="fa fa-check"></i><b>7.4</b> Dos factores, Dos numéricas</a></li>
+<li class="chapter" data-level="7.5" data-path="análisis-descriptivo-avanzado.html"><a href="análisis-descriptivo-avanzado.html#tres-factores-dos-numéricas"><i class="fa fa-check"></i><b>7.5</b> Tres factores, Dos numéricas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="librería-de-interés.html"><a href="librería-de-interés.html"><i class="fa fa-check"></i><b>8</b> Librería de interés</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Creado con bookdown</a></li>
+<li><a href="https://sites.google.com/umh.es/statistical-models" target="blank">Modelos Estadísticos</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Estadísticos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="análisis-descriptivo-avanzado" class="section level1" number="7">
+<h1><span class="header-section-number">Unidad 7</span> Análisis Descriptivo avanzado</h1>
+<p>En esta unidad se amplían los procedimientos de análisis descriptivos vistos en el tema anterior para estudiar una o dos variables de tipo numérico o categórico al caso de más de dos variables de este tipo. No se hace un barrido a cualquier situación que pueda aparecer sino que se pretende mostrar los casos más habituales. Dichos casos son:</p>
+<ul>
+<li>Tres variables categóricas.</li>
+<li>Dos variables categóricas y una variable numérica.</li>
+<li>Una variable categórica y dos variables numéricas.</li>
+<li>Dos variables categóricas y dos variables numéricas.</li>
+<li>Tres variables categóricas y dos variables numéricas.</li>
+</ul>
+<p>De nuevo utilizaremos el conjunto de datos <code>storms</code> de la librería <code>nasaweather</code>.</p>
+<div id="tres-factores" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Tres factores</h2>
+<p>Los procedimientos numéricos se restringen en este caso a la obtención de la tabla de frecuencias conjunta de las tres variables, mientras que los gráficos se basan en gráficos matriciales donde se consideran gráficos de barras.</p>
+<p>A modo de ejemplo vamos a realizar el análisis conjunto de las variables <code>year_f</code>, <code>month_f</code> y <code>type</code>. Para poder realizar estos análisis utilizamos la función <code>mytable</code> de la librería <code>moonBook</code>. Para conocer todas las caracter´siticas de esta función se recomienda ver la ayuda <code>help(mytable)</code>. EL problema principal con esta función es que si el número de nivles de los factores es demasiado grande resulta muy complicado visualizar todos los resultados en una única página. De hecho solo se pueden visulaizar resulatdos si el número de niveles del factor es 5 como máximo. Para poder ver los resultados en esta situación procedemos reando un conjunto de datos para cada tipo de tormenta. En este caso seleccionamos los meses centrales y los últimos cinco años para poder visualizar los resultados.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="análisis-descriptivo-avanzado.html#cb136-1" aria-hidden="true" tabindex="-1"></a>stormTD <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(storm , month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>), </span>
+<span id="cb136-2"><a href="análisis-descriptivo-avanzado.html#cb136-2" aria-hidden="true" tabindex="-1"></a>                         year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1996</span>,<span class="dv">1997</span>,<span class="dv">1998</span>,<span class="dv">1999</span>,<span class="dv">2000</span>))</span>
+<span id="cb136-3"><a href="análisis-descriptivo-avanzado.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mytable</span>(year_f <span class="sc">+</span> type <span class="sc">~</span> month_f, <span class="at">data =</span> stormTD)</span></code></pre></div>
+<pre><code>## 
+##                                                                                                                                       Descriptive Statistics stratified by &#39;year_f&#39; and &#39;type&#39;                                                                                                                                      
+## _____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________ 
+##                                              1996                                                           1997                                                           1998                                                            1999                                                           2000                             
+##                ------------------------------------------------------------- ------------------------------------------------------------- -------------------------------------------------------------- ------------------------------------------------------------- ------------------------------------------------------------- 
+##                Extratropical Hurricane  Tropical Depression Tropical Storm p Extratropical Hurricane  Tropical Depression Tropical Storm p Extratropical  Hurricane  Tropical Depression Tropical Storm p Extratropical Hurricane  Tropical Depression Tropical Storm p Extratropical Hurricane  Tropical Depression Tropical Storm p
+##                   (N=88)      (N=149)         (N=113)          (N=164)             (N=38)       (N=38)         (N=33)            (N=75)             (N=73)       (N=167)         (N=82)           (N=154)             (N=22)      (N=164)         (N=67)           (N=132)             (N=63)      (N=130)         (N=76)           (N=138)         
+## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+##  Month                                                                                                                                                                                                                                                                                                                               
+##    - June        0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)       0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)    
+##    - July       12 (13.6%)   22 (14.8%)      5 ( 4.4%)        28 (17.1%)      13 (34.2%)   9 (23.7%)      27 (81.8%)        38 (50.7%)       0 ( 0.0%)    0 ( 0.0%)       6 ( 7.3%)        12 ( 7.8%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)    
+##    - August      0 ( 0.0%)   45 (30.2%)     44 (38.9%)        42 (25.6%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)       3 ( 4.1%)   39 (23.4%)      15 (18.3%)        30 (19.5%)       0 ( 0.0%)   57 (34.8%)     20 (29.9%)        50 (37.9%)       9 (14.3%)   56 (43.1%)     16 (21.1%)        44 (31.9%)    
+##    - September  20 (22.7%)   45 (30.2%)     29 (25.7%)        50 (30.5%)      16 (42.1%)   29 (76.3%)      2 ( 6.1%)        20 (26.7%)      31 (42.5%)   100 (59.9%)     42 (51.2%)        56 (36.4%)      15 (68.2%)   63 (38.4%)     18 (26.9%)        45 (34.1%)      13 (20.6%)   53 (40.8%)     47 (61.8%)        65 (47.1%)    
+##    - October    43 (48.9%)   37 (24.8%)     20 (17.7%)        18 (11.0%)       9 (23.7%)    0 ( 0.0%)      4 (12.1%)        17 (22.7%)      15 (20.5%)   24 (14.4%)       7 ( 8.5%)        31 (20.1%)       7 (31.8%)   25 (15.2%)     14 (20.9%)        29 (22.0%)      41 (65.1%)   21 (16.2%)     13 (17.1%)        29 (21.0%)    
+##    - November   13 (14.8%)    0 ( 0.0%)     15 (13.3%)        26 (15.9%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)      24 (32.9%)    4 ( 2.4%)      12 (14.6%)        25 (16.2%)       0 ( 0.0%)   19 (11.6%)     15 (22.4%)        8 ( 6.1%)        0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)    
+##    - December    0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)       0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)       0 ( 0.0%)    0 ( 0.0%)      0 ( 0.0%)         0 ( 0.0%)    
+## -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</code></pre>
+<p>¿Qué conclusiones podemos extraer de estos resultados? Como se puede ver en las tablas anteriores al ir aumentando el número de variables resulta más difícil extraer conclusiones a partir de las tablas, y resulta más sencillo interpretar los resultados que aparecen en los gráficos correspondientes.</p>
+<p>Para realizar le gráfico combinado de las tres variables categóricas utilizamos un gráfico matricial con dos factores y representamos dentro de cada combinación el gráfico de barras de la otra variable.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="análisis-descriptivo-avanzado.html#cb138-1" aria-hidden="true" tabindex="-1"></a>ords <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Tropical Depression&quot;</span>, <span class="st">&quot;Extratropical&quot;</span>, <span class="st">&quot;Tropical Storm&quot;</span>, <span class="st">&quot;Hurricane&quot;</span>)</span>
+<span id="cb138-2"><a href="análisis-descriptivo-avanzado.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm, <span class="fu">aes</span>(<span class="at">x =</span> type))  <span class="sc">+</span></span>
+<span id="cb138-3"><a href="análisis-descriptivo-avanzado.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb138-4"><a href="análisis-descriptivo-avanzado.html#cb138-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> ords) <span class="sc">+</span></span>
+<span id="cb138-5"><a href="análisis-descriptivo-avanzado.html#cb138-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Storm category&quot;</span>) <span class="sc">+</span></span>
+<span id="cb138-6"><a href="análisis-descriptivo-avanzado.html#cb138-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb138-7"><a href="análisis-descriptivo-avanzado.html#cb138-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(year_f <span class="sc">~</span> month_f)<span class="sc">+</span></span>
+<span id="cb138-8"><a href="análisis-descriptivo-avanzado.html#cb138-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) </span></code></pre></div>
+<div class="figure"><span id="fig:aed046"></span>
+<img src="libroSTAT_files/figure-html/aed046-1.png" alt="Gráfico de barras para tipo de tormenta para los diferentes meses y años." width="672" />
+<p class="caption">
+Figura 7.1: Gráfico de barras para tipo de tormenta para los diferentes meses y años.
+</p>
+</div>
+<p>El gráfico, aún proporcionando la misma información que la tabla de frecuencias, resulta mucho más revelador, ya que se aprecian de forma directa las combinaciones de año - mes en al que no hay datos, y en aquellas donde si los hay se puede ver claramente cual es el tipo de tormenta más predominante.</p>
+<p>¿Qué conclusiones podemos extraer a la vista del gráfico?</p>
+<p>Dado que la mayoría de los datos se producen entre los meses de agosto y octubre vamos a filtrar los datos para estudiar esas combinaciones únicamente.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="análisis-descriptivo-avanzado.html#cb139-1" aria-hidden="true" tabindex="-1"></a>storm_meses <span class="ot">&lt;-</span> storm <span class="sc">%&gt;%</span></span>
+<span id="cb139-2"><a href="análisis-descriptivo-avanzado.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month_f <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;August&quot;</span>,<span class="st">&quot;September&quot;</span>,<span class="st">&quot;October&quot;</span>))</span>
+<span id="cb139-3"><a href="análisis-descriptivo-avanzado.html#cb139-3" aria-hidden="true" tabindex="-1"></a>ords <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Tropical Depression&quot;</span>, <span class="st">&quot;Extratropical&quot;</span>, <span class="st">&quot;Tropical Storm&quot;</span>, <span class="st">&quot;Hurricane&quot;</span>)</span>
+<span id="cb139-4"><a href="análisis-descriptivo-avanzado.html#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm_meses, <span class="fu">aes</span>(<span class="at">x =</span> type))  <span class="sc">+</span></span>
+<span id="cb139-5"><a href="análisis-descriptivo-avanzado.html#cb139-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb139-6"><a href="análisis-descriptivo-avanzado.html#cb139-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> ords) <span class="sc">+</span></span>
+<span id="cb139-7"><a href="análisis-descriptivo-avanzado.html#cb139-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Storm category&quot;</span>) <span class="sc">+</span></span>
+<span id="cb139-8"><a href="análisis-descriptivo-avanzado.html#cb139-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb139-9"><a href="análisis-descriptivo-avanzado.html#cb139-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(year_f <span class="sc">~</span> month_f) <span class="sc">+</span></span>
+<span id="cb139-10"><a href="análisis-descriptivo-avanzado.html#cb139-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) </span></code></pre></div>
+<div class="figure"><span id="fig:aed047"></span>
+<img src="libroSTAT_files/figure-html/aed047-1.png" alt="Gráfico de barras para tipo de tormenta para los diferentes meses y años (versión 2)." width="672" />
+<p class="caption">
+Figura 7.2: Gráfico de barras para tipo de tormenta para los diferentes meses y años (versión 2).
+</p>
+</div>
+<p>Este gráfico nos permite estudiar con más detalle los meses que concentran un mayor número de tormentas.</p>
+</div>
+<div id="dos-factores-una-numérica" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Dos factores, Una numérica</h2>
+<p>En este caso generalizamos el cálculo de medidas de localización y dispersión a esta situación, y analizamos los diferentes gráficos que podemos realizar en esta situación. Utilizamos las variables <code>year_f</code>, <code>type</code>, y <code>wind</code>. Mostraremos solo los datos para los años 1999 y 2000.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="análisis-descriptivo-avanzado.html#cb140-1" aria-hidden="true" tabindex="-1"></a>stormTD <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(storm , year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1999</span>,<span class="dv">2000</span>))</span>
+<span id="cb140-2"><a href="análisis-descriptivo-avanzado.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mytable</span>(year_f <span class="sc">+</span> type <span class="sc">~</span> wind, <span class="at">data =</span> stormTD)</span></code></pre></div>
+<pre><code>## 
+##                                          Descriptive Statistics stratified by &#39;year_f&#39; and &#39;type&#39;                                         
+## ___________________________________________________________________________________________________________________________________________ 
+##                                       1999                                                                2000                                
+##       ------------------------------------------------------------------ ------------------------------------------------------------------ 
+##       Extratropical  Hurricane  Tropical Depression Tropical Storm   p   Extratropical  Hurricane  Tropical Depression Tropical Storm   p  
+##          (N=22)       (N=164)         (N=75)           (N=150)             (N=63)       (N=130)         (N=76)           (N=138)         
+## ------------------------------------------------------------------------------------------------------------------------------------------- 
+##  Wind  38.9 ± 20.3  90.5 ± 20.7     27.1 ±  3.9      47.7 ±  8.1   0.000  39.7 ± 13.2  79.5 ± 14.7     27.8 ±  2.6      46.2 ±  8.5   0.000
+## -------------------------------------------------------------------------------------------------------------------------------------------</code></pre>
+<p>Como antes el análisis de estas tablas es más complejo que tratar de representar los datos de forma que se puedan extraer conclusiones de forma más efectiva. Empezamos con el gráfico matricial mezclado con los gráficos de densidad.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="análisis-descriptivo-avanzado.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos un nuevo factor ordenado de acurdo a la variable que estamos midiendo</span></span>
+<span id="cb142-2"><a href="análisis-descriptivo-avanzado.html#cb142-2" aria-hidden="true" tabindex="-1"></a>storm<span class="sc">$</span>type2 <span class="ot">&lt;-</span> <span class="fu">reorder</span>(storm<span class="sc">$</span>type, storm<span class="sc">$</span>wind)</span>
+<span id="cb142-3"><a href="análisis-descriptivo-avanzado.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb142-4"><a href="análisis-descriptivo-avanzado.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm, <span class="fu">aes</span>(<span class="at">x =</span> wind, <span class="at">color =</span> type2))  <span class="sc">+</span></span>
+<span id="cb142-5"><a href="análisis-descriptivo-avanzado.html#cb142-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">bw =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb142-6"><a href="análisis-descriptivo-avanzado.html#cb142-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Wind speed (in knots)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb142-7"><a href="análisis-descriptivo-avanzado.html#cb142-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Density&quot;</span>) <span class="sc">+</span></span>
+<span id="cb142-8"><a href="análisis-descriptivo-avanzado.html#cb142-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(year_f <span class="sc">~</span> .)</span></code></pre></div>
+<div class="figure"><span id="fig:aed049"></span>
+<img src="libroSTAT_files/figure-html/aed049-1.png" alt="Gráfico de densidad de la velocidad del viento para cada tipo de tormenta y año." width="672" />
+<p class="caption">
+Figura 7.3: Gráfico de densidad de la velocidad del viento para cada tipo de tormenta y año.
+</p>
+</div>
+<p>Ahora realizamos el gráfico de cajas con una estructura similar</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="análisis-descriptivo-avanzado.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb143-2"><a href="análisis-descriptivo-avanzado.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm, <span class="fu">aes</span>(<span class="at">x =</span> type2, <span class="at">y =</span> wind))  <span class="sc">+</span></span>
+<span id="cb143-3"><a href="análisis-descriptivo-avanzado.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb143-4"><a href="análisis-descriptivo-avanzado.html#cb143-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Storm category&quot;</span>) <span class="sc">+</span></span>
+<span id="cb143-5"><a href="análisis-descriptivo-avanzado.html#cb143-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Wind speed (in knots)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb143-6"><a href="análisis-descriptivo-avanzado.html#cb143-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> year_f) <span class="sc">+</span></span>
+<span id="cb143-7"><a href="análisis-descriptivo-avanzado.html#cb143-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code></pre></div>
+<div class="figure"><span id="fig:aed050"></span>
+<img src="libroSTAT_files/figure-html/aed050-1.png" alt="Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año." width="672" />
+<p class="caption">
+Figura 7.4: Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año.
+</p>
+</div>
+<p>¿Qué conclusiones podemos extraer de este gráfico?</p>
+<p>Otra versión de este gráfico podría ser:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="análisis-descriptivo-avanzado.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb144-2"><a href="análisis-descriptivo-avanzado.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm, <span class="fu">aes</span>(<span class="at">x =</span> year_f, <span class="at">y =</span> wind, <span class="at">color =</span> type2))  <span class="sc">+</span></span>
+<span id="cb144-3"><a href="análisis-descriptivo-avanzado.html#cb144-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb144-4"><a href="análisis-descriptivo-avanzado.html#cb144-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
+<span id="cb144-5"><a href="análisis-descriptivo-avanzado.html#cb144-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Wind speed (in knots)&quot;</span>) </span></code></pre></div>
+<div class="figure"><span id="fig:aed051"></span>
+<img src="libroSTAT_files/figure-html/aed051-1.png" alt="Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año (versión 2)." width="672" />
+<p class="caption">
+Figura 7.5: Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año (versión 2).
+</p>
+</div>
+</div>
+<div id="un-factor-dos-numéricas" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Un factor, Dos numéricas</h2>
+<p>En este caso generalizamos el análisis de correlación y el gráfico de dispersión con la inclusión del factor. Consideramos las variables <code>type</code>, <code>wind</code> y <code>pressure</code>. En primer lugar realizamos el estudio descriptivo numérico.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="análisis-descriptivo-avanzado.html#cb145-1" aria-hidden="true" tabindex="-1"></a>storm <span class="sc">%&gt;%</span> </span>
+<span id="cb145-2"><a href="análisis-descriptivo-avanzado.html#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span> <span class="co"># Segmentamos por tipo de tormenta</span></span>
+<span id="cb145-3"><a href="análisis-descriptivo-avanzado.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">cor =</span> <span class="fu">cor</span>(wind,pressure)) <span class="co"># Obtenemos coeficientes de correlación</span></span></code></pre></div>
+<pre><code>## # A tibble: 4 × 2
+##   type                   cor
+## * &lt;fct&gt;                &lt;dbl&gt;
+## 1 Extratropical       -0.816
+## 2 Hurricane           -0.914
+## 3 Tropical Depression -0.157
+## 4 Tropical Storm      -0.819</code></pre>
+<p>El resultado muestra gran asociación entre la velocidad del viento y la presión atmosférica en todas la categorías salvo para las Depresiones tropicales.</p>
+<p>Veamos ahora el gráfico de dispersión conjunto. En primer lugar realizamos un único gráfico marcando con colores los tipos de tormenta</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="análisis-descriptivo-avanzado.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm, <span class="fu">aes</span>(<span class="at">x =</span> wind, <span class="at">y =</span> pressure, <span class="at">color =</span> type )) <span class="sc">+</span> </span>
+<span id="cb147-2"><a href="análisis-descriptivo-avanzado.html#cb147-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb147-3"><a href="análisis-descriptivo-avanzado.html#cb147-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Wind speed (in knots)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Air pressure (in mbar)&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:aed053"></span>
+<img src="libroSTAT_files/figure-html/aed053-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta." width="672" />
+<p class="caption">
+Figura 7.6: Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta.
+</p>
+</div>
+<p>Podemos ver como cada punto viene identificado según el tipo de tormenta. Los huracanes en la parte inferior donde se dan las relaciones entre velocidades del viento más altas y presiones atmosféricas más bajas. ¿Qué más podemos decir?</p>
+<p>Podemos distinguir cada grupo introduciendo un gráfico matricial</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="análisis-descriptivo-avanzado.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb148-2"><a href="análisis-descriptivo-avanzado.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm, <span class="fu">aes</span>(<span class="at">x =</span> wind, <span class="at">y =</span> pressure))  <span class="sc">+</span></span>
+<span id="cb148-3"><a href="análisis-descriptivo-avanzado.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb148-4"><a href="análisis-descriptivo-avanzado.html#cb148-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Wind speed (in knots)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb148-5"><a href="análisis-descriptivo-avanzado.html#cb148-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Air pressure (in mbar)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb148-6"><a href="análisis-descriptivo-avanzado.html#cb148-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> type2) </span></code></pre></div>
+<div class="figure"><span id="fig:aed054"></span>
+<img src="libroSTAT_files/figure-html/aed054-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta." width="672" />
+<p class="caption">
+Figura 7.7: Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta.
+</p>
+</div>
+<p>En este gráfico se aprecia mejor el comportamiento de ambas variables en cada uno de los niveles del factor. Salvo en las depresiones tropicales donde no se aprecia asociación, en el resto de niveles se aprecia un relación de orden inverso. Lo que si podemos ver es que hay observaciones en algunas categorías que podrían corresponder a otras. En la categoría de tormentas tropicales tenemos combinaciones de velocidad y presión que parecen corresponder más a un huracán que a una tormenta tropical. Esto puede ser debido al protocolo de clasificación establecido o a la propia evolución de las tormentas.</p>
+</div>
+<div id="dos-factores-dos-numéricas" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Dos factores, Dos numéricas</h2>
+<p>Este caso es una generalización directa del caso anterior, ya que únicamente debemos añadir una nueva variable categórica. Consideramos las variables <code>type</code>, <code>year_f</code>, <code>wind</code> y <code>pressure</code>. Comenzamos con el análisis numérico:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="análisis-descriptivo-avanzado.html#cb149-1" aria-hidden="true" tabindex="-1"></a>tabla_cor <span class="ot">&lt;-</span> storm <span class="sc">%&gt;%</span> </span>
+<span id="cb149-2"><a href="análisis-descriptivo-avanzado.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year_f,type) <span class="sc">%&gt;%</span> </span>
+<span id="cb149-3"><a href="análisis-descriptivo-avanzado.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">cor =</span> <span class="fu">cor</span>(wind,pressure))</span>
+<span id="cb149-4"><a href="análisis-descriptivo-avanzado.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visulaizamos la tabla de resultados de forma óptima</span></span>
+<span id="cb149-5"><a href="análisis-descriptivo-avanzado.html#cb149-5" aria-hidden="true" tabindex="-1"></a>tabla_resumen <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(tabla_cor,year_f,type,cor)</span>
+<span id="cb149-6"><a href="análisis-descriptivo-avanzado.html#cb149-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Arreglamos la tabla para una mejor visualización</span></span>
+<span id="cb149-7"><a href="análisis-descriptivo-avanzado.html#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="fu">spread</span>(tabla_resumen, <span class="at">key =</span> type, <span class="at">value =</span> cor)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+## # Groups:   year_f [6]
+##   year_f Extratropical Hurricane `Tropical Depression` `Tropical Storm`
+##   &lt;fct&gt;          &lt;dbl&gt;     &lt;dbl&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
+## 1 1995          -0.848    -0.885                 0.113           -0.731
+## 2 1996          -0.826    -0.941                -0.290           -0.917
+## 3 1997          -0.781    -0.973                -0.455           -0.748
+## 4 1998          -0.726    -0.947                -0.271           -0.613
+## 5 1999          -0.961    -0.916                -0.170           -0.661
+## 6 2000          -0.915    -0.940                -0.127           -0.791</code></pre>
+<p>En esta tabla aparecen representados los coeficientes de correlación entre viento y presión para las diferentes combinaciones de niveles de las variables tipo y año. Se aprecian valores muy bajos en todas las combinaciones de la depresión tropical, mientras que en el resto hay asociaciones que pueden resultar interesantes de estudiar posteriormente. En el caso de los huracanes esas asociaciones son muy fuertes ya que muestran valores muy próximos a -1.</p>
+<p>En cuanto a los procedimientos gráficos optamos por una combinación de los gráficos que utilizamos en la sección anterior. Representamos el gráfico de dispersión coloreando por tipo de tormenta, y usamos un diagrama matricial por año.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="análisis-descriptivo-avanzado.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb151-2"><a href="análisis-descriptivo-avanzado.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm, <span class="fu">aes</span>(<span class="at">x =</span> wind, <span class="at">y =</span> pressure, <span class="at">color =</span> type2))  <span class="sc">+</span></span>
+<span id="cb151-3"><a href="análisis-descriptivo-avanzado.html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb151-4"><a href="análisis-descriptivo-avanzado.html#cb151-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Wind speed (in knots)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb151-5"><a href="análisis-descriptivo-avanzado.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Air pressure (in mbar)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb151-6"><a href="análisis-descriptivo-avanzado.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> year_f) </span></code></pre></div>
+<div class="figure"><span id="fig:aed056"></span>
+<img src="libroSTAT_files/figure-html/aed056-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y año." width="672" />
+<p class="caption">
+Figura 7.8: Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y año.
+</p>
+</div>
+<p>En todos los años se observa un comportamiento similar del resto de variables, indicando que el año no es una factor que pueda ser considerado como relevante. Si utilizamos la variable mes en su lugar el gráfico resultante es:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="análisis-descriptivo-avanzado.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb152-2"><a href="análisis-descriptivo-avanzado.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm, <span class="fu">aes</span>(<span class="at">x =</span> wind, <span class="at">y =</span> pressure, <span class="at">color =</span> type2))  <span class="sc">+</span></span>
+<span id="cb152-3"><a href="análisis-descriptivo-avanzado.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb152-4"><a href="análisis-descriptivo-avanzado.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Wind speed (in knots)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb152-5"><a href="análisis-descriptivo-avanzado.html#cb152-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Air pressure (in mbar)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb152-6"><a href="análisis-descriptivo-avanzado.html#cb152-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> month_f) <span class="sc">+</span></span>
+<span id="cb152-7"><a href="análisis-descriptivo-avanzado.html#cb152-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code></pre></div>
+<div class="figure"><span id="fig:aed057"></span>
+<img src="libroSTAT_files/figure-html/aed057-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y mes" width="672" />
+<p class="caption">
+Figura 7.9: Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y mes
+</p>
+</div>
+<p>En este caso el comportamiento de los meses no es tan parecido. Si bien es cierto que en todas las combinaciones se aprecia una tendencia negativa (sube viento - baja presión), también se puede ver que los huracanes aparecen mayoritariamente en los meses de agosto a octubre. ¿Qué otra información podemos extraer de este gráfico?</p>
+</div>
+<div id="tres-factores-dos-numéricas" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Tres factores, Dos numéricas</h2>
+<p>Es una generalización directa de los dos casos anteriores. Se presenta únicamente el código para obtener los resultados. Añadimos la variable <code>month_f</code> a las del caso anterior.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="análisis-descriptivo-avanzado.html#cb153-1" aria-hidden="true" tabindex="-1"></a>tabla_cor <span class="ot">&lt;-</span> storm <span class="sc">%&gt;%</span> </span>
+<span id="cb153-2"><a href="análisis-descriptivo-avanzado.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year_f,month_f,type) <span class="sc">%&gt;%</span> </span>
+<span id="cb153-3"><a href="análisis-descriptivo-avanzado.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">cor =</span> <span class="fu">cor</span>(wind,pressure))</span>
+<span id="cb153-4"><a href="análisis-descriptivo-avanzado.html#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visulaizamos la tabla de resultados de forma óptima</span></span>
+<span id="cb153-5"><a href="análisis-descriptivo-avanzado.html#cb153-5" aria-hidden="true" tabindex="-1"></a>tabla_resumen <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(tabla_cor,year_f,month_f,type,cor)</span>
+<span id="cb153-6"><a href="análisis-descriptivo-avanzado.html#cb153-6" aria-hidden="true" tabindex="-1"></a><span class="fu">spread</span>(tabla_resumen, <span class="at">key =</span> type, <span class="at">value =</span> cor)</span></code></pre></div>
+<pre><code>## # A tibble: 30 × 6
+## # Groups:   year_f, month_f [30]
+##    year_f month_f   Extratropical Hurricane `Tropical Depressi… `Tropical Storm`
+##    &lt;fct&gt;  &lt;fct&gt;             &lt;dbl&gt;     &lt;dbl&gt;               &lt;dbl&gt;            &lt;dbl&gt;
+##  1 1995   June             -0.688    NA                 NA                -0.849
+##  2 1995   July             -0.816    NA                  0.121            -0.701
+##  3 1995   August           -0.926    -0.750              0.294            -0.805
+##  4 1995   September        -0.881    -0.931             -0.203            -0.937
+##  5 1995   October          -0.954    -0.918             -0.0585           -0.727
+##  6 1995   November         -0.968    NA                 NA                 1    
+##  7 1996   June             -0.591    NA                 -0.828             0    
+##  8 1996   July             -0.165    -0.779             -0.612            -0.955
+##  9 1996   August           NA        -0.976             -0.0301           -0.830
+## 10 1996   September        -0.887    -0.852              0.0622           -0.927
+## # … with 20 more rows</code></pre>
+<p>¿Qué podemos decir de los resultados obtenidos?</p>
+<p>Veamos ahora el gráfico matricial. Seleccionamos los meses de agosto a octubre para poder visualizarlo mejor.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="análisis-descriptivo-avanzado.html#cb155-1" aria-hidden="true" tabindex="-1"></a>storm_meses <span class="ot">&lt;-</span> storm <span class="sc">%&gt;%</span></span>
+<span id="cb155-2"><a href="análisis-descriptivo-avanzado.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month_f <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;August&quot;</span>,<span class="st">&quot;September&quot;</span>,<span class="st">&quot;October&quot;</span>))</span>
+<span id="cb155-3"><a href="análisis-descriptivo-avanzado.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos un nuevo factor ordenado de acurdo a la variable que estamos midiendo</span></span>
+<span id="cb155-4"><a href="análisis-descriptivo-avanzado.html#cb155-4" aria-hidden="true" tabindex="-1"></a>storm_meses<span class="sc">$</span>type2 <span class="ot">&lt;-</span> <span class="fu">reorder</span>(storm_meses<span class="sc">$</span>type, storm_meses<span class="sc">$</span>wind)</span>
+<span id="cb155-5"><a href="análisis-descriptivo-avanzado.html#cb155-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb155-6"><a href="análisis-descriptivo-avanzado.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(storm_meses, <span class="fu">aes</span>(<span class="at">x =</span> wind, <span class="at">y =</span> pressure, <span class="at">color =</span> type2))  <span class="sc">+</span></span>
+<span id="cb155-7"><a href="análisis-descriptivo-avanzado.html#cb155-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb155-8"><a href="análisis-descriptivo-avanzado.html#cb155-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Wind speed (in knots)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb155-9"><a href="análisis-descriptivo-avanzado.html#cb155-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Air pressure (in mbar)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb155-10"><a href="análisis-descriptivo-avanzado.html#cb155-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(year_f <span class="sc">~</span> month_f) <span class="sc">+</span></span>
+<span id="cb155-11"><a href="análisis-descriptivo-avanzado.html#cb155-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code></pre></div>
+<div class="figure"><span id="fig:aed059"></span>
+<img src="libroSTAT_files/figure-html/aed059-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta, año y mes." width="672" />
+<p class="caption">
+Figura 7.10: Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta, año y mes.
+</p>
+</div>
+<p>¿Qué podemos decir de este gráfico?</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="análisis-descriptivo-inicial.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="librería-de-interés.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["libroSTAT.pdf", "libroSTAT.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

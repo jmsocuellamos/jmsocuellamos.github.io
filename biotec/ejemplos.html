@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Unidad 3 Ejemplos | Modelos Estadísticos</title>
+<meta name="description" content="Los ejemplos se han extraido de los disponibles en las linbrerías lme4 y nlme.  3.1 Estudio del sueño Este ejmplo contiene los resultados sobre un estudio sobre el tiempo de reacción medio por día...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Unidad 3 Ejemplos | Modelos Estadísticos">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Los ejemplos se han extraido de los disponibles en las linbrerías lme4 y nlme.  3.1 Estudio del sueño Este ejmplo contiene los resultados sobre un estudio sobre el tiempo de reacción medio por día...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unidad 3 Ejemplos | Modelos Estadísticos">
+<meta name="twitter:description" content="Los ejemplos se han extraido de los disponibles en las linbrerías lme4 y nlme.  3.1 Estudio del sueño Este ejmplo contiene los resultados sobre un estudio sobre el tiempo de reacción medio por día...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Modelos Estadísticos</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Bienvenidos</a></li>
+<li><a class="" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
+<li><a class="" href="mmixed.html"><span class="header-section-number">2</span> Modelos Lineales Mixtos</a></li>
+<li><a class="active" href="ejemplos.html"><span class="header-section-number">3</span> Ejemplos</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ejemplos" class="section level1" number="3">
+<h1>
+<span class="header-section-number">Unidad 3</span> Ejemplos<a class="anchor" aria-label="anchor" href="#ejemplos"><i class="fas fa-link"></i></a>
+</h1>
+<p>Los ejemplos se han extraido de los disponibles en las linbrerías <code>lme4</code> y <code>nlme.</code></p>
+<div id="estudio-del-sueño" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Estudio del sueño<a class="anchor" aria-label="anchor" href="#estudio-del-sue%C3%B1o"><i class="fas fa-link"></i></a>
+</h2>
+<p>Este ejmplo contiene los resultados sobre un estudio sobre el tiempo de reacción medio por día de un conjunto de sujetos sometidos a diferentes procesos de privación de sueño. En el día 0 los sujetos tuvieron su cantidad normal de sueño. A partir de esa noche se les restringió a 3 horas de sueño por noche. Las observaciones representan el tiempo de reacción medio en una serie de pruebas realizadas cada día a cada sujeto. Las variables consideradas son:</p>
+<ul>
+<li>
+<code>Reaction</code>: tiempo medio de reacción de un sejeto en un día específico.</li>
+<li>
+<code>Days</code>: dia del ensayo.</li>
+<li>
+<code>Subject</code>: identificador del sujeto bajo estudio.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">sleepstudy</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sleepstudy</span><span class="op">)</span></code></pre></div>
+<pre><code>## 'data.frame':    180 obs. of  3 variables:
+##  $ Reaction: num  250 259 251 321 357 ...
+##  $ Days    : num  0 1 2 3 4 5 6 7 8 9 ...
+##  $ Subject : Factor w/ 18 levels "308","309","310",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>En estye caso existe un variable predictora (<code>Days</code>) que trata de explicar el comportamiento de la respuesta, pero el diseño experimental introduce una fuente de variabilidad asociada a cada uno de los sujetos considerados que debería ser tenida en cuenta. Dado que los sujetos son una muestra aleatoria deberíamos introducir ese efecto como aleatorio y no como fijo. Analizamos gráficamente el comportamiento de los datos del estudio. En primer lugar consideramos que cada observación recogida es independiente, es decir, nos olvidamos de la variable sujeto. Se puede ver como el tiempo de reacción aumneta con el paso de los días.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sleepstudy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Days</span>, y <span class="op">=</span> <span class="va">Reaction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Días"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Tiempo de reacción"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm003-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Veamos que pasa cuando consideramos el efecto aleatorio del sujeto;</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sleepstudy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Days</span>, y <span class="op">=</span> <span class="va">Reaction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Días"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Tiempo de reacción"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Subject</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm004-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Ahora se puede ver que todos los sujetos no se comportan de la misma forma, ya que hay algunos donde la evolución con los días es más pronunciada que en otros. Además se puede ver que al incio del estudio los tiempos de reacción también son diferentes entre los sujetos considerados. Por stos motivos es necesario contemplar la introducción de un efecto aleatorio que represente a los sujetos y permita estimar de forma correcta el comportamiento de cada uno de ellos.</p>
+</div>
+<div id="estudio-de-ortodoncia" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Estudio de ortodoncia<a class="anchor" aria-label="anchor" href="#estudio-de-ortodoncia"><i class="fas fa-link"></i></a>
+</h2>
+<p>El conjunto de datos de Ortodoncia contiene 108 filas y 4 variables. El objetivo es estudair el cambio en una medida de ortodoncia a lo largo del tiempo para varios sujetos jóvenes. En concreto las variables consideradas son:</p>
+<ul>
+<li>
+<code>distance</code>: distancia desde la pituitaria hasta la fisura pterigomaxilar (en mm). Estas distancias se miden en imágenes de rayos X del cráneo.</li>
+<li>
+<code>age</code>: edad del sujeto ( en años). Tenemso cuatro mediciones por sujeto e las edades de 8, 10, 12 y 14 años.</li>
+<li>
+<code>Subject</code>: factor ordenado indicando el sujeto en el que se realizó la medición. Los niveles están etiquetados de M01 a M16 para los hombres y de F01 a F13 para las mujeres. La ordenación es por distancia media creciente dentro del sexo.</li>
+<li>
+<code>Sex</code>: un factor con niveles Masculino y Femenino</li>
+</ul>
+<p>En este experimento tenemos de nuevo un posible efecto del sujeto considerado. Veamos a continuación los datos del experimento y su representación gráfica.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Orthodont"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Orthodont</span><span class="op">)</span></code></pre></div>
+<pre><code>## Classes 'nfnGroupedData', 'nfGroupedData', 'groupedData' and 'data.frame':   108 obs. of  4 variables:
+##  $ distance: num  26 25 29 31 21.5 22.5 23 26.5 23 22.5 ...
+##  $ age     : num  8 10 12 14 8 10 12 14 8 10 ...
+##  $ Subject : Ord.factor w/ 27 levels "M16"&lt;"M05"&lt;"M02"&lt;..: 15 15 15 15 3 3 3 3 7 7 ...
+##  $ Sex     : Factor w/ 2 levels "Male","Female": 1 1 1 1 1 1 1 1 1 1 ...
+##  - attr(*, "outer")=Class 'formula'  language ~Sex
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "formula")=Class 'formula'  language distance ~ age | Subject
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "labels")=List of 2
+##   ..$ x: chr "Age"
+##   ..$ y: chr "Distance from pituitary to pterygomaxillary fissure"
+##  - attr(*, "units")=List of 2
+##   ..$ x: chr "(yr)"
+##   ..$ y: chr "(mm)"
+##  - attr(*, "FUN")=function (x)  
+##   ..- attr(*, "source")= chr "function (x) max(x, na.rm = TRUE)"
+##  - attr(*, "order.groups")= logi TRUE</code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Orthodont</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">distance</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Edad"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Distancia"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm006-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Se puede apreciar una tendencia creciente de la distancia con la edad considerando cada fila del banco de datos como independiente del resto. Podemos añadir el efecto del sexo:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Orthodont</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">distance</span>, color <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Edad"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Distancia"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm007-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Ahora además podemos apreciar un posible efecto del sexo. Procedemoe con el gráfico por sujeto. En este caso vamos a introducir una aproximación de lo que sería la tendencia para cada uno de los sujetos:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Orthodont</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">distance</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">gam</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Edad"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Distancia"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Subject</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm008-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Como ocurría en el ejemplo anterior podemos observar que no todos los sujetos tienen un comportamiento similar, reforzando el hecho de que hay que tener en cuenta el efecto aleatorio del sujeto en el análisis de este modelo.</p>
+</div>
+<div id="estudio-de-pixel" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Estudio de pixel<a class="anchor" aria-label="anchor" href="#estudio-de-pixel"><i class="fas fa-link"></i></a>
+</h2>
+<p>El conjunto de datos de <code>pixel</code> tiene 102 filas y 4 columnas donde la variable objetivo registra la intensidad de los píxeles de las tomografías de los perros a lo largo del tiempo. Las varaibles consideradas son:</p>
+<ul>
+<li>
+<code>Dog</code>: un factor con niveles de 1 a 10 que designa el perro en el que se realizó la exploración.</li>
+<li>
+<code>Side</code>: un factor con niveles L y R que designa el lado escaneado del perro.</li>
+<li>
+<code>day</code>: un valor numérico que indica el día posterior a la inyección del contraste en el que se realizó la exploración.</li>
+<li>
+<code>pixel</code>: un valor numérico que indica la intensidad del píxel.</li>
+</ul>
+<p>En este caso tenemos dos fuentes de variabilidad aleatoria. La primera hace referencia al sujeto (perro en este caso), y la segunda al lado del perro escaneado. Este segundo efecto está anidado dentro del efecto perro y se deberá teenr en cuenta de esta forma en el modeelo. Veasmo los datos y su representación gráfica:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Pixel"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Pixel</span><span class="op">)</span></code></pre></div>
+<pre><code>## Classes 'nmGroupedData', 'groupedData' and 'data.frame': 102 obs. of  4 variables:
+##  $ Dog  : Factor w/ 10 levels "1","10","2","3",..: 1 1 1 1 1 1 1 3 3 3 ...
+##  $ Side : Factor w/ 2 levels "L","R": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ day  : num  0 1 2 4 6 10 14 0 1 2 ...
+##  $ pixel: num  1046 1044 1043 1050 1045 ...
+##  - attr(*, "formula")=Class 'formula'  language pixel ~ day | Dog/Side
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "formulaList")=List of 2
+##   ..$ Dog :Class 'formula'  language ~Dog
+##   .. .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##   ..$ Side:Class 'formula'  language ~Side
+##   .. .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "labels")=List of 2
+##   ..$ x: chr "Time post injection"
+##   ..$ y: chr "Pixel intensity"
+##  - attr(*, "units")=List of 1
+##   ..$ x: chr "(days)"
+##  - attr(*, "order.groups")=List of 2
+##   ..$ Dog : logi TRUE
+##   ..$ Side: logi TRUE
+##  - attr(*, "FUN")=function (x)  
+##   ..- attr(*, "source")= chr "function (x) max(x, na.rm = TRUE)"</code></pre>
+<p>En este caso realizamos únicamente el gráfico que considera todos los efectos.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Pixel</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">day</span>, y <span class="op">=</span> <span class="va">pixel</span>, col <span class="op">=</span> <span class="va">Side</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Día"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"pixel"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Dog</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm010-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>Podemos ver como existe un efecto asociado con e perro y con el lado escaneado. Por ejemplo los perros 7 y 9 tienen comportamiento muy diferente, y dicho comportamiento no está asociado únicamente con el día sino con el propio sujeto utilizado.</p>
+</div>
+<div id="estudio-avena" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Estudio Avena<a class="anchor" aria-label="anchor" href="#estudio-avena"><i class="fas fa-link"></i></a>
+</h2>
+<p>Este conjunto de datos hace referencia a un estudio para analizar el redimiento de producción de diferentes varaiedades de avena sujetas a diferentes condiciones experimentales. El area de estudio se distribuyó en 6 bloques de 3 parcelas principales, cada una de ellas dividida en 4 subparcelas. Cada variedad se aplico en cada una de las parcelas pricipales , mientras que los tratamiento de abonos se aplicaron en cada una de las subparcelas definidas. El banco de datos contiene las siguientes columnas:</p>
+<ul>
+<li>
+<code>Block</code>: Bloques considerados con niveles I, II, III, IV, V y VI.</li>
+<li>
+<code>Variety</code>: Variedades de avena consideradas con 3 niveles.</li>
+<li>
+<code>nitro</code>: Tratamiento de nitrógeno (manurial) con niveles 0.0cwt, 0.2cwt, 0.4cwt y 0.6cwt, mostrando la aplicación en cwt/acre.</li>
+<li>
+<code>yield</code>: Rendimiento en 1/4lbs por subparcela, cada una de ellas con una superficie de 1/80 acres.</li>
+</ul>
+<p>En este caso tenemos como fuentes de variabilidad extra el bloque y la variedad aplicada dentro de cada bloque, ya que el objetivo principal es la influencia del tratamiento en la producción final de cada subparcela.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Oats"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Oats</span><span class="op">)</span></code></pre></div>
+<pre><code>## Classes 'nfnGroupedData', 'nfGroupedData', 'groupedData' and 'data.frame':   72 obs. of  4 variables:
+##  $ Block  : Ord.factor w/ 6 levels "VI"&lt;"V"&lt;"III"&lt;..: 6 6 6 6 6 6 6 6 6 6 ...
+##  $ Variety: Factor w/ 3 levels "Golden Rain",..: 3 3 3 3 1 1 1 1 2 2 ...
+##  $ nitro  : num  0 0.2 0.4 0.6 0 0.2 0.4 0.6 0 0.2 ...
+##  $ yield  : num  111 130 157 174 117 114 161 141 105 140 ...
+##  - attr(*, "formula")=Class 'formula'  language yield ~ nitro | Block
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
+##  - attr(*, "labels")=List of 2
+##   ..$ y: chr "Yield"
+##   ..$ x: chr "Nitrogen concentration"
+##  - attr(*, "units")=List of 2
+##   ..$ y: chr "(bushels/acre)"
+##   ..$ x: chr "(cwt/acre)"
+##  - attr(*, "inner")=Class 'formula'  language ~Variety
+##   .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt;</code></pre>
+<p>Analizamos gráficamente los datos del experimento:</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oats</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">nitro</span>, y <span class="op">=</span> <span class="va">yield</span>, col <span class="op">=</span> <span class="va">Variety</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Concentración"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Rendimiento"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Block</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm012-1.png" width="95%" style="display: block; margin: auto;"></div>
+<p>¿Qué comportamiento observamos dentro de cada bloque?</p>
+</div>
+<div id="estudio-penicilina" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> Estudio Penicilina<a class="anchor" aria-label="anchor" href="#estudio-penicilina"><i class="fas fa-link"></i></a>
+</h2>
+<p>Los datos se describen en Davies y Goldsmith (1972) como procedentes de una investigación para “evaluar la variabilidad entre muestras de penicilina por el método de B. subtilis. En este método de prueba se vierte un medio de agar nutritivo inoculado a granel en una placa de Petri de aproximadamente 90 mm. de diámetro, conocida como placa. Cuando el medio ha fraguado, se pegan en la superficie seis pequeños cilindros huecos o macetas (de unos 4 mm. de diámetro) a intervalos igualmente espaciados. Se colocan unas gotas de las soluciones de penicilina que se van a comparar en los respectivos cilindros, y toda la placa se coloca en una incubadora durante un tiempo determinado. La penicilina se difunde desde los botes al agar, y esto produce una clara zona circular de inhibición del crecimiento de los organismos, que puede medirse fácilmente. El diámetro de la zona está relacionado de forma conocida con la concentración de penicilina en la solución.</p>
+<p>En concreto se probaron seis muestras de penicilina utilizando el método de la placa de B. subtilis en cada una de 24 placas. La respuesta es el diámetro (mm) de la zona de inhibición del crecimiento del organismo. El banco de datos contiene 144 filas y tres variables:</p>
+<ul>
+<li>
+<code>diameter</code>: diámetro (en mm) de la zona de inhibición del crecimiento del organismo.</li>
+<li>
+<code>plate</code>: placa de ensayo. Un factor con niveles de <code>a</code> hasta <code>x</code>.</li>
+<li>
+<code>sample</code>: muestra de penicilina. Un factor con niveles de <code>A</code> hasta <code>F</code>.</li>
+</ul>
+<p>En este caso no hay variables predictoras, ya que tanto la muestra y la placa deben ser considerados efectos aleatorios. Veamos los datos y su representación gráfica:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Penicillin"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Penicillin</span><span class="op">)</span></code></pre></div>
+<pre><code>## 'data.frame':    144 obs. of  3 variables:
+##  $ diameter: num  27 23 26 23 23 21 27 23 26 23 ...
+##  $ plate   : Factor w/ 24 levels "a","b","c","d",..: 1 1 1 1 1 1 2 2 2 2 ...
+##  $ sample  : Factor w/ 6 levels "A","B","C","D",..: 1 2 3 4 5 6 1 2 3 4 ...</code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Penicillin</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">diameter</span>, y <span class="op">=</span> <span class="va">plate</span>, col <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Diameter"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Sample"</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="20-Mixtos_files/figure-html/mm013-1.png" width="95%" style="display: block; margin: auto;"></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="mmixed.html"><span class="header-section-number">2</span> Modelos Lineales Mixtos</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ejemplos"><span class="header-section-number">3</span> Ejemplos</a></li>
+<li><a class="nav-link" href="#estudio-del-sue%C3%B1o"><span class="header-section-number">3.1</span> Estudio del sueño</a></li>
+<li><a class="nav-link" href="#estudio-de-ortodoncia"><span class="header-section-number">3.2</span> Estudio de ortodoncia</a></li>
+<li><a class="nav-link" href="#estudio-de-pixel"><span class="header-section-number">3.3</span> Estudio de pixel</a></li>
+<li><a class="nav-link" href="#estudio-avena"><span class="header-section-number">3.4</span> Estudio Avena</a></li>
+<li><a class="nav-link" href="#estudio-penicilina"><span class="header-section-number">3.5</span> Estudio Penicilina</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-22.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

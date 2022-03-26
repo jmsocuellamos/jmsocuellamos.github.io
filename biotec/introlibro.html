@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Unidad 1 Comenzamos | Modelos Estadísticos</title>
+<meta name="description" content="La importancia de la estadística dentro del campo experimental siempre ha sido muy relevante, ya que para poder extraer conclusiones de un conjunto de datos experimentales se hace necesaria la...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Unidad 1 Comenzamos | Modelos Estadísticos">
+<meta property="og:type" content="book">
+<meta property="og:description" content="La importancia de la estadística dentro del campo experimental siempre ha sido muy relevante, ya que para poder extraer conclusiones de un conjunto de datos experimentales se hace necesaria la...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unidad 1 Comenzamos | Modelos Estadísticos">
+<meta name="twitter:description" content="La importancia de la estadística dentro del campo experimental siempre ha sido muy relevante, ya que para poder extraer conclusiones de un conjunto de datos experimentales se hace necesaria la...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Modelos Estadísticos</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Bienvenidos</a></li>
+<li><a class="active" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
+<li><a class="" href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></li>
+<li><a class="" href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></li>
+<li><a class="" href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
+<li><a class="" href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
+<li><a class="" href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></li>
+<li><a class="" href="rlm.html"><span class="header-section-number">7</span> Regresión Lineal Múltiple y Polinómica</a></li>
+<li><a class="" href="anova.html"><span class="header-section-number">8</span> Modelos ANOVA</a></li>
+<li><a class="" href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></li>
+<li><a class="" href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
+<li><a class="" href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
+<li><a class="" href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
+<li><a class="" href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></li>
+<li><a class="" href="glmpoisson.html"><span class="header-section-number">14</span> GLM Poisson</a></li>
+<li><a class="" href="glmtablascont.html"><span class="header-section-number">15</span> GLM para tablas de contingencia</a></li>
+<li><a class="" href="glmsuperv.html"><span class="header-section-number">16</span> GLM para datos de supervivencia</a></li>
+<li><a class="" href="referencias.html">Referencias</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introlibro" class="section level1" number="1">
+<h1>
+<span class="header-section-number">Unidad 1</span> Comenzamos<a class="anchor" aria-label="anchor" href="#introlibro"><i class="fas fa-link"></i></a>
+</h1>
+<p>La importancia de la estadística dentro del campo experimental siempre ha sido muy relevante, ya que para poder extraer conclusiones de un conjunto de datos experimentales se hace necesaria la utilización de procedimientos estadísticos más o menos sofisticados. Con la irrupción de los ordenadores personales y de los programas estadísticos para legos en la materia, así como la explosión tecnológica que estamos viviendo en los últimos años, la importancia de un correcto estudio estadístico de los datos experimentales se hace más necesaria que nunca. Se siguen publicando trabajos de investigación basados en datos experimentales donde el tratamiento estadístico de la información allí recogida puede considerarse como decepcionante. Con esta materia pretendemos guiar al estudiante en un correcto uso y análisis de las técnicas estadísticas más habituales en los diseños experimentales.</p>
+<p>El tratamiento estadístico de datos experimentales se puede caracterizar en dos grandes áreas: <strong>estudios descriptivos</strong> y <strong>análisis y modelización</strong>. Los estudios descriptivos se centran en el procesado de los datos experimentales obtenidos con el objetivo de establecer o reflejar posibles patrones o tendencias en su comportamiento. Se engloban dentro de este ámbito todas la técnicas estadísticas que permiten los resúmenes numéricos y gráficos de la información observada, así como la detección de observaciones anómalas, la transformación y el filtrado de los datos experimentales. Sin embargo, los estudios descriptivos tienen la gran limitación de que sus resultados están circunscritos a los datos observados, y por tanto no se pueden generalizar a la población más general de la que se han obtenido. En el análisis y modelización se pretende generalizar los posibles patrones de comportamiento observados, en la fase descriptiva, mediante la construcción de modelos que nos permiten aproximar el comportamiento de datos experimentales no observados. Evidentemente la construcción de dichos modelos estadísticos no es una tarea rutinaria que debe tomarse a la ligera. La propia naturaleza de los datos observados puede dar una idea de los posibles modelos que se pueden utilizar, pero el modelo final obtenido es el resultados de un proceso iterativo de construcción, verificación y validación que puede resultar costoso en algunas situaciones.</p>
+<p>La modelización estadística resulta relevante para representar el comportamiento de los datos experimentales de la forma más sencilla posible mediante modelos matemáticos donde se introduce de forma natural la incertidumbre de cualquier diseño experimental. Esta asignatura se centrará en la fase de modelización pero para poder llegar a comprender su naturaleza es necesario introducir primero los conceptos básicos de cualquier estudio estadístico, así como los procedimientos de estadística descriptiva y el estudio de la aleatoriedad en los diseños experimentales.</p>
+<p>Este tema establece las definiciones básicas de cualquier estudio estadístico sobre diferentes ejemplos e introduce la nomenclatura básica de los modelos estadísticos que estudiaremos más adelante.</p>
+<blockquote>
+<p><em>Usar la estadística no necesariamente es sinónimo de utilizar palabras raras o de hacer cálculos complicados. Significa que deseamos ver la realidad de forma objetiva, a través de datos que reflejen de la mejor manera posible qué es lo que está ocurriendo. Una vez se tienen los datos hay que saber sacarles la información y saberla plasmar de forma clara y convincente.</em></p>
+</blockquote>
+<div id="conceptos-básicos-del-diseño-experimental" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Conceptos básicos del diseño experimental<a class="anchor" aria-label="anchor" href="#conceptos-b%C3%A1sicos-del-dise%C3%B1o-experimental"><i class="fas fa-link"></i></a>
+</h2>
+<p>En esta sección presentamos los conceptos básicos que utilizaremos a lo largo de la materia. Se trata únicamente de un resumen muy esquemática, pero nos sirve para sentar las bases de los temas siguientes.</p>
+<div id="objetivo-del-diseño-experimental" class="section level3" number="1.1.1">
+<h3>
+<span class="header-section-number">1.1.1</span> Objetivo del diseño experimental<a class="anchor" aria-label="anchor" href="#objetivo-del-dise%C3%B1o-experimental"><i class="fas fa-link"></i></a>
+</h3>
+<p>El objetivo de cualquier diseño experimental es aquellos que pretendemos estudiar en función del tipo de información que se ha recogido y del tipo de premisas establecidas antes de la recolección de los datos. Además es importante establecer el número de repeticiones del experimento que vamos a realizar, ya que eso condicionará el análisis de dichos datos. Si nuestro diseño experimental es muy complejo puede ocurrir que plantemos más de un objetivo.</p>
+<p><strong>Ejemplo 1 (Degradación compuesto orgánico).</strong> Se va a realizar un experimento para conocer el tiempo que tarda en degradarse un compuesto orgánico. En este caso nuestro objetivo es el tiempo hasta la degradación. Si el experimneto considera diferentes tipos de compuestos nuestro objetivo podría ser comparar el tiempo de degradación en función del tipo de compuesto.</p>
+</div>
+<div id="población-y-muestra" class="section level3" number="1.1.2">
+<h3>
+<span class="header-section-number">1.1.2</span> Población y muestra<a class="anchor" aria-label="anchor" href="#poblaci%C3%B3n-y-muestra"><i class="fas fa-link"></i></a>
+</h3>
+<p>Se define la población como el conjunto de sujetos u objetos que son de interés para el objetivo u objetivos planteados en nuestro diseño experimental. EL problema principal es que la población de sujetos u objetos suele ser demasiado grande para poder analizarla de forma completa, y por tanto debemos acudir a un subconjunto de dicha población para llevar a cabo nuestro diseño experimental.</p>
+<p>Se define la muestra como el subconjunto de la población a la que accedemos para obtener la información necesaria de cara a responder de la forma más precisa posible al objetivo u objetivos planteados.</p>
+</div>
+<div id="medidas-y-escalas-de-medida" class="section level3" number="1.1.3">
+<h3>
+<span class="header-section-number">1.1.3</span> Medidas y escalas de medida<a class="anchor" aria-label="anchor" href="#medidas-y-escalas-de-medida"><i class="fas fa-link"></i></a>
+</h3>
+<p>Una medida es un número o atributo que se puede calcular para cada uno de los miembros de la población que está relacionado directamente con el objetivo de interés de la investigación. El conjunto de medidas obtenidas para cada uno de los elementos muestrales se denominan datos muestrales.</p>
+<p>EL conjunto de medidas que se pueden observar y registrar para un conjunto de sujetos u objetos bajo investigación se denominan variables. Por tanto, una variable es el conjunto de valores que puede tomar cierta característica de la población sobre la que se realiza el estudio estadístico. Se distinguen dos tipos que pasamos a describir a continuación.</p>
+<div id="variables-cualitativas" class="section level4" number="1.1.3.1">
+<h4>
+<span class="header-section-number">1.1.3.1</span> Variables cualitativas<a class="anchor" aria-label="anchor" href="#variables-cualitativas"><i class="fas fa-link"></i></a>
+</h4>
+<p>Son el tipo de variables que como su nombre lo indica expresan distintas cualidades, características o modalidad. Cada modalidad que se presenta se denomina atributo o categoría, y la medición consiste en una clasificación de dichos atributos. Las variables cualitativas pueden ser dicotómicas cuando sólo pueden tomar dos valores posibles, como sí y no, hombre y mujer o ser politómicas cuando pueden adquirir tres o más valores. Dentro de ellas podemos distinguir:</p>
+<ol style="list-style-type: lower-roman">
+<li>
+<strong>Variable cualitativa ordinal</strong>: La variable puede tomar distintos valores ordenados siguiendo una escala establecida, aunque no es necesario que el intervalo entre mediciones sea uniforme, por ejemplo: leve, moderado, fuerte.</li>
+<li>
+<strong>Variable cualitativa nominal</strong>: En esta variable los valores no pueden ser sometidos a un criterio de orden, como por ejemplo los colores.</li>
+</ol>
+</div>
+<div id="variables-cuantitativas" class="section level4" number="1.1.3.2">
+<h4>
+<span class="header-section-number">1.1.3.2</span> Variables cuantitativas<a class="anchor" aria-label="anchor" href="#variables-cuantitativas"><i class="fas fa-link"></i></a>
+</h4>
+<p>Son las variables que toman como argumento cantidades numéricas. Las variables cuantitativas además pueden ser:</p>
+<ol style="list-style-type: lower-roman">
+<li>
+<strong>Variable discreta</strong>: Es la variable que presenta separaciones o interrupciones en la escala de valores que puede tomar. Estas separaciones o interrupciones indican la ausencia de valores entre los distintos valores específicos que la variable pueda asumir. Ejemplo: El número de hijos (1, 2, 3, 4, 5). En muchas ocasiones una variable cualitativa ordinal puede ser interpretada como una variable discreta asociando a las categorías de la variable valores numéricos respetando el orden o escala establecida. Por ejemplo a la escala leve, moderado y fuerte le podríamos asociar la escala 1, 2 y 3 para mantener el orden.<br>
+</li>
+<li>
+<strong>Variable continua</strong>: Es la variable que puede adquirir cualquier valor dentro de un intervalo especificado de valores. Por ejemplo el peso (2,3 kg, 2,4 kg, 2,5 kg,…), la altura (1,64 m, 1,65 m, 1,66 m,…), o el salario. Solamente se está limitado por la precisión del aparato medidor, en teoría permiten que existan valores infinitos entre dos valores observados.</li>
+</ol>
+<p>De forma habitual, la estructura de cualquier banco de datos (asociado a un diseño experimental) tiene una estructura matricial donde en las filas se colocan los sujetos bajo estudio y en las columnas se sitúan las variables medidas para cada uno de ellos.</p>
+<p>Asociada a cada variable de nuestro banco de datos se puede establecer lo que conocemos como parámetro o parámetros de interés de la variable.</p>
+<p><strong>Ejemplo 2 (Variable de interés).</strong> Para el diseño experimental del estudio de la degradación del compuesto orgánico presentado en el ejemplo <a href="#exm:ejemplo1"><strong>??</strong></a>, la variable de interés es de tipo continuo y viene dada por el tiempo de degradación asociado a cada repetición del experimento. Sin embargo, a la hora de extraer conclusiones no podemos presentar todo el conjunto de datos sino que recurrimos a un resumen de dichos datos.</p>
+</div>
+</div>
+<div id="parámetros-poblacionales-y-estadísticos" class="section level3" number="1.1.4">
+<h3>
+<span class="header-section-number">1.1.4</span> Parámetros poblacionales y estadísticos<a class="anchor" aria-label="anchor" href="#par%C3%A1metros-poblacionales-y-estad%C3%ADsticos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Asociado a cada variable se puede establecer lo que conocemos como <strong>parámetro o parámetros</strong> de interés de la variable. En el ejemplo anterior el parámetro de interés es el tiempo medio de degradación. Dado que generalmente no es posible examinar toda la población y debemos recurrir a una muestra de dicha población, es imposible conocer el verdadero valor del parámetro asociado con dicha variable. Para sortear este problema definimos el <strong>estadístico</strong> como una realización del parámetro para los datos muestrales observados. Por tanto el valor del estadístico (denominado estimación) varia entre dos muestras de las misma población. Cuanto mayor es la muestra más se parecerá el valor del estadístico al del parámetro.</p>
+<p>En ocasiones ocurrirá que el número de parámetros asociado con una variable no es único, ya que se pueden establecer varios parámetros para estudiar el comportamiento de una variable. En el caso de variables de tipo cuantitativo siempre existen dos parámetros de interés: la media y la desviación típica. El primero nos indica como se sitúan los datos mientras que el segundo nos indica como se reparten los datos muestrales alrededor de la media.</p>
+<p><strong>Ejemplo 3 (Parámetro de interés).</strong> Para el diseño experimental del estudio de la degradación del compuesto orgánico presentado en el ejemplo <a href="#exm:ejemplo1"><strong>??</strong></a>, el parámetro poblacional de interés es el tiempo medio de degradación, mientras que el estadístico es la media del tiempo de degradación observado para los sujetos de la muestra. Distinguimos entonces entre media poblacional (parámetro) y media muestral (estadístico).</p>
+</div>
+</div>
+<div id="primeros-pasos-con-r-y-rstudio" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Primeros pasos con <code>R</code> y <code>RStudio</code><a class="anchor" aria-label="anchor" href="#primeros-pasos-con-r-y-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para poder utilizar el código expuesto en estos materiales es necesario la instalación del programa <code>R</code>, del programa <code>RStudio</code> y de diferentes librerías de <code>R</code>. En los puntos siguientes se describe brevemente cada uno de estos puntos. Se recomienda además la consulta de los materiales electrónicos siguientes para complmentar la formación.</p>
+<ul>
+<li>Childs, D. Z. (2017). APS 135: Introduction to Exploratory Data Analysis with R. <a href="https://dzchilds.github.io/eda-for-bio/">Versión electrónica</a>.</li>
+<li>Grosser, M. 2017. Tidyverse Cookbook. <a href="https://bookdown.org/Tazinho/Tidyverse-Cookbook/">Versión electrónica incompleta</a>.</li>
+<li>Wickham, H. 2015. Advanced R. CRC Press. <a href="https://adv-r.hadley.nz/">Versión electrónica resumida</a>.</li>
+<li>Wickham, H. 2010. ggplot2. Third Edition. Springer. <a href="http://ggplot2.org/">Recursos electrónicos</a>.</li>
+<li>Wickham, H. &amp; Grolemund, G. 2016. R for Data Science. O’Reilly. <a href="http://r4ds.had.co.nz/">Versión electrónica resumida</a>.</li>
+</ul>
+<div id="instalación-y-puesta-en-marcha" class="section level3" number="1.2.1">
+<h3>
+<span class="header-section-number">1.2.1</span> Instalación y puesta en marcha<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-y-puesta-en-marcha"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<p><strong>Instalación de R y RStudio</strong>. Leer el capítulo de introducción del libro de Childs (2017) e instalar ambos programas descargándolos de sus correspondientes webs:</p>
+<ul>
+<li>Para instalar el programa <code>R</code>: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>
+</li>
+<li>Para instalar RStudio: <a href="https://rstudio.com/" class="uri">https://rstudio.com/</a>
+</li>
+</ul>
+</li>
+<li><p><strong>Primeros pasos en R y RStudio</strong>. Leer los capítulos 1, 2, y 3 de Childs (2017), el capítulo 4 de Wickham (2015), y los capítulos 4 y 6 de Wickham (2016) para un desarrollo más amplio. Realizar los ejercicios que van a apareciendo a lo largo de los capítulos.</p></li>
+<li><p><strong>Estructuras de datos</strong>. Leer los capítulos 4, 5, 6 y 9 de Childs (2017) para una breve introducción y los capítulos 2 y 3 de Wickham (2015) para completar la información. Realiza los ejercicios que van apareciendo.</p></li>
+<li><p><strong>Instalación y uso de librerías en RStudio</strong>. Leer el capítulo 8 de Childs (2017) e instala las librerías tidyverse, stringr, forcats, lubridate, magrittr, broom y datasets mediante la consola de RStudio. Carga las librerías con el comando library para comprobar que se han instalando de forma correcta.</p></li>
+<li><p><strong>Creación de proyectos y entornos de trabajo</strong>. Leer el capítulo 8 de Wickham (2016). Crea un proyecto para esta unidad, selecciona el directorio de trabajo donde se encuentra situado el proyecto, y guarda el entorno de trabajo.</p></li>
+</ul>
+</div>
+</div>
+<div id="informes-prediseñados" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Informes prediseñados<a class="anchor" aria-label="anchor" href="#informes-predise%C3%B1ados"><i class="fas fa-link"></i></a>
+</h2>
+<p>En los últimos tiempos se ha puesto de modo la creación de informes directos apartir del código utilizado en Rstudio mediante la creación de documentos específicos. Su puede consulyar una guía sencilla de uso en <a href="http://www.unavarra.es/personal/tgoicoa/ESTADISTICA_RMarkdown_tomas/basicRmarkdown/index.html">enlace</a>. Un desaroollo más completo se puede ver en este <a href="https://bookdown.org/yihui/rmarkdown/">enlace</a>. También se puede consultar este <a href="https://www.youtube.com/watch?v=V0eJE55aTrY">vídeo</a>.</p>
+</div>
+<div id="librerías-de-r-necesarías" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Librerías de <code>R</code> necesarías<a class="anchor" aria-label="anchor" href="#librer%C3%ADas-de-r-necesar%C3%ADas"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para poder utilizar el código expuesto en estos materiales es necesario la instalación de diferentes librerías de <code>R</code>. A continuación se encuentra el código para cargar dichas librerías. Para algún análisis especifíco se utilizará alguna librería accesoria que será cargada con el comando <code><a href="https://rdrr.io/r/base/library.html">require()</a></code>.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org">forcats</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">pubh</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ProjectMOSAIC/mosaic">mosaic</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stefanom.io/latex2exp/">latex2exp</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cardiomoon/moonBook">moonBook</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/">sjlabelled</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjPlot/">sjPlot</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://olsrr.rsquaredacademy.com/">olsrr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sinhrks/ggfortify">ggfortify</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">mgcv</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://modelr.tidyverse.org">modelr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.z.umn.edu/alr4ed">alr4</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/datalorax/equatiomatic">equatiomatic</a></span><span class="op">)</span> 
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival">survival</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/survminer/index.html">survminer</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></code></pre></div>
+<p>Configuramos además el tema de los gráficos para que tengan un aspecto más limpio y más fácil de exportar en formato pdf o word. Para ellos utilizamos la función <code><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set()</a></code>.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/sjPlot-themes.html">theme_sjplot2</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Bienvenidos</a></div>
+<div class="next"><a href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introlibro"><span class="header-section-number">1</span> Comenzamos</a></li>
+<li>
+<a class="nav-link" href="#conceptos-b%C3%A1sicos-del-dise%C3%B1o-experimental"><span class="header-section-number">1.1</span> Conceptos básicos del diseño experimental</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#objetivo-del-dise%C3%B1o-experimental"><span class="header-section-number">1.1.1</span> Objetivo del diseño experimental</a></li>
+<li><a class="nav-link" href="#poblaci%C3%B3n-y-muestra"><span class="header-section-number">1.1.2</span> Población y muestra</a></li>
+<li><a class="nav-link" href="#medidas-y-escalas-de-medida"><span class="header-section-number">1.1.3</span> Medidas y escalas de medida</a></li>
+<li><a class="nav-link" href="#par%C3%A1metros-poblacionales-y-estad%C3%ADsticos"><span class="header-section-number">1.1.4</span> Parámetros poblacionales y estadísticos</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#primeros-pasos-con-r-y-rstudio"><span class="header-section-number">1.2</span> Primeros pasos con R y RStudio</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#instalaci%C3%B3n-y-puesta-en-marcha"><span class="header-section-number">1.2.1</span> Instalación y puesta en marcha</a></li></ul>
+</li>
+<li><a class="nav-link" href="#informes-predise%C3%B1ados"><span class="header-section-number">1.3</span> Informes prediseñados</a></li>
+<li><a class="nav-link" href="#librer%C3%ADas-de-r-necesar%C3%ADas"><span class="header-section-number">1.4</span> Librerías de R necesarías</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
