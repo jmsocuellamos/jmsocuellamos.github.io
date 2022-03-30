@@ -1,1 +1,0 @@
-# jmsocuellamos.github.io
