@@ -760,7 +760,7 @@ bar_plt                         # Representamos el gráfico
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed006-1.png" alt="Gráfico de barras del tipo de tormenta." width="95%" />
+<img src="02-aed_files/figure-epub3/aed006-1.png" alt="Gráfico de barras del tipo de tormenta." width="95%" />
 <p class="caption">(\#fig:aed006)Gráfico de barras del tipo de tormenta.</p>
 </div>
 
@@ -776,7 +776,7 @@ ggplot(storm, aes(x = type)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed007-1.png" alt="Gráfico de barras del tipo de tormenta (versión 2)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed007-1.png" alt="Gráfico de barras del tipo de tormenta (versión 2)." width="95%" />
 <p class="caption">(\#fig:aed007)Gráfico de barras del tipo de tormenta (versión 2).</p>
 </div>
 
@@ -794,7 +794,7 @@ ggplot(storm, aes(x = type)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed008-1.png" alt="Gráfico de barras del tipo de tormenta (versión 3)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed008-1.png" alt="Gráfico de barras del tipo de tormenta (versión 3)." width="95%" />
 <p class="caption">(\#fig:aed008)Gráfico de barras del tipo de tormenta (versión 3).</p>
 </div>
 
@@ -810,7 +810,7 @@ ggplot(storm, aes(x = type)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed009-1.png" alt="Gráfico de barras del tipo de tormenta (versión 4)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed009-1.png" alt="Gráfico de barras del tipo de tormenta (versión 4)." width="95%" />
 <p class="caption">(\#fig:aed009)Gráfico de barras del tipo de tormenta (versión 4).</p>
 </div>
 
@@ -827,7 +827,7 @@ ggplot(storm, aes(x = type)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed010-1.png" alt="Gráfico de barras del tipo de tormenta (versión 5)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed010-1.png" alt="Gráfico de barras del tipo de tormenta (versión 5)." width="95%" />
 <p class="caption">(\#fig:aed010)Gráfico de barras del tipo de tormenta (versión 5).</p>
 </div>
 
@@ -844,7 +844,7 @@ ggplot(storm, aes(x = type)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed011-1.png" alt="Gráfico de barras del porcentaje de cada tipo de tormenta." width="95%" />
+<img src="02-aed_files/figure-epub3/aed011-1.png" alt="Gráfico de barras del porcentaje de cada tipo de tormenta." width="95%" />
 <p class="caption">(\#fig:aed011)Gráfico de barras del porcentaje de cada tipo de tormenta.</p>
 </div>
 
@@ -1060,7 +1060,7 @@ ggplot(storm, aes(x = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed018-1.png" alt="Histograma de la presión atmosférica." width="95%" />
+<img src="02-aed_files/figure-epub3/aed018-1.png" alt="Histograma de la presión atmosférica." width="95%" />
 <p class="caption">(\#fig:aed018)Histograma de la presión atmosférica.</p>
 </div>
 
@@ -1076,7 +1076,7 @@ ggplot(storm, aes(x = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed019-1.png" alt="Histograma de la presión atmosférica (modificando binwidth)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed019-1.png" alt="Histograma de la presión atmosférica (modificando binwidth)." width="95%" />
 <p class="caption">(\#fig:aed019)Histograma de la presión atmosférica (modificando binwidth).</p>
 </div>
 
@@ -1090,7 +1090,7 @@ ggplot(storm, aes(x = wind)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed020-1.png" alt="Histograma de la velocidad del viento." width="95%" />
+<img src="02-aed_files/figure-epub3/aed020-1.png" alt="Histograma de la velocidad del viento." width="95%" />
 <p class="caption">(\#fig:aed020)Histograma de la velocidad del viento.</p>
 </div>
 
@@ -1103,7 +1103,7 @@ ggplot(storm, aes(x = factor(1),y = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed021-1.png" alt="Gráfico de cajas de la presión atmosférica." width="95%" />
+<img src="02-aed_files/figure-epub3/aed021-1.png" alt="Gráfico de cajas de la presión atmosférica." width="95%" />
 <p class="caption">(\#fig:aed021)Gráfico de cajas de la presión atmosférica.</p>
 </div>
 
@@ -1118,7 +1118,7 @@ ggplot(storm, aes(x = factor(1), y = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed022-1.png" alt="Gráfico de cajas de la presión atmosférica (versión 2)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed022-1.png" alt="Gráfico de cajas de la presión atmosférica (versión 2)." width="95%" />
 <p class="caption">(\#fig:aed022)Gráfico de cajas de la presión atmosférica (versión 2).</p>
 </div>
 
@@ -1135,7 +1135,7 @@ ggplot(storm, aes(x = factor(1),y = wind)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed023-1.png" alt="Gráfico de cajas de la velocidad del viento." width="95%" />
+<img src="02-aed_files/figure-epub3/aed023-1.png" alt="Gráfico de cajas de la velocidad del viento." width="95%" />
 <p class="caption">(\#fig:aed023)Gráfico de cajas de la velocidad del viento.</p>
 </div>
 
@@ -1197,7 +1197,7 @@ ggplot(storm, aes(x = type, fill = year_f)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed027-1.png" alt="Gráfico de barras apiladas para tipo de tormenta versus año." width="95%" />
+<img src="02-aed_files/figure-epub3/aed027-1.png" alt="Gráfico de barras apiladas para tipo de tormenta versus año." width="95%" />
 <p class="caption">(\#fig:aed027)Gráfico de barras apiladas para tipo de tormenta versus año.</p>
 </div>
 
@@ -1214,7 +1214,7 @@ ggplot(storm, aes(x = type, fill = year_f)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed028-1.png" alt="Gráfico de barras agrupado para el tipo de tormenta versus año." width="95%" />
+<img src="02-aed_files/figure-epub3/aed028-1.png" alt="Gráfico de barras agrupado para el tipo de tormenta versus año." width="95%" />
 <p class="caption">(\#fig:aed028)Gráfico de barras agrupado para el tipo de tormenta versus año.</p>
 </div>
 
@@ -1231,7 +1231,7 @@ ggplot(storm, aes(x = type, fill = year_f)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed029-1.png" alt="Gráfico de barras agrupado (porcentjes) para el tipo de tormenta versus año." width="95%" />
+<img src="02-aed_files/figure-epub3/aed029-1.png" alt="Gráfico de barras agrupado (porcentjes) para el tipo de tormenta versus año." width="95%" />
 <p class="caption">(\#fig:aed029)Gráfico de barras agrupado (porcentjes) para el tipo de tormenta versus año.</p>
 </div>
 
@@ -1248,7 +1248,7 @@ storm %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed030-1.png" alt="Mapa de intensidad para el tipo de tormenta versus año." width="95%" />
+<img src="02-aed_files/figure-epub3/aed030-1.png" alt="Mapa de intensidad para el tipo de tormenta versus año." width="95%" />
 <p class="caption">(\#fig:aed030)Mapa de intensidad para el tipo de tormenta versus año.</p>
 </div>
 
@@ -1311,7 +1311,7 @@ ggplot(storm, aes(x = wind)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed032-1.png" alt="Gráficos de densidades de la velocidad del viento por tipo de tormenta." width="95%" />
+<img src="02-aed_files/figure-epub3/aed032-1.png" alt="Gráficos de densidades de la velocidad del viento por tipo de tormenta." width="95%" />
 <p class="caption">(\#fig:aed032)Gráficos de densidades de la velocidad del viento por tipo de tormenta.</p>
 </div>
 
@@ -1331,7 +1331,7 @@ ggplot(storm, aes(x = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed033-1.png" alt="Gráficos de densidades de la presión atmosférica por tipo de tormenta." width="95%" />
+<img src="02-aed_files/figure-epub3/aed033-1.png" alt="Gráficos de densidades de la presión atmosférica por tipo de tormenta." width="95%" />
 <p class="caption">(\#fig:aed033)Gráficos de densidades de la presión atmosférica por tipo de tormenta.</p>
 </div>
 
@@ -1354,7 +1354,7 @@ ggplot(storm, aes(x = type, y = wind)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed034-1.png" alt="Gráficos de cajas de la velocidad del viento por tipo de tormenta." width="95%" />
+<img src="02-aed_files/figure-epub3/aed034-1.png" alt="Gráficos de cajas de la velocidad del viento por tipo de tormenta." width="95%" />
 <p class="caption">(\#fig:aed034)Gráficos de cajas de la velocidad del viento por tipo de tormenta.</p>
 </div>
 
@@ -1371,7 +1371,7 @@ ggplot(storm, aes(x = type, y = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed035-1.png" alt="Gráficos de cajas de la presión atmosférica por tipo de tormenta." width="95%" />
+<img src="02-aed_files/figure-epub3/aed035-1.png" alt="Gráficos de cajas de la presión atmosférica por tipo de tormenta." width="95%" />
 <p class="caption">(\#fig:aed035)Gráficos de cajas de la presión atmosférica por tipo de tormenta.</p>
 </div>
 
@@ -1394,7 +1394,7 @@ ggplot(storm, aes(x = wind))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed036-1.png" alt="Gráficos matricial de velocidad del viento por tipo de tormenta" width="95%" />
+<img src="02-aed_files/figure-epub3/aed036-1.png" alt="Gráficos matricial de velocidad del viento por tipo de tormenta" width="95%" />
 <p class="caption">(\#fig:aed036)Gráficos matricial de velocidad del viento por tipo de tormenta</p>
 </div>
 
@@ -1411,7 +1411,7 @@ ggplot(storm, aes(x = wind))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed037-1.png" alt="Gráficos matricial de velocidad del viento por tipo de tormenta" width="95%" />
+<img src="02-aed_files/figure-epub3/aed037-1.png" alt="Gráficos matricial de velocidad del viento por tipo de tormenta" width="95%" />
 <p class="caption">(\#fig:aed037)Gráficos matricial de velocidad del viento por tipo de tormenta</p>
 </div>
 
@@ -1430,7 +1430,7 @@ ggplot(storm, aes(x = wind))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed038-1.png" alt="Gráficos matricial de velocidad del viento por tipo de tormenta" width="95%" />
+<img src="02-aed_files/figure-epub3/aed038-1.png" alt="Gráficos matricial de velocidad del viento por tipo de tormenta" width="95%" />
 <p class="caption">(\#fig:aed038)Gráficos matricial de velocidad del viento por tipo de tormenta</p>
 </div>
 
@@ -1449,7 +1449,7 @@ ggplot(storm, aes(x = wind))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed039-1.png" alt="Gráficos matricial (grid) de velocidad del viento por tipo de tormenta" width="95%" />
+<img src="02-aed_files/figure-epub3/aed039-1.png" alt="Gráficos matricial (grid) de velocidad del viento por tipo de tormenta" width="95%" />
 <p class="caption">(\#fig:aed039)Gráficos matricial (grid) de velocidad del viento por tipo de tormenta</p>
 </div>
 
@@ -1518,7 +1518,7 @@ ggplot(storm, aes(x = wind, y = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed042-1.png" alt="Gráfico de dispersión de velocidad del viento vs presión atmosférica" width="95%" />
+<img src="02-aed_files/figure-epub3/aed042-1.png" alt="Gráfico de dispersión de velocidad del viento vs presión atmosférica" width="95%" />
 <p class="caption">(\#fig:aed042)Gráfico de dispersión de velocidad del viento vs presión atmosférica</p>
 </div>
 
@@ -1534,7 +1534,7 @@ ggplot(storm, aes(x = wind, y = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed043-1.png" alt="Gráfico de dispersión de velocidad del viento vs presión atmosférica (versión dos)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed043-1.png" alt="Gráfico de dispersión de velocidad del viento vs presión atmosférica (versión dos)." width="95%" />
 <p class="caption">(\#fig:aed043)Gráfico de dispersión de velocidad del viento vs presión atmosférica (versión dos).</p>
 </div>
 
@@ -1550,7 +1550,7 @@ ggplot(data = storm, aes(x = wind, y = pressure)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed044-1.png" alt="Gráfico de cajas discretizando la velocidad del viento vs presión atmosférica." width="95%" />
+<img src="02-aed_files/figure-epub3/aed044-1.png" alt="Gráfico de cajas discretizando la velocidad del viento vs presión atmosférica." width="95%" />
 <p class="caption">(\#fig:aed044)Gráfico de cajas discretizando la velocidad del viento vs presión atmosférica.</p>
 </div>
 
@@ -1591,7 +1591,7 @@ ggplot(storm, aes(x = type))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed046-1.png" alt="Gráfico de barras para tipo de tormenta para los diferentes meses y años." width="95%" />
+<img src="02-aed_files/figure-epub3/aed046-1.png" alt="Gráfico de barras para tipo de tormenta para los diferentes meses y años." width="95%" />
 <p class="caption">(\#fig:aed046)Gráfico de barras para tipo de tormenta para los diferentes meses y años.</p>
 </div>
 
@@ -1614,7 +1614,7 @@ ggplot(storm_meses, aes(x = type))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed047-1.png" alt="Gráfico de barras para tipo de tormenta para los diferentes meses y años (versión 2)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed047-1.png" alt="Gráfico de barras para tipo de tormenta para los diferentes meses y años (versión 2)." width="95%" />
 <p class="caption">(\#fig:aed047)Gráfico de barras para tipo de tormenta para los diferentes meses y años (versión 2).</p>
 </div>
 
@@ -1658,7 +1658,7 @@ ggplot(storm, aes(x = wind, color = type2))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed049-1.png" alt="Gráfico de densidad de la velocidad del viento para cada tipo de tormenta y año." width="95%" />
+<img src="02-aed_files/figure-epub3/aed049-1.png" alt="Gráfico de densidad de la velocidad del viento para cada tipo de tormenta y año." width="95%" />
 <p class="caption">(\#fig:aed049)Gráfico de densidad de la velocidad del viento para cada tipo de tormenta y año.</p>
 </div>
 
@@ -1676,7 +1676,7 @@ ggplot(storm, aes(x = type2, y = wind))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed050-1.png" alt="Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año." width="95%" />
+<img src="02-aed_files/figure-epub3/aed050-1.png" alt="Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año." width="95%" />
 <p class="caption">(\#fig:aed050)Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año.</p>
 </div>
 
@@ -1694,7 +1694,7 @@ ggplot(storm, aes(x = year_f, y = wind, color = type2))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed051-1.png" alt="Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año (versión 2)." width="95%" />
+<img src="02-aed_files/figure-epub3/aed051-1.png" alt="Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año (versión 2)." width="95%" />
 <p class="caption">(\#fig:aed051)Gráfico de cajas de la velocidad del viento para cada tipo de tormenta y año (versión 2).</p>
 </div>
 
@@ -1731,7 +1731,7 @@ ggplot(storm, aes(x = wind, y = pressure, color = type )) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed053-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta." width="95%" />
+<img src="02-aed_files/figure-epub3/aed053-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta." width="95%" />
 <p class="caption">(\#fig:aed053)Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta.</p>
 </div>
 
@@ -1750,7 +1750,7 @@ ggplot(storm, aes(x = wind, y = pressure))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed054-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta." width="95%" />
+<img src="02-aed_files/figure-epub3/aed054-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta." width="95%" />
 <p class="caption">(\#fig:aed054)Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta.</p>
 </div>
 
@@ -1799,7 +1799,7 @@ ggplot(storm, aes(x = wind, y = pressure, color = type2))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed056-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y año." width="95%" />
+<img src="02-aed_files/figure-epub3/aed056-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y año." width="95%" />
 <p class="caption">(\#fig:aed056)Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y año.</p>
 </div>
 
@@ -1817,7 +1817,7 @@ ggplot(storm, aes(x = wind, y = pressure, color = type2))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed057-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y mes" width="95%" />
+<img src="02-aed_files/figure-epub3/aed057-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y mes" width="95%" />
 <p class="caption">(\#fig:aed057)Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta y mes</p>
 </div>
 
@@ -1875,7 +1875,7 @@ ggplot(storm_meses, aes(x = wind, y = pressure, color = type2))  +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-aed_files/figure-html/aed059-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta, año y mes." width="95%" />
+<img src="02-aed_files/figure-epub3/aed059-1.png" alt="Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta, año y mes." width="95%" />
 <p class="caption">(\#fig:aed059)Gráfico de dispersion de presión vs velocidad para cada tipo de tormenta, año y mes.</p>
 </div>
 
