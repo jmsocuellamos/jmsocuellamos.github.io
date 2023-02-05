@@ -6,17 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Unidad 4 Inferencia básica | Modelos Estadísticos</title>
 <meta name="description" content="En la unidad anterior se han expuesto brevemente la teoría y los métodos de la probabilidad. En este unidad se expondrán la teoría y los métodos de la inferencia estadística que servirán como base...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Unidad 4 Inferencia básica | Modelos Estadísticos">
 <meta property="og:type" content="book">
 <meta property="og:description" content="En la unidad anterior se han expuesto brevemente la teoría y los métodos de la probabilidad. En este unidad se expondrán la teoría y los métodos de la inferencia estadística que servirán como base...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unidad 4 Inferencia básica | Modelos Estadísticos">
 <meta name="twitter:description" content="En la unidad anterior se han expuesto brevemente la teoría y los métodos de la probabilidad. En este unidad se expondrán la teoría y los métodos de la inferencia estadística que servirán como base...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -42,20 +46,7 @@
 <li><a class="" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
 <li><a class="" href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></li>
 <li><a class="" href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></li>
-<li><a class="active" href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
-<li><a class="" href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
-<li><a class="" href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></li>
-<li><a class="" href="rlm.html"><span class="header-section-number">7</span> Regresión Lineal Múltiple y Polinómica</a></li>
-<li><a class="" href="anova.html"><span class="header-section-number">8</span> Modelos ANOVA</a></li>
-<li><a class="" href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></li>
-<li><a class="" href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
-<li><a class="" href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
-<li><a class="" href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
-<li><a class="" href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></li>
-<li><a class="" href="glmpoisson.html"><span class="header-section-number">14</span> GLM Poisson</a></li>
-<li><a class="" href="glmtablascont.html"><span class="header-section-number">15</span> GLM para tablas de contingencia</a></li>
-<li><a class="" href="glmsuperv.html"><span class="header-section-number">16</span> GLM para datos de supervivencia</a></li>
-<li><a class="" href="referencias.html">Referencias</a></li>
+<li><a class="active" href="inference.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
 </ul>
 
         <div class="book-extra">
@@ -63,9 +54,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inferencia-básica" class="section level1" number="4">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference" class="section level1" number="4">
 <h1>
-<span class="header-section-number">Unidad 4</span> Inferencia básica<a class="anchor" aria-label="anchor" href="#inferencia-b%C3%A1sica"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Unidad 4</span> Inferencia básica<a class="anchor" aria-label="anchor" href="#inference"><i class="fas fa-link"></i></a>
 </h1>
 <p>En la unidad anterior se han expuesto brevemente la teoría y los métodos de la probabilidad. En este unidad se expondrán la teoría y los métodos de la inferencia estadística que servirán como base para los modelos estadísticos que estudiaremos en la unidad siguiente. Un problema de inferencia estadística es un problema en el cual se han de analizar datos que han sido generados de acuerdo con una distribución de probabilidad desconocida y en la que se debe realizar algún tipo de inferencia (“conocer su comportamiento”) acerca de tal distribución. En la mayoría de situaciones reales, existe un número infinito de distribuciones posibles distintas que podrían haber generado los datos. En la práctica, dado el tipo de variable aleatoria considerada, se suele asumir un modelo de distribución de probabilidad que es completamente conocida salvo excepto por los valores de los parámetros que la especifican completamente. Utilizamos los datos de la muestra para obtener información sobre dichos parámetros desconocidos y poder asumir de esta forma una distribución de probabilidad completa para todos los datos de la población.</p>
 <p>Por ejemplo, se podría saber que la duración de cierto tipo de marcapasos tiene una distribución exponencial con parámetro <span class="math inline">\(\lambda\)</span> pero desconocer el valor exacto de dicho parámetro. Si se puede observar la duración de varios marcapasos de este tipo, entonces, a partir de estos valores observados y de cualquier otra información relevante de la que se pudiera disponer, es posible producir una inferencia acerca de ese valor desconocido <span class="math inline">\(\lambda\)</span>. Podría interesar producir la mejor estimación del valor de dicho parámetro o especificar un intervalo en el cual se piensa que pueda estar incluido el verdadero valor de <span class="math inline">\(\lambda\)</span>, o decidir si dicho parámetro es menor que un valor específico, ya que en ningún caso es posible obtener el verdadero valor de <span class="math inline">\(\lambda\)</span> ya que sería necesario obtener la información de todos los sujetos de la población y no sólo los de la muestra.</p>
@@ -89,9 +80,7 @@
 </ol>
 <p><span class="math display">\[\delta_3(X_1,...,X_n) = S_q^2 = \frac{n}{n-1} S^2\]</span></p>
 <p>Para una variable de tipo discreto se aplican las mismas definiciones si consideramos cada <span class="math inline">\(X_i\)</span> como una realización de dicha variable. Para una variable que mide “éxito” o “fracaso” los valores de <span class="math inline">\(X_i\)</span> serán 1 o 0 respectivamente, de forma que la media muestral coincide con la proporción muestral ya que tendríamos la suma de 1 en el numerador dividido por el tamaño de muestra en el denominador.</p>
-<p>Una <strong>estimación</strong> es el valor numérico del estimador para unos datos dados (<span class="math inline">\(x_1,...,x_n\)</span>), es decir, sustituimos en <span class="math inline">\(\delta(X_1,...,X_n)\)</span> por sus valores observados y obtendríamos la estimación del parámetro. De forma habitual se identifica con el “gorro” encima del parámetro indica la estimación de un parámetro:
-<span class="math display">\[\hat{\mu} = \delta_1(x_1,...,x_n) =\bar{x}\]</span>
-<span class="math display">\[\hat{\sigma}^2 = \delta_2(x_1,...,x_n)= s^2\]</span></p>
+<p>Una <strong>estimación</strong> es el valor numérico del estimador para unos datos dados (<span class="math inline">\(x_1,...,x_n\)</span>), es decir, sustituimos en <span class="math inline">\(\delta(X_1,...,X_n)\)</span> por sus valores observados y obtendríamos la estimación del parámetro. De forma habitual se identifica con el “gorro” encima del parámetro indica la estimación de un parámetro: <span class="math display">\[\hat{\mu} = \delta_1(x_1,...,x_n) =\bar{x}\]</span> <span class="math display">\[\hat{\sigma}^2 = \delta_2(x_1,...,x_n)= s^2\]</span></p>
 </div>
 <div id="información-contenida-en-la-muestra" class="section level2" number="4.2">
 <h2>
@@ -104,11 +93,9 @@
 <li>Muestra aleatoria de tamaño <span class="math inline">\(n\)</span> de la variable de interés, <span class="math inline">\(X_1, X_2,...,X_n\)</span> de forma que cada observación tiene probabilidad <span class="math inline">\(f(X_1 | \theta), f(X_2 | \theta),...,f(X_n | \theta)\)</span> respectivamente y sus valores observados vienen dados por <span class="math inline">\(x_1,...,x_n\)</span>.</li>
 <li>Obtener los descriptivos muestrales habituales: media, varianza, desviación típica, o proporción.</li>
 </ul>
-<p>Se define entonces la <code>función de verosimilitud</code> <span class="math inline">\(L(X|\theta)\)</span> como:
-<span class="math display">\[L(X|\theta) = \prod_{i=1}^n f(X_i|\theta) = f(X_1|\theta)f(X_2|\theta)\cdots f(X_n|\theta)\]</span></p>
+<p>Se define entonces la <code>función de verosimilitud</code> <span class="math inline">\(L(X|\theta)\)</span> como: <span class="math display">\[L(X|\theta) = \prod_{i=1}^n f(X_i|\theta) = f(X_1|\theta)f(X_2|\theta)\cdots f(X_n|\theta)\]</span></p>
 <p>La función de verosimilitud contiene toda la información sobre la muestra y la relaciona con el parámetro o parámetros de interés a través de la distribución de probabilidad establecida. Se convierte por tanto en la herramienta más importante, desde el punto de vista de la estadística frecuentista, para los procesos de inferencia estadística que estudiaremos a continuación. Además, se utiliza como base para la caracterización de la distribución en el muestreo de los diferentes estimadores, aproximaciones numéricas del verdadero valor del parámetro o parámetros de la distribución de probabilidad asumida, que se utilizan en los procesos inferenciales.</p>
-<p>Para evitar la complejidad matemática que supone trabajar con productos se suele definir el logaritmo de la función de verosimilitud, <code>log-verosimilitud</code>, <span class="math inline">\(LL(X|\theta)\)</span> como:
-<span class="math display">\[LL(X|\theta) = log\left(\prod_{i=1}^n f(X_i|\theta)\right) = \sum_{i=1}^n log(f(X_i|\theta)) = log(f(X_1|\theta))+log(f(X_2|\theta))+\cdots +log(f(X_n|\theta))\]</span></p>
+<p>Para evitar la complejidad matemática que supone trabajar con productos se suele definir el logaritmo de la función de verosimilitud, <code>log-verosimilitud</code>, <span class="math inline">\(LL(X|\theta)\)</span> como: <span class="math display">\[LL(X|\theta) = log\left(\prod_{i=1}^n f(X_i|\theta)\right) = \sum_{i=1}^n log(f(X_i|\theta)) = log(f(X_1|\theta))+log(f(X_2|\theta))+\cdots +log(f(X_n|\theta))\]</span></p>
 </div>
 <div id="procedimientos-de-inferencia-estadística" class="section level2" number="4.3">
 <h2>
@@ -120,19 +107,12 @@
 <span class="header-section-number">4.3.1</span> Estimación puntual<a class="anchor" aria-label="anchor" href="#estimaci%C3%B3n-puntual"><i class="fas fa-link"></i></a>
 </h3>
 <p>Es el procedimiento de inferencia estadística más sencillo y consiste en obtener un único valor aproximado del parámetro de interés a partir de un estimador de dicho parámetro y de los datos observados de una muestra. Aunque en las situaciones más sencillas (media, varianza y proporción) tanto el estimador como la estimación son fáciles de obtener, hay que establecer un procedimiento general para obtener dichas estimaciones.</p>
-<p>Dicho procedimiento consiste en encontrar el máximo de la función de verosimilitud (o más concretamente de la log-verosimilitud) para el parámetro o parámetros involucrados en dicha función, es decir, el valor o valores que se obtienen al igualar a cero la derivada de la función de log-verosimilitud:
-<span class="math display">\[\frac{d}{d\theta} LL(X | \theta) = 0\]</span></p>
+<p>Dicho procedimiento consiste en encontrar el máximo de la función de verosimilitud (o más concretamente de la log-verosimilitud) para el parámetro o parámetros involucrados en dicha función, es decir, el valor o valores que se obtienen al igualar a cero la derivada de la función de log-verosimilitud: <span class="math display">\[\frac{d}{d\theta} LL(X | \theta) = 0\]</span></p>
 <div id="estimador-de-una-proporción" class="section level4" number="4.3.1.1">
 <h4>
 <span class="header-section-number">4.3.1.1</span> Estimador de una proporción<a class="anchor" aria-label="anchor" href="#estimador-de-una-proporci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
-<p>La estimación de proporciones surge de forma natural en poblaciones Bernouilli cuya función de log-verosimilitud viene dada por:
-<span class="math display">\[LL(X |\theta) = s*log(\theta) + (n-s)*log(1-\theta)\]</span>
-Derivando e igualando a cero:
-<span class="math display">\[\frac{d}{d\theta} LL(X | \theta) = \frac{s}{\theta}+\frac{-(n-s)}{1-\theta} = 0\]</span>
-Despejando obtenemos:
-<span class="math display">\[\hat{\theta} = \frac{s}{n}\]</span>
-que es el estimador habitual para obtener la proporción muestral.</p>
+<p>La estimación de proporciones surge de forma natural en poblaciones Bernouilli cuya función de log-verosimilitud viene dada por: <span class="math display">\[LL(X |\theta) = s*log(\theta) + (n-s)*log(1-\theta)\]</span> Derivando e igualando a cero: <span class="math display">\[\frac{d}{d\theta} LL(X | \theta) = \frac{s}{\theta}+\frac{-(n-s)}{1-\theta} = 0\]</span> Despejando obtenemos: <span class="math display">\[\hat{\theta} = \frac{s}{n}\]</span> que es el estimador habitual para obtener la proporción muestral.</p>
 </div>
 <div id="estimador-de-una-media" class="section level4" number="4.3.1.2">
 <h4>
@@ -141,16 +121,13 @@ que es el estimador habitual para obtener la proporción muestral.</p>
 <p>Si asumimos que la variable aleatoria es <span class="math inline">\(N(\mu,\sigma^2)\)</span> la función de log verosimilitud viene dada por:</p>
 <p><span class="math display">\[LL(X |\mu,\sigma^2) = -\frac{n}{2}*log(2\pi\sigma^2)+\frac{nS^2 + n(\mu-\bar{X})^2}{2\sigma^2}\]</span></p>
 <p>Si derivamos respecto de <span class="math inline">\(\mu\)</span> e igualamos a cero:</p>
-<p><span class="math display">\[\frac{d}{d\mu}LL(X |\mu,\sigma^2) = -\frac{2n(\mu-\bar{X})}{2\sigma^2} = 0\]</span>
-Despejando obtenemos el estimador para la media:
-<span class="math display">\[\hat\mu = \bar X\]</span></p>
+<p><span class="math display">\[\frac{d}{d\mu}LL(X |\mu,\sigma^2) = -\frac{2n(\mu-\bar{X})}{2\sigma^2} = 0\]</span> Despejando obtenemos el estimador para la media: <span class="math display">\[\hat\mu = \bar X\]</span></p>
 </div>
 <div id="estimador-de-una-varianza" class="section level4" number="4.3.1.3">
 <h4>
 <span class="header-section-number">4.3.1.3</span> Estimador de una varianza<a class="anchor" aria-label="anchor" href="#estimador-de-una-varianza"><i class="fas fa-link"></i></a>
 </h4>
-<p>De forma similar, derivando respecto de <span class="math inline">\(\sigma^2\)</span> e igualando a cero la función de log-verosimilitud tenemos que el estimador para la varianza viene dado por:
-<span class="math display">\[\hat \sigma^2 = S^2\]</span></p>
+<p>De forma similar, derivando respecto de <span class="math inline">\(\sigma^2\)</span> e igualando a cero la función de log-verosimilitud tenemos que el estimador para la varianza viene dado por: <span class="math display">\[\hat \sigma^2 = S^2\]</span></p>
 <p>Podemos ver que en las situaciones habituales los estimadores de los parámetros poblacionales coinciden con las funciones que nos permiten obtener las medidas de localización y dispersión muestrales.</p>
 <p>El problema con la estimación puntual es que únicamente nos da un valor posible para el parámetro poblacional pero sin ninguna medida del posible error que estamos cometiendo, dado que la estimación obtenida depende de la muestra seleccionada. Dos muestras distintas podrían dar dos estimaciones distintas y por tanto dos valores para el parámetro poblacional. Para introducir una medida del error cometido con la muestra seleccionada se utiliza los procedimiento de inferencia basados en intervalos de confianza, pero antes de pasar con ellos es necesario describir un poco más el comportamiento aleatorio de los estimadores que acabamos de obtener.</p>
 </div>
@@ -165,38 +142,27 @@ Despejando obtenemos el estimador para la media:
 <h4>
 <span class="header-section-number">4.3.2.1</span> Distribución en el muestreo de una media poblacional con varianza poblacional conocida<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-en-el-muestreo-de-una-media-poblacional-con-varianza-poblacional-conocida"><i class="fas fa-link"></i></a>
 </h4>
-<p>Tenemos una población de <span class="math inline">\(N\)</span> sujetos sobre la que se desea estudiar una variable aleatoria de tipo continuo (<span class="math inline">\(X\)</span>) que sigue una distribución <span class="math inline">\(N(\mu,\sigma^2)\)</span> y cuyo parámetro de interés es la media (<span class="math inline">\(\mu\)</span>) pero donde conocemos el valor de <span class="math inline">\(\sigma^2\)</span>. Por la aplicación directa del Teorema Central del Límite la distribución en el muestreo de <span class="math inline">\(\bar X\)</span> viene dada por:
-<span class="math display">\[\bar X \sim N\left(\mu,\frac{\sigma^2}{n}\right)\]</span>
-y por tanto la variable tipificada tiene distribución Normal estándar, es decir:
-<span class="math display">\[\frac{\bar X - \mu}{\sigma/\sqrt n} \sim N(0,1)\]</span></p>
+<p>Tenemos una población de <span class="math inline">\(N\)</span> sujetos sobre la que se desea estudiar una variable aleatoria de tipo continuo (<span class="math inline">\(X\)</span>) que sigue una distribución <span class="math inline">\(N(\mu,\sigma^2)\)</span> y cuyo parámetro de interés es la media (<span class="math inline">\(\mu\)</span>) pero donde conocemos el valor de <span class="math inline">\(\sigma^2\)</span>. Por la aplicación directa del Teorema Central del Límite la distribución en el muestreo de <span class="math inline">\(\bar X\)</span> viene dada por: <span class="math display">\[\bar X \sim N\left(\mu,\frac{\sigma^2}{n}\right)\]</span> y por tanto la variable tipificada tiene distribución Normal estándar, es decir: <span class="math display">\[\frac{\bar X - \mu}{\sigma/\sqrt n} \sim N(0,1)\]</span></p>
 </div>
 <div id="distribución-en-el-muestreo-de-una-media-poblacional-con-varianza-poblacional-desconocida" class="section level4" number="4.3.2.2">
 <h4>
 <span class="header-section-number">4.3.2.2</span> Distribución en el muestreo de una media poblacional con varianza poblacional desconocida<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-en-el-muestreo-de-una-media-poblacional-con-varianza-poblacional-desconocida"><i class="fas fa-link"></i></a>
 </h4>
-<p>Cuando la varianza es desconocida también se puede obtener la distribución en el muestreo de la media muestral sin más que sustituir la varianza poblacional por un estimador. Tipificando tenemos que:
-<span class="math display">\[T = \frac{\bar{X} - \mu}{S/\sqrt{n-1}} = \frac{\bar{X} - \mu}{S_q/\sqrt{n}}\]</span>
-se distribuye según una distribución <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n-1\)</span> grados de libertad,
-<span class="math display">\[ T \sim t_{n-1}\]</span></p>
+<p>Cuando la varianza es desconocida también se puede obtener la distribución en el muestreo de la media muestral sin más que sustituir la varianza poblacional por un estimador. Tipificando tenemos que: <span class="math display">\[T = \frac{\bar{X} - \mu}{S/\sqrt{n-1}} = \frac{\bar{X} - \mu}{S_q/\sqrt{n}}\]</span> se distribuye según una distribución <span class="math inline">\(t\)</span> de Student con <span class="math inline">\(n-1\)</span> grados de libertad, <span class="math display">\[ T \sim t_{n-1}\]</span></p>
 </div>
 <div id="distribución-en-el-muestreo-de-una-varianza-poblacional" class="section level4" number="4.3.2.3">
 <h4>
 <span class="header-section-number">4.3.2.3</span> Distribución en el muestreo de una varianza poblacional<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-en-el-muestreo-de-una-varianza-poblacional"><i class="fas fa-link"></i></a>
 </h4>
-<p>En la situación poblacional anterior la distribución en el muestreo de la varianza si consideramos la variable aleatoria:
-<span class="math display">\[\chi^2 = \frac{nS^2}{\sigma^2} = \frac{(n-1)S_q^2}{\sigma^2}\]</span> que se distribuye según una distribución Chi cuadrado con <span class="math inline">\(n-1\)</span> grados de libertad,
-<span class="math display">\[ \chi^2 \sim \chi^2_{n-1}\]</span></p>
+<p>En la situación poblacional anterior la distribución en el muestreo de la varianza si consideramos la variable aleatoria: <span class="math display">\[\chi^2 = \frac{nS^2}{\sigma^2} = \frac{(n-1)S_q^2}{\sigma^2}\]</span> que se distribuye según una distribución Chi cuadrado con <span class="math inline">\(n-1\)</span> grados de libertad, <span class="math display">\[ \chi^2 \sim \chi^2_{n-1}\]</span></p>
 <p>La obtención de esta distribución se hace a partir de la forma de la función de verosimilitud para una población Normal con ambos parámetros desconocidos.</p>
 </div>
 <div id="distribución-en-el-muestreo-de-una-proporción-poblacional" class="section level4" number="4.3.2.4">
 <h4>
 <span class="header-section-number">4.3.2.4</span> Distribución en el muestreo de una proporción poblacional<a class="anchor" aria-label="anchor" href="#distribuci%C3%B3n-en-el-muestreo-de-una-proporci%C3%B3n-poblacional"><i class="fas fa-link"></i></a>
 </h4>
-<p>Tenemos una población de <span class="math inline">\(N\)</span> sujetos sobre la que se desea estudiar una variable aleatoria de tipo discreto (<span class="math inline">\(X\)</span>) cuyo parámetro de interés es la proporción de sujetos (<span class="math inline">\(\theta\)</span>) que cumplen con cierta condición. En esta situación si obtenemos una muestra de tamaño <span class="math inline">\(n\)</span> de dicha variable <span class="math inline">\(X_1,...,X_n\)</span> (donde cada uno de ellos toma el valor 1 si cumple con la condición y = si no cumple), la proporción de éxito muestral (<span class="math inline">\(\hat{\theta}\)</span>) viene dada por:
-<span class="math display">\[\hat{\theta} = \frac{\sum_{i=1}^n X_i}{n}\]</span></p>
-<p>En esta situación la distribución en el muestreo para <span class="math inline">\(\hat{\theta}\)</span>, cuando <span class="math inline">\(n\)</span> es grande (<span class="math inline">\(n \geq 30\)</span>), viene dada por:
-<span class="math display">\[\hat{\theta} \sim N \left(\theta, \frac{\theta (1-\theta)}{n}\right) \]</span>
-de forma que la variable aleatoria tipificada <span class="math inline">\(Z\)</span> cumple que:</p>
+<p>Tenemos una población de <span class="math inline">\(N\)</span> sujetos sobre la que se desea estudiar una variable aleatoria de tipo discreto (<span class="math inline">\(X\)</span>) cuyo parámetro de interés es la proporción de sujetos (<span class="math inline">\(\theta\)</span>) que cumplen con cierta condición. En esta situación si obtenemos una muestra de tamaño <span class="math inline">\(n\)</span> de dicha variable <span class="math inline">\(X_1,...,X_n\)</span> (donde cada uno de ellos toma el valor 1 si cumple con la condición y = si no cumple), la proporción de éxito muestral (<span class="math inline">\(\hat{\theta}\)</span>) viene dada por: <span class="math display">\[\hat{\theta} = \frac{\sum_{i=1}^n X_i}{n}\]</span></p>
+<p>En esta situación la distribución en el muestreo para <span class="math inline">\(\hat{\theta}\)</span>, cuando <span class="math inline">\(n\)</span> es grande (<span class="math inline">\(n \geq 30\)</span>), viene dada por: <span class="math display">\[\hat{\theta} \sim N \left(\theta, \frac{\theta (1-\theta)}{n}\right) \]</span> de forma que la variable aleatoria tipificada <span class="math inline">\(Z\)</span> cumple que:</p>
 <p><span class="math display">\[Z = \frac{\hat{\theta}-\theta}{\sqrt{\frac{\theta (1-\theta)}{n}}} \sim N(0,1)\]</span></p>
 <p>La obtención de dichas distribuciones en el muestreo nos permite realizar cálculos de probabilidades sobre dichas cantidades aleatorias, con lo que resulta posible conocer cuál es la probabilidad de que la media muestral supere cierto valor, y por tanto, podamos tener una mayor certeza del verdadero valor del parámetro poblacional.</p>
 </div>
@@ -225,10 +191,7 @@ de forma que la variable aleatoria tipificada <span class="math inline">\(Z\)</s
 </h3>
 <p>Un <code>intervalo de confianza</code> al nivel <span class="math inline">\(100*(1 - \alpha)\%\)</span> representa la confianza que tenemos en que el verdadero valor del parámetro de la población se encuentre contenido entre los limites de dicho intervalo, que se construye a partir de la información muestral y la distribución en el muestreo del estimador. Si tenemos un intervalo de confianza al 95%, es decir <span class="math inline">\(\alpha = 0.05\)</span>, lo que estamos indicando es que si obtuviéramos 100 muestras y calculáramos los 100 intervalos asociados, solo en 95 de ellos contendrían al verdadero valor del parámetro poblacional. Dado que habitualmente tomamos una única muestra debemos confiar en que el intervalo producido sea uno de los 95 que contiene al verdadero valor del parámetro poblacional. El valor de <span class="math inline">\(\alpha\)</span> se conoce como <code>significatividad</code>.</p>
 <p>Supongamos que tenemos una población sobre la deseamos estudiar una variable aleatoria <span class="math inline">\(X\)</span> cuya función de distribución es conocida y viene caracterizada por el parámetro <span class="math inline">\(\theta\)</span>, <span class="math inline">\(f(X|\theta)\)</span>. Vamos a obtener una muestra de tamaño <span class="math inline">\(n\)</span>, <span class="math inline">\(X_1,...,X_n\)</span> y consideramos el estimador <span class="math inline">\(\hat\theta\)</span> de <span class="math inline">\(\theta\)</span> del que conocemos su distribución en el muestreo, <span class="math inline">\(f_n\)</span>,y podemos especificar su error estándar, <span class="math inline">\(es(\hat{\theta})\)</span>. Si fijamos el valor de <span class="math inline">\(\alpha\)</span> el intervalo de confianza para el parámetro poblacional viene dado por la expresión:</p>
-<p><span class="math display">\[IC_{1-\alpha}(\theta) = (\hat{\theta} - q_{\alpha/2}*es(\hat{\theta}),\hat{\theta} + q_{1-\alpha/2}*es(\hat{\theta}))\]</span>
-donde <span class="math inline">\(q_{\alpha/2}\)</span> y <span class="math inline">\(q_{1-\alpha/2}\)</span> son los cuantiles <span class="math inline">\(\alpha/2\)</span> y <span class="math inline">\(1-\alpha/2\)</span> de la distribución en el muestreo, es decir,
-<span class="math display">\[P(\hat{\theta} \leq q_{\alpha/2}) = \alpha/2\]</span>
-<span class="math display">\[P(\hat{\theta} \leq q_{1-\alpha/2}) = 1-\alpha/2\]</span></p>
+<p><span class="math display">\[IC_{1-\alpha}(\theta) = (\hat{\theta} - q_{\alpha/2}*es(\hat{\theta}),\hat{\theta} + q_{1-\alpha/2}*es(\hat{\theta}))\]</span> donde <span class="math inline">\(q_{\alpha/2}\)</span> y <span class="math inline">\(q_{1-\alpha/2}\)</span> son los cuantiles <span class="math inline">\(\alpha/2\)</span> y <span class="math inline">\(1-\alpha/2\)</span> de la distribución en el muestreo, es decir, <span class="math display">\[P(\hat{\theta} \leq q_{\alpha/2}) = \alpha/2\]</span> <span class="math display">\[P(\hat{\theta} \leq q_{1-\alpha/2}) = 1-\alpha/2\]</span></p>
 <p>Si la distribución en el muestreo es simétrica <span class="math inline">\(q_{1-\alpha/2} = - q_{\alpha/2}\)</span></p>
 <p>Antes de estudiar la forma explicita de los intervalos de confianza para una proporción, una media, y una varianza vamos a ver una herramienta de simulación que nos permite comprobar el funcionamiento de dichos intervalos. El funcionamiento de la aplicación es:</p>
 <ul>
@@ -243,25 +206,21 @@ donde <span class="math inline">\(q_{\alpha/2}\)</span> y <span class="math inli
 <h4>
 <span class="header-section-number">4.3.3.1</span> IC para una proporción<a class="anchor" aria-label="anchor" href="#ic-para-una-proporci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
-<p>El intervalo de confianza al nivel <span class="math inline">\(100*(1 - \alpha)\%\)</span> para una proporción poblacional viene dado por:
-<span class="math display">\[IC_{1-\alpha}(\theta) = \left(\hat{\theta} - q_{1-\alpha/2}*\sqrt{\frac{\hat{\theta} (1-\hat{\theta}))}{n}},\hat{\theta} + q_{1-\alpha/2}*\sqrt{\frac{\hat{\theta} (1-\hat{\theta}))}{n}}\right)\]</span>
-donde <span class="math inline">\(q_{1-\alpha/2}\)</span> es el cuantil <span class="math inline">\(1-\alpha/2\)</span> de una distribución Normal estándar, <span class="math inline">\(\hat{\theta}\)</span> es la proporción muestral y <span class="math inline">\(n\)</span> es el tamaño muestral.</p>
+<p>El intervalo de confianza al nivel <span class="math inline">\(100*(1 - \alpha)\%\)</span> para una proporción poblacional viene dado por: <span class="math display">\[IC_{1-\alpha}(\theta) = \left(\hat{\theta} - q_{1-\alpha/2}*\sqrt{\frac{\hat{\theta} (1-\hat{\theta}))}{n}},\hat{\theta} + q_{1-\alpha/2}*\sqrt{\frac{\hat{\theta} (1-\hat{\theta}))}{n}}\right)\]</span> donde <span class="math inline">\(q_{1-\alpha/2}\)</span> es el cuantil <span class="math inline">\(1-\alpha/2\)</span> de una distribución Normal estándar, <span class="math inline">\(\hat{\theta}\)</span> es la proporción muestral y <span class="math inline">\(n\)</span> es el tamaño muestral.</p>
 </div>
 <div id="ic-para-la-media" class="section level4" number="4.3.3.2">
 <h4>
 <span class="header-section-number">4.3.3.2</span> IC para la media<a class="anchor" aria-label="anchor" href="#ic-para-la-media"><i class="fas fa-link"></i></a>
 </h4>
 <p>El intervalo de confianza al nivel <span class="math inline">\(100*(1 - \alpha)\%\)</span> para la media de una población Normal con varianza desconocida viene dado por:</p>
-<p><span class="math display">\[IC_{1-\alpha}(\mu) = \left(\bar{x} - q_{1-\alpha/2}*\frac{s}{\sqrt{n-1}},\bar{x} + q_{1-\alpha/2}*\frac{s}{\sqrt{n-1}}\right)\]</span>
-donde <span class="math inline">\(q_{1-\alpha/2}\)</span> es el cuantil <span class="math inline">\(1-\alpha/2\)</span> de una distribución <span class="math inline">\(t\)</span> se Student con <span class="math inline">\(n-1\)</span> grados de libertad, <span class="math inline">\(\bar x\)</span> es la media muestral, <span class="math inline">\(s\)</span> es la desviación típica muestral, y <span class="math inline">\(n\)</span> es el tamaño de muestra.</p>
+<p><span class="math display">\[IC_{1-\alpha}(\mu) = \left(\bar{x} - q_{1-\alpha/2}*\frac{s}{\sqrt{n-1}},\bar{x} + q_{1-\alpha/2}*\frac{s}{\sqrt{n-1}}\right)\]</span> donde <span class="math inline">\(q_{1-\alpha/2}\)</span> es el cuantil <span class="math inline">\(1-\alpha/2\)</span> de una distribución <span class="math inline">\(t\)</span> se Student con <span class="math inline">\(n-1\)</span> grados de libertad, <span class="math inline">\(\bar x\)</span> es la media muestral, <span class="math inline">\(s\)</span> es la desviación típica muestral, y <span class="math inline">\(n\)</span> es el tamaño de muestra.</p>
 </div>
 <div id="intervalo-de-confianza-para-la-varianza" class="section level4" number="4.3.3.3">
 <h4>
 <span class="header-section-number">4.3.3.3</span> Intervalo de confianza para la varianza<a class="anchor" aria-label="anchor" href="#intervalo-de-confianza-para-la-varianza"><i class="fas fa-link"></i></a>
 </h4>
 <p>El intervalo de confianza al nivel <span class="math inline">\(100*(1 - \alpha)\%\)</span> para la varianza de una población Normal viene dado por:</p>
-<p><span class="math display">\[IC_{1-\alpha}(\sigma^2) = \left(\frac{(n-1)s^2}{q_{1-\alpha/2}}, \frac{(n-1)s^2}{q_{\alpha/2}}\right)\]</span>
-donde <span class="math inline">\(q_{1-\alpha/2}\)</span> y <span class="math inline">\(q_{\alpha/2}\)</span> son los cuantiles <span class="math inline">\(1-\alpha/2\)</span> y <span class="math inline">\(\alpha/2\)</span> de una distribución <span class="math inline">\(Chi^2\)</span> con <span class="math inline">\(n-1\)</span> grados de libertad, <span class="math inline">\(s^2\)</span> es la varianza muestral, y <span class="math inline">\(n\)</span> es el tamaño de muestra.</p>
+<p><span class="math display">\[IC_{1-\alpha}(\sigma^2) = \left(\frac{(n-1)s^2}{q_{1-\alpha/2}}, \frac{(n-1)s^2}{q_{\alpha/2}}\right)\]</span> donde <span class="math inline">\(q_{1-\alpha/2}\)</span> y <span class="math inline">\(q_{\alpha/2}\)</span> son los cuantiles <span class="math inline">\(1-\alpha/2\)</span> y <span class="math inline">\(\alpha/2\)</span> de una distribución <span class="math inline">\(Chi^2\)</span> con <span class="math inline">\(n-1\)</span> grados de libertad, <span class="math inline">\(s^2\)</span> es la varianza muestral, y <span class="math inline">\(n\)</span> es el tamaño de muestra.</p>
 </div>
 </div>
 <div id="contraste-de-hipótesis" class="section level3" number="4.3.4">
@@ -269,15 +228,14 @@ donde <span class="math inline">\(q_{1-\alpha/2}\)</span> y <span class="math in
 <span class="header-section-number">4.3.4</span> Contraste de hipótesis<a class="anchor" aria-label="anchor" href="#contraste-de-hip%C3%B3tesis"><i class="fas fa-link"></i></a>
 </h3>
 <p>Un procedimiento de contraste de hipótesis tiene por objetivo valorar la evidencia proporcionada por los datos a favor de alguna hipótesis planteada sobre el parámetro o parámetros que identifican a la población bajo estudio. En el caso más sencillo, imaginemos que tenemos un parámetro poblacional <span class="math inline">\(\theta\)</span> que puede tomar valores en el conjunto <span class="math inline">\(\Theta\)</span></p>
-<p><em>Ejemplo: Estamos interesados en conocer si la proporción de alumnos que superan la asignatura de Estadística en la convocatoria de junio es mayor o igual al 50%. El parámetro de interés, <span class="math inline">\(\theta\)</span>, es entonces la proporción de aprobados en la convocatoria de junio, y el conjunto de posibles valores de dicho parámetro puede tomar valores entre 0 y 100. El contraste de interés viene dado por:</em></p>
+<p><em>Ejemplo: Estamos interesados en conocer si la proporción de alumnos que superan la asignatura de Estadística en la convocatoria de junio es mayor o igual al 50%. El parámetro de interés,</em> <span class="math inline">\(\theta\)</span>, es entonces la proporción de aprobados en la convocatoria de junio, y el conjunto de posibles valores de dicho parámetro puede tomar valores entre 0 y 100. El contraste de interés viene dado por:</p>
 <p><span class="math display">\[\theta \geq 0.5\]</span></p>
 <p>Para resolver cualquier procedimiento de contraste debemos establecer dos subconjuntos disjuntos del espacio paramétrico, <span class="math inline">\(\Theta_0\)</span> y <span class="math inline">\(\Theta_1\)</span> cumpliendo que <span class="math inline">\(\Theta = \Theta_0 \cup \Theta_1\)</span>, con los posibles valores del parámetro de interés que denominamos hipótesis:</p>
 <ul>
 <li>
 <strong>Hipótesis nula</strong>, que se denota por <span class="math inline">\(H_0\)</span>, y que generalmente expresa el valor o conjunto de valores del parámetro,<span class="math inline">\(\Theta_0\)</span>, que corresponde con la idea que deseamos verificar.</li>
 <li>
-<strong>Hipótesis alternativa</strong>, que se denota por <span class="math inline">\(H_a\)</span>, y que generalmente expresa el valor o conjunto de valores complementarios, <span class="math inline">\(\Theta_1\)</span>, a los dados en la hipótesis nula. Formalmente, el problema de contraste de hipótesis se plantea como:
-<span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \in \Theta_0\\ H_a: &amp; \theta \in \Theta_1\end{array}\right.\]</span>
+<strong>Hipótesis alternativa</strong>, que se denota por <span class="math inline">\(H_a\)</span>, y que generalmente expresa el valor o conjunto de valores complementarios, <span class="math inline">\(\Theta_1\)</span>, a los dados en la hipótesis nula. Formalmente, el problema de contraste de hipótesis se plantea como: <span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \in \Theta_0\\ H_a: &amp; \theta \in \Theta_1\end{array}\right.\]</span>
 </li>
 </ul>
 <p>Estas hipótesis se deben establecer antes de obtener la información muestral ya que deben reflejar conocimiento previo sobre el parámetro poblacional de interés. La muestra recogida aportará las evidencias suficientes para rechazar o no rechazar la hipótesis nula planteada.</p>
@@ -289,12 +247,10 @@ donde <span class="math inline">\(q_{1-\alpha/2}\)</span> y <span class="math in
 </h4>
 <p>Dada la estructura del procedimiento de contraste se plantean únicamente dos tipos de posibilidades:</p>
 <ul>
-<li><p><strong>Contraste bilateral:</strong> El conjunto de posibles valores del parámetro de interés establecidos en la hipótesis nula se concentra en un único valor, <span class="math inline">\(\theta_0\)</span>, es decir,
-<span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta = \theta_0\\ H_a: &amp; \text{ no } \theta_0 \end{array}\right.\]</span></p></li>
+<li><p><strong>Contraste bilateral:</strong> El conjunto de posibles valores del parámetro de interés establecidos en la hipótesis nula se concentra en un único valor, <span class="math inline">\(\theta_0\)</span>, es decir, <span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta = \theta_0\\ H_a: &amp; \text{ no } \theta_0 \end{array}\right.\]</span></p></li>
 <li><p><strong>Contraste unilateral:</strong> El conjunto de posibles valores del parámetro de interés establecidos en la hipótesis nula se concentra en un conjunto de valores dado por una desigualdad con respecto a <span class="math inline">\(\theta_0\)</span>, es decir,</p></li>
 </ul>
-<p><span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \geq \theta_0\\ H_a: &amp; \text{ no } \theta_0 \end{array}\right.\]</span>
-<span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \leq \theta_0\\ H_a: &amp; \text{ no } \theta_0 \end{array}\right.\]</span></p>
+<p><span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \geq \theta_0\\ H_a: &amp; \text{ no } \theta_0 \end{array}\right.\]</span> <span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \leq \theta_0\\ H_a: &amp; \text{ no } \theta_0 \end{array}\right.\]</span></p>
 </div>
 <div id="resolución-de-contraste" class="section level4" number="4.3.4.2">
 <h4>
@@ -302,8 +258,7 @@ donde <span class="math inline">\(q_{1-\alpha/2}\)</span> y <span class="math in
 </h4>
 <p>Para establecer evidencias a favor de una hipótesis u otra se debe:</p>
 <ol style="list-style-type: decimal">
-<li>Elegir un nivel de significación, <span class="math inline">\(\alpha\)</span>, que refleja el riesgo que tomamos cuando rechazamos la hipótesis nula o probabilidad de rechazar la hipótesis nula cuando es cierta, es decir:
-<span class="math display">\[\alpha = P(\text{ Rechazar } H_0 | H_0 \text{ cierta})\]</span>
+<li>Elegir un nivel de significación, <span class="math inline">\(\alpha\)</span>, que refleja el riesgo que tomamos cuando rechazamos la hipótesis nula o probabilidad de rechazar la hipótesis nula cuando es cierta, es decir: <span class="math display">\[\alpha = P(\text{ Rechazar } H_0 | H_0 \text{ cierta})\]</span>
 </li>
 </ol>
 <p>Normalmente se eligen valores pequeños, <span class="math inline">\(\alpha=0,1, 0.05, y 0.01\)</span> que resultan los equivalentes del 90%, 95%, y 99% al nivel de confianza en el proceso de estimación.</p>
@@ -311,13 +266,11 @@ donde <span class="math inline">\(q_{1-\alpha/2}\)</span> y <span class="math in
 <ol start="2" style="list-style-type: decimal">
 <li>Establecer estadístico de contraste (<span class="math inline">\(EC\)</span>) que nos permita, utilizando la información muestral, estudiar la compatibilidad de dicha información con la hipótesis nula planteada. La forma habitual suele ser:</li>
 </ol>
-<p><span class="math display">\[EC = \frac{\theta - \hat{\theta}}{es(\hat{\theta})}\]</span>
-donde <span class="math inline">\(\hat{\theta}\)</span> es un estimador puntual del parámetro poblacional y <span class="math inline">\(es(\hat{\theta})\)</span> es una medida del error estándar que cometemos con el estimador utilizado.</p>
+<p><span class="math display">\[EC = \frac{\theta - \hat{\theta}}{es(\hat{\theta})}\]</span> donde <span class="math inline">\(\hat{\theta}\)</span> es un estimador puntual del parámetro poblacional y <span class="math inline">\(es(\hat{\theta})\)</span> es una medida del error estándar que cometemos con el estimador utilizado.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Para decidir sobre el contraste planteado utilizaremos el <span class="math inline">\(p-valor\)</span>, que representa la probabilidad de que el valor del EC sea superior al valor de dicho estadístico evaluado en los datos muestrales, <span class="math inline">\(EC_{obs}\)</span>,atendiendo a la distribución en el muestreo, es decir,</li>
 </ol>
-<p><span class="math display">\[p-valor = P(EC \geq EC_{obs})\]</span>
-Para tomar una decisión sobre el contraste miramos si el p-valor obtenido y concluimos que:</p>
+<p><span class="math display">\[p-valor = P(EC \geq EC_{obs})\]</span> Para tomar una decisión sobre el contraste miramos si el p-valor obtenido y concluimos que:</p>
 <ul>
 <li>Si <span class="math inline">\(p-valor &lt; \alpha\)</span>, tenemos evidencias estadísticas suficientes para rechazar la hipótesis nula a favor de la hipótesis alternativa.</li>
 <li>Si <span class="math inline">\(p-valor &gt; \alpha\)</span>, no tenemos evidencias estadísticas suficientes para rechazar la hipótesis nula.</li>
@@ -330,23 +283,18 @@ Para tomar una decisión sobre el contraste miramos si el p-valor obtenido y con
 </h4>
 <p>Tenemos una población de tipo Bernouilli que viene especificada a partir de la proporción de sujetos que alcanzan el “éxito”, <span class="math inline">\(\theta\)</span>, y una estimación de dicho parámetro dada por <span class="math inline">\(\hat{\theta}\)</span>. Anteriormente ya hemos visto que para una muestra de tamaño <span class="math inline">\(n\)</span> el error estándar viene dado por:</p>
 <p><span class="math display">\[es(\hat{\theta}) = \sqrt{\frac{\hat{\theta} (1-\hat{\theta}))}{n}}.\]</span></p>
-<p>Tanto para el contraste unilateral como el bilateral el estadístico de contraste viene dado por:
-<span class="math display">\[EC = \frac{\theta - \hat{\theta}}{\sqrt{\frac{\hat{\theta} (1-\hat{\theta}))}{n}}}\]</span>
-cuya distribución en el muestreo es <span class="math inline">\(N(0,1)\)</span>. Dicho estadístico valora lo cerca que queda el estimador respecto del valor poblacional teniendo en cuenta el error cometido en el proceso de estimación.</p>
-<p><em>Ejemplo. Se está estudiando el efecto de los rayos X sobre la viabilidad huevo-larva en Tribolium casteneum. Se plantean tres situaciones: a) la proporción de viabilidad es del 50%, b) la proporción de viabilidad es superior al 60%, c) la proporción de viabilidad es inferior al 55%. Los contrastes asociados con cada situación son:</em>
-<span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta = 0.5\\ H_a: &amp;  \theta \neq 0,5 \end{array}\right.\]</span>
-<span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \geq 0.6\\ H_a: &amp; \theta &lt; 0.6 \end{array}\right.\]</span>
-<span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \leq 0.55\\ H_a: &amp; \theta &gt; 0.55 \end{array}\right.\]</span></p>
+<p>Tanto para el contraste unilateral como el bilateral el estadístico de contraste viene dado por: <span class="math display">\[EC = \frac{\theta - \hat{\theta}}{\sqrt{\frac{\hat{\theta} (1-\hat{\theta}))}{n}}}\]</span> cuya distribución en el muestreo es <span class="math inline">\(N(0,1)\)</span>. Dicho estadístico valora lo cerca que queda el estimador respecto del valor poblacional teniendo en cuenta el error cometido en el proceso de estimación.</p>
+<p><em>Ejemplo. Se está estudiando el efecto de los rayos X sobre la viabilidad huevo-larva en Tribolium casteneum. Se plantean tres situaciones: a) la proporción de viabilidad es del 50%, b) la proporción de viabilidad es superior al 60%, c) la proporción de viabilidad es inferior al 55%. Los contrastes asociados con cada situación son:</em> <span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta = 0.5\\ H_a: &amp;  \theta \neq 0,5 \end{array}\right.\]</span> <span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \geq 0.6\\ H_a: &amp; \theta &lt; 0.6 \end{array}\right.\]</span> <span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta \leq 0.55\\ H_a: &amp; \theta &gt; 0.55 \end{array}\right.\]</span></p>
 <p><em>Para verificar dichios contarstes se irradiaron 1000 huevos de los que resultaron 572 larvas.</em></p>
 <blockquote>
 <p>Para resolver contrastes en estas situaciones utiliamos la función <code><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test()</a></code></p>
 </blockquote>
 <div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Situación 1</span>
-<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
-<span class="va">larvas</span> <span class="op">&lt;-</span> <span class="fl">572</span>
-<span class="co"># Debemos fijar el valor del contraste, el tipo (two.sided), y el nivel de significación o su análogo como el nivel de confianza</span>
-<span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">larvas</span>, <span class="va">n</span>, p <span class="op">=</span> <span class="fl">0.5</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Situación 1</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">larvas</span> <span class="op">&lt;-</span> <span class="fl">572</span></span>
+<span><span class="co"># Debemos fijar el valor del contraste, el tipo (two.sided), y el nivel de significación o su análogo como el nivel de confianza</span></span>
+<span><span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">larvas</span>, <span class="va">n</span>, p <span class="op">=</span> <span class="fl">0.5</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  1-sample proportions test with continuity correction
 ## 
@@ -358,13 +306,13 @@ cuya distribución en el muestreo es <span class="math inline">\(N(0,1)\)</span>
 ## sample estimates:
 ##     p 
 ## 0.572</code></pre>
-<p><em>El p-valor resultante es 6.124e-06 que resulta inferior al nivel de significación prefijado de 0.05. Por lo tanto hay evidencias para rechazar la hipótesis nula y concluir que la proporción de viabilidad una vez irradiamos los huevos con rayos X es distinta del 50%. </em></p>
+<p><em>El p-valor resultante es 6.124e-06 que resulta inferior al nivel de significación prefijado de 0.05. Por lo tanto hay evidencias para rechazar la hipótesis nula y concluir que la proporción de viabilidad una vez irradiamos los huevos con rayos X es distinta del 50%.</em></p>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Situación 2</span>
-<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
-<span class="va">larvas</span> <span class="op">&lt;-</span> <span class="fl">572</span>
-<span class="co"># Debemos fijar el valor del contraste, el tipo (two.sided), y el nivel de significación o su análogo como el nivel de confianza</span>
-<span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">larvas</span>, <span class="va">n</span>, p <span class="op">=</span> <span class="fl">0.6</span>, alternative <span class="op">=</span> <span class="st">"less"</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Situación 2</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">larvas</span> <span class="op">&lt;-</span> <span class="fl">572</span></span>
+<span><span class="co"># Debemos fijar el valor del contraste, el tipo (two.sided), y el nivel de significación o su análogo como el nivel de confianza</span></span>
+<span><span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">larvas</span>, <span class="va">n</span>, p <span class="op">=</span> <span class="fl">0.6</span>, alternative <span class="op">=</span> <span class="st">"less"</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  1-sample proportions test with continuity correction
 ## 
@@ -376,13 +324,13 @@ cuya distribución en el muestreo es <span class="math inline">\(N(0,1)\)</span>
 ## sample estimates:
 ##     p 
 ## 0.572</code></pre>
-<p><em>El p-valor resultante es 0.03794 que resulta inferior al nivel de significación prefijado de 0.05. Por lo tanto hay evidencias para rechazar la hipótesis nula y concluir que la proporción de viabilidad una vez irradiamos los huevos es mayor o igual al 60%. </em></p>
+<p><em>El p-valor resultante es 0.03794 que resulta inferior al nivel de significación prefijado de 0.05. Por lo tanto hay evidencias para rechazar la hipótesis nula y concluir que la proporción de viabilidad una vez irradiamos los huevos es mayor o igual al 60%.</em></p>
 <div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Situación 2</span>
-<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
-<span class="va">larvas</span> <span class="op">&lt;-</span> <span class="fl">572</span>
-<span class="co"># Debemos fijar el valor del contraste, el tipo (two.sided), y el nivel de significación o su análogo como el nivel de confianza</span>
-<span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">larvas</span>, <span class="va">n</span>, p <span class="op">=</span> <span class="fl">0.55</span>, alternative <span class="op">=</span> <span class="st">"greater"</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Situación 2</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">larvas</span> <span class="op">&lt;-</span> <span class="fl">572</span></span>
+<span><span class="co"># Debemos fijar el valor del contraste, el tipo (two.sided), y el nivel de significación o su análogo como el nivel de confianza</span></span>
+<span><span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">larvas</span>, <span class="va">n</span>, p <span class="op">=</span> <span class="fl">0.55</span>, alternative <span class="op">=</span> <span class="st">"greater"</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  1-sample proportions test with continuity correction
 ## 
@@ -394,27 +342,22 @@ cuya distribución en el muestreo es <span class="math inline">\(N(0,1)\)</span>
 ## sample estimates:
 ##     p 
 ## 0.572</code></pre>
-<p><em>El p-valor resultante es 0.08587 que resulta superior al nivel de significación prefijado de 0.05. Por lo tanto hay evidencias para no rechazar la hipótesis nula y concluir que la proporción de viabilidad una vez irradiamos los huevos puede ser menor o igual al 55%. </em></p>
+<p><em>El p-valor resultante es 0.08587 que resulta superior al nivel de significación prefijado de 0.05. Por lo tanto hay evidencias para no rechazar la hipótesis nula y concluir que la proporción de viabilidad una vez irradiamos los huevos puede ser menor o igual al 55%.</em></p>
 </div>
 <div id="una-media" class="section level4" number="4.3.4.4">
 <h4>
 <span class="header-section-number">4.3.4.4</span> Una media<a class="anchor" aria-label="anchor" href="#una-media"><i class="fas fa-link"></i></a>
 </h4>
-<p>Tenemos una población Normal que viene especificada a partir de la media (<span class="math inline">\(\mu\)</span>) y varianza (<span class="math inline">\(\sigma^2\)</span>). Por el momento estamos interesados en los procedimientos de contraste sobre la media cuando desconocemos el valor de la varianza poblacional. Tomamos los estimadores habituales <span class="math inline">\(\bar X\)</span>, <span class="math inline">\(S^2\)</span>, y consideramos el error estándar:
-<span class="math display">\[es(\bar X) = \frac{s}{\sqrt{n-1}}.\]</span>
-Tanto para el contraste unilateral como el bilateral el estadístico de contraste viene dado por:
-<span class="math display">\[EC = \frac{\mu - \bar X}{\frac{s}{\sqrt{n-1}}}\]</span>
-cuya distribución en el muestreo es una <span class="math inline">\(t\)</span> de Student con n-1 grados de libertad.</p>
+<p>Tenemos una población Normal que viene especificada a partir de la media (<span class="math inline">\(\mu\)</span>) y varianza (<span class="math inline">\(\sigma^2\)</span>). Por el momento estamos interesados en los procedimientos de contraste sobre la media cuando desconocemos el valor de la varianza poblacional. Tomamos los estimadores habituales <span class="math inline">\(\bar X\)</span>, <span class="math inline">\(S^2\)</span>, y consideramos el error estándar: <span class="math display">\[es(\bar X) = \frac{s}{\sqrt{n-1}}.\]</span> Tanto para el contraste unilateral como el bilateral el estadístico de contraste viene dado por: <span class="math display">\[EC = \frac{\mu - \bar X}{\frac{s}{\sqrt{n-1}}}\]</span> cuya distribución en el muestreo es una <span class="math inline">\(t\)</span> de Student con n-1 grados de libertad.</p>
 <p><em>Ejemplo. La concentración media de dióxido de carbono en el aire en una cierta zona no es habitualmente mayor que 335 ppmv (partes por millon en volumen). Se sospecha que esta concentración es mayor en la capa de aire más próxima a la superficie. Los investigadores quieren comprobar si la concentración en la superficie es mayor o igual a dicho valor con una significación de 0.05. Se plantea el contraste:</em></p>
-<p><span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \mu \geq 335\\ H_a: &amp; \mu &lt; 335 \end{array}\right.\]</span>
-<em>Para tratar de ratificar su hipótesis Se ha analizado el aire en 20 puntos elegidos aleatoriamente a una misma altura cerca del suelo, resultando los siguientes datos: 332, 320, 312, 270, 330, 354, 356, 310, 341, 313, 223, 224, 305, 321, 325, 333, 332, 345, 312, 331.</em></p>
+<p><span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \mu \geq 335\\ H_a: &amp; \mu &lt; 335 \end{array}\right.\]</span> <em>Para tratar de ratificar su hipótesis Se ha analizado el aire en 20 puntos elegidos aleatoriamente a una misma altura cerca del suelo, resultando los siguientes datos: 332, 320, 312, 270, 330, 354, 356, 310, 341, 313, 223, 224, 305, 321, 325, 333, 332, 345, 312, 331.</em></p>
 <blockquote>
 <p>Para resolver este contraste utilizamos la función <code><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test()</a></code></p>
 </blockquote>
 <div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">332</span>, <span class="fl">320</span>, <span class="fl">312</span>, <span class="fl">270</span>, <span class="fl">330</span>, <span class="fl">354</span>, <span class="fl">356</span>, <span class="fl">310</span>, <span class="fl">341</span>, <span class="fl">313</span>, <span class="fl">223</span>, <span class="fl">224</span>, <span class="fl">305</span>, <span class="fl">321</span>, <span class="fl">325</span>, <span class="fl">333</span>, <span class="fl">332</span>, <span class="fl">345</span>, <span class="fl">312</span>, <span class="fl">331</span><span class="op">)</span>
-<span class="co"># Debemos fijar el valor del contraste, el tipo (two.sided), y el nivel de significación o su análogo como el nivel de confianza</span>
-<span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test</a></span><span class="op">(</span><span class="va">datos</span>, mu <span class="op">=</span> <span class="fl">335</span>, alternative <span class="op">=</span> <span class="st">"less"</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">332</span>, <span class="fl">320</span>, <span class="fl">312</span>, <span class="fl">270</span>, <span class="fl">330</span>, <span class="fl">354</span>, <span class="fl">356</span>, <span class="fl">310</span>, <span class="fl">341</span>, <span class="fl">313</span>, <span class="fl">223</span>, <span class="fl">224</span>, <span class="fl">305</span>, <span class="fl">321</span>, <span class="fl">325</span>, <span class="fl">333</span>, <span class="fl">332</span>, <span class="fl">345</span>, <span class="fl">312</span>, <span class="fl">331</span><span class="op">)</span></span>
+<span><span class="co"># Debemos fijar el valor del contraste, el tipo (two.sided), y el nivel de significación o su análogo como el nivel de confianza</span></span>
+<span><span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test</a></span><span class="op">(</span><span class="va">datos</span>, mu <span class="op">=</span> <span class="fl">335</span>, alternative <span class="op">=</span> <span class="st">"less"</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -435,15 +378,9 @@ cuya distribución en el muestreo es una <span class="math inline">\(t\)</span> 
 <span class="header-section-number">4.4</span> Inferencia para dos poblaciones<a class="anchor" aria-label="anchor" href="#inferencia-para-dos-poblaciones"><i class="fas fa-link"></i></a>
 </h2>
 <p>En este sección completamos el estudio inferencial visto en los puntos anteriores. Más concretamente se muestra el análisis inferencial para la comparación de dos proporciones o dos medias. En la situación de la comparación de dos medias veremos también la influencia que tiene el estudio de las varianzas de ambas poblaciones. No se presentan todas las formulaciones y distribuciones asociadas con estos análisis sino que se presenta directamente la forma de resolverlos. se pueden consultar los desarrollos estadísticos en cualquier libro de estadística básica.</p>
-<p><strong>Poblaciones Binomiales</strong> Sean dos poblaciones sobre las que se desea estudiar una misma característica de interés de tipo discreto (1 = éxito; 0 = fracaso), que identificamos por <span class="math inline">\(X_{P1}\)</span> y <span class="math inline">\(X_{P2}\)</span> respectivamente. El parámetro de interés en cada población es la proporción de éxito, <span class="math inline">\(\theta_1\)</span> y <span class="math inline">\(\theta_2\)</span> respectivamente, pero el interés inferencial principal es la comparación de <span class="math inline">\(\theta_1\)</span> y <span class="math inline">\(\theta_2\)</span>, es decir, comprobar si la proporción de éxito en la población 1 es comparable con la proporción de éxito en la población 2. Para realizar dicha comparación se utiliza el parámetro que viene dado por la diferencia de proporciones de éxito:
-<span class="math display">\[\theta_1 - \theta_2\]</span></p>
+<p><strong>Poblaciones Binomiales</strong> Sean dos poblaciones sobre las que se desea estudiar una misma característica de interés de tipo discreto (1 = éxito; 0 = fracaso), que identificamos por <span class="math inline">\(X_{P1}\)</span> y <span class="math inline">\(X_{P2}\)</span> respectivamente. El parámetro de interés en cada población es la proporción de éxito, <span class="math inline">\(\theta_1\)</span> y <span class="math inline">\(\theta_2\)</span> respectivamente, pero el interés inferencial principal es la comparación de <span class="math inline">\(\theta_1\)</span> y <span class="math inline">\(\theta_2\)</span>, es decir, comprobar si la proporción de éxito en la población 1 es comparable con la proporción de éxito en la población 2. Para realizar dicha comparación se utiliza el parámetro que viene dado por la diferencia de proporciones de éxito: <span class="math display">\[\theta_1 - \theta_2\]</span></p>
 <p>Si las proporciones son iguales la diferencia debería estar próximo a cero, mientras que si son distintas la diferencia sería estadísticamente diferente a cero.</p>
-<p><strong>Poblaciones Normales</strong> Sean dos poblaciones normales sobre las que se desea estudiar una misma característica de interés de tipo continuo que identificamos por <span class="math inline">\(X_{P1}\)</span> y <span class="math inline">\(X_{P2}\)</span> respectivamente. Cada población viene caracterizada por su media y varianza, es decir,
-<span class="math display">\[X_{P1} \sim N(\mu_1,\sigma^2_1) \text{    ;  }  X_{P2} \sim N(\mu_2,\sigma^2_2)\]</span>
-En este caso el proceso inferencial se centras en todos los parámetros, medias y varianzas, pero habitualmente el objetivo inferencial principal se centra en comprobar si las medias de ambas poblaciones pueden considerarse iguales o diferentes. Por tanto, el parámetro de interés es la diferencia de medias poblacionales:
-<span class="math display">\[\mu_1 - \mu_2\]</span>
-Como ocurre con las proporciones, se considera que las medias son iguales cuando la diferencia de las medias es estadísticamente cero. Sin embargo, para poder realizar dicho estudio es necesario conocer en primer lugar si las varianzas de ambas poblaciones pueden considerarse iguales o distintas. En función del resultado de dicha comparación se deberá utilizar un proceso inferencial diferente para la comparación de medias. Dado que las varianzas siempre son positivas el parámetro de interés para la comparación de varianzas viene dado por su cociente:
-<span class="math display">\[\frac{\sigma^2_1}{\sigma^2_1}\]</span></p>
+<p><strong>Poblaciones Normales</strong> Sean dos poblaciones normales sobre las que se desea estudiar una misma característica de interés de tipo continuo que identificamos por <span class="math inline">\(X_{P1}\)</span> y <span class="math inline">\(X_{P2}\)</span> respectivamente. Cada población viene caracterizada por su media y varianza, es decir, <span class="math display">\[X_{P1} \sim N(\mu_1,\sigma^2_1) \text{    ;  }  X_{P2} \sim N(\mu_2,\sigma^2_2)\]</span> En este caso el proceso inferencial se centras en todos los parámetros, medias y varianzas, pero habitualmente el objetivo inferencial principal se centra en comprobar si las medias de ambas poblaciones pueden considerarse iguales o diferentes. Por tanto, el parámetro de interés es la diferencia de medias poblacionales: <span class="math display">\[\mu_1 - \mu_2\]</span> Como ocurre con las proporciones, se considera que las medias son iguales cuando la diferencia de las medias es estadísticamente cero. Sin embargo, para poder realizar dicho estudio es necesario conocer en primer lugar si las varianzas de ambas poblaciones pueden considerarse iguales o distintas. En función del resultado de dicha comparación se deberá utilizar un proceso inferencial diferente para la comparación de medias. Dado que las varianzas siempre son positivas el parámetro de interés para la comparación de varianzas viene dado por su cociente: <span class="math display">\[\frac{\sigma^2_1}{\sigma^2_1}\]</span></p>
 </div>
 <div id="inferencia-para-dos-proporciones" class="section level2" number="4.5">
 <h2>
@@ -477,13 +414,13 @@ Como ocurre con las proporciones, se considera que las medias son iguales cuando
 </table></div>
 <p>Se está interesado en conocer con una confianza del 90% (significación de 0.1) si la porporción de pacientes mejorados con la nueva droga es diferente con respecto a la droga antigua.</p>
 <div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># carga de datos </span>
-<span class="va">muestra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">160</span>,<span class="fl">147</span><span class="op">)</span> 
-<span class="va">mejoras</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">44</span>,<span class="fl">19</span><span class="op">)</span> 
-<span class="co"># Tabla </span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">mejoras</span>, <span class="va">muestra</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mejoras"</span>,<span class="st">"muestra"</span><span class="op">)</span>
-<span class="va">res</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># carga de datos </span></span>
+<span><span class="va">muestra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">160</span>,<span class="fl">147</span><span class="op">)</span> </span>
+<span><span class="va">mejoras</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">44</span>,<span class="fl">19</span><span class="op">)</span> </span>
+<span><span class="co"># Tabla </span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">mejoras</span>, <span class="va">muestra</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mejoras"</span>,<span class="st">"muestra"</span><span class="op">)</span></span>
+<span><span class="va">res</span></span></code></pre></div>
 <pre><code>##   mejoras muestra
 ## 1      44     160
 ## 2      19     147</code></pre>
@@ -492,8 +429,7 @@ Como ocurre con las proporciones, se considera que las medias son iguales cuando
 <span class="header-section-number">4.5.1</span> Estimador puntual<a class="anchor" aria-label="anchor" href="#estimador-puntual"><i class="fas fa-link"></i></a>
 </h3>
 <p>El estimador puntual de la diferencia de proporciones poblacionales se consigue partir de los estimadores puntuales de cada una de las proporciones de éxito muestrales.</p>
-<p>Para los datos de nuestro ejemplo, si la población 1 identifica a los usjetos que toman la nueva droga y la pobalción 2 a los que toman la droga antigua, tendríamos:
-<span class="math inline">\(\widehat{\theta_1 - \theta_2} = \widehat{\theta_1} - \widehat{\theta_2} = \frac{44}{160} - \frac{19}{147} = 0.1457\)</span></p>
+<p>Para los datos de nuestro ejemplo, si la población 1 identifica a los usjetos que toman la nueva droga y la pobalción 2 a los que toman la droga antigua, tendríamos: <span class="math inline">\(\widehat{\theta_1 - \theta_2} = \widehat{\theta_1} - \widehat{\theta_2} = \frac{44}{160} - \frac{19}{147} = 0.1457\)</span></p>
 <p>Se observa una diferencia en la mejora de los sujetos del 14.57% de los que toman la droga nueva frente a los que toman la droga estándar.</p>
 </div>
 <div id="estimador-por-intervalos-de-confianza" class="section level3" number="4.5.2">
@@ -502,9 +438,9 @@ Como ocurre con las proporciones, se considera que las medias son iguales cuando
 </h3>
 <p>Para obtener el intervalo de confianza para la diferencia de proporciones utilizamos la función <code><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test()</a></code>. Esta función también nos permite realizar el correspondiente contarte pero por le momento solo pediremos los resultados referidos al intervalo de confianza.</p>
 <div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">analisis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">mejoras</span>,<span class="va">muestra</span>,conf.level <span class="op">=</span> <span class="fl">0.90</span><span class="op">)</span>
-<span class="co"># Intervalo de confianza</span>
-<span class="va">analisis</span><span class="op">$</span><span class="va">conf.int</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">analisis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">mejoras</span>,<span class="va">muestra</span>,conf.level <span class="op">=</span> <span class="fl">0.90</span><span class="op">)</span></span>
+<span><span class="co"># Intervalo de confianza</span></span>
+<span><span class="va">analisis</span><span class="op">$</span><span class="va">conf.int</span></span></code></pre></div>
 <pre><code>## [1] 0.0654468 0.2260498
 ## attr(,"conf.level")
 ## [1] 0.9</code></pre>
@@ -515,13 +451,12 @@ Como ocurre con las proporciones, se considera que las medias son iguales cuando
 <span class="header-section-number">4.5.3</span> Contraste de hipótesis<a class="anchor" aria-label="anchor" href="#contraste-de-hip%C3%B3tesis-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>El contraste habitual en esta situación viene dado por:</p>
-<p><span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta_1 = \theta_2\\ H_a: &amp; \theta_1 \neq \theta_2 \end{array}\right.\]</span>
-donde estamos interesados en verificar si las proporciones de éxito poblacionales pueden considerarse iguales o distintas.</p>
+<p><span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \theta_1 = \theta_2\\ H_a: &amp; \theta_1 \neq \theta_2 \end{array}\right.\]</span> donde estamos interesados en verificar si las proporciones de éxito poblacionales pueden considerarse iguales o distintas.</p>
 <p>Para los datos de nuestro ejemplo tenemos:</p>
 <div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">analisis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">mejoras</span>,<span class="va">muestra</span>,conf.level <span class="op">=</span> <span class="fl">0.90</span><span class="op">)</span>
-<span class="co"># Resultados completos</span>
-<span class="va">analisis</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">analisis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/prop.test.html">prop.test</a></span><span class="op">(</span><span class="va">mejoras</span>,<span class="va">muestra</span>,conf.level <span class="op">=</span> <span class="fl">0.90</span><span class="op">)</span></span>
+<span><span class="co"># Resultados completos</span></span>
+<span><span class="va">analisis</span></span></code></pre></div>
 <pre><code>## 
 ##  2-sample test for equality of proportions with continuity correction
 ## 
@@ -549,6 +484,19 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>A continuación se detalla como realizar el análisis de cada uno de ellos, pero antes de pasar con ellos debemos estudiar el problema de como comparar las variabilidades en dos poblaciones independientes. Presentamos en primer lugar los diferentes ejemplos de trabajo.</p>
 <p><strong>Ejemplo 1</strong>. Para realizar un estudio de la concentración de una hormona en una solución vamos a utilizar dos métodos. Disponemos de 10 dosis preparadas en el laboratorio y medimos la concentración de cada una con los dos métodos. Se obtienen los siguientes resultados:</p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="14%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+</colgroup>
 <thead><tr class="header">
 <th>Dosis</th>
 <th>1</th>
@@ -594,6 +542,21 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>Se desea realizar el estudio inferencial con una confianza del 95%.</p>
 <p><strong>Ejemplo 2</strong>. Una compañía contrata 10 tubos con filamentos del tipo A y 12 tubos con filamentos del tipo B. Las duraciones medias observadas se muestran en la siguiente tabla:</p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="17%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+<col width="6%">
+</colgroup>
 <thead><tr class="header">
 <th>Tipo/Duración</th>
 <th>1</th>
@@ -645,6 +608,19 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>Se desea realizar el estudio inferencial con una confianza del 90%.</p>
 <p><strong>Ejemplo 3</strong>. En una unidad del sueño se está probando con un nuevo somnífero. Para comprobar su eficacia se toman 10 individuos al azar. Un día no se les suministra el somnífero y se les anota el número de horas de sueño, al día siguiente se les suministra y se vuelve a comprobar las horas de sueño. Los resultados entes y después del tratamiento han sido los siguientes:</p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="25%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+</colgroup>
 <thead><tr class="header">
 <th>Instante/Sujeto</th>
 <th>1</th>
@@ -696,10 +672,10 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p><span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \frac{\sigma^2_1}{\sigma^2_2} = 1\\ H_a: &amp; \frac{\sigma^2_1}{\sigma^2_2} \neq 1 \end{array}\right.\]</span></p>
 <p>Para los datos del ejemplo 1</p>
 <div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">MetodoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">11.2</span>, <span class="fl">15.3</span>, <span class="fl">14.9</span>, <span class="fl">13.9</span>, <span class="fl">15</span>, <span class="fl">15.6</span>, <span class="fl">15.7</span>, <span class="fl">14.3</span>, <span class="fl">10.8</span><span class="op">)</span>
-<span class="va">MetodoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.1</span>, <span class="fl">11.4</span>, <span class="fl">15</span>, <span class="fl">15.1</span>, <span class="fl">14.3</span>, <span class="fl">15.4</span>, <span class="fl">15.4</span>, <span class="fl">16</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/var.test.html">var.test</a></span><span class="op">(</span><span class="va">MetodoA</span>, <span class="va">MetodoB</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">MetodoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">11.2</span>, <span class="fl">15.3</span>, <span class="fl">14.9</span>, <span class="fl">13.9</span>, <span class="fl">15</span>, <span class="fl">15.6</span>, <span class="fl">15.7</span>, <span class="fl">14.3</span>, <span class="fl">10.8</span><span class="op">)</span></span>
+<span><span class="va">MetodoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.1</span>, <span class="fl">11.4</span>, <span class="fl">15</span>, <span class="fl">15.1</span>, <span class="fl">14.3</span>, <span class="fl">15.4</span>, <span class="fl">15.4</span>, <span class="fl">16</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/var.test.html">var.test</a></span><span class="op">(</span><span class="va">MetodoA</span>, <span class="va">MetodoB</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 
@@ -714,10 +690,10 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>Dado que el pvalor resultante es superior a la significatividad prefijada, tenemos evidencias estadísticas para no rechazar la hipótesis nula, y por tanto concluir que ambas varianzas no pueden considerarse distintas.</p>
 <p>Para los datos del ejemplo 2</p>
 <div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">TipoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1614</span>,<span class="fl">1094</span>,<span class="fl">1293</span>,<span class="fl">1643</span>,<span class="fl">1466</span>,<span class="fl">1270</span>,<span class="fl">1340</span>,<span class="fl">1380</span>,<span class="fl">1081</span>,<span class="fl">1497</span><span class="op">)</span>
-<span class="va">TipoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1383</span>,<span class="fl">1138</span>,<span class="fl">920</span>,<span class="fl">1143</span>,<span class="fl">1017</span>,<span class="fl">961</span>,<span class="fl">1627</span>,<span class="fl">821</span>,<span class="fl">1711</span>,<span class="fl">865</span>,<span class="fl">1662</span>,<span class="fl">1698</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/var.test.html">var.test</a></span><span class="op">(</span><span class="va">TipoA</span>, <span class="va">TipoB</span>, conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">TipoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1614</span>,<span class="fl">1094</span>,<span class="fl">1293</span>,<span class="fl">1643</span>,<span class="fl">1466</span>,<span class="fl">1270</span>,<span class="fl">1340</span>,<span class="fl">1380</span>,<span class="fl">1081</span>,<span class="fl">1497</span><span class="op">)</span></span>
+<span><span class="va">TipoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1383</span>,<span class="fl">1138</span>,<span class="fl">920</span>,<span class="fl">1143</span>,<span class="fl">1017</span>,<span class="fl">961</span>,<span class="fl">1627</span>,<span class="fl">821</span>,<span class="fl">1711</span>,<span class="fl">865</span>,<span class="fl">1662</span>,<span class="fl">1698</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/var.test.html">var.test</a></span><span class="op">(</span><span class="va">TipoA</span>, <span class="va">TipoB</span>, conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 
@@ -742,10 +718,10 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p><span class="math display">\[\left\{\begin{array}{ll} H_0: &amp; \mu_1 = \mu_2\\ H_a: &amp; \mu_1 \neq \mu_2 \end{array}\right.\]</span></p>
 <p>Utilizamos los datos del ejemplo 1, ya que como hemos visto anteriormente las varianzas de ambas pobalciones puden considerarse iguales</p>
 <div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">MetodoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">11.2</span>, <span class="fl">15.3</span>, <span class="fl">14.9</span>, <span class="fl">13.9</span>, <span class="fl">15</span>, <span class="fl">15.6</span>, <span class="fl">15.7</span>, <span class="fl">14.3</span>, <span class="fl">10.8</span><span class="op">)</span>
-<span class="va">MetodoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.1</span>, <span class="fl">11.4</span>, <span class="fl">15</span>, <span class="fl">15.1</span>, <span class="fl">14.3</span>, <span class="fl">15.4</span>, <span class="fl">15.4</span>, <span class="fl">16</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span><span class="op">)</span>
-<span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test</a></span><span class="op">(</span><span class="va">MetodoA</span>, <span class="va">MetodoB</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">MetodoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">11.2</span>, <span class="fl">15.3</span>, <span class="fl">14.9</span>, <span class="fl">13.9</span>, <span class="fl">15</span>, <span class="fl">15.6</span>, <span class="fl">15.7</span>, <span class="fl">14.3</span>, <span class="fl">10.8</span><span class="op">)</span></span>
+<span><span class="va">MetodoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.1</span>, <span class="fl">11.4</span>, <span class="fl">15</span>, <span class="fl">15.1</span>, <span class="fl">14.3</span>, <span class="fl">15.4</span>, <span class="fl">15.4</span>, <span class="fl">16</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test</a></span><span class="op">(</span><span class="va">MetodoA</span>, <span class="va">MetodoB</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -766,10 +742,10 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>El constaste de hipótesis en esta situación es el mismo que en el punto anterior.</p>
 <p>Utilizamos los datos del ejemplo 2, ya que como hemos visto anteriormente las varianzas de ambas pobalciones puden considerarse distintas</p>
 <div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">TipoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1614</span>,<span class="fl">1094</span>,<span class="fl">1293</span>,<span class="fl">1643</span>,<span class="fl">1466</span>,<span class="fl">1270</span>,<span class="fl">1340</span>,<span class="fl">1380</span>,<span class="fl">1081</span>,<span class="fl">1497</span><span class="op">)</span>
-<span class="va">TipoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1383</span>,<span class="fl">1138</span>,<span class="fl">920</span>,<span class="fl">1143</span>,<span class="fl">1017</span>,<span class="fl">961</span>,<span class="fl">1627</span>,<span class="fl">821</span>,<span class="fl">1711</span>,<span class="fl">865</span>,<span class="fl">1662</span>,<span class="fl">1698</span><span class="op">)</span>
-<span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test</a></span><span class="op">(</span><span class="va">TipoA</span>, <span class="va">TipoB</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>, conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">TipoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1614</span>,<span class="fl">1094</span>,<span class="fl">1293</span>,<span class="fl">1643</span>,<span class="fl">1466</span>,<span class="fl">1270</span>,<span class="fl">1340</span>,<span class="fl">1380</span>,<span class="fl">1081</span>,<span class="fl">1497</span><span class="op">)</span></span>
+<span><span class="va">TipoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1383</span>,<span class="fl">1138</span>,<span class="fl">920</span>,<span class="fl">1143</span>,<span class="fl">1017</span>,<span class="fl">961</span>,<span class="fl">1627</span>,<span class="fl">821</span>,<span class="fl">1711</span>,<span class="fl">865</span>,<span class="fl">1662</span>,<span class="fl">1698</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test</a></span><span class="op">(</span><span class="va">TipoA</span>, <span class="va">TipoB</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>, conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -792,21 +768,21 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>De nuevo podemos utilizar la función <code><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test()</a></code> con el parámetro <code>paired</code>.</p>
 <p>Utilizamos los datos del ejemplo 3, donde tenemos una única muestra de sujetos</p>
 <div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">antes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.3</span>,<span class="fl">8.2</span>,<span class="fl">6.3</span>,<span class="fl">5.2</span>,<span class="fl">6.9</span>,<span class="fl">5.8</span>,<span class="fl">5.3</span>,<span class="fl">7.1</span>,<span class="fl">6.9</span>,<span class="fl">8.1</span><span class="op">)</span>
-<span class="va">despues</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.2</span>,<span class="fl">7.9</span>,<span class="fl">6.4</span>,<span class="fl">5.1</span>,<span class="fl">7.1</span>,<span class="fl">6.3</span>,<span class="fl">5.9</span>,<span class="fl">8.2</span>,<span class="fl">7.1</span>,<span class="fl">7.7</span><span class="op">)</span>
-<span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test</a></span><span class="op">(</span><span class="va">antes</span>, <span class="va">despues</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, paired <span class="op">=</span> <span class="cn">TRUE</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>, conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">antes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.3</span>,<span class="fl">8.2</span>,<span class="fl">6.3</span>,<span class="fl">5.2</span>,<span class="fl">6.9</span>,<span class="fl">5.8</span>,<span class="fl">5.3</span>,<span class="fl">7.1</span>,<span class="fl">6.9</span>,<span class="fl">8.1</span><span class="op">)</span></span>
+<span><span class="va">despues</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.2</span>,<span class="fl">7.9</span>,<span class="fl">6.4</span>,<span class="fl">5.1</span>,<span class="fl">7.1</span>,<span class="fl">6.3</span>,<span class="fl">5.9</span>,<span class="fl">8.2</span>,<span class="fl">7.1</span>,<span class="fl">7.7</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://www.mosaic-web.org/mosaic/reference/ttest.html">t.test</a></span><span class="op">(</span><span class="va">antes</span>, <span class="va">despues</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, paired <span class="op">=</span> <span class="cn">TRUE</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>, conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
 ## data:  antes and despues
 ## t = -1.7925, df = 9, p-value = 0.1066
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true mean difference is not equal to 0
 ## 90 percent confidence interval:
 ##  -0.566341394  0.006341394
 ## sample estimates:
-## mean of the differences 
-##                   -0.28</code></pre>
+## mean difference 
+##           -0.28</code></pre>
 <p>Dado que el pvalor es superior a la significatividad prefijada, hay evidencias estadísticas para concluir que las horas medias de sueño antes y después de tomar el somnifero no pueden considerarse estadísticamente distintas.</p>
 </div>
 </div>
@@ -822,17 +798,17 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>Este requisito implica que la variable objetivo tiene que distribuirse según una normal para cualquiera de las pobalciones donde se pueda medir. El test utilizado para resolver este problema es el de Shapiro-Wilks. En R utilizamos la función <code><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test()</a></code> para concluir estadísticamente sobre este contraste. Siempre utilizamos significatividad de 0.05 en estas situaciones.</p>
 <p>Para los datos del ejemplo 1 comprobamos si los datos muestrales en cada población pueden considerarse que se distribuyen según una normal.</p>
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">MetodoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">11.2</span>, <span class="fl">15.3</span>, <span class="fl">14.9</span>, <span class="fl">13.9</span>, <span class="fl">15</span>, <span class="fl">15.6</span>, <span class="fl">15.7</span>, <span class="fl">14.3</span>, <span class="fl">10.8</span><span class="op">)</span>
-<span class="va">MetodoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.1</span>, <span class="fl">11.4</span>, <span class="fl">15</span>, <span class="fl">15.1</span>, <span class="fl">14.3</span>, <span class="fl">15.4</span>, <span class="fl">15.4</span>, <span class="fl">16</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">MetodoA</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">MetodoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">11.2</span>, <span class="fl">15.3</span>, <span class="fl">14.9</span>, <span class="fl">13.9</span>, <span class="fl">15</span>, <span class="fl">15.6</span>, <span class="fl">15.7</span>, <span class="fl">14.3</span>, <span class="fl">10.8</span><span class="op">)</span></span>
+<span><span class="va">MetodoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.1</span>, <span class="fl">11.4</span>, <span class="fl">15</span>, <span class="fl">15.1</span>, <span class="fl">14.3</span>, <span class="fl">15.4</span>, <span class="fl">15.4</span>, <span class="fl">16</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">MetodoA</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  MetodoA
 ## W = 0.8058, p-value = 0.01705</code></pre>
 <div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">MetodoB</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">MetodoB</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -841,17 +817,17 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>En ambos casos las conclusión es que rechazamos que los datos se distribuyan según una normal, ya que el pvalor es inferior a la significatividad prefijada.</p>
 <p>Para los datos del ejemplo 2:</p>
 <div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">TipoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1614</span>,<span class="fl">1094</span>,<span class="fl">1293</span>,<span class="fl">1643</span>,<span class="fl">1466</span>,<span class="fl">1270</span>,<span class="fl">1340</span>,<span class="fl">1380</span>,<span class="fl">1081</span>,<span class="fl">1497</span><span class="op">)</span>
-<span class="va">TipoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1383</span>,<span class="fl">1138</span>,<span class="fl">920</span>,<span class="fl">1143</span>,<span class="fl">1017</span>,<span class="fl">961</span>,<span class="fl">1627</span>,<span class="fl">821</span>,<span class="fl">1711</span>,<span class="fl">865</span>,<span class="fl">1662</span>,<span class="fl">1698</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">TipoA</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">TipoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1614</span>,<span class="fl">1094</span>,<span class="fl">1293</span>,<span class="fl">1643</span>,<span class="fl">1466</span>,<span class="fl">1270</span>,<span class="fl">1340</span>,<span class="fl">1380</span>,<span class="fl">1081</span>,<span class="fl">1497</span><span class="op">)</span></span>
+<span><span class="va">TipoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1383</span>,<span class="fl">1138</span>,<span class="fl">920</span>,<span class="fl">1143</span>,<span class="fl">1017</span>,<span class="fl">961</span>,<span class="fl">1627</span>,<span class="fl">821</span>,<span class="fl">1711</span>,<span class="fl">865</span>,<span class="fl">1662</span>,<span class="fl">1698</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">TipoA</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  TipoA
 ## W = 0.95009, p-value = 0.6696</code></pre>
 <div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">TipoB</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">TipoB</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -866,10 +842,10 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>El test no paramétrico no se centra en la comparación de medias sino en la comparación de las medianas. Esto es así porque uno de los incumplimientos más habituales de la normalidad es porque los datos no son simétricos, es decir, la media coincide con la mediana. Para resolver este contraste utilizamos el test de Wilcoxon y su función en R <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code>.</p>
 <p>Dado que los datos del ejmplo 1 no pueden considerarse normales, utilizamos el test no paramétrico apra concluir si las medianas de ambas poblaciones pueden considerarse iguales o distintas. Fijamos la significatividad en 0.05.</p>
 <div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">MetodoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">11.2</span>, <span class="fl">15.3</span>, <span class="fl">14.9</span>, <span class="fl">13.9</span>, <span class="fl">15</span>, <span class="fl">15.6</span>, <span class="fl">15.7</span>, <span class="fl">14.3</span>, <span class="fl">10.8</span><span class="op">)</span>
-<span class="va">MetodoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.1</span>, <span class="fl">11.4</span>, <span class="fl">15</span>, <span class="fl">15.1</span>, <span class="fl">14.3</span>, <span class="fl">15.4</span>, <span class="fl">15.4</span>, <span class="fl">16</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">MetodoA</span>,<span class="va">MetodoB</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">MetodoA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">11.2</span>, <span class="fl">15.3</span>, <span class="fl">14.9</span>, <span class="fl">13.9</span>, <span class="fl">15</span>, <span class="fl">15.6</span>, <span class="fl">15.7</span>, <span class="fl">14.3</span>, <span class="fl">10.8</span><span class="op">)</span></span>
+<span><span class="va">MetodoB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.1</span>, <span class="fl">11.4</span>, <span class="fl">15</span>, <span class="fl">15.1</span>, <span class="fl">14.3</span>, <span class="fl">15.4</span>, <span class="fl">15.4</span>, <span class="fl">16</span>, <span class="fl">14.3</span>, <span class="fl">11.2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">MetodoA</span>,<span class="va">MetodoB</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
@@ -885,10 +861,10 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <p>También existe una versión del test de wilcoxon para la comparación en poblaciones dependientes. Este es muy habitual ya que en este tipo de situaciones lo nomral es tener pocos sujetos, y por tanto la hipótesis de normalidad es muy difícil de verificar.</p>
 <p>Para los datos del ejemplo 3 tenemos:</p>
 <div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cargamos los datos</span>
-<span class="va">antes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.3</span>,<span class="fl">8.2</span>,<span class="fl">6.3</span>,<span class="fl">5.2</span>,<span class="fl">6.9</span>,<span class="fl">5.8</span>,<span class="fl">5.3</span>,<span class="fl">7.1</span>,<span class="fl">6.9</span>,<span class="fl">8.1</span><span class="op">)</span>
-<span class="va">despues</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.2</span>,<span class="fl">7.9</span>,<span class="fl">6.4</span>,<span class="fl">5.1</span>,<span class="fl">7.1</span>,<span class="fl">6.3</span>,<span class="fl">5.9</span>,<span class="fl">8.2</span>,<span class="fl">7.1</span>,<span class="fl">7.7</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">antes</span>, <span class="va">despues</span>,paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Cargamos los datos</span></span>
+<span><span class="va">antes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.3</span>,<span class="fl">8.2</span>,<span class="fl">6.3</span>,<span class="fl">5.2</span>,<span class="fl">6.9</span>,<span class="fl">5.8</span>,<span class="fl">5.3</span>,<span class="fl">7.1</span>,<span class="fl">6.9</span>,<span class="fl">8.1</span><span class="op">)</span></span>
+<span><span class="va">despues</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.2</span>,<span class="fl">7.9</span>,<span class="fl">6.4</span>,<span class="fl">5.1</span>,<span class="fl">7.1</span>,<span class="fl">6.3</span>,<span class="fl">5.9</span>,<span class="fl">8.2</span>,<span class="fl">7.1</span>,<span class="fl">7.7</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">antes</span>, <span class="va">despues</span>,paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon signed rank test with continuity correction
 ## 
@@ -902,11 +878,11 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></div>
-<div class="next"><a href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#inferencia-b%C3%A1sica"><span class="header-section-number">4</span> Inferencia básica</a></li>
+<li><a class="nav-link" href="#inference"><span class="header-section-number">4</span> Inferencia básica</a></li>
 <li><a class="nav-link" href="#estimador-y-estimaci%C3%B3n"><span class="header-section-number">4.1</span> Estimador y estimación</a></li>
 <li><a class="nav-link" href="#informaci%C3%B3n-contenida-en-la-muestra"><span class="header-section-number">4.2</span> Información contenida en la muestra</a></li>
 <li>
@@ -956,7 +932,7 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-25.</p>
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2023-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -969,7 +945,7 @@ donde estamos interesados en verificar si las proporciones de éxito poblacional
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,17 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Unidad 3 Probabilidad | Modelos Estadísticos</title>
 <meta name="description" content="En esta unidad introducimos los conceptos básicos de varaible aleatoria, distribución de probabilidad, y las variables aleatorias más habituales en la investigación científica. No se trata de una...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Unidad 3 Probabilidad | Modelos Estadísticos">
 <meta property="og:type" content="book">
 <meta property="og:description" content="En esta unidad introducimos los conceptos básicos de varaible aleatoria, distribución de probabilidad, y las variables aleatorias más habituales en la investigación científica. No se trata de una...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unidad 3 Probabilidad | Modelos Estadísticos">
 <meta name="twitter:description" content="En esta unidad introducimos los conceptos básicos de varaible aleatoria, distribución de probabilidad, y las variables aleatorias más habituales en la investigación científica. No se trata de una...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -42,20 +46,7 @@
 <li><a class="" href="introlibro.html"><span class="header-section-number">1</span> Comenzamos</a></li>
 <li><a class="" href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></li>
 <li><a class="active" href="prob.html"><span class="header-section-number">3</span> Probabilidad</a></li>
-<li><a class="" href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
-<li><a class="" href="modelstats.html"><span class="header-section-number">5</span> Modelos estadísticos</a></li>
-<li><a class="" href="rls.html"><span class="header-section-number">6</span> Regresión Lineal Simple (RLS)</a></li>
-<li><a class="" href="rlm.html"><span class="header-section-number">7</span> Regresión Lineal Múltiple y Polinómica</a></li>
-<li><a class="" href="anova.html"><span class="header-section-number">8</span> Modelos ANOVA</a></li>
-<li><a class="" href="ancova.html"><span class="header-section-number">9</span> Modelos ANCOVA</a></li>
-<li><a class="" href="smooth.html"><span class="header-section-number">10</span> Modelos aditivos lineales</a></li>
-<li><a class="" href="mmixed.html"><span class="header-section-number">11</span> Modelos Lineales Mixtos</a></li>
-<li><a class="" href="glm.html"><span class="header-section-number">12</span> Modelos Lineales Generalizados</a></li>
-<li><a class="" href="glmbinomial.html"><span class="header-section-number">13</span> GLM respuesta binomial</a></li>
-<li><a class="" href="glmpoisson.html"><span class="header-section-number">14</span> GLM Poisson</a></li>
-<li><a class="" href="glmtablascont.html"><span class="header-section-number">15</span> GLM para tablas de contingencia</a></li>
-<li><a class="" href="glmsuperv.html"><span class="header-section-number">16</span> GLM para datos de supervivencia</a></li>
-<li><a class="" href="referencias.html">Referencias</a></li>
+<li><a class="" href="inference.html"><span class="header-section-number">4</span> Inferencia básica</a></li>
 </ul>
 
         <div class="book-extra">
@@ -87,32 +78,32 @@
 <p>Para proceder de esta forma, necesitamos formular un modelo adecuado para los valores <span class="math inline">\(x\)</span> que componen la población, relacionar las características de interés con los aspectos apropiados del modelo y luego usar los datos de la muestra para proporcionar estimaciones de estos aspectos.La característica esencial de tales valores <span class="math inline">\(x\)</span> en su imprevisibilidad, y lo mejor que podemos hacer es especificar la probabilidad de obtener un valor dado o un valor en un rango dado. Por lo tanto, las distribuciones de probabilidad proporcionan los modelos más apropiados para las poblaciones variables de respuesta. Más específicamente, la función de densidad de probabilidad <span class="math inline">\(f(x)\)</span> o la función de distribución de probabilidad <span class="math inline">\(F(x)\)</span> proporcionan la información necesaria, por lo que constituye el modelo de población para la variable aleatoria <span class="math inline">\(X\)</span>. Por supuesto, dado que nunca conocemos esta distribución con una certeza total, debemos suponer una forma funcional específica (modelo matemático) para <span class="math inline">\(f(x)\)</span> y <span class="math inline">\(F(x)\)</span>. Esta forma funcional usualmente involucra uno o más parámetros que pueden ser variados, y leso que se espera es que habrá algunos valores específicos de estos parámetros para los cuales la distribución resultante se ajusta adecuadamente a nuestros datos observados. Tal modelo se llama <strong>modelo paramétrico</strong> para <span class="math inline">\(X\)</span>. En el tema siguiente se presentarán los modelos paramétricos más frecuentes para una variable aleatoria <span class="math inline">\(X\)</span>.</p>
 <p>Por el momento, supongamos que hemos especificado alguna función adecuada <span class="math inline">\(f(x)\)</span> como la densidad de probabilidad de nuestra población. ¿Qué valores resumen de esta densidad se relacionan con las características de la población que generalmente son de interés? Para responder a esta situación, centrémonos en las variables discretas e interpretemos la probabilidad como una frecuencia relativa. Si la variable aleatoria <span class="math inline">\(X\)</span> tiene valores posibles <span class="math inline">\(x_1, x_2, x_3, ... ,x_n\)</span> y si <span class="math inline">\(p_i = P(X = x_i)\)</span>, entonces podemos pensar en <span class="math inline">\(p_i\)</span> como la frecuencia relativa con la que el valor <span class="math inline">\(x_i\)</span> ocurre en toda la población.</p>
 <p>Definimos el valor esperado de <span class="math inline">\(X\)</span> por la ecuación:</p>
-<p><span class="math display" id="eq:espdisc">\[\begin{equation} 
+<p><span class="math display" id="eq:espdisc">\[\begin{equation}
   E(X) = \sum_{i=1}^n  x_i p_i
   \tag{3.1}
 \end{equation}\]</span></p>
 <p>Utilizando la interpretación de frecuencia relativa de <span class="math inline">\(p_i\)</span> dada anteriormente, <span class="math inline">\(E(X)\)</span> puede interpretarse como el promedio de los valores <span class="math inline">\(X\)</span> en toda la población, por lo que es la media poblacional. Este es claramente uno de los principales valores de resumen para la población. A menudo se denota <span class="math inline">\(\mu\)</span> y como mide el “centro” de la población también se lo conoce como el parámetro de localización de la población.</p>
 <p>De forma similar se define la varianza de la población, <span class="math inline">\(\sigma2\)</span>, como:</p>
-<p><span class="math display" id="eq:vardisc">\[\begin{equation} 
+<p><span class="math display" id="eq:vardisc">\[\begin{equation}
   \sigma^2 = V(X) = E\{(X-\mu)^2\} = \sum_{i=1}^n  (x_i - \mu)^2 p_i
   \tag{3.2}
 \end{equation}\]</span></p>
 <p>La desviación típica poblacional, <span class="math inline">\(\sigma\)</span>, se obtiene a partir de la raíz cuadrada de la varianza poblacional:</p>
-<p><span class="math display" id="eq:sddisc">\[\begin{equation} 
+<p><span class="math display" id="eq:sddisc">\[\begin{equation}
   \sigma = DT(X) = \sqrt{V(X)}
   \tag{3.3}
 \end{equation}\]</span></p>
 <p>Siguiendo con el ejemplo de la variable aleatoria que representa la suma del lanzamiento de dos dados ¿Cuál es el valor esperado de la suma de ambos lanzamientos? ¿Cuál es la desviación típica? En este caso ¿la distribución es aproximada o la distribución poblacional?</p>
 <p>En el caso de variables aleatorias continuas, donde denotamos por <span class="math inline">\(R\)</span> el rango de todos los valores posibles, se define la media, varianza y desviación típica poblacional como</p>
-<p><span class="math display" id="eq:espcont">\[\begin{equation} 
+<p><span class="math display" id="eq:espcont">\[\begin{equation}
   \mu = E(X) = \int_R x f(x) dx
   \tag{3.4}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:varcont">\[\begin{equation} 
+<p><span class="math display" id="eq:varcont">\[\begin{equation}
   \sigma^2 = V(X) = \int_R (x - \mu)^2 f(x) dx
   \tag{3.5}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:sdcont">\[\begin{equation} 
+<p><span class="math display" id="eq:sdcont">\[\begin{equation}
   \sigma = DT(X) = \sqrt{V(X)}
   \tag{3.6}
 \end{equation}\]</span></p>
@@ -135,26 +126,26 @@
 </ol>
 <p>Una distribución binomial nos da las probabilidades asociadas con los ensayos independientes y repetidos de Bernoulli. En una distribución binomial, las probabilidades de interés son las de observar un cierto número de éxitos, <span class="math inline">\(r\)</span>, en <span class="math inline">\(n\)</span> ensayos independientes, cada uno de los cuales tiene solo dos resultados posibles y la misma probabilidad, <span class="math inline">\(\theta\)</span>, de éxito. Por ejemplo, usando una distribución binomial, podemos determinar la probabilidad de obtener 4 caras en 10 lanzamientos de una misma moneda.</p>
 <p>La distribución de probabilidad para este experimento queda completamente determinado si conocemos <span class="math inline">\(n\)</span> (número de repeticiones realizadas) y <span class="math inline">\(\theta\)</span> (probabilidad de éxito). Si <span class="math inline">\(X\)</span> denota la variable aleatoria asociada con este experimento, la función de densidad de probabilidad se define como:</p>
-<p><span class="math display" id="eq:probbinom">\[\begin{equation} 
+<p><span class="math display" id="eq:probbinom">\[\begin{equation}
   P(X = x) = {n \choose x} \theta^x (1-\theta)^{n-x}
   \tag{3.7}
 \end{equation}\]</span></p>
 <p>donde <span class="math inline">\({n \choose x}\)</span> representa el número combinatorio de <span class="math inline">\(n\)</span> sobre <span class="math inline">\(x\)</span>, y <span class="math inline">\(x\)</span> el número de éxitos observados. Dicha distribución se denota habitualmente:</p>
-<p><span class="math display" id="eq:varbinom">\[\begin{equation} 
+<p><span class="math display" id="eq:varbinom">\[\begin{equation}
   X \sim Bi(n, \theta)
   \tag{3.8}
 \end{equation}\]</span></p>
 <p>Esta distribución se puede evaluar para cualquier valor entre 0 y el número de repeticiones del experimento <span class="math inline">\(n\)</span>. En <code>R</code> la función <code>dbinom</code> permite obtener cualquier probabilidad de la distribución binomial una vez fijamos el valor que deseamos evaluar (<span class="math inline">\(x\)</span>), el número de repeticiones (<span class="math inline">\(n\)</span>), y la probabilidad de éxito asociada (<span class="math inline">\(\theta\)</span>).</p>
 <p>Una vez establecida la función de densidad de probabilidad resulta posible obtener el valor esperado del número de éxitos, así como conocer su variabilidad haciendo uso de las definiciones expuestas en el tema anterior. En concreto, para una variable que sigue una distribución de probabilidad Binomial (<a href="prob.html#eq:varbinom">(3.8)</a>) tenemos que:</p>
-<p><span class="math display" id="eq:espbinom">\[\begin{equation} 
+<p><span class="math display" id="eq:espbinom">\[\begin{equation}
   E(X) = n \theta
   \tag{3.9}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:varbinom">\[\begin{equation} 
+<p><span class="math display" id="eq:varbinom">\[\begin{equation}
   V(X) = n \theta (1-\theta)
   \tag{3.8}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:sdbinom">\[\begin{equation} 
+<p><span class="math display" id="eq:sdbinom">\[\begin{equation}
   DT(X) = \sqrt{n \theta (1-\theta)}
   \tag{3.10}
 \end{equation}\]</span></p>
@@ -180,22 +171,22 @@
 <li>Un grupo de investigadores observó la ocurrencia de hemangioma capilar retiniano (RCH) en pacientes con la enfermedad de von Hippel-Lindau (VHL). RCH es un tumor vascular benigno de la retina. Usando una revisión retrospectiva de series de casos consecutivos, los investigadores encontraron que el número de medio de tumores RCH por ojo para pacientes con VHL era de 4. Están interesados en conocer cuál es la probabilidad de que se detecten más de cuatro tumores por ojo.</li>
 </ul>
 <p>Como se puede ver en los ejemplos la distribución de Poisson es muy habitual en los campos de la biología y la medicina. En una distribución de Poisson, las probabilidades de interés son las de observar un número de eventos, <span class="math inline">\(x\)</span>, en un tiempo o espacio determinado. La distribución de probabilidad para este experimento queda completamente determinada si conocemos el número de eventos y <span class="math inline">\(\lambda\)</span> la tasa o media del número de eventos que ocurren por unidad de tiempo o espacio. Si <span class="math inline">\(X\)</span> denota la variable aleatoria asociada con este experimento, la función de densidad de probabilidad se define como:</p>
-<p><span class="math display" id="eq:probpois">\[\begin{equation} 
+<p><span class="math display" id="eq:probpois">\[\begin{equation}
   P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}
   \tag{3.11}
 \end{equation}\]</span></p>
 <p>Dicha distribución se denota habitualmente: <span class="math display">\[ X \sim Po(\lambda)\]</span>. Esta distribución se puede evaluar para cualquier valor entre 0 y el número de máximo de ocurrencias que pueden ocurrir. Dado que este valor no se conoce de antemano se debe prefijar un valor máximo que asegure que la probabilidad de ese valor sea cero.</p>
 <p>En <code>R</code> la función <code>dpois</code> permite obtener cualquier probabilidad de la distribución de Poisson una vez fijamos el valor que deseamos evaluar (<span class="math inline">\(x\)</span>), y la tasa o media del número de eventos (<span class="math inline">\(\lambda\)</span>).</p>
 <p>Una vez establecida la función de densidad de probabilidad resulta posible obtener el valor esperado del número de eventos ocurridos, así como conocer su variabilidad haciendo uso de las definiciones expuestas en el tema anterior. En concreto, para una variable que sigue una distribución de probabilidad Poisson (<span class="math inline">\(X \sim Po(\lambda)\)</span>) tenemos que:</p>
-<p><span class="math display" id="eq:meanpois">\[\begin{equation} 
+<p><span class="math display" id="eq:meanpois">\[\begin{equation}
   E(X) = \lambda
   \tag{3.12}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:varpois">\[\begin{equation} 
+<p><span class="math display" id="eq:varpois">\[\begin{equation}
   V(X) = \lambda
   \tag{3.13}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:sdpois">\[\begin{equation} 
+<p><span class="math display" id="eq:sdpois">\[\begin{equation}
   DT(X) = \sqrt{\lambda}
   \tag{3.14}
 \end{equation}\]</span></p>
@@ -222,20 +213,20 @@
 </h3>
 <p>Hasta ahora todas las distribuciones consideradas eran de tipo de discreto. En este punto tratamos la distribución de probabilidad de tipo continuo y más concreta mente la más famosa y utilizada de todas ellas: la distribución de probabilidad Normal. Una variable de tipo continuo es aquella que puede tomar cualquier valor dentro de un rango de valores, es decir, existe un infinito número de valores posibles para la variable aleatoria. Para representar gráficamente una distribución de una variable aleatoria continua se debe construir un subconjunto de clases o intervalos consecutivos para el rango de valores de la variable considerada y considerar el histograma resultante. Cuando consideramos un número muy grande de clases o intervalos podríamos obtener la curva suavizada que representa la función de densidad de probabilidad de la variable aleatoria.</p>
 <p>La función de densidad de probabilidad para una variable aleatoria <span class="math inline">\(X\)</span> que sigue una distribución Normal con parámetros <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span>, denotada por <span class="math inline">\(N(\mu, \sigma^2)\)</span> viene dada por:
-<span class="math display" id="eq:densinormal">\[\begin{equation} 
+<span class="math display" id="eq:densinormal">\[\begin{equation}
   f(x) = \frac{1}{2\pi\sigma^2} exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)
   \tag{3.15}
 \end{equation}\]</span></p>
 <p>Los dos parámetros de la distribución son <span class="math inline">\(\mu\)</span> que representa la medida de localización y <span class="math inline">\(\sigma\)</span> la medida de dispersión. Habitualmente los conocemos por sus nombres más habituales como son la media y la desviación típica. En concreto, para una variable que sigue una distribución de probabilidad Normal (<span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>) tenemos que:</p>
-<p><span class="math display" id="eq:meannormal">\[\begin{equation} 
+<p><span class="math display" id="eq:meannormal">\[\begin{equation}
   E(X) = \mu
   \tag{3.16}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:varnormal">\[\begin{equation} 
+<p><span class="math display" id="eq:varnormal">\[\begin{equation}
   V(X) = \sigma^2
   \tag{3.17}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:sdnormal">\[\begin{equation} 
+<p><span class="math display" id="eq:sdnormal">\[\begin{equation}
   DT(X) = \sigma
   \tag{3.18}
 \end{equation}\]</span></p>
@@ -314,7 +305,7 @@
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="aed.html"><span class="header-section-number">2</span> Análisis exploratorio de datos</a></div>
-<div class="next"><a href="inferencia-b%C3%A1sica.html"><span class="header-section-number">4</span> Inferencia básica</a></div>
+<div class="next"><a href="inference.html"><span class="header-section-number">4</span> Inferencia básica</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -345,7 +336,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2022-03-25.</p>
+    <p>"<strong>Modelos Estadísticos</strong>" was written by true, true. It was last built on 2023-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -358,7 +349,7 @@
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

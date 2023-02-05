@@ -514,7 +514,7 @@ str(NCBIRTHnew)
 ```
 
 ```
-## spec_tbl_df [800 × 14] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+## tibble [800 × 14] (S3: tbl_df/tbl/data.frame)
 ##  $ plural : num [1:800] 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ sex    : Factor w/ 2 levels "male","female": 1 2 1 1 1 1 2 2 2 2 ...
 ##  $ mage   : num [1:800] 32 32 27 27 25 28 25 15 37 21 ...
@@ -529,24 +529,6 @@ str(NCBIRTHnew)
 ##  $ tgrams : num [1:800] 3147 3289 3912 3856 3430 ...
 ##  $ low    : Factor w/ 2 levels "No","Yes": 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ premie : Factor w/ 2 levels "No","Yes": 1 1 1 1 1 1 1 1 1 1 ...
-##  - attr(*, "spec")=
-##   .. cols(
-##   ..   plural = col_double(),
-##   ..   sex = col_character(),
-##   ..   mage = col_double(),
-##   ..   weeks = col_double(),
-##   ..   marital = col_character(),
-##   ..   racemom = col_character(),
-##   ..   hispmom = col_character(),
-##   ..   gained = col_double(),
-##   ..   smoke = col_character(),
-##   ..   drink = col_character(),
-##   ..   tounces = col_double(),
-##   ..   tgrams = col_double(),
-##   ..   low = col_character(),
-##   ..   premie = col_character()
-##   .. )
-##  - attr(*, "problems")=<externalptr>
 ```
 
 En el resultado se aprecia la modificación de los diferentes factores.
